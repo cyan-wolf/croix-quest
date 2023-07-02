@@ -301,5 +301,11 @@ shape = SubResource("CapsuleShape2D_s1a4d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5a2gx")
-animation = &"Idle"
-frame_progress = 0.702968
+animation = &"Run"
+frame_progress = 0.0485972
+
+[node name="RunCountdown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
