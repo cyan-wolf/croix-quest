@@ -1,7 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=43 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
+[ext_resource type="PackedScene" uid="uid://sf1vktsr351u" path="res://particles/initial_dash_particles.tscn" id="3_ka5ay"]
+[ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
 radius = 8.0
@@ -302,10 +304,18 @@ shape = SubResource("CapsuleShape2D_s1a4d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5a2gx")
 animation = &"Run"
-frame_progress = 0.0485972
+frame_progress = 0.887954
 
 [node name="RunCountdown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="InitialDashParticles" parent="." instance=ExtResource("3_ka5ay")]
+show_behind_parent = true
+position = Vector2(0, 13)
+
+[node name="InitialDashSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_omw7c")
+volume_db = -5.0
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
