@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://86bh51fi4xn6"]
+
+[ext_resource type="Script" path="res://ui/menus/main_menu.gd" id="1_eppgo"]
+[ext_resource type="PackedScene" uid="uid://41to35a76r2o" path="res://maps/main.tscn" id="2_x1bch"]
+[ext_resource type="PackedScene" uid="uid://dq64dl4nypfso" path="res://ui/menus/settings_menu.tscn" id="3_k1bvv"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eppgo")
+_new_game_scene = ExtResource("2_x1bch")
+_settings_menu_scene = ExtResource("3_k1bvv")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 50
+text = "Croix Quest"
+
+[node name="NewGameButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -105.0
+offset_right = 282.0
+offset_bottom = -28.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "New Game"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_right = 219.0
+offset_bottom = 77.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"

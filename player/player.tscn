@@ -317,5 +317,6 @@ position = Vector2(0, 13)
 [node name="InitialDashSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_omw7c")
 volume_db = -5.0
+bus = &"sfx"
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
