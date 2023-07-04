@@ -8,6 +8,7 @@ func _ready() -> void:
 	_bus_index = AudioServer.get_bus_index(_bus_name)
 	self.value_changed.connect(_on_value_changed)
 
+	# Update the slider `value` with the current value on the audio server.
 	self.value = db_to_linear(
 		AudioServer.get_bus_volume_db(_bus_index)
 	)

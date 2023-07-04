@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj86io8xmudyv"]
+
+[ext_resource type="Script" path="res://ui/menus/components/back_button.gd" id="1_drax4"]
+
+[node name="BackButton" type="Button"]
+offset_right = 85.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 50
+text = "<"
+script = ExtResource("1_drax4")

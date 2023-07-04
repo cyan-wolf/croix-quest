@@ -12,10 +12,10 @@ func _ready() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
-	self.get_tree().change_scene_to_packed(_new_game_scene)
+	SceneManager.load_packed_scene(_new_game_scene)
 
 
 func _on_settings_button_pressed() -> void:
-	self.get_tree().change_scene_to_packed(_settings_menu_scene)
+	SceneManager.load_packed_scene(_settings_menu_scene)
 
 
