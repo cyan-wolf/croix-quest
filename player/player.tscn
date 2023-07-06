@@ -6,8 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
-radius = 8.0
-height = 34.0
+radius = 7.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqrqa"]
 atlas = ExtResource("1_1bkcv")
@@ -299,6 +299,7 @@ motion_mode = 1
 script = ExtResource("1_a2tsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_s1a4d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
