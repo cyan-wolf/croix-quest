@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
 [ext_resource type="PackedScene" uid="uid://sf1vktsr351u" path="res://particles/initial_dash_particles.tscn" id="3_ka5ay"]
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
-[ext_resource type="Script" path="res://player/Weapon.gd" id="5_bvr0s"]
-[ext_resource type="Texture2D" uid="uid://x3utlx6t0n8i" path="res://weapons/sprites/Pistol/pistol.png" id="6_a1ng5"]
+[ext_resource type="Texture2D" uid="uid://x3utlx6t0n8i" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
+[ext_resource type="Script" path="res://player/Weapon.gd" id="6_jfpub"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
-radius = 6.0
-height = 18.0
+radius = 7.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqrqa"]
 atlas = ExtResource("1_1bkcv")
@@ -301,13 +301,13 @@ motion_mode = 1
 script = ExtResource("1_a2tsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 10)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_s1a4d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5a2gx")
 animation = &"Run"
-frame_progress = 0.878459
+frame_progress = 0.887954
 
 [node name="RunCountdown" type="Timer" parent="."]
 wait_time = 2.0
@@ -323,12 +323,12 @@ volume_db = -5.0
 bus = &"sfx"
 
 [node name="Weapon" type="Node2D" parent="."]
-position = Vector2(0, 4)
-script = ExtResource("5_bvr0s")
+position = Vector2(-3, 6)
+script = ExtResource("6_jfpub")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon"]
-position = Vector2(3, 0)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("6_a1ng5")
+position = Vector2(-1, 1)
+scale = Vector2(0.234375, 0.3125)
+texture = ExtResource("5_sqf7h")
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
