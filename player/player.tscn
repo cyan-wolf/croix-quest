@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=51 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
 [ext_resource type="PackedScene" uid="uid://sf1vktsr351u" path="res://particles/initial_dash_particles.tscn" id="3_ka5ay"]
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
+[ext_resource type="Texture2D" uid="uid://bphqjwtgvfbhm" path="res://weapons/sprites/Pistol/Weapon/[FULL]PistolV1.01.png" id="5_owtak"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
 radius = 6.0
@@ -294,6 +295,59 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wubf"]
+atlas = ExtResource("5_owtak")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6seqh"]
+atlas = ExtResource("5_owtak")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p77bo"]
+atlas = ExtResource("5_owtak")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc4t2"]
+atlas = ExtResource("5_owtak")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phr25"]
+atlas = ExtResource("5_owtak")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc40r"]
+atlas = ExtResource("5_owtak")
+region = Rect2(640, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vswc0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wubf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6seqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p77bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc4t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phr25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc40r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wubf")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_a2tsp")
@@ -305,7 +359,7 @@ shape = SubResource("CapsuleShape2D_s1a4d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5a2gx")
 animation = &"Run"
-frame_progress = 0.782512
+frame_progress = 0.351843
 
 [node name="RunCountdown" type="Timer" parent="."]
 wait_time = 2.0
@@ -319,5 +373,16 @@ position = Vector2(0, 13)
 stream = ExtResource("4_omw7c")
 volume_db = -5.0
 bus = &"sfx"
+
+[node name="Weapon" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon"]
+position = Vector2(1, 6)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_vswc0")
+animation = &"shooting"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(23, -7)
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
