@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hg5pnlb4wgyb"
-path="res://.godot/imported/[MUZZLE_FIRE] PistolV1.00.png-9d4201ee04f01cc05922b273261fbf63.ctex"
+uid="uid://x3utlx6t0n8i"
+path="res://.godot/imported/pistol.png-9b16bc823d503c11ab69b1893c584655.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/sprites/Pistol/FX/[MUZZLE_FIRE] PistolV1.00.png"
-dest_files=["res://.godot/imported/[MUZZLE_FIRE] PistolV1.00.png-9d4201ee04f01cc05922b273261fbf63.ctex"]
+source_file="res://weapons/sprites/Pistol/pistol.png"
+dest_files=["res://.godot/imported/pistol.png-9b16bc823d503c11ab69b1893c584655.ctex"]
 
 [params]
 

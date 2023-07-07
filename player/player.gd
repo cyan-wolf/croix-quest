@@ -9,7 +9,7 @@ var input_direction: get = _get_input_direction
 var sprite_direction = "Right": get = _get_sprite_direction
 
 @onready var sprite = $AnimatedSprite2D
-@onready var weapon_sprite = $Weapon/AnimatedSprite2D
+@onready var weapon_sprite = $Weapon/Sprite2D
 
 func _physics_process(_delta):
 	#print_debug($RunCountdown.time_left)
@@ -34,7 +34,7 @@ func set_animation(animation):
 	#var direction = "Side" if sprite_direction in ["Left", "Right"] else sprite_direction    
 	sprite.play(animation) #Add {+ direction} to animation if up and down sprite animations are implemented. Remember to edit the animation names too if it happens
 	sprite.flip_h = (sprite_direction == "Left")
-	weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN
+	#weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN
 
 func _get_input_direction():
 	var x = -int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right"))
