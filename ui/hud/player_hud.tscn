@@ -1,0 +1,123 @@
+[gd_scene load_steps=18 format=3 uid="uid://d2fmifh13utrp"]
+
+[ext_resource type="Script" path="res://ui/hud/player_hud.gd" id="1_vhtns"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yai7r"]
+load_path = "res://.godot/imported/health_hearts.png-d57863c63fb9060837de58298f279a65.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enlo7"]
+atlas = SubResource("CompressedTexture2D_yai7r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kcc7t"]
+load_path = "res://.godot/imported/health_hearts.png-d57863c63fb9060837de58298f279a65.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moxc6"]
+atlas = SubResource("CompressedTexture2D_kcc7t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pgn51"]
+load_path = "res://.godot/imported/health_hearts.png-d57863c63fb9060837de58298f279a65.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy8ty"]
+atlas = SubResource("CompressedTexture2D_pgn51")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mf5kw"]
+load_path = "res://.godot/imported/health_hearts.png-d57863c63fb9060837de58298f279a65.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_figlk"]
+atlas = SubResource("CompressedTexture2D_mf5kw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cp33s"]
+load_path = "res://.godot/imported/mana_crystals.png-6a3d5f7e7bfc5a7fc90eaf7521ec8382.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbe6f"]
+atlas = SubResource("CompressedTexture2D_cp33s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3adj"]
+load_path = "res://.godot/imported/mana_crystals.png-6a3d5f7e7bfc5a7fc90eaf7521ec8382.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepno"]
+atlas = SubResource("CompressedTexture2D_j3adj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2oxll"]
+load_path = "res://.godot/imported/mana_crystals.png-6a3d5f7e7bfc5a7fc90eaf7521ec8382.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v4yw"]
+atlas = SubResource("CompressedTexture2D_2oxll")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7q3bg"]
+load_path = "res://.godot/imported/mana_crystals.png-6a3d5f7e7bfc5a7fc90eaf7521ec8382.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrwpx"]
+atlas = SubResource("CompressedTexture2D_7q3bg")
+region = Rect2(0, 0, 16, 16)
+
+[node name="PlayerHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vhtns")
+
+[node name="HeartBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 40.0
+
+[node name="HeartTextureRect1" type="TextureRect" parent="HeartBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_enlo7")
+expand_mode = 2
+
+[node name="HeartTextureRect2" type="TextureRect" parent="HeartBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_moxc6")
+expand_mode = 2
+
+[node name="HeartTextureRect3" type="TextureRect" parent="HeartBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jy8ty")
+expand_mode = 2
+
+[node name="HeartTextureRect4" type="TextureRect" parent="HeartBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_figlk")
+expand_mode = 2
+
+[node name="ManaBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="ManaTextureRect1" type="TextureRect" parent="ManaBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wbe6f")
+expand_mode = 2
+
+[node name="ManaTextureRect2" type="TextureRect" parent="ManaBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yepno")
+expand_mode = 2
+
+[node name="ManaTextureRect3" type="TextureRect" parent="ManaBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_5v4yw")
+expand_mode = 2
+
+[node name="ManaTextureRect4" type="TextureRect" parent="ManaBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mrwpx")
+expand_mode = 2

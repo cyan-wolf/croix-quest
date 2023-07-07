@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const SPEED = 70
 var used_speed = SPEED
@@ -7,6 +8,9 @@ var running = false
 
 var input_direction: get = _get_input_direction
 var sprite_direction = "Right": get = _get_sprite_direction
+
+# Contains the player's health value.
+@export var health_component: HealthComponent
 
 @onready var sprite = $AnimatedSprite2D
 @onready var weapon_sprite = $Weapon/Sprite2D
