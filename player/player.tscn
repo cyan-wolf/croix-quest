@@ -14,7 +14,7 @@ health = 8
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
 radius = 7.0
-height = 20.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqrqa"]
 atlas = ExtResource("1_1bkcv")
@@ -307,7 +307,7 @@ script = ExtResource("1_a2tsp")
 health_component = SubResource("Resource_kehnt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_s1a4d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

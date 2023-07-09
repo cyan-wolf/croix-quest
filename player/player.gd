@@ -41,8 +41,8 @@ func set_animation(animation):
 	#weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN
 
 func _get_input_direction():
-	var x = -int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right"))
-	var y = -int(Input.is_action_pressed("ui_up")) + int(Input.is_action_pressed("ui_down"))
+	var x = -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
+	var y = -int(Input.is_action_pressed("move_up")) + int(Input.is_action_pressed("move_down"))
 	input_direction = Vector2(x, y).normalized() #Without normalized, diagonal movement is faster than horizontal or vertical
 	return input_direction
 
