@@ -34,6 +34,13 @@ func _physics_process(_delta):
 		else:
 			set_animation("Walk")
 
+
+func _process(_delta: float) -> void:
+	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
+	if Input.is_action_just_pressed("debug_1"):
+		self.health_component.take_damage(1)
+
+
 func set_animation(animation):
 	#var direction = "Side" if sprite_direction in ["Left", "Right"] else sprite_direction    
 	sprite.play(animation) #Add {+ direction} to animation if up and down sprite animations are implemented. Remember to edit the animation names too if it happens

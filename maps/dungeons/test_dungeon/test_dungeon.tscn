@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7oy0aittjriu"]
+[gd_scene load_steps=6 format=3 uid="uid://c7oy0aittjriu"]
 
 [ext_resource type="Texture2D" uid="uid://cpf4qvd2aw1ix" path="res://tilesets/DungeonTilesetII_v1.6_by_0x72/0x72_DungeonTilesetII_v1.6.png" id="1_d8dgr"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_qh7w7"]
+[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="3_x10rr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqafv"]
 texture = ExtResource("1_d8dgr")
@@ -1925,3 +1926,22 @@ layer_3/tile_data = PackedInt32Array(65537, 1245184, 25)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="PlayerHUD" parent="." instance=ExtResource("3_x10rr")]
+
+[node name="HeartBoxContainer" parent="PlayerHUD" index="0"]
+layout_mode = 1
+offset_left = -188.0
+offset_top = -104.0
+offset_right = 5.99998
+offset_bottom = -61.0
+scale = Vector2(0.760001, 0.76)
+
+[node name="ManaBoxContainer" parent="PlayerHUD" index="1"]
+offset_left = 39.0
+offset_top = -104.0
+offset_right = 223.0
+offset_bottom = -61.0
+scale = Vector2(0.8, 0.72)
+
+[editable path="PlayerHUD"]
