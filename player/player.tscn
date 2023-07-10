@@ -333,7 +333,7 @@ script = ExtResource("6_jfpub")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon"]
 position = Vector2(-1, 1)
-scale = Vector2(0.234375, 0.3125)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_sqf7h")
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]

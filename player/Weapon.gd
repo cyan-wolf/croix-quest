@@ -1,6 +1,6 @@
 extends Node2D
 
-var weapon_type := "Gun"
+var weapon_type := "Shotgun"
 var _bullet_speed: float = 1000.0
 var _bullet_scene := preload("res://weapons/scenes/Bullet1.tscn")
 
@@ -19,6 +19,20 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("Shoot"):
 		_fire(weapon_type)
+
+	if Input.is_action_just_pressed("Test"):
+		if weapon_type == "Shotgun":
+			weapon_type = "Gun"
+		else:
+			weapon_type = "Shotgun"
+
+	match weapon_type: #change texture of weapon depending on the weapon
+		"Gun":
+			$Sprite2D.texture = load("res://weapons/sprites/Pistol/pistol.png")
+			$Sprite2D.scale = Vector2(0.3, 0.3)
+		"Shotgun":
+			$Sprite2D.texture = load("res://weapons/sprites/Shotgun/Shotgun.png")
+			$Sprite2D.scale = Vector2(0.5, 0.5)
 
 
 func _fire(weapon_type): #Maybe change parameters for different _bullet_scene types?
