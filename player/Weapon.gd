@@ -3,7 +3,7 @@ extends Node2D
 var weapon_type := "Shotgun"
 var _bullet_speed: float = 1000.0
 var _bullet_scene := preload("res://weapons/scenes/Bullet1.tscn")
-var sprite = $Sprite2D
+@onready var sprite = $Sprite2D
 
 func _process(_delta):
 	self.look_at(self.get_global_mouse_position())
