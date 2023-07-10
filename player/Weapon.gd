@@ -3,14 +3,15 @@ extends Node2D
 var weapon_type := "Shotgun"
 var _bullet_speed: float = 1000.0
 var _bullet_scene := preload("res://weapons/scenes/Bullet1.tscn")
+var sprite = $Sprite2D
 
 func _process(_delta):
 	self.look_at(self.get_global_mouse_position())
 
 	if self.rotation_degrees > 90 or self.rotation_degrees < -90:
-		$Sprite2D.flip_v = true
+		sprite.flip_v = true
 	else:
-		$Sprite2D.flip_v = false
+		sprite.flip_v = false
 
 	if self.rotation_degrees >= 269:
 		self.rotation_degrees = 90
@@ -20,7 +21,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Shoot"):
 		_fire(weapon_type)
 
-	if Input.is_action_just_pressed("Test"):
+	if Input.is_action_just_pressed("Test"): #Switches weapons. TODO: Make another input that switches backwards
 		if weapon_type == "Shotgun":
 			weapon_type = "Gun"
 		else:
@@ -28,15 +29,15 @@ func _process(_delta):
 
 	match weapon_type: #change texture of weapon depending on the weapon
 		"Gun":
-			$Sprite2D.texture = load("res://weapons/sprites/Pistol/pistol.png")
-			$Sprite2D.scale = Vector2(0.3, 0.3)
+			sprite.texture = load("res://weapons/sprites/Pistol/pistol.png")
+			sprite.scale = Vector2(0.3, 0.3)
 		"Shotgun":
-			$Sprite2D.texture = load("res://weapons/sprites/Shotgun/Shotgun.png")
-			$Sprite2D.scale = Vector2(0.5, 0.5)
+			sprite.texture = load("res://weapons/sprites/Shotgun/Shotgun.png")
+			sprite.scale = Vector2(0.5, 0.5)
 
 
 func _fire(weapon_type): #Maybe change parameters for different _bullet_scene types?
-	match weapon_type: #BASICALLY the switch statement, just add "[weapon_type]": to add a case
+	match weapon_type: #BASICALLY the switch statement, just add "[weapon_type]": to add a case. TODO: Add more weapons
 		"Gun":
 			var bullet_instance := _bullet_scene.instantiate()
 			bullet_instance.position = self.global_position
