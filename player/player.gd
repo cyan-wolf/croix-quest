@@ -21,10 +21,19 @@ enum SpriteDirection {
 var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
+var _is_dead: bool = false
 
 var _current_sprite_direction := SpriteDirection.RIGHT
 
+func _ready() -> void:
+	self.health_component.death.connect(_on_death)
+
+
 func _physics_process(_delta):
+	# Temporary way to show that the player is dead.
+	if _is_dead:
+		return
+
 	var input_direction := _get_input_direction()
 
 	self.velocity = input_direction * _current_speed
@@ -57,6 +66,10 @@ func _process(_delta: float) -> void:
 	# DEBUG: The player uses up mana if the 'Number Pad 2' key is pressed.
 	if Input.is_action_just_pressed("debug_2"):
 		self.mana_component.use_mana(1)
+
+
+func _on_death() -> void:
+	_is_dead = true
 
 
 func set_animation(animation: String):
