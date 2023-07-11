@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd6l8efrirnrx"]
+[gd_scene load_steps=4 format=3 uid="uid://dd6l8efrirnrx"]
 
 [ext_resource type="Texture2D" uid="uid://bhtn7jjkk3ny8" path="res://weapons/sprites/Bullets/02.png" id="1_8f8jj"]
+[ext_resource type="Script" path="res://weapons/scripts/Bullet1.gd" id="1_pdd13"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ydvf"]
 radius = 2.0
@@ -8,6 +9,7 @@ height = 4.0
 
 [node name="Bullet1" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_pdd13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7ydvf")

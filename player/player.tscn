@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_0ex8n"]
 [ext_resource type="PackedScene" uid="uid://sf1vktsr351u" path="res://particles/initial_dash_particles.tscn" id="3_ka5ay"]
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
-[ext_resource type="Texture2D" uid="uid://x3utlx6t0n8i" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
+[ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
 [ext_resource type="Script" path="res://player/Weapon.gd" id="6_jfpub"]
 
 [sub_resource type="Resource" id="Resource_kehnt"]
@@ -333,7 +333,7 @@ script = ExtResource("6_jfpub")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon"]
 position = Vector2(-1, 1)
-scale = Vector2(0.234375, 0.3125)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_sqf7h")
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
