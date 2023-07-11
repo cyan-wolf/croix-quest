@@ -1905,6 +1905,10 @@ sources/0 = SubResource("TileSetAtlasSource_bqafv")
 
 [node name="TestDungeon" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("3_x10rr")]
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bm4hr")
 format = 2
@@ -1935,23 +1939,5 @@ layer_3/tile_data = PackedInt32Array(65537, 1245184, 25)
 [node name="Player" parent="." instance=ExtResource("2_qh7w7")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(33, 13)
 zoom = Vector2(3, 3)
-
-[node name="PlayerHUD" parent="." instance=ExtResource("3_x10rr")]
-
-[node name="HeartBoxContainer" parent="PlayerHUD" index="0"]
-layout_mode = 1
-offset_left = -188.0
-offset_top = -104.0
-offset_right = 5.99998
-offset_bottom = -61.0
-scale = Vector2(0.760001, 0.76)
-
-[node name="ManaBoxContainer" parent="PlayerHUD" index="1"]
-offset_left = 39.0
-offset_top = -104.0
-offset_right = 223.0
-offset_bottom = -61.0
-scale = Vector2(0.8, 0.72)
-
-[editable path="PlayerHUD"]

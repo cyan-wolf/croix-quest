@@ -10,10 +10,10 @@ var _ui_hearts: Array[TextureRect] = []
 var _ui_mana_crystals: Array[TextureRect] = []
 
 func _ready() -> void:
-	_player_health_component = (self.get_node("../Player") as Player).health_component
+	_player_health_component = _get_player_in_current_scene().health_component
 	_player_health_component.health_changed.connect(_on_player_health_changed)
 
-	_player_mana_component = (self.get_node("../Player") as Player).mana_component
+	_player_mana_component = _get_player_in_current_scene().mana_component
 	_player_mana_component.mana_amount_changed.connect(_on_player_mana_amount_changed)
 
 	for heart in _heart_box_container.get_children():
@@ -32,6 +32,10 @@ func _on_player_health_changed() -> void:
 
 func _on_player_mana_amount_changed() -> void:
 	_render_player_mana_crystals()
+
+
+func _get_player_in_current_scene() -> Player:
+	return self.get_tree().current_scene.get_node("Player") as Player
 
 
 func _render_player_hearts() -> void:
