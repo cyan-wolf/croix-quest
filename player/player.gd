@@ -9,8 +9,11 @@ var running = false
 var input_direction: get = _get_input_direction
 var sprite_direction = "Right": get = _get_sprite_direction
 
-# Contains the player's health value.
+# Manages the player's health value.
 @export var health_component: HealthComponent
+
+# Manages the player's mana value.
+@export var mana_component: ManaComponent
 
 @onready var sprite = $AnimatedSprite2D
 @onready var weapon_sprite = $Weapon/Sprite2D
@@ -39,6 +42,10 @@ func _process(_delta: float) -> void:
 	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
 	if Input.is_action_just_pressed("debug_1"):
 		self.health_component.take_damage(1)
+
+	# DEBUG: The player uses up mana if the 'Number Pad 2' key is pressed.
+	if Input.is_action_just_pressed("debug_2"):
+		self.mana_component.use_mana(1)
 
 
 func set_animation(animation):

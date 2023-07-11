@@ -1,8 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=50 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_0ex8n"]
+[ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="3_ggtxy"]
 [ext_resource type="PackedScene" uid="uid://sf1vktsr351u" path="res://particles/initial_dash_particles.tscn" id="3_ka5ay"]
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
 [ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
@@ -12,6 +13,10 @@
 [sub_resource type="Resource" id="Resource_kehnt"]
 script = ExtResource("2_0ex8n")
 health = 8
+
+[sub_resource type="Resource" id="Resource_7va06"]
+script = ExtResource("3_ggtxy")
+mana_amount = 4
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
 radius = 7.0
@@ -306,6 +311,7 @@ animations = [{
 motion_mode = 1
 script = ExtResource("1_a2tsp")
 health_component = SubResource("Resource_kehnt")
+mana_component = SubResource("Resource_7va06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
