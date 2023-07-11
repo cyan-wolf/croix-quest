@@ -43,10 +43,10 @@ func _render_player_hearts() -> void:
 	# The heart amount is calculated this way since each heart 
 	# represents 2 health points.
 	# (Integer division is intentional here).
-	var hearts_left := _player_health_component.health / 2
+	var hearts_left := _player_health_component.get_health() / 2
 
 	# The HUD should display a "half heart" if the health is an odd number.
-	var has_extra_half_heart := (_player_health_component.health % 2 == 1)
+	var has_extra_half_heart := (_player_health_component.get_health() % 2 == 1)
 
 	for ui_heart in _ui_hearts:
 		var ui_heart_atlas := ui_heart.texture as AtlasTexture
@@ -75,7 +75,7 @@ func _render_player_mana_crystals() -> void:
 	const EMPTY_CRYSTAL_REGION_IDX := 16
 
 	# Each mana crystal in the UI corresponds with one mana.
-	var mana_crystals_left := _player_mana_component.mana_amount
+	var mana_crystals_left := _player_mana_component.get_mana_amount()
 
 	for ui_mana_crystal in _ui_mana_crystals:
 		var ui_mana_crystal_atlas := ui_mana_crystal.texture as AtlasTexture

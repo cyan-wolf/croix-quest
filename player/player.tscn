@@ -12,11 +12,11 @@
 
 [sub_resource type="Resource" id="Resource_kehnt"]
 script = ExtResource("2_0ex8n")
-health = 8
+_health = 8
 
 [sub_resource type="Resource" id="Resource_7va06"]
 script = ExtResource("3_ggtxy")
-mana_amount = 4
+_mana_amount = 4
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
 radius = 7.0

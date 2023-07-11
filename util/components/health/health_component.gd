@@ -4,17 +4,21 @@ class_name HealthComponent
 signal health_changed
 signal death
 
-@export var health: int = 8
+@export var _health: int = 8
+
+func get_health() -> int:
+	return _health
+
 
 func take_damage(amount: int) -> void:
 	# Takes damage.
-	if amount < self.health:
-		self.health -= amount
+	if amount < _health:
+		_health -= amount
 		self.health_changed.emit()
 	
 	# If the blow is fatal, emit the `death` signal (only emitted once).
 	elif not self.is_dead():
-		self.health = 0
+		_health = 0
 		self.health_changed.emit()
 		self.death.emit()
 
@@ -24,6 +28,6 @@ func take_damage(amount: int) -> void:
 
 
 func is_dead() -> bool:
-	return self.health == 0
+	return _health == 0
 
 
