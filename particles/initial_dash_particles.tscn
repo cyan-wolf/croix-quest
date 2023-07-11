@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://sf1vktsr351u"]
 
 [sub_resource type="Gradient" id="Gradient_prhbc"]
-offsets = PackedFloat32Array(0, 0.222222, 1)
+offsets = PackedFloat32Array(0, 0.259259, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_s8pn8"]

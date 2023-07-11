@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=48 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
 [ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
 [ext_resource type="Script" path="res://player/Weapon.gd" id="6_jfpub"]
+[ext_resource type="PackedScene" uid="uid://d1cs8arufufu5" path="res://particles/muzzle.tscn" id="8_ep5ee"]
 
 [sub_resource type="Resource" id="Resource_kehnt"]
 script = ExtResource("2_0ex8n")
@@ -336,4 +337,11 @@ position = Vector2(-1, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_sqf7h")
 
+[node name="muzzle" parent="Weapon" instance=ExtResource("8_ep5ee")]
+position = Vector2(9, -1)
+
+[node name="WeaponReload" type="Timer" parent="Weapon"]
+one_shot = true
+
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Weapon/WeaponReload" to="Weapon" method="_on_weapon_reload_timeout"]
