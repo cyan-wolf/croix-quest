@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var lifetime: float = 0.0
-var damage = 0
+var damage: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
