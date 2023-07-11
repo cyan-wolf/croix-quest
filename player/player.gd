@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 70
-var used_speed = SPEED
-var timer_on = false
-var running = false
+const WALKING_SPEED := 70.0
+const DASH_MULTIPLIER := 1.65
 
-var input_direction: get = _get_input_direction
-var sprite_direction = "Right": get = _get_sprite_direction
+enum SpriteDirection {
+	RIGHT = 0,
+	LEFT = 1,
+}
 
 # Manages the player's health value.
 @export var health_component: HealthComponent
@@ -15,27 +15,38 @@ var sprite_direction = "Right": get = _get_sprite_direction
 # Manages the player's mana value.
 @export var mana_component: ManaComponent
 
-@onready var sprite = $AnimatedSprite2D
-@onready var weapon_sprite = $Weapon/Sprite2D
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _weapon_sprite: Sprite2D = $Weapon/Sprite2D
+
+var _current_speed: float = WALKING_SPEED
+var _is_timer_on: bool = false
+var _is_running: bool = false
+
+var _current_sprite_direction := SpriteDirection.RIGHT
 
 func _physics_process(_delta):
-	#print_debug($RunCountdown.time_left)
-	velocity = input_direction * used_speed
-	move_and_slide()
+	var input_direction := _get_input_direction()
+
+	self.velocity = input_direction * _current_speed
+	self.move_and_slide()
+
 	if input_direction == Vector2.ZERO or input_direction == Vector2(0, 0):
-		set_animation("Idle")
-		used_speed = SPEED
-		timer_on = false
-		running = false
+		self.set_animation("Idle")
+		_current_speed = WALKING_SPEED
+		_is_timer_on = false
+		_is_running = false
 		$RunCountdown.stop()
+
 	else:
-		if timer_on == false:
+		if _is_timer_on == false:
 			$RunCountdown.start()
-		timer_on = true
-		if running:
-			set_animation("Run")
+			_is_timer_on = true
+
+		if _is_running:
+			self.set_animation("Run")
+
 		else:
-			set_animation("Walk")
+			self.set_animation("Walk")
 
 
 func _process(_delta: float) -> void:
@@ -48,28 +59,34 @@ func _process(_delta: float) -> void:
 		self.mana_component.use_mana(1)
 
 
-func set_animation(animation):
+func set_animation(animation: String):
+	_current_sprite_direction = _get_sprite_direction()
 	#var direction = "Side" if sprite_direction in ["Left", "Right"] else sprite_direction    
-	sprite.play(animation) #Add {+ direction} to animation if up and down sprite animations are implemented. Remember to edit the animation names too if it happens
-	sprite.flip_h = (sprite_direction == "Left")
-	#weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN
+	_sprite.play(animation) #Add {+ direction} to animation if up and down _sprite animations are implemented. Remember to edit the animation names too if it happens
+	_sprite.flip_h = (_current_sprite_direction == SpriteDirection.LEFT)
+	#_weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN # ('_'): what is going on here
 
-func _get_input_direction():
-	var x = -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
-	var y = -int(Input.is_action_pressed("move_up")) + int(Input.is_action_pressed("move_down"))
-	input_direction = Vector2(x, y).normalized() #Without normalized, diagonal movement is faster than horizontal or vertical
+
+func _get_input_direction() -> Vector2:
+	var x := int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")) 
+	var y := int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+	# Without normalized, diagonal movement is faster than horizontal or vertical.
+	var input_direction := Vector2(x, y).normalized()
 	return input_direction
 
-func _get_sprite_direction():
-	match input_direction:
+
+func _get_sprite_direction() -> SpriteDirection:
+	match _get_input_direction():
 		Vector2.LEFT:
-			sprite_direction = "Left"
+			return SpriteDirection.LEFT
 		Vector2.RIGHT:
-			sprite_direction = "Right"
-	return sprite_direction
+			return SpriteDirection.RIGHT
+		_:
+			return _current_sprite_direction
+
 
 func _on_timer_timeout():
-	used_speed *= 1.65
-	running = true
+	_current_speed *= DASH_MULTIPLIER
+	_is_running = true
 	$InitialDashParticles.emitting = true
 	$InitialDashSFX.play()
