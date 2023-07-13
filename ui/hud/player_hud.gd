@@ -10,15 +10,24 @@ var _ui_hearts: Array[TextureRect] = []
 var _ui_mana_crystals: Array[TextureRect] = []
 
 func _ready() -> void:
+	# Make the HUD visible at the start since it's hidden in the editor for convenience.
+	self.show()
+
+	# Get the player's health component so that the HUD can react to any changes.
 	_player_health_component = _get_player_in_current_scene().health_component
 	_player_health_component.health_changed.connect(_on_player_health_changed)
 
+	# Get the player's mana component so that the HUD can react to any changes.
 	_player_mana_component = _get_player_in_current_scene().mana_component
 	_player_mana_component.mana_amount_changed.connect(_on_player_mana_amount_changed)
 
+	# Get references to the heart textures in the health bar 
+	# to be able to update them. 
 	for heart in _heart_box_container.get_children():
 		_ui_hearts.push_back(heart as TextureRect)
 
+	# Get references to the mana crystal textures in the 
+	# mana bar to be able to update them. 
 	for mana_crystal in _mana_box_container.get_children():
 		_ui_mana_crystals.push_front(mana_crystal as TextureRect)
 
