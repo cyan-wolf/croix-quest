@@ -78,6 +78,7 @@ Weapon_Down={
 [layer_names]
 
 2d_physics/layer_1="Ground and Walls"
+2d_physics/layer_2="Hitbox"
 
 [rendering]
 

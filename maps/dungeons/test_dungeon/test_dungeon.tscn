@@ -1908,6 +1908,7 @@ sources/0 = SubResource("TileSetAtlasSource_bqafv")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("3_x10rr")]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bm4hr")

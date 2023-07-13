@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bw2h2pyqdex1e"]
+
+[node name="HitboxArea" type="Area2D"]
+collision_layer = 2
+collision_mask = 2

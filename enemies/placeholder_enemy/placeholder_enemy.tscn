@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cml2e7u5un1e1"]
+
+[ext_resource type="Script" path="res://enemies/placeholder_enemy/placeholder_enemy.gd" id="1_kp50b"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_n7frg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w55ds"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkaij"]
+size = Vector2(16, 16)
+
+[node name="PlaceholderEnemy" type="Node2D"]
+script = ExtResource("1_kp50b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_w55ds")
+
+[node name="HitboxArea" parent="." groups=["placeholder_enemy"] instance=ExtResource("2_n7frg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_nkaij")

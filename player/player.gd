@@ -18,6 +18,8 @@ enum SpriteDirection {
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _weapon_sprite: Sprite2D = $Weapon/Sprite2D
 
+@onready var _hitbox: Area2D = self.get_node("HitboxArea")
+
 var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
@@ -27,6 +29,7 @@ var _current_sprite_direction := SpriteDirection.RIGHT
 
 func _ready() -> void:
 	self.health_component.death.connect(_on_death)
+	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 
 
 func _physics_process(_delta):
@@ -71,6 +74,11 @@ func _process(_delta: float) -> void:
 
 func _on_death() -> void:
 	_is_dead = true
+
+
+func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
+	if other_hitbox.is_in_group("placeholder_enemy"):
+		self.health_component.take_damage(1)
 
 
 func set_animation(animation: String):
