@@ -35,6 +35,7 @@ func _physics_process(_delta):
 		return
 
 	var input_direction := _get_input_direction()
+	_current_sprite_direction = _get_sprite_direction()
 
 	self.velocity = input_direction * _current_speed
 	self.move_and_slide()
@@ -73,7 +74,6 @@ func _on_death() -> void:
 
 
 func set_animation(animation: String):
-	_current_sprite_direction = _get_sprite_direction()
 	#var direction = "Side" if sprite_direction in ["Left", "Right"] else sprite_direction    
 	_sprite.play(animation) #Add {+ direction} to animation if up and down _sprite animations are implemented. Remember to edit the animation names too if it happens
 	_sprite.flip_h = (_current_sprite_direction == SpriteDirection.LEFT)
