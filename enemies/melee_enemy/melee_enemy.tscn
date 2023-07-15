@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkkf36s50im0l"]
+
+[ext_resource type="Script" path="res://enemies/melee_enemy/melee_enemy.gd" id="1_bytdq"]
+[ext_resource type="Texture2D" uid="uid://bl1p7gnym85p6" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_unfinished.png" id="1_s15un"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_gcps4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfo25"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m1rek"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wb1s"]
+atlas = ExtResource("1_s15un")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oplal"]
+atlas = ExtResource("1_s15un")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynrvp"]
+atlas = ExtResource("1_s15un")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixb57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wb1s")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oplal")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynrvp")
+}],
+"loop": true,
+"name": &"following",
+"speed": 5.0
+}]
+
+[node name="MeleeEnemy" type="CharacterBody2D"]
+script = ExtResource("1_bytdq")
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hfo25")
+
+[node name="HitboxArea" parent="." instance=ExtResource("2_gcps4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_m1rek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ixb57")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
