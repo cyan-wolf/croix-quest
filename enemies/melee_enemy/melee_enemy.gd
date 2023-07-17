@@ -28,8 +28,9 @@ func _on_death() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	# TEMP
+	# Wait for things to process so that the navigation works.
 	await self.get_tree().process_frame
+
 	_set_target_pos(_player.position)
 
 	var move_direction := self.position.direction_to(_nav_agent.get_next_path_position())
@@ -37,7 +38,10 @@ func _physics_process(_delta: float) -> void:
 	self.velocity = move_direction * _speed
 	_nav_agent.velocity = self.velocity
 
-	self.move_and_slide()
+	# TODO: Make the enemy switch to "melee attack mode" when close 
+	# enough to the player.
+	if not _nav_agent.is_navigation_finished():
+		self.move_and_slide()
 
 	_update_sprite_facing_direction()
 
