@@ -2,11 +2,30 @@ extends CharacterBody2D
 
 @export var _speed: float = 35.0
 
-@onready var _nav_agent: NavigationAgent2D = self.get_node("NavigationAgent2D")
-@onready var _enemy_sprite: AnimatedSprite2D = self.get_node("AnimatedSprite2D")
+@export var health_component: HealthComponent
+
 @onready var _player: Player = self.get_node("../Player")
 
+@onready var _nav_agent: NavigationAgent2D = self.get_node("NavigationAgent2D")
+@onready var _enemy_sprite: AnimatedSprite2D = self.get_node("AnimatedSprite2D")
+@onready var _hitbox: Area2D = self.get_node("HitboxArea")
+
 var _current_sprite_direction := Util.Direction.RIGHT
+
+func _ready():
+	_hitbox.area_entered.connect(_on_area_entered_hitbox)
+	self.health_component.death.connect(_on_death)
+
+
+func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
+	if other_hitbox.is_in_group("bullet_hitbox"):
+		# TODO: Make damage based on the bullet's `damage` value.
+		self.health_component.take_damage(1)
+
+
+func _on_death() -> void:
+	self.queue_free()
+
 
 func _physics_process(_delta: float) -> void:
 	# TEMP
@@ -64,7 +83,6 @@ func _update_sprite_facing_direction() -> void:
 
 	# Since the enemy's sprite is not facing the player, it should be turned around.
 	if enemy_should_face_player:
-		# Turn the sprite direction to the opposite side.
 		match _current_sprite_direction:
 			Util.Direction.RIGHT:
 				_current_sprite_direction = Util.Direction.LEFT
