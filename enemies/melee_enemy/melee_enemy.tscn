@@ -51,6 +51,7 @@ animations = [{
 }]
 
 [node name="MeleeEnemy" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_bytdq")
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]

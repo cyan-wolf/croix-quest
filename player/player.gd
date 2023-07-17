@@ -4,11 +4,6 @@ class_name Player
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
 
-enum SpriteDirection {
-	RIGHT = 0,
-	LEFT = 1,
-}
-
 # Manages the player's health value.
 @export var health_component: HealthComponent
 
@@ -25,7 +20,7 @@ var _is_timer_on: bool = false
 var _is_running: bool = false
 var _is_dead: bool = false
 
-var _current_sprite_direction := SpriteDirection.RIGHT
+var _current_sprite_direction := Util.Direction.RIGHT
 
 func _ready() -> void:
 	self.health_component.death.connect(_on_death)
@@ -84,7 +79,7 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 func set_animation(animation: String):
 	#var direction = "Side" if sprite_direction in ["Left", "Right"] else sprite_direction    
 	_sprite.play(animation) #Add {+ direction} to animation if up and down _sprite animations are implemented. Remember to edit the animation names too if it happens
-	_sprite.flip_h = (_current_sprite_direction == SpriteDirection.LEFT)
+	_sprite.flip_h = (_current_sprite_direction == Util.Direction.LEFT)
 	#_weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN # ('_'): what is going on here
 
 
@@ -96,12 +91,12 @@ func _get_input_direction() -> Vector2:
 	return input_direction
 
 
-func _get_sprite_direction() -> SpriteDirection:
+func _get_sprite_direction() -> Util.Direction:
 	match _get_input_direction():
 		Vector2.LEFT:
-			return SpriteDirection.LEFT
+			return Util.Direction.LEFT
 		Vector2.RIGHT:
-			return SpriteDirection.RIGHT
+			return Util.Direction.RIGHT
 		_:
 			return _current_sprite_direction
 

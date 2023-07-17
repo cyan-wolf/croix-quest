@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=9 format=3 uid="uid://om1fi1opyx1m"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_5qog3"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_b7610"]
 [ext_resource type="PackedScene" uid="uid://cml2e7u5un1e1" path="res://enemies/placeholder_enemy/placeholder_enemy.tscn" id="4_r6yrb"]
+[ext_resource type="PackedScene" uid="uid://dkkf36s50im0l" path="res://enemies/melee_enemy/melee_enemy.tscn" id="5_4e6ks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjr15"]
 texture = ExtResource("1_5qog3")
@@ -1208,6 +1209,11 @@ texture = ExtResource("1_5qog3")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_cjr15")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7fm1p"]
+vertices = PackedVector2Array(254, 131, -111, 131, -110, 99, 19, 100, 125, 101, 17, 2, 125, 2, 254, 100)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(0, 4, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(17, 2, 125, 2, 125, 101, 254, 100, 254, 131, -111, 131, -110, 99, 19, 100)])
+
 [node name="IntroCastleMap" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1235,6 +1241,9 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(589817, 1310721, 18, 589818, 1310721, 18, 589819, 1310721, 18, 589820, 1310721, 18, 589821, 1310721, 18, 589822, 1310721, 18, 589823, 1310721, 18, 524288, 1310721, 18, 524289, 1310721, 18, 524290, 1310721, 18, 524291, 1310721, 18, 524292, 1310721, 18, 524293, 1310721, 18, 524294, 1310721, 18, 524295, 1310721, 18, 524296, 1310721, 18, 524297, 1310721, 18, 524298, 1310721, 18, 524299, 1310721, 18, 524300, 1310721, 18, 524301, 1310721, 18, 524302, 1310721, 18, 524303, 1310721, 18, 655353, 851969, 15, 655354, 851969, 15, 655355, 851969, 15, 655356, 851969, 15, 655357, 851969, 15, 655358, 851969, 15, 655359, 851969, 15, 589824, 851969, 15, 589825, 851969, 15, 589826, 851969, 15, 589827, 851969, 15, 589828, 851969, 15, 589829, 851969, 15, 589830, 851969, 15, 589831, 851969, 15, 589832, 851969, 15, 589833, 851969, 15, 589834, 851969, 15, 589835, 851969, 15, 589836, 851969, 15, 589837, 851969, 15, 589838, 851969, 15, 589839, 851969, 15, 786425, 851969, 15, 720889, 851969, 15, 720890, 851969, 15, 720891, 851969, 15, 786426, 851969, 15, 786427, 851969, 15, 786428, 851969, 15, 786429, 851969, 15, 786430, 851969, 15, 786431, 851969, 15, 720896, 851969, 15, 720897, 851969, 15, 720898, 851969, 15, 720899, 851969, 15, 720900, 851969, 15, 720901, 851969, 15, 720902, 851969, 15, 720903, 851969, 15, 720904, 851969, 15, 720892, 851969, 15, 720893, 851969, 15, 720894, 851969, 15, 720895, 851969, 15, 655360, 851969, 15, 655361, 851969, 15, 655362, 851969, 15, 655363, 851969, 15, 655364, 851969, 15, 655365, 851969, 15, 655366, 851969, 15, 655367, 851969, 15, 655368, 851969, 15, 655369, 851969, 15, 655370, 851969, 15, 655371, 851969, 15, 655372, 851969, 15, 655373, 851969, 15, 655374, 851969, 15, 655375, 851969, 15, 720910, 851969, 15, 720909, 851969, 15, 720908, 851969, 15, 720907, 851969, 15, 720906, 851969, 15, 720905, 851969, 15, 720911, 851969, 15)
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7fm1p")
+
 [node name="Player" parent="." instance=ExtResource("3_b7610")]
 position = Vector2(71, 42)
 
@@ -1244,3 +1253,6 @@ zoom = Vector2(3, 3)
 
 [node name="PlaceholderEnemy" parent="." instance=ExtResource("4_r6yrb")]
 position = Vector2(209, 117)
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("5_4e6ks")]
+position = Vector2(38, 105)
