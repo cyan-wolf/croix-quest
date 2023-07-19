@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+const MeleeEnemy := preload("res://enemies/melee_enemy/melee_enemy.gd")
+
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
 
@@ -74,6 +76,10 @@ func _on_death() -> void:
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	if other_hitbox.is_in_group("placeholder_enemy"):
 		self.health_component.take_damage(1)
+
+	elif other_hitbox.is_in_group("enemy_melee_attack_hitbox"):
+		var enemy: MeleeEnemy = other_hitbox.get_parent()
+		self.health_component.take_damage(enemy.get_damage())
 
 
 func set_animation(animation: String):

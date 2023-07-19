@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkkf36s50im0l"]
+[gd_scene load_steps=13 format=3 uid="uid://dkkf36s50im0l"]
 
 [ext_resource type="Script" path="res://enemies/melee_enemy/melee_enemy.gd" id="1_bytdq"]
 [ext_resource type="Texture2D" uid="uid://bl1p7gnym85p6" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_unfinished.png" id="1_s15un"]
@@ -15,6 +15,8 @@ height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m1rek"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qk12t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wb1s"]
 atlas = ExtResource("1_s15un")
@@ -70,6 +72,14 @@ shape = SubResource("CapsuleShape2D_hfo25")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_m1rek")
+
+[node name="MeleeAttackHitboxArea" parent="." groups=["enemy_melee_attack_hitbox"] instance=ExtResource("2_gcps4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttackHitboxArea"]
+shape = SubResource("CircleShape2D_qk12t")
+
+[node name="MeleeAttackTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixb57")
