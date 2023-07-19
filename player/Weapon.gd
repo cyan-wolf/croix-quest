@@ -7,6 +7,8 @@ enum WeaponType {
 	SMG = 3,
 }
 
+const WEAPONS_DATA_PATH = "res://weapons/weapon_data"
+
 @onready var _reload_timer = $WeaponReload
 @onready var _weapon_sprite = $Sprite2D
 
@@ -53,60 +55,63 @@ func _process(_delta) -> void:
 		_current_weapon_index = (_current_weapon_index - 1) % _weapon_types.size()
 		_current_weapon_type = _weapon_types[_current_weapon_index]
 	
-	_change_stats_based_on_current_weapon()
+	_change_stats_based_on_current_weapon(_current_weapon_type)
 
 
 func _on_weapon_reload_timeout() -> void:
 	_is_reload_timer_on = false
 
+func _change_stats_based_on_current_weapon(weapon_type: int) -> void:
+	# Load weapon data from JSON file based on weapon_type.
+	var weapon_data = load_weapon_data(weapon_type)
 
-func _change_stats_based_on_current_weapon() -> void:
-	match _current_weapon_type: #change stats of weapon depending on the weapon
+	# Change weapon stats based on the loaded data.
+	_weapon_sprite.texture = load(weapon_data["sprite_path"])
+
+	_weapon_sprite.scale = Vector2(weapon_data["scale"][0], weapon_data["scale"][1])
+
+	_bullet_speed = weapon_data["bullet_speed"]
+
+	_bullet_alive_time = weapon_data["bullet_alive_time"]
+
+	_weapon_reload_time = weapon_data["weapon_reload_time"]
+
+	_bullet_damage = weapon_data["bullet_damage"]
+
+func load_weapon_data(weapon_type: int) -> Dictionary:
+	var weapon_file_path = WEAPONS_DATA_PATH + "/" + get_weapon_filename(weapon_type)
+	var weapon_data = {}	
+
+	if FileAccess.file_exists(weapon_file_path):
+		var dataFile = FileAccess.open(weapon_file_path, FileAccess.READ)
+		var parsedResults = JSON.parse_string(dataFile.get_as_text())
+		
+		if parsedResults is Dictionary:
+			return parsedResults
+		else:
+			print("Bro tf you do, why is it giving me an error?")
+			return {}
+	else:
+		print("Schizophrenic or something? This crap doesn't exist.")
+		print(weapon_file_path)
+		return {}
+
+func get_weapon_filename(weapon_type: int) -> String:
+	match weapon_type:
 		WeaponType.GUN:
-			_weapon_sprite.texture = load("res://weapons/sprites/Pistol/pistol.png")
-			_weapon_sprite.scale = Vector2(0.5, 0.5)
-			_bullet_speed = 1000
-			_bullet_alive_time = 0.5
-			_weapon_reload_time = 0.6
-			_bullet_damage = 3
-
+			return "gun.json"
 		WeaponType.SHOTGUN:
-			_weapon_sprite.texture = load("res://weapons/sprites/Shotgun/Shotgun.png")
-			_weapon_sprite.scale = Vector2(0.5, 0.5)
-			_bullet_speed = 500
-			_bullet_alive_time = 0.25
-			_weapon_reload_time = 1
-			_bullet_damage = 3
-
+			return "shotgun.json"
 		WeaponType.SNIPER:
-			_weapon_sprite.texture = load("res://weapons/sprites/Sniper/Sniper.png")
-			_weapon_sprite.scale = Vector2(0.5, 0.5)
-			_bullet_speed = 2000
-			_bullet_alive_time = 5
-			_weapon_reload_time = 2.5
-			_bullet_damage = 10
-
+			return "sniper.json"
 		WeaponType.SMG:
-			_weapon_sprite.texture = load("res://weapons/sprites/SMG/SMG.png")
-			_weapon_sprite.scale = Vector2(0.5, 0.5)
-			_bullet_speed = 750
-			_bullet_alive_time = 0.3
-			_weapon_reload_time = 0.1
-			_bullet_damage = 1
-
-		# Unknown weapon; use same stats as a regular gun.
+			return "smg.json"
 		_:
-			_weapon_sprite.texture = load("res://weapons/sprites/Pistol/pistol.png")
-			_weapon_sprite.scale = Vector2(0.5, 0.5)
-			_bullet_speed = 1000
-			_bullet_alive_time = 0.5
-			_weapon_reload_time = 0.6
-			_bullet_damage = 3
-
-
+			return "gun.json" # Default weapon data for unknown types.
+	
 # Maybe change parameters for different `_bullet_scene` types?
 # TODO: Add more weapons.
-func _fire() -> void: 
+func _fire() -> void:
 	match _current_weapon_type:
 		WeaponType.GUN:
 			var bullet_instance := _bullet_scene.instantiate()
