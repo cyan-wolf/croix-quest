@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://b58kqwweudpnp"]
+
+[ext_resource type="Script" path="res://ui/dialog/dialog_manager.gd" id="1_emruk"]
+
+[node name="DialogManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_emruk")
+
+[node name="DialogBoxRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 394.0
+offset_right = 1106.0
+offset_bottom = 622.0
+color = Color(0, 0.121569, 0.0823529, 0.701961)
+
+[node name="AuthorLabel" type="RichTextLabel" parent="DialogBoxRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 218.0
+offset_bottom = 43.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Placeholder author"
+
+[node name="DialogLabel" type="RichTextLabel" parent="DialogBoxRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.5
+offset_top = -75.5
+offset_right = 504.5
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Placeholder dialog"
+
+[node name="ContinueHintLabel" type="RichTextLabel" parent="DialogBoxRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Press 'C'  to skip"
