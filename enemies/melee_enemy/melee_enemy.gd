@@ -8,6 +8,10 @@ enum EnemyState {
 
 @export var _speed: float = 35.0
 @export var _damage: int = 1
+## The minimum distance before the enemy starts following the player.
+@export var _min_player_follow_distance: float = 80.0
+## The reciprocal of this value is the wait time (in seconds) between attacks.
+@export var _attack_speed: float = 1.0
 
 @export var health_component: HealthComponent
 
@@ -25,8 +29,10 @@ var _current_sprite_direction := Util.Direction.RIGHT
 
 func _ready():
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
-	_melee_attack_timer.timeout.connect(_on_melee_attack_timer_timeout)
 	self.health_component.death.connect(_on_death)
+
+	_melee_attack_timer.wait_time = 1.0 / _attack_speed
+	_melee_attack_timer.timeout.connect(_on_melee_attack_timer_timeout)
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
@@ -36,6 +42,9 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 
 func _on_melee_attack_timer_timeout() -> void:
+	if _current_state != EnemyState.ATTACKING:
+		return
+
 	var melee_attack_collison: CollisionShape2D = _melee_attack_hitbox.get_node("CollisionShape2D")
 
 	# Enables and disables the melee attack each time the timer emits its `timeout` signal.
@@ -50,23 +59,48 @@ func _physics_process(_delta: float) -> void:
 	# Wait for things to process so that the navigation works.
 	await self.get_tree().process_frame
 
-	_set_target_pos(_player.position)
+	# This needs to be done every frame, because otherwise the AI 
+	# loses track of the player.
+	_set_target_pos(_player.global_position)
 
-	var move_direction := self.global_position.direction_to(_nav_agent.get_next_path_position())
+	_update_current_enemy_state()
 
-	self.velocity = move_direction * _speed
-	_nav_agent.velocity = self.velocity
+	# Actually move the enemy only if it's supposed to be following the player.
+	if _current_state == EnemyState.FOLLOWING:
+		var move_direction := self.global_position.direction_to(_nav_agent.get_next_path_position())
+	
+		self.velocity = move_direction * _speed
+		_nav_agent.velocity = self.velocity
 
-	# TODO: Make the enemy switch to "melee attack mode" when close 
-	# enough to the player.
-	if not _nav_agent.is_navigation_finished():
 		self.move_and_slide()
+
+	# Do nothing here if the enemy is supposed to be idle or attacking.
+	else:
+		pass
 
 	_update_sprite_facing_direction()
 
 
 func get_damage() -> int:
 	return _damage
+
+
+func _update_current_enemy_state() -> void:
+	# The enemy should be idle if the player is too far away.
+	if self.global_position.distance_to(_player.global_position) > _min_player_follow_distance:
+		_current_state = EnemyState.IDLE
+		_enemy_sprite.play("idle")
+
+	# The enemy should be attacking if it has "reached" (gotten close enough)
+	# to the player.
+	elif _nav_agent.is_navigation_finished():
+		_current_state = EnemyState.ATTACKING
+		_enemy_sprite.play("attacking")
+
+	# Otherwise, it should be following the player.
+	else:
+		_current_state = EnemyState.FOLLOWING
+		_enemy_sprite.play("following")
 
 
 func _set_target_pos(pos: Vector2) -> void:

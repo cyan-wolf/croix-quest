@@ -22,13 +22,13 @@ radius = 7.0
 atlas = ExtResource("1_s15un")
 region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oplal"]
-atlas = ExtResource("1_s15un")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynrvp"]
 atlas = ExtResource("1_s15un")
 region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oplal"]
+atlas = ExtResource("1_s15un")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ixb57"]
 animations = [{
@@ -42,24 +42,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oplal")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ynrvp")
 }],
 "loop": true,
 "name": &"following",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oplal")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
 [node name="MeleeEnemy" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_bytdq")
+_attack_speed = 2.0
 health_component = SubResource("Resource_wbe0l")
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
@@ -83,6 +84,7 @@ autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixb57")
+animation = &"idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 32.0
