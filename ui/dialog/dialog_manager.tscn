@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b58kqwweudpnp"]
+[gd_scene load_steps=4 format=3 uid="uid://b58kqwweudpnp"]
 
 [ext_resource type="Script" path="res://ui/dialog/dialog_manager.gd" id="1_emruk"]
+[ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_sy3uv"]
+
+[sub_resource type="Theme" id="Theme_wucwj"]
+default_font = ExtResource("1_sy3uv")
 
 [node name="DialogManager" type="Control"]
 layout_mode = 3
@@ -9,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_wucwj")
 script = ExtResource("1_emruk")
 
 [node name="DialogBoxRect" type="ColorRect" parent="."]
@@ -23,9 +28,9 @@ color = Color(0, 0.121569, 0.0823529, 0.701961)
 layout_mode = 0
 offset_left = 12.0
 offset_top = 3.0
-offset_right = 218.0
+offset_right = 530.0
 offset_bottom = 43.0
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 30
 text = "Placeholder author"
 
 [node name="DialogLabel" type="RichTextLabel" parent="DialogBoxRect"]
@@ -41,7 +46,7 @@ offset_right = 504.5
 offset_bottom = 75.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 30
 text = "Placeholder dialog"
 
 [node name="ContinueHintLabel" type="RichTextLabel" parent="DialogBoxRect"]
@@ -51,8 +56,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -148.0
+offset_left = -209.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 20
 text = "Press 'C'  to skip"

@@ -30,3 +30,5 @@ The queen would be sent to jail and the inauguration ceremony would be redone. A
 * Dungeon Tileset by `0x72`: [itch.io page](https://0x72.itch.io/dungeontileset-ii)
 * Player character by `Penzilla`: [itch.io page](https://penzilla.itch.io/hooded-protagonist)
 * Castle tileset (Dark Dimension tileset (unmodified version)) by `finalbossblues`: [itch.io page](https://finalbossblues.itch.io/dark-dimension-tileset), [website](http://www.timefantasy.net/)
+* Pixel art font (Not Jam Third Dimension 15) by `Not Jam`: [itch.io page](https://not-jam.itch.io/not-jam-third-dimension-15)
+
