@@ -17,6 +17,7 @@ height = 10.0
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qk12t"]
+radius = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm6uh"]
 atlas = ExtResource("4_8kw6j")
@@ -106,7 +107,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ixb57")
 animation = &"idle"
-frame_progress = 0.560936
+frame_progress = 0.991096
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 32.0
