@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://86bh51fi4xn6"]
+[gd_scene load_steps=7 format=3 uid="uid://86bh51fi4xn6"]
 
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_6185y"]
 [ext_resource type="Script" path="res://ui/menus/main_menu.gd" id="1_eppgo"]
 [ext_resource type="PackedScene" uid="uid://41to35a76r2o" path="res://maps/main.tscn" id="2_x1bch"]
 [ext_resource type="PackedScene" uid="uid://dq64dl4nypfso" path="res://ui/menus/settings_menu.tscn" id="3_k1bvv"]
+[ext_resource type="AudioStream" uid="uid://bap7mawx4pp8r" path="res://sounds/music/House In A Forest Loop/House In A Forest Loop.mp3" id="5_nlbr4"]
 
 [sub_resource type="Theme" id="Theme_ejhi2"]
 default_font = ExtResource("1_6185y")
@@ -51,3 +52,8 @@ offset_bottom = 77.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Settings"
+
+[node name="MainMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nlbr4")
+autoplay = true
+bus = &"music"
