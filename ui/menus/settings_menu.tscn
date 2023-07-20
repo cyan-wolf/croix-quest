@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq64dl4nypfso"]
+[gd_scene load_steps=6 format=3 uid="uid://dq64dl4nypfso"]
 
 [ext_resource type="PackedScene" uid="uid://cj86io8xmudyv" path="res://ui/menus/components/back_button.tscn" id="1_24mj8"]
 [ext_resource type="PackedScene" uid="uid://dp7bdnvqefb10" path="res://ui/menus/components/volume_slider.tscn" id="1_brcbd"]
+[ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_scq26"]
+[ext_resource type="AudioStream" uid="uid://bap7mawx4pp8r" path="res://sounds/music/House In A Forest Loop/House In A Forest Loop.mp3" id="4_igned"]
+
+[sub_resource type="Theme" id="Theme_s56p1"]
+default_font = ExtResource("1_scq26")
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_s56p1")
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
@@ -20,7 +26,7 @@ offset_left = -97.0
 offset_right = 97.0
 offset_bottom = 72.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 text = "Settings"
 
 [node name="BackButton" parent="." instance=ExtResource("1_24mj8")]
@@ -46,7 +52,7 @@ layout_mode = 2
 
 [node name="MasterVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "Master Volume"
 
 [node name="MasterVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_brcbd")]
@@ -55,7 +61,7 @@ _bus_name = "Master"
 
 [node name="SfxVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "SFX Volume"
 
 [node name="SfxVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_brcbd")]
@@ -64,9 +70,14 @@ _bus_name = "sfx"
 
 [node name="MusicVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "Music Volume"
 
 [node name="MusicVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_brcbd")]
 layout_mode = 2
 _bus_name = "music"
+
+[node name="SettingsMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_igned")
+autoplay = true
+bus = &"music"
