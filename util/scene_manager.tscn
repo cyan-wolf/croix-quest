@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b20ncwhqhr8a3"]
+[gd_scene load_steps=2 format=3 uid="uid://b20ncwhqhr8a3"]
 
 [ext_resource type="Script" path="res://util/scene_manager.gd" id="1_thvi4"]
-[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_a4t58"]
-
-[sub_resource type="Resource" id="Resource_0xmls"]
-script = ExtResource("2_a4t58")
-author = "Placeholder"
-dialog = Array[String](["Hello, this is some test dialog.", "This is the end of this dialog."])
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_thvi4")
-_dialog_test = SubResource("Resource_0xmls")
