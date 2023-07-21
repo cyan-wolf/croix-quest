@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal continue_dialog
 signal started_dialog
@@ -23,7 +23,7 @@ func _ready() -> void:
 	_continue_hint_label.hide()
 
 
-# Detects when the player presses Q (in order to advance the dialog).
+# Detects when the player presses 'R' (in order to advance the dialog).
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue_dialog"):
 		self.continue_dialog.emit()
@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # Starts a dialog using the given author and dialog values.
 # Does not do anything if there is currently a dialog in progress.
 # NOTE: The dialog array is copied inside of the function.
-func add_dialog(dialog_resource: DialogResource) -> void:
+func start_dialog(dialog_resource: DialogResource) -> void:
 	if not _currently_showing_dialog:
 		_current_author = dialog_resource.author
 		_dialog_queue = dialog_resource.dialog.duplicate()

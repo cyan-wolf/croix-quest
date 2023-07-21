@@ -6,22 +6,15 @@
 [sub_resource type="Theme" id="Theme_wucwj"]
 default_font = ExtResource("1_sy3uv")
 
-[node name="DialogManager" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_wucwj")
+[node name="DialogManager" type="CanvasLayer"]
 script = ExtResource("1_emruk")
 
 [node name="DialogBoxRect" type="ColorRect" parent="."]
-layout_mode = 0
 offset_left = 62.0
 offset_top = 394.0
 offset_right = 1106.0
 offset_bottom = 622.0
+theme = SubResource("Theme_wucwj")
 color = Color(0, 0.121569, 0.0823529, 0.701961)
 
 [node name="AuthorLabel" type="RichTextLabel" parent="DialogBoxRect"]
@@ -56,9 +49,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -209.0
+offset_left = -267.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 20
-text = "Press 'C'  to skip"
+text = "Press 'R'  to continue"
+metadata/_edit_use_anchors_ = true
