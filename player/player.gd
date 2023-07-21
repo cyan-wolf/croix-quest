@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const MeleeEnemy := preload("res://enemies/melee_enemy/melee_enemy.gd")
+const PlayerWeapon := preload("res://player/Weapon.gd")
 
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
@@ -14,6 +15,7 @@ const DASH_MULTIPLIER := 1.65
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _weapon_sprite: Sprite2D = $Weapon/Sprite2D
+@onready var _weapon: PlayerWeapon = self.get_node("Weapon")
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
@@ -21,6 +23,8 @@ var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
 var _is_dead: bool = false
+# Determines whether the player can move, shoot, or use spells.
+var _can_act: bool = true
 
 var _current_sprite_direction := Util.Direction.RIGHT
 
@@ -32,6 +36,10 @@ func _ready() -> void:
 func _physics_process(_delta):
 	# Temporary way to show that the player is dead.
 	if _is_dead:
+		return
+
+	# Disables player movement.
+	if not _can_act:
 		return
 
 	var input_direction := _get_input_direction()
@@ -80,6 +88,18 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	elif other_hitbox.is_in_group("enemy_melee_attack_hitbox"):
 		var enemy: MeleeEnemy = other_hitbox.get_parent()
 		self.health_component.take_damage(enemy.get_damage())
+
+
+# Makes it so that the player can act (move, shoot, use spells, etc).
+func enable_actions() -> void:
+	_can_act = true
+	_weapon.enable_weapon()
+
+
+# Makes it so that the player cannot act.
+func disable_actions() -> void:
+	_can_act = false
+	_weapon.disable_weapon()
 
 
 func set_animation(animation: String):

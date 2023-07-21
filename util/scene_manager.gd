@@ -15,3 +15,8 @@ func find_player() -> Player:
 func find_camera() -> Camera2D:
 	return self.get_viewport().get_camera_2d()
 
+
+func async_delay(delay_in_secs: float) -> void:
+	await self.get_tree().create_timer(delay_in_secs).timeout
+
+

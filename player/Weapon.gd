@@ -12,6 +12,9 @@ const WEAPONS_DATA_PATH = "res://weapons/weapon_data"
 @onready var _reload_timer = $WeaponReload
 @onready var _weapon_sprite = $Sprite2D
 
+# Determines whether the weapon can be used.
+var _is_usable: bool = true
+
 var _weapon_types: Array = WeaponType.values() # YOOOOO if we want to make the player have only one at the start, we remove all but one, then as flags get completed we use push_back or some shit ('_'): what do you mean by this
 var _current_weapon_index: int = 0
 var _current_weapon_type := WeaponType.GUN
@@ -40,6 +43,9 @@ func _process(_delta) -> void:
 		self.rotation_degrees = -90
 
 	if Input.is_action_pressed("Shoot"):
+		if not _is_usable:
+			return
+
 		if not _is_reload_timer_on:
 			_fire()
 			_reload_timer.start()
@@ -78,6 +84,15 @@ func _change_stats_based_on_current_weapon(weapon_type: int) -> void:
 
 	_bullet_damage = weapon_data["bullet_damage"]
 
+
+func enable_weapon() -> void:
+	_is_usable = true
+
+
+func disable_weapon() -> void:
+	_is_usable = false
+
+
 func load_weapon_data(weapon_type: int) -> Dictionary:
 	var weapon_file_path = WEAPONS_DATA_PATH + "/" + get_weapon_filename(weapon_type)
 	var weapon_data = {}	
@@ -96,6 +111,7 @@ func load_weapon_data(weapon_type: int) -> Dictionary:
 		print(weapon_file_path)
 		return {}
 
+
 func get_weapon_filename(weapon_type: int) -> String:
 	match weapon_type:
 		WeaponType.GUN:
@@ -109,6 +125,7 @@ func get_weapon_filename(weapon_type: int) -> String:
 		_:
 			return "gun.json" # Default weapon data for unknown types.
 	
+
 # Maybe change parameters for different `_bullet_scene` types?
 # TODO: Add more weapons.
 func _fire() -> void:
