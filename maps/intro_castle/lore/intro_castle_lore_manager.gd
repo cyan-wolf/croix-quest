@@ -1,7 +1,6 @@
 extends Node2D
 
-## In seconds.
-@export var _delay_between_lore_rects: float = 3.0
+@export var _lore_dialogs: Array[DialogResource] = []
 
 var _player: Player
 var _camera: Camera2D
@@ -36,7 +35,16 @@ func _setup() -> void:
 func _async_show_lore_rects() -> void:
 	for lore_rect in _ui_lore_rects:
 		lore_rect.show()
-		await SceneManager.async_delay(_delay_between_lore_rects)
+		
+		# Read the "lore dialogs" in ascending order.
+		DialogManager.start_dialog(_lore_dialogs.pop_front())
+
+		# Wait for the current dialog to end before starting the next one.
+		await DialogManager.ended_dialog
+
+		# This delay is needed, because otherwise the dialog box doesn't activate.
+		await SceneManager.async_delay(0.5)
+
 		lore_rect.hide()
 
 
