@@ -1,6 +1,9 @@
 extends Node2D
 
+@export var _should_show_lore_cutscene: bool = true
 @export var _lore_dialogs: Array[DialogResource] = []
+## Dialog given to the player after the "lore rects" are over.
+@export var _final_intro_dialog: DialogResource 
 
 var _player: Player
 var _camera: Camera2D
@@ -12,15 +15,8 @@ func _ready() -> void:
 	# Initialize fields.
 	_setup()
 
-	_player.disable_actions()
-
-	await _async_show_lore_rects()
-
-	await SceneManager.async_delay(1.0)
-
-	_player.enable_actions()
-
-	# TODO: Add more lore and story events here.
+	if _should_show_lore_cutscene:
+		await _async_show_lore_cutscene()
 
 	
 func _setup() -> void:
@@ -46,5 +42,22 @@ func _async_show_lore_rects() -> void:
 		await SceneManager.async_delay(0.5)
 
 		lore_rect.hide()
+
+
+func _async_show_lore_cutscene() -> void:
+	# Player can no longer move.
+	_player.disable_actions()
+
+	# Introductory exposition with complementary visuals.
+	await _async_show_lore_rects()
+
+	await SceneManager.async_delay(1.0)
+
+	DialogManager.start_dialog(_final_intro_dialog)
+	await DialogManager.ended_dialog
+
+	# TODO: Add more lore and story events here.
+
+	_player.enable_actions()
 
 

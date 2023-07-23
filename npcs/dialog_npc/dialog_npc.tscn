@@ -1,0 +1,140 @@
+[gd_scene load_steps=21 format=3 uid="uid://cyrdo4s5yatf8"]
+
+[ext_resource type="Texture2D" uid="uid://dk06q2ma825sa" path="res://npcs/wizard/wizard_AnimationSheet_Character.png" id="1_1rioa"]
+[ext_resource type="Script" path="res://npcs/dialog_npc/dialog_npc.gd" id="1_3phip"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_7p2te"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_berar"]
+
+[sub_resource type="Resource" id="Resource_pw118"]
+script = ExtResource("2_7p2te")
+author = "Guard Captain"
+dialog = Array[String](["Hello."])
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30xgw"]
+radius = 9.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axhyv"]
+radius = 25.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq6n8"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuuvk"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swv7f"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o856o"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aduqu"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn0kd"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24bfn"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw726"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvol"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi68x"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_annys"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elmru"]
+atlas = ExtResource("1_1rioa")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo6hw"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cq6n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuuvk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swv7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o856o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aduqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn0kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24bfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw726")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pvol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_annys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elmru")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="DialogNPC" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_3phip")
+_dialog = SubResource("Resource_pw118")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_30xgw")
+
+[node name="HitboxArea" parent="." instance=ExtResource("2_berar")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_axhyv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xo6hw")
+animation = &"idle"
+frame_progress = 0.366305

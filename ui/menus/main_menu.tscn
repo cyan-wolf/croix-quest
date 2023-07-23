@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_6185y"]
 [ext_resource type="Script" path="res://ui/menus/main_menu.gd" id="1_eppgo"]
-[ext_resource type="PackedScene" uid="uid://41to35a76r2o" path="res://maps/main.tscn" id="2_x1bch"]
+[ext_resource type="PackedScene" uid="uid://om1fi1opyx1m" path="res://maps/intro_castle/intro_castle_map.tscn" id="3_gaq3b"]
 [ext_resource type="PackedScene" uid="uid://dq64dl4nypfso" path="res://ui/menus/settings_menu.tscn" id="3_k1bvv"]
 [ext_resource type="AudioStream" uid="uid://bap7mawx4pp8r" path="res://sounds/music/House In A Forest Loop/House In A Forest Loop.mp3" id="5_nlbr4"]
 
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ejhi2")
 script = ExtResource("1_eppgo")
-_new_game_scene = ExtResource("2_x1bch")
+_new_game_scene = ExtResource("3_gaq3b")
 _settings_menu_scene = ExtResource("3_k1bvv")
 
 [node name="TitleLabel" type="Label" parent="."]
