@@ -38,9 +38,19 @@ func async_delay(delay_in_secs: float) -> void:
 func show_loading_screen() -> void:
 	_loading_screen.show()
 
+	# The player should not be able to do anything if the loading screen is visible.
+	var player := self.find_player()
+	if player != null:
+		player.disable_actions()
+
 
 func hide_loading_screen() -> void:
 	_loading_screen.hide()
+
+	# Re-enable player actions once the "loading" is finished.
+	var player := self.find_player()
+	if player != null:
+		player.enable_actions()
 
 
 func play_background_music(audio_track_file: String) -> void:
