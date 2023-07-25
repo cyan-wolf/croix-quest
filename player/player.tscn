@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=53 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
 [ext_resource type="Script" path="res://player/Weapon.gd" id="6_jfpub"]
 [ext_resource type="PackedScene" uid="uid://d1cs8arufufu5" path="res://particles/muzzle.tscn" id="8_ep5ee"]
+[ext_resource type="AudioStream" uid="uid://b6ypyusquahcu" path="res://sounds/sfx/shoot_sound/8bit_bomb_explosion.wav" id="11_kl2eo"]
 
 [sub_resource type="Resource" id="Resource_kehnt"]
 script = ExtResource("2_0ex8n")
@@ -357,6 +358,10 @@ texture = ExtResource("5_sqf7h")
 
 [node name="muzzle" parent="Weapon" instance=ExtResource("8_ep5ee")]
 position = Vector2(9, -1)
+
+[node name="GunShotPlayer" type="AudioStreamPlayer2D" parent="Weapon"]
+stream = ExtResource("11_kl2eo")
+bus = &"sfx"
 
 [node name="WeaponReload" type="Timer" parent="Weapon"]
 one_shot = true

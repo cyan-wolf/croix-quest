@@ -11,6 +11,7 @@ const WEAPONS_DATA_PATH = "res://weapons/weapon_data"
 
 @onready var _reload_timer = $WeaponReload
 @onready var _weapon_sprite = $Sprite2D
+@onready var _gun_shot_sfx_player: AudioStreamPlayer2D = self.get_node("GunShotPlayer")
 
 # Determines whether the weapon can be used.
 var _is_usable: bool = true
@@ -66,6 +67,7 @@ func _process(_delta) -> void:
 
 func _on_weapon_reload_timeout() -> void:
 	_is_reload_timer_on = false
+
 
 func _change_stats_based_on_current_weapon(weapon_type: int) -> void:
 	# Load weapon data from JSON file based on weapon_type.
@@ -187,4 +189,7 @@ func _fire() -> void:
 		# Do nothing if there is an unknown weapon.
 		_:
 			pass
+
+	# TODO: Add different shooting sounds for different weapons.
+	_gun_shot_sfx_player.play()
 
