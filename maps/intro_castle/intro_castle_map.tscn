@@ -1299,7 +1299,6 @@ _enemy_sprite = NodePath("TauronWorshiperEnemySprite")
 [node name="TauronWorshiperEnemySprite" parent="MeleeEnemy" instance=ExtResource("6_vtr1o")]
 
 [node name="IntroCastleLoreManager" parent="." instance=ExtResource("6_bsn1n")]
-_should_show_lore_cutscene = false
 _final_intro_dialog = SubResource("Resource_nk7jn")
 
 [node name="GuardCaptainNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]

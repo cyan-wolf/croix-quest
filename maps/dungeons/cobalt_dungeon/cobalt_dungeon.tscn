@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=15 format=3 uid="uid://crddnqharh8e8"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="Texture2D" uid="uid://c4dqql3wvpv52" path="res://tilesets/cobalt_dungeon_tileset/cobalt_dungeon_tileset.png" id="1_u6gwi"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c1s8nfwmg67i5" path="res://sounds/music/Hero Immortal/Hero Immortal.mp3" id="4_ipnw7"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_jc3a4"]
 [ext_resource type="PackedScene" uid="uid://dkkf36s50im0l" path="res://enemies/melee_enemy/melee_enemy.tscn" id="6_1753n"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="7_bc8ii"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="7_ff5o7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4jie7"]
@@ -118,6 +119,14 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -80
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bs5f4"]
 
+[sub_resource type="Resource" id="Resource_5q3cx"]
+script = ExtResource("7_bc8ii")
+_health = 3
+
+[sub_resource type="Resource" id="Resource_ei20k"]
+script = ExtResource("7_bc8ii")
+_health = 3
+
 [node name="CobaltDungeon" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -168,12 +177,14 @@ shape = SubResource("RectangleShape2D_bs5f4")
 [node name="MeleeEnemy" parent="." node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("6_1753n")]
 position = Vector2(-886, 184)
 _enemy_sprite = NodePath("TauronWorshiperEnemySprite")
+health_component = SubResource("Resource_5q3cx")
 
 [node name="TauronWorshiperEnemySprite" parent="MeleeEnemy" instance=ExtResource("7_ff5o7")]
 
 [node name="MeleeEnemy2" parent="." node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("6_1753n")]
 position = Vector2(-759, 180)
 _enemy_sprite = NodePath("TauronWorshiperEnemySprite")
+health_component = SubResource("Resource_ei20k")
 
 [node name="TauronWorshiperEnemySprite" parent="MeleeEnemy2" instance=ExtResource("7_ff5o7")]
 

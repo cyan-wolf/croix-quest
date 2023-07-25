@@ -114,4 +114,4 @@ animations = [{
 [node name="EmmyNPCSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_r1kel")
 animation = &"idle"
-frame_progress = 0.873025
+frame_progress = 0.704106

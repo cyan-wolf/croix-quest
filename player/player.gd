@@ -76,6 +76,18 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_2"):
 		self.mana_component.use_mana(1)
 
+	# DEBUG: The player dies if the 'Number Pad 3' key is pressed.
+	if Input.is_action_just_pressed("debug_3"):
+		self.health_component.take_damage(self.health_component.get_health())
+
+	# DEBUG: The player goes to the 'Test Dungeon' map if the 'Number Pad 4' key is pressed.
+	if Input.is_action_just_pressed("debug_4"):
+		SceneManager.load_scene_file("res://maps/dungeons/test_dungeon/test_dungeon.tscn")
+
+	# DEBUG: The player goes to the 'Cobalt Dungeon' map if the 'Number Pad 5' key is pressed.
+	if Input.is_action_just_pressed("debug_5"):
+		SceneManager.load_scene_file("res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn")
+
 
 func _on_death() -> void:
 	_is_dead = true
