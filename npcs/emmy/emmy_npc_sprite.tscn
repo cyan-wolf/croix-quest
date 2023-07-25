@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://cst0mrjfn4dew"]
+
+[ext_resource type="Texture2D" uid="uid://dni05vp37nnb8" path="res://npcs/emmy/Adventurer Sprite Sheet_Florassence.png" id="1_ftip1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jleo6"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2csg"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc4ke"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7rmf"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loax5"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24wvc"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph5tv"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4i6l"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03et8"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ivuq"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u3vk"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1v27"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbt6f"]
+atlas = ExtResource("1_ftip1")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1kel"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_jleo6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_a2csg")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rc4ke")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_k7rmf")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_loax5")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_24wvc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ph5tv")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_h4i6l")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_03et8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ivuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u3vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1v27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbt6f")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="EmmyNPCSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_r1kel")
+animation = &"idle"
+frame_progress = 0.873025
