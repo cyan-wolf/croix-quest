@@ -33,4 +33,6 @@ The queen would be sent to jail and the inauguration ceremony would be redone. A
 * Castle tileset (Dark Dimension tileset (unmodified version)) by `finalbossblues`: [itch.io page](https://finalbossblues.itch.io/dark-dimension-tileset), [website](http://www.timefantasy.net/)
 * Pixel art font (Not Jam Third Dimension 15) by `Not Jam`: [itch.io page](https://not-jam.itch.io/not-jam-third-dimension-15)
 * House In A Forest Loop music by `HorrorPen`: [OpenGameArt.org page](https://opengameart.org/content/loop-house-in-a-forest)
+* Hero Immortal music by `Trevor Lentz`: [OpenGameArt.org page](https://opengameart.org/content/hero-immortal)
+* Pixel River music by `Trevor Lentz`: [OpenGameArt.org page](https://opengameart.org/content/pixel-river)
 

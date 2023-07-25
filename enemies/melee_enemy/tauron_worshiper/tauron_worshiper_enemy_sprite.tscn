@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1q3qpha1dq7l"]
+
+[ext_resource type="Texture2D" uid="uid://dlnxbk0ecl5ul" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper.png" id="1_jutfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm6uh"]
+atlas = ExtResource("1_jutfl")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0adny"]
+atlas = ExtResource("1_jutfl")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yymno"]
+atlas = ExtResource("1_jutfl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5fbg"]
+atlas = ExtResource("1_jutfl")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmw7d"]
+atlas = ExtResource("1_jutfl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjw7x"]
+atlas = ExtResource("1_jutfl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixb57"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_hm6uh")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_0adny")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_yymno")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_i5fbg")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vmw7d")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_sjw7x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="TauronWorshiperEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ixb57")
+animation = &"idle"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=17 format=3 uid="uid://om1fi1opyx1m"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_5qog3"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cml2e7u5un1e1" path="res://enemies/placeholder_enemy/placeholder_enemy.tscn" id="4_r6yrb"]
 [ext_resource type="PackedScene" uid="uid://dkkf36s50im0l" path="res://enemies/melee_enemy/melee_enemy.tscn" id="5_4e6ks"]
 [ext_resource type="PackedScene" uid="uid://bj5op0cwjscwv" path="res://maps/intro_castle/lore/intro_castle_lore_manager.tscn" id="6_bsn1n"]
+[ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="6_vtr1o"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="7_df6ef"]
 [ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="7_ysuuh"]
+[ext_resource type="PackedScene" uid="uid://bitufy53rv88t" path="res://npcs/wizard/wizard_npc_sprite.tscn" id="9_e1vf3"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="9_pdddj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjr15"]
@@ -1277,14 +1279,22 @@ zoom = Vector2(3, 3)
 [node name="PlaceholderEnemy" parent="." instance=ExtResource("4_r6yrb")]
 position = Vector2(177, 111)
 
-[node name="MeleeEnemy" parent="." instance=ExtResource("5_4e6ks")]
+[node name="MeleeEnemy" parent="." node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("5_4e6ks")]
 position = Vector2(38, 105)
+_enemy_sprite = NodePath("TauronWorshiperEnemySprite")
+
+[node name="TauronWorshiperEnemySprite" parent="MeleeEnemy" instance=ExtResource("6_vtr1o")]
 
 [node name="IntroCastleLoreManager" parent="." instance=ExtResource("6_bsn1n")]
+_should_show_lore_cutscene = false
 _final_intro_dialog = SubResource("Resource_nk7jn")
 
-[node name="DialogNPC" parent="." instance=ExtResource("7_ysuuh")]
+[node name="DialogNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]
 position = Vector2(943, -2)
+_animated_sprite = NodePath("WizardNPCSprite")
+
+[node name="WizardNPCSprite" parent="DialogNPC" instance=ExtResource("9_e1vf3")]
+frame_progress = 0.14814
 
 [node name="Teleporter" parent="." instance=ExtResource("9_pdddj")]
 position = Vector2(888, -15)

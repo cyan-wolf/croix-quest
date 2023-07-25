@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
+@export var _animated_sprite: AnimatedSprite2D
 @export var _dialog: DialogResource
 
 var _can_be_interacted_with := false
@@ -10,6 +11,8 @@ func _ready() -> void:
 	self.input_event.connect(_on_input_event)
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	_hitbox.area_exited.connect(_on_area_exited_hitbox)
+
+	_animated_sprite.play("idle")
 
 
 # FIXME: Figure out why this node doesn't register mouse clicks.

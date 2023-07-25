@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var _loading_screen: Control = self.get_node("CanvasLayer/LoadingScreen")
+@onready var _background_music_player: AudioStreamPlayer = self.get_node("BackgroundMusicPlayer")
 
 func load_scene_file(scene_path: String) -> void:
 	self.show_loading_screen()
@@ -40,4 +41,14 @@ func show_loading_screen() -> void:
 
 func hide_loading_screen() -> void:
 	_loading_screen.hide()
+
+
+func play_background_music(audio_track_file: String) -> void:
+	var audio_track: AudioStream = load(audio_track_file)
+	_background_music_player.stream = audio_track
+	_background_music_player.play()
+
+
+func stop_playing_background_music() -> void:
+	_background_music_player.stop()
 

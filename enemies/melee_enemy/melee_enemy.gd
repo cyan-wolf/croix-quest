@@ -6,6 +6,8 @@ enum EnemyState {
 	ATTACKING = 2,
 }
 
+
+@export var _enemy_sprite: AnimatedSprite2D
 @export var _speed: float = 35.0
 @export var _damage: int = 1
 ## The minimum distance before the enemy starts following the player.
@@ -18,7 +20,6 @@ enum EnemyState {
 @onready var _player: Player = self.get_node("../Player")
 
 @onready var _nav_agent: NavigationAgent2D = self.get_node("NavigationAgent2D")
-@onready var _enemy_sprite: AnimatedSprite2D = self.get_node("AnimatedSprite2D")
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 @onready var _melee_attack_hitbox: Area2D = self.get_node("MeleeAttackHitboxArea")
@@ -95,12 +96,12 @@ func _update_current_enemy_state() -> void:
 	# to the player.
 	elif _nav_agent.is_navigation_finished():
 		_current_state = EnemyState.ATTACKING
-		_enemy_sprite.play("attacking")
+		_enemy_sprite.play("attack")
 
 	# Otherwise, it should be following the player.
 	else:
 		_current_state = EnemyState.FOLLOWING
-		_enemy_sprite.play("following")
+		_enemy_sprite.play("follow")
 
 
 func _set_target_pos(pos: Vector2) -> void:

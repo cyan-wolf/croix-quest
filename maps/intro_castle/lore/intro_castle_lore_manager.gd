@@ -18,6 +18,8 @@ func _ready() -> void:
 	if _should_show_lore_cutscene:
 		await _async_show_lore_cutscene()
 
+	SceneManager.play_background_music("res://sounds/music/Hero Immortal/Hero Immortal.mp3")
+
 	
 func _setup() -> void:
 	_player = SceneManager.find_player()
