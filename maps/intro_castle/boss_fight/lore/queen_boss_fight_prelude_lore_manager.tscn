@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://ocj2mtewuxik"]
+
+[ext_resource type="Script" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_prelude_lore_manager.gd" id="1_gtwra"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_le7br"]
+
+[sub_resource type="Resource" id="Resource_37mu6"]
+script = ExtResource("2_le7br")
+author = "???"
+dialog = Array[String](["ZOOOM!", "KAPLOOSH!"])
+
+[sub_resource type="Resource" id="Resource_u1kgj"]
+script = ExtResource("2_le7br")
+author = "Me"
+dialog = Array[String](["...", "Did you hear that?"])
+
+[sub_resource type="Resource" id="Resource_n6phq"]
+script = ExtResource("2_le7br")
+author = "Other guard"
+dialog = Array[String](["Hear what?"])
+
+[sub_resource type="Resource" id="Resource_3iiuh"]
+script = ExtResource("2_le7br")
+author = "Me"
+dialog = Array[String](["The sound just now? Are you messing with me?"])
+
+[sub_resource type="Resource" id="Resource_apox1"]
+script = ExtResource("2_le7br")
+author = "Other guard"
+dialog = Array[String](["???"])
+
+[sub_resource type="Resource" id="Resource_y0vey"]
+script = ExtResource("2_le7br")
+author = "Me"
+dialog = Array[String](["Nevermind."])
+
+[sub_resource type="Resource" id="Resource_5lfl2"]
+script = ExtResource("2_le7br")
+author = "???"
+dialog = Array[String](["WOOOOOOO!"])
+
+[sub_resource type="Resource" id="Resource_dr4nt"]
+script = ExtResource("2_le7br")
+author = "Me"
+dialog = Array[String](["Ok this is getting weird now. I'm checking the hall behind that open door."])
+
+[sub_resource type="Resource" id="Resource_jovsg"]
+script = ExtResource("2_le7br")
+author = "Other guard"
+dialog = Array[String](["We're not supposed to leave our posts, but go ahead, what could go wrong? I'm staying here though."])
+
+[node name="QueenBossFightPreludeLoreManager" type="Node2D"]
+script = ExtResource("1_gtwra")
+_player_conversation_with_guard_dialog = Array[ExtResource("2_le7br")]([SubResource("Resource_37mu6"), SubResource("Resource_u1kgj"), SubResource("Resource_n6phq"), SubResource("Resource_3iiuh"), SubResource("Resource_apox1"), SubResource("Resource_y0vey"), SubResource("Resource_5lfl2"), SubResource("Resource_dr4nt"), SubResource("Resource_jovsg")])

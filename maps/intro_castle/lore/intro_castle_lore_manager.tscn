@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bj5op0cwjscwv"]
+[gd_scene load_steps=13 format=3 uid="uid://bj5op0cwjscwv"]
 
 [ext_resource type="Script" path="res://maps/intro_castle/lore/intro_castle_lore_manager.gd" id="1_6ro44"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_qm2hw"]
@@ -48,9 +48,15 @@ script = ExtResource("2_qm2hw")
 author = "???"
 dialog = Array[String](["The knight decided to keep the monarchy, but to strip them of their power. Now, the people shall vote for their leader, and the monarchy would just be there to upkeep tradition. All of this in order to please everyone..."])
 
+[sub_resource type="Resource" id="Resource_mfy1h"]
+script = ExtResource("2_qm2hw")
+author = "Royal Guard Captain"
+dialog = Array[String](["...well that about does it for our kingdom's history.", "Oh, I forgot to introduce myself. I'm the captain of the Royal Guard.", "I know you've all probably heard this story hundreds of times in school before, but a refresher is always nice.", "Anyways, tomorrow is an important day, as it will be the inauguration of our new leader.", "The Royal Family and large parts of the kingdom will be there, so security needs to be tight.", "Please head though this door into the hall. Head to the room straight ahead.", "There you will meet the Queen and the newly elected leader. You need to talk to them so that they tell you what to do tomorrow."])
+
 [node name="IntroCastleLoreManager" type="Node2D"]
 script = ExtResource("1_6ro44")
 _lore_dialogs = Array[ExtResource("2_qm2hw")]([SubResource("Resource_qlf54"), SubResource("Resource_50ffi"), SubResource("Resource_nuqqd"), SubResource("Resource_8xm7y"), SubResource("Resource_cvpqw"), SubResource("Resource_8fk0e"), SubResource("Resource_ep2ws"), SubResource("Resource_mt6h1"), SubResource("Resource_ku27n")])
+_final_intro_dialog = SubResource("Resource_mfy1h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

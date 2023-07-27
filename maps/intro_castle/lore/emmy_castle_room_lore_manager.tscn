@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://b72jukylx6o6m"]
+
+[ext_resource type="Script" path="res://maps/intro_castle/lore/emmy_castle_room_lore_manager.gd" id="1_ot7p0"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_tinly"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_i7qq6"]
+
+[sub_resource type="Resource" id="Resource_nx6gc"]
+script = ExtResource("2_tinly")
+author = "The Queen"
+dialog = Array[String](["...?", "Oh you must be part of the Royal Guard, I assume you're here so that I can assign you a division."])
+
+[sub_resource type="Resource" id="Resource_bodqb"]
+script = ExtResource("2_tinly")
+author = "Emmy"
+dialog = Array[String](["Greetings, I am Emmy. I was elected ot become the new National Leader last month, and as you should know, my inauguration is tomorrow."])
+
+[sub_resource type="Resource" id="Resource_oa3m4"]
+script = ExtResource("2_tinly")
+author = "The Queen"
+dialog = Array[String](["As part of the inauguration ceremony, it's crucial for me, Emmy, and the four Forest Spirts to be there.", "The Royal Guards are being split into three divisions, one division is meant to protect the Royal Family (including me), another protecting the National Leader (Emmy), and lastly a division protecting the Forest Spirits.", "The division protecting the Forest Spirits is reserved for only the best of the best, as the spirits are crucial for the ceremony.", "I believe it's best if you join the division protecting the Royal Family, as you look like an intermediate-level guard at best."])
+
+[sub_resource type="Resource" id="Resource_eysvh"]
+script = ExtResource("2_tinly")
+author = "Emmy"
+dialog = Array[String](["Now with that settled, you should go to your post to prepare for tomorrow.
+"])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyvfs"]
+
+[node name="EmmyCastleRoomLoreManager" type="Node2D"]
+script = ExtResource("1_ot7p0")
+_cutscene_dialog = Array[ExtResource("2_tinly")]([SubResource("Resource_nx6gc"), SubResource("Resource_bodqb"), SubResource("Resource_oa3m4"), SubResource("Resource_eysvh")])
+
+[node name="HitboxArea" parent="." instance=ExtResource("3_i7qq6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_xyvfs")
