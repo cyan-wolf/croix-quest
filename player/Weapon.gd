@@ -23,7 +23,7 @@ var _is_reload_timer_on := false
 
 # These fields should not be exported; these are set depending on the current weapon.
 var _bullet_speed: float = 0
-var _bullet_scene := preload("res://weapons/scenes/Bullet1.tscn")
+var _bullet_scene := preload("res://weapons/projectile/projectile.tscn")
 var _weapon_reload_time: float = 0.1
 var _bullet_alive_time: float = 0.0
 var _bullet_damage: int = 0

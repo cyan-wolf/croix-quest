@@ -29,7 +29,7 @@ position = Vector2(0, 5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hfo25")
 
-[node name="HitboxArea" parent="." instance=ExtResource("2_gcps4")]
+[node name="HitboxArea" parent="." groups=["enemy_hitbox"] instance=ExtResource("2_gcps4")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(1, 0)

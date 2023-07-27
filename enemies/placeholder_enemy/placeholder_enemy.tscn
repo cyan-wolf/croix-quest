@@ -15,7 +15,7 @@ script = ExtResource("1_kp50b")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_w55ds")
 
-[node name="HitboxArea" parent="." groups=["placeholder_enemy"] instance=ExtResource("2_n7frg")]
+[node name="HitboxArea" parent="." groups=["enemy_hitbox", "placeholder_enemy"] instance=ExtResource("2_n7frg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("RectangleShape2D_nkaij")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd6l8efrirnrx"]
+
+[ext_resource type="Script" path="res://weapons/projectile/projectile.gd" id="1_e1amn"]
+[ext_resource type="Texture2D" uid="uid://bhtn7jjkk3ny8" path="res://weapons/sprites/Bullets/02.png" id="2_6qq1x"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_6cw5t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ydvf"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqp2v"]
+radius = 2.3
+
+[node name="Projectile" type="RigidBody2D"]
+collision_mask = 5
+gravity_scale = 0.0
+continuous_cd = 2
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_e1amn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7ydvf")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_6qq1x")
+
+[node name="HitboxArea" parent="." groups=["bullet_hitbox"] instance=ExtResource("3_6cw5t")]
+collision_mask = 6
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_fqp2v")
