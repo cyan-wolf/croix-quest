@@ -36,6 +36,6 @@ func _async_show_emmy_castle_room_cutscene() -> void:
 
 	# TODO: Show some other transition to show that time has passed.
 	# Go to the scene where the player discovers what the Queen is doing and fights her.
-	SceneManager.load_scene_file("res://maps/intro_castle/boss_fight/intro_castle_queen_boss_fight.tscn")
+	SceneManager.load_scene_file("res://maps/intro_castle/boss_fight/queen_boss_fight_prelude.tscn")
 
 
