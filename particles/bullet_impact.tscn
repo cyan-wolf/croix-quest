@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://m3843i3e810p"]
+
+[sub_resource type="Curve" id="Curve_hluto"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(0.524096, -360), 0.0, 0.0, 0, 0, Vector2(0.993976, 360), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_277vx"]
+curve = SubResource("Curve_hluto")
+
+[sub_resource type="Gradient" id="Gradient_p6m03"]
+offsets = PackedFloat32Array(0, 0.740741)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rbt3s"]
+gradient = SubResource("Gradient_p6m03")
+
+[sub_resource type="Curve" id="Curve_ja57r"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, 0.0, 0, 0, Vector2(1, 6.3158), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ykoti"]
+curve = SubResource("Curve_ja57r")
+
+[sub_resource type="Curve" id="Curve_7iwv5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0783133, 0.989474), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ajhpa"]
+curve = SubResource("Curve_7iwv5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g803t"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_max = 3.0
+linear_accel_curve = SubResource("CurveTexture_ykoti")
+radial_accel_max = 100.0
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_277vx")
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_ajhpa")
+color = Color(0.34902, 0.32549, 0.32549, 1)
+color_ramp = SubResource("GradientTexture1D_rbt3s")
+hue_variation_max = 0.3
+
+[node name="bullet_impact" type="GPUParticles2D"]
+scale = Vector2(10, 10)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_g803t")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0

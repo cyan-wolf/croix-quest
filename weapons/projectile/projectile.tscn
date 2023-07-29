@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd6l8efrirnrx"]
+[gd_scene load_steps=7 format=3 uid="uid://dd6l8efrirnrx"]
 
 [ext_resource type="Script" path="res://weapons/projectile/projectile.gd" id="1_e1amn"]
 [ext_resource type="Texture2D" uid="uid://bhtn7jjkk3ny8" path="res://weapons/sprites/Bullets/02.png" id="2_6qq1x"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_6cw5t"]
+[ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="4_4hia0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ydvf"]
 radius = 2.0
@@ -32,3 +33,5 @@ collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("CircleShape2D_fqp2v")
+
+[node name="bullet_impact" parent="." instance=ExtResource("4_4hia0")]

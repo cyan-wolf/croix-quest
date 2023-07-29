@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyps42i2fnufj"]
+
+[ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="1_x048n"]
+
+[node name="Impact" type="Node2D"]
+
+[node name="bullet_impact" parent="." instance=ExtResource("1_x048n")]
