@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://di70fvbqqubgd"]
 
-[ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_cuixv"]
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_vfpij"]
-[ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_2moiq"]
-[ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="3_vo2uy"]
-[ext_resource type="PackedScene" uid="uid://bitufy53rv88t" path="res://npcs/wizard/wizard_npc_sprite.tscn" id="4_ge2yq"]
-[ext_resource type="PackedScene" uid="uid://ocj2mtewuxik" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_prelude_lore_manager.tscn" id="5_1xsyu"]
-[ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="6_vy6xk"]
+[ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_a005q"]
+[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="2_3exbp"]
+[ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_eoehl"]
+[ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="4_p1umk"]
+[ext_resource type="PackedScene" uid="uid://bitufy53rv88t" path="res://npcs/wizard/wizard_npc_sprite.tscn" id="5_mycrv"]
+[ext_resource type="PackedScene" uid="uid://ocj2mtewuxik" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_prelude_lore_manager.tscn" id="6_jc13y"]
+[ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="7_0et4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qb4wv"]
-texture = ExtResource("1_cuixv")
+texture = ExtResource("1_a005q")
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
@@ -1988,7 +1988,7 @@ sources/0 = SubResource("TileSetAtlasSource_qb4wv")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scknf"]
 
-[node name="IntroCastleQueenBossFight" type="Node2D"]
+[node name="QueenBossFightPrelude" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_yafwm")
@@ -2012,24 +2012,24 @@ layer_2/tile_data = PackedInt32Array(589817, 1310720, 18, 589818, 1310720, 18, 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_vfpij")]
+[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("2_3exbp")]
 visible = false
 
-[node name="Player" parent="." instance=ExtResource("2_2moiq")]
+[node name="Player" parent="." instance=ExtResource("3_eoehl")]
 position = Vector2(3, 114)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
-[node name="FellowGuardNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("3_vo2uy")]
+[node name="FellowGuardNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("4_p1umk")]
 position = Vector2(142, 111)
 _animated_sprite = NodePath("PlaceholderNPCSprite")
 
-[node name="PlaceholderNPCSprite" parent="FellowGuardNPC" instance=ExtResource("4_ge2yq")]
+[node name="PlaceholderNPCSprite" parent="FellowGuardNPC" instance=ExtResource("5_mycrv")]
 
-[node name="QueenBossFightPreludeLoreManager" parent="." instance=ExtResource("5_1xsyu")]
+[node name="QueenBossFightPreludeLoreManager" parent="." instance=ExtResource("6_jc13y")]
 
-[node name="Teleporter" parent="." instance=ExtResource("6_vy6xk")]
+[node name="Teleporter" parent="." instance=ExtResource("7_0et4m")]
 position = Vector2(72, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/HitboxArea" index="0"]
