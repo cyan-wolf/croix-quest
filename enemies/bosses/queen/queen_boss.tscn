@@ -15,7 +15,7 @@ script = ExtResource("1_0htp1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4xj28")
 
-[node name="HitboxArea" parent="." instance=ExtResource("2_017rh")]
+[node name="HitboxArea" parent="." groups=["enemy_hitbox"] instance=ExtResource("2_017rh")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("CapsuleShape2D_gy4p3")

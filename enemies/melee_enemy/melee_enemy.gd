@@ -6,6 +6,7 @@ enum EnemyState {
 	ATTACKING = 2,
 }
 
+const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 @export var _enemy_sprite: AnimatedSprite2D
 @export var _speed: float = 35.0
@@ -37,9 +38,9 @@ func _ready():
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
-	if other_hitbox.is_in_group("bullet_hitbox"):
-		# TODO: Make damage based on the bullet's `damage` value.
-		self.health_component.take_damage(1)
+	if other_hitbox.is_in_group("projectile_hitbox"):
+		var projectile: Projectile = other_hitbox.get_parent()
+		self.health_component.take_damage(projectile.damage)
 
 
 func _on_melee_attack_timer_timeout() -> void:

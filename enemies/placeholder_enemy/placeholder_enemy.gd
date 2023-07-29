@@ -11,6 +11,6 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	if other_hitbox.is_in_group("player_hitbox"):
 		self.queue_free()
 
-	elif other_hitbox.is_in_group("bullet_hitbox"):
+	elif other_hitbox.is_in_group("projectile_hitbox"):
 		self.queue_free()
 

@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://da0dxsnqvwsi6"]
+[gd_scene load_steps=10 format=3 uid="uid://da0dxsnqvwsi6"]
 
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_kajif"]
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_kv7nl"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_q1rwu"]
+[ext_resource type="PackedScene" uid="uid://bs1xllajenshu" path="res://enemies/bosses/queen/queen_boss.tscn" id="4_8plup"]
+[ext_resource type="PackedScene" uid="uid://cst0mrjfn4dew" path="res://npcs/emmy/emmy_npc_sprite.tscn" id="5_avi1e"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="5_smo1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1g0d1"]
 texture = ExtResource("1_kajif")
@@ -1970,6 +1973,10 @@ physics_layer_1/collision_layer = 5
 physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_1g0d1")
 
+[sub_resource type="Resource" id="Resource_ldea4"]
+script = ExtResource("5_smo1k")
+_health = 20
+
 [node name="QueenBossFight" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -2002,3 +2009,9 @@ position = Vector2(72, -37)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="QueenBoss" parent="." instance=ExtResource("4_8plup")]
+position = Vector2(67, -113)
+health_component = SubResource("Resource_ldea4")
+
+[node name="PlaceholderNPCSprite" parent="QueenBoss" instance=ExtResource("5_avi1e")]
