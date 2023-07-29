@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs1xllajenshu"]
+
+[ext_resource type="Script" path="res://enemies/bosses/queen/queen_boss.gd" id="1_0htp1"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_017rh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4xj28"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gy4p3"]
+
+[node name="QueenBoss" type="CharacterBody2D"]
+script = ExtResource("1_0htp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4xj28")
+
+[node name="HitboxArea" parent="." instance=ExtResource("2_017rh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CapsuleShape2D_gy4p3")

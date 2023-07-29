@@ -6,12 +6,21 @@ extends Node2D
 # The dialog shown to the player representing screeches when approaching the Queen's room.
 @export var _strange_sounds_in_hall_dialog: Array[DialogResource]
 
+# This hitbox does not come with this scene and should be added manually.
+@onready var _queen_room_boss_entrance_hitbox: Area2D = self.get_node("QueenRoomEntranceHitboxArea")
+
 var _player: Player
 
 func _ready() -> void:
 	_player = SceneManager.find_player()
+	_queen_room_boss_entrance_hitbox.area_entered.connect(_on_area_entered_queen_entrance_hitbox)
 
 	await _async_show_queen_boss_fight_prelude_cutscene()
+
+
+func _on_area_entered_queen_entrance_hitbox(other_hitbox: Area2D) -> void:
+	if other_hitbox.is_in_group("player_hitbox"):
+		SceneManager.load_scene_file("res://maps/intro_castle/boss_fight/queen_boss_fight.tscn")
 
 
 func _async_show_queen_boss_fight_prelude_cutscene() -> void:
