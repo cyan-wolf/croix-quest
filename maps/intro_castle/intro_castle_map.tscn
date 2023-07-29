@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=17 format=3 uid="uid://om1fi1opyx1m"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_5qog3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bitufy53rv88t" path="res://npcs/wizard/wizard_npc_sprite.tscn" id="9_e1vf3"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="9_pdddj"]
 [ext_resource type="PackedScene" uid="uid://cst0mrjfn4dew" path="res://npcs/emmy/emmy_npc_sprite.tscn" id="12_esega"]
+[ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="13_pcxws"]
 [ext_resource type="PackedScene" uid="uid://b72jukylx6o6m" path="res://maps/intro_castle/lore/emmy_castle_room_lore_manager.tscn" id="13_syyx6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymkpg"]
@@ -1984,11 +1985,6 @@ vertices = PackedVector2Array(254, 131, -111, 131, -110, 99, 19, 100, 125, 101, 
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(0, 4, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(17, 2, 125, 2, 125, 101, 254, 100, 254, 131, -111, 131, -110, 99, 19, 100)])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_juhxl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgslb"]
-size = Vector2(9, 33)
-
 [node name="IntroCastleMap" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -2044,21 +2040,6 @@ _animated_sprite = NodePath("WizardNPCSprite")
 [node name="WizardNPCSprite" parent="GuardCaptainNPC" instance=ExtResource("9_e1vf3")]
 frame_progress = 0.14814
 
-[node name="TeleporterToHall" parent="." instance=ExtResource("9_pdddj")]
-position = Vector2(888, -15)
-_teleport_destination = Vector2(243, 115)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleporterToHall/HitboxArea" index="0"]
-shape = SubResource("RectangleShape2D_juhxl")
-
-[node name="TeleporterToEmmyRoom" parent="." instance=ExtResource("9_pdddj")]
-position = Vector2(-103, 113)
-_teleport_destination = Vector2(-665, 25)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleporterToEmmyRoom/HitboxArea" index="0"]
-position = Vector2(-5.5, 3.5)
-shape = SubResource("RectangleShape2D_hgslb")
-
 [node name="EmmyNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]
 position = Vector2(-735, 53)
 _animated_sprite = NodePath("EmmyNPCSprite")
@@ -2074,5 +2055,14 @@ _animated_sprite = NodePath("PlaceholderSprite")
 [node name="EmmyCastleRoomLoreManager" parent="." instance=ExtResource("13_syyx6")]
 position = Vector2(-667, 30)
 
-[editable path="TeleporterToHall"]
-[editable path="TeleporterToEmmyRoom"]
+[node name="MainHallTeleporter" parent="." instance=ExtResource("9_pdddj")]
+position = Vector2(888, -25)
+
+[node name="TeleporterDestination" parent="MainHallTeleporter" instance=ExtResource("13_pcxws")]
+position = Vector2(-642, 140)
+
+[node name="EmmyRoomTeleporter" parent="." instance=ExtResource("9_pdddj")]
+position = Vector2(-111, 112)
+
+[node name="TeleporterDestination" parent="EmmyRoomTeleporter" instance=ExtResource("13_pcxws")]
+position = Vector2(-555, -82)

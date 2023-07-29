@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkkf36s50im0l" path="res://enemies/melee_enemy/melee_enemy.tscn" id="6_1753n"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="7_bc8ii"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="7_ff5o7"]
+[ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="9_v88fk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4jie7"]
 texture = ExtResource("1_u6gwi")
@@ -182,8 +183,6 @@ vertices = PackedVector2Array(-844, -29, -845, -143, -806, -142, -805, -28, -808
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 0, 13), PackedInt32Array(13, 0, 4), PackedInt32Array(10, 13, 4, 14), PackedInt32Array(7, 10, 14), PackedInt32Array(7, 14, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -808, 5, -807, 163, -741, 163, -741, 228, -910, 229, -909, 162, -845, 163, -844, 4, -957, 4, -957, -30, -844, -29, -845, -143, -806, -142, -805, -28)])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bs5f4"]
-
 [sub_resource type="Resource" id="Resource_5q3cx"]
 script = ExtResource("7_bc8ii")
 _health = 3
@@ -232,13 +231,6 @@ stream = ExtResource("4_ipnw7")
 autoplay = true
 bus = &"music"
 
-[node name="Teleporter" parent="." instance=ExtResource("5_jc3a4")]
-position = Vector2(0, -33)
-_teleport_destination = Vector2(-588, -12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/HitboxArea" index="0"]
-shape = SubResource("RectangleShape2D_bs5f4")
-
 [node name="MeleeEnemy" parent="." node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("6_1753n")]
 position = Vector2(-886, 184)
 _enemy_sprite = NodePath("TauronWorshiperEnemySprite")
@@ -253,4 +245,8 @@ health_component = SubResource("Resource_ei20k")
 
 [node name="TauronWorshiperEnemySprite" parent="MeleeEnemy2" instance=ExtResource("7_ff5o7")]
 
-[editable path="Teleporter"]
+[node name="Teleporter" parent="." instance=ExtResource("5_jc3a4")]
+position = Vector2(0, -33)
+
+[node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("9_v88fk")]
+position = Vector2(-591, 20)
