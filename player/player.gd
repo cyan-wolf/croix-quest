@@ -88,6 +88,27 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_5"):
 		SceneManager.load_scene_file("res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn")
 
+	# DEBUG: Mutes the game volume if the 'Number Pad 6' key is pressed.
+	if Input.is_action_just_pressed("debug_6"):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(0.0),
+		)
+
+	# DEBUG: Halves the game volume if the 'Number Pad 7' key is pressed.
+	if Input.is_action_just_pressed("debug_7"):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(0.5),
+		)
+
+	# DEBUG: Maxes out the game volume if the 'Number Pad 8' key is pressed.
+	if Input.is_action_just_pressed("debug_8"):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(1.0),
+		)
+
 
 func _on_death() -> void:
 	_is_dead = true
