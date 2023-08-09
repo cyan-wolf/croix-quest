@@ -9,8 +9,8 @@ signal interact
 # This node does not come with the scene, it should be added manually.
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
-# Maximum distance that the player needs to be within before 
-# this component can be interacted with (in pixels).
+## Maximum distance that the player needs to be within before 
+## this component can be interacted with (in pixels).
 @export var _max_interaction_distance: float = 32.0
 
 var _mouse_is_in_hitbox := false
