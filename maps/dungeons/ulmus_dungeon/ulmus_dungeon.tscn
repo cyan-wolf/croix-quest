@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=9 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
 [ext_resource type="Texture2D" uid="uid://bd2sj6ikb01ll" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon_tileset.png" id="1_mkaug"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
-[ext_resource type="Texture2D" uid="uid://dlnxbk0ecl5ul" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper.png" id="4_256yx"]
-[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="5_gqecs"]
-[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="6_hyqga"]
+[ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="4_4emnn"]
+[ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_yst44"]
+[ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7wvd"]
 texture = ExtResource("1_mkaug")
@@ -137,23 +137,6 @@ physics_layer_1/collision_layer = 5
 physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_y7wvd")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivjbt"]
-atlas = ExtResource("4_256yx")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i218q"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivjbt")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ays2"]
-
 [node name="UlmusDungeon" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -165,34 +148,32 @@ visible = false
 tile_set = SubResource("TileSet_5p5pg")
 format = 2
 layer_0/name = "Floor"
-layer_0/tile_data = PackedInt32Array(-2, 0, 1, -1, 0, 1, -65536, 0, 1, -65535, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 1, 131070, 0, 1, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, -3, 0, 1, 65533, 0, 1, 131069, 0, 1, 65538, 0, 1, 2, 0, 1, -65534, 0, 1, 196605, 0, 1, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1)
+layer_0/tile_data = PackedInt32Array(-2, 0, 1, -1, 0, 1, -65536, 0, 1, -65535, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 1, 131070, 0, 1, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, -3, 0, 1, 65533, 0, 1, 131069, 0, 1, 65538, 0, 1, 2, 0, 1, -65534, 0, 1, 196605, 0, 1, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, -32, 0, 1, -33, 0, 1, -34, 0, 1, -35, 0, 1, 65501, 0, 1, 65502, 0, 1, 65503, 0, 1, 65504, 0, 1, 131040, 0, 1, 131039, 0, 1, 131038, 0, 1, 131037, 0, 1, 65500, 0, 1, -36, 0, 1, -65572, 0, 1, -65571, 0, 1, -65570, 0, 1, -65569, 0, 1, -65568, 0, 1, 131036, 0, 1, 131035, 0, 1, 131034, 0, 1, 65497, 0, 1, -39, 0, 1, -38, 0, 1, -65574, 0, 1, -65573, 0, 1, -37, 0, 1, 65499, 0, 1, 65498, 0, 1, 131033, 0, 1, -65575, 0, 1, -131104, 0, 1, -131105, 0, 1, -131106, 0, 1, -131107, 0, 1, -131108, 0, 1, -131109, 0, 1, -131110, 0, 1, -131111, 0, 1, -131112, 0, 1, -65576, 0, 1, -65577, 0, 1, -41, 0, 1, -40, 0, 1, 65496, 0, 1, 131032, 0, 1, 131031, 0, 1, 65495, 0, 1, -131113, 0, 1)
 layer_1/name = "Backwall"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-131073, 524288, 0, -196608, 589824, 0, -65537, 524288, 1, -131072, 589824, 1, -131075, 0, 0, -131074, 0, 0, -65538, 0, 0, -65539, 0, 0, -196607, 0, 0, -196606, 0, 0, -131070, 0, 0, -131071, 0, 0, -196611, 131072, 0, -196610, 131072, 0, -196609, 131072, 0, -262144, 131072, 0, -262143, 131072, 0, -262142, 131072, 0, -262141, 196608, 0, -196612, 65536, 0, -131076, 65536, 1, -65540, 65536, 1, -4, 65536, 1, 65532, 65536, 1, 131068, 65536, 1, -196605, 196608, 1, -131069, 196608, 1, -65533, 196608, 1, 3, 196608, 1, 65539, 196608, 1)
+layer_1/tile_data = PackedInt32Array(-131073, 524288, 0, -196608, 589824, 0, -65537, 524288, 1, -131072, 589824, 1, -131075, 0, 0, -131074, 0, 0, -65538, 0, 0, -65539, 0, 0, -196607, 0, 0, -196606, 0, 0, -131070, 0, 0, -131071, 0, 0, -196611, 131072, 0, -196610, 131072, 0, -196609, 131072, 0, -262144, 131072, 0, -262143, 131072, 0, -262142, 131072, 0, -262141, 196608, 0, -196612, 65536, 0, -131076, 65536, 1, -65540, 65536, 1, -4, 65536, 1, 65532, 65536, 1, 131068, 65536, 1, -196605, 196608, 1, -131069, 196608, 1, -65533, 196608, 1, 3, 196608, 1, 65539, 196608, 1, -196649, 0, 0, -262185, 0, 0, -262184, 0, 0, -262183, 0, 0, -262182, 0, 0, -262181, 0, 0, -262180, 0, 0, -262179, 0, 0, -262178, 0, 0, -262177, 0, 0, -262176, 0, 0, -196640, 0, 0, -196641, 0, 0, -196642, 0, 0, -196643, 0, 0, -196644, 0, 0, -196645, 0, 0, -196646, 0, 0, -196648, 0, 0, -196647, 0, 0, -327721, 131072, 0, -327720, 131072, 0, -327719, 131072, 0, -327718, 131072, 0, -327717, 131072, 0, -327716, 131072, 0, -327715, 131072, 0, -327714, 131072, 0, -327713, 131072, 0, -327712, 131072, 0, -327722, 65536, 0, -327711, 196608, 0, -262186, 65536, 1, -196650, 65536, 1, -131114, 65536, 1, -65578, 65536, 1, -42, 65536, 1, 65494, 65536, 1, -262175, 196608, 1, -196639, 196608, 1, -131103, 196608, 1, -65567, 196608, 1, -31, 196608, 1, 65505, 196608, 1)
 layer_2/name = "FrontWall"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(196605, 131072, 0, 196606, 131072, 0, 196607, 131072, 0, 131072, 131072, 0, 131073, 131072, 0, 131074, 131072, 0, 262141, 0, 0, 327678, 0, 0, 262142, 0, 0, 327677, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 262146, 0, 0, 262145, 0, 0, 262144, 0, 0, 327679, 0, 0, 196604, 65536, 2, 131075, 196608, 2, 262140, 393216, 2, 327676, 393216, 2, 196611, 458752, 2, 262147, 458752, 2)
+layer_2/tile_data = PackedInt32Array(196605, 131072, 0, 196606, 131072, 0, 196607, 131072, 0, 131072, 131072, 0, 131073, 131072, 0, 131074, 131072, 0, 262141, 0, 0, 327678, 0, 0, 262142, 0, 0, 327677, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 262146, 0, 0, 262145, 0, 0, 262144, 0, 0, 327679, 0, 0, 196604, 65536, 2, 131075, 196608, 2, 262140, 393216, 2, 327676, 393216, 2, 196611, 458752, 2, 262147, 458752, 2, 131031, 131072, 0, 131032, 131072, 0, 131033, 131072, 0, 131034, 131072, 0, 131035, 131072, 0, 131036, 131072, 0, 131037, 131072, 0, 131038, 131072, 0, 131039, 131072, 0, 131040, 131072, 0, 131030, 65536, 2, 131041, 196608, 2, 196567, 0, 0, 262103, 0, 0, 262104, 0, 0, 196568, 0, 0, 196569, 0, 0, 196570, 0, 0, 196571, 0, 0, 196572, 0, 0, 196573, 0, 0, 196574, 0, 0, 196575, 0, 0, 196576, 0, 0, 262111, 0, 0, 262110, 0, 0, 262109, 0, 0, 262108, 0, 0, 262107, 0, 0, 262106, 0, 0, 262105, 0, 0, 262112, 0, 0, 196566, 393216, 2, 262102, 393216, 2, 196577, 458752, 2, 262113, 458752, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
-[node name="InteractionTest" type="AnimatedSprite2D" parent="."]
-position = Vector2(-37, 25)
-sprite_frames = SubResource("SpriteFrames_i218q")
+[node name="PushableRock" parent="." instance=ExtResource("4_4emnn")]
+position = Vector2(-580, -16)
 
-[node name="InteractionComponent" parent="InteractionTest" instance=ExtResource("5_gqecs")]
+[node name="Teleporter" parent="." instance=ExtResource("5_yst44")]
+position = Vector2(1, -26)
 
-[node name="HitboxArea" parent="InteractionTest/InteractionComponent" instance=ExtResource("6_hyqga")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionTest/InteractionComponent/HitboxArea"]
-shape = SubResource("CircleShape2D_4ays2")
+[node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("6_axfhp")]
+position = Vector2(-505, 11)
