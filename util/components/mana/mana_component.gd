@@ -24,3 +24,11 @@ func use_mana(amount: int) -> void:
 	self.mana_amount_changed.emit()
 
 
+func gain_mana(amount: int) -> void:
+	var new_mana_amount := _mana_amount + amount
+
+	if new_mana_amount <= MAX_MANA:
+		_mana_amount = new_mana_amount
+
+		self.mana_amount_changed.emit()
+

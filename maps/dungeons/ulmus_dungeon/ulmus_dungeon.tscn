@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=10 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
 [ext_resource type="Texture2D" uid="uid://bd2sj6ikb01ll" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon_tileset.png" id="1_mkaug"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="4_4emnn"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_yst44"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
+[ext_resource type="PackedScene" uid="uid://d0st3mqxctevc" path="res://interactables/mana_crystal_refill/mana_crystal_refill.tscn" id="7_wda0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7wvd"]
 texture = ExtResource("1_mkaug")
@@ -177,3 +178,6 @@ position = Vector2(1, -26)
 
 [node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("6_axfhp")]
 position = Vector2(-505, 11)
+
+[node name="ManaCrystalRefill" parent="." instance=ExtResource("7_wda0x")]
+position = Vector2(-634, -28)

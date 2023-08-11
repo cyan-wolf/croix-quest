@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0st3mqxctevc"]
+
+[ext_resource type="Script" path="res://interactables/mana_crystal_refill/mana_crystal_refill.gd" id="1_31evt"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="1_ohkpm"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_3dxvr"]
+[ext_resource type="Texture2D" uid="uid://dingqvnkh3wvm" path="res://ui/hud/sprites/mana_crystals/mana_crystals.png" id="3_nu8mj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on2fp"]
+atlas = ExtResource("3_nu8mj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avuet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on2fp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twng"]
+
+[node name="ManaCrystalRefill" type="Node2D"]
+script = ExtResource("1_31evt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_avuet")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("1_ohkpm")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("2_3dxvr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+shape = SubResource("CircleShape2D_0twng")
