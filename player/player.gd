@@ -14,7 +14,6 @@ const DASH_MULTIPLIER := 1.65
 @export var mana_component: ManaComponent
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _weapon_sprite: Sprite2D = $Weapon/Sprite2D
 @onready var _weapon: PlayerWeapon = self.get_node("Weapon")
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
@@ -38,8 +37,8 @@ func _physics_process(_delta):
 	if _is_dead:
 		return
 
-	# Disables player movement.
-	if not _can_act:
+	# Disables player movement if actions are disabled or there is a dialog being shown.
+	if not _can_act or DialogManager.is_showing_dialog():
 		return
 
 	var input_direction := _get_input_direction()
@@ -68,6 +67,12 @@ func _physics_process(_delta):
 
 
 func _process(_delta: float) -> void:
+	# Disables the player's weapon if actions are disabled or there is a dialog being shown.
+	if not _can_act or DialogManager.is_showing_dialog():
+		_weapon.disable_weapon()
+	else:
+		_weapon.enable_weapon()
+
 	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
 	if Input.is_action_just_pressed("debug_1"):
 		self.health_component.take_damage(1)
@@ -126,13 +131,11 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 # Makes it so that the player can act (move, shoot, use spells, etc).
 func enable_actions() -> void:
 	_can_act = true
-	_weapon.enable_weapon()
 
 
 # Makes it so that the player cannot act.
 func disable_actions() -> void:
 	_can_act = false
-	_weapon.disable_weapon()
 
 
 func set_animation(animation: String):

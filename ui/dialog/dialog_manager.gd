@@ -86,3 +86,7 @@ func dialog_queue_length() -> int:
 func get_current_author() -> String:
 	return _current_author
 
+
+func is_showing_dialog() -> bool:
+	return _currently_showing_dialog
+
