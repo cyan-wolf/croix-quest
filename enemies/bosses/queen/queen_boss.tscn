@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs1xllajenshu"]
+[gd_scene load_steps=8 format=3 uid="uid://bs1xllajenshu"]
 
 [ext_resource type="Script" path="res://enemies/bosses/queen/queen_boss.gd" id="1_0htp1"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_017rh"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_tpp5n"]
+[ext_resource type="PackedScene" uid="uid://du0klnaq2v87k" path="res://npcs/queen_croix/queen_croix_npc_sprite.tscn" id="3_etplv"]
+
+[sub_resource type="Resource" id="Resource_mycxj"]
+script = ExtResource("2_tpp5n")
+_health = 20
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4xj28"]
 radius = 7.0
@@ -11,6 +17,9 @@ height = 20.0
 
 [node name="QueenBoss" type="CharacterBody2D"]
 script = ExtResource("1_0htp1")
+health_component = SubResource("Resource_mycxj")
+
+[node name="QueenCroixNPCSprite" parent="." instance=ExtResource("3_etplv")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4xj28")

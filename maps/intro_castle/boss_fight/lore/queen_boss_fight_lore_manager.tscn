@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4em1vn2yairo"]
+
+[ext_resource type="Script" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_lore_manager.gd" id="1_gy6bb"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_cdjad"]
+
+[sub_resource type="Resource" id="Resource_4ywri"]
+script = ExtResource("2_cdjad")
+author = "Queen"
+dialog = Array[String](["Wow."])
+
+[sub_resource type="Resource" id="Resource_2oj5s"]
+script = ExtResource("2_cdjad")
+author = "Me"
+dialog = Array[String](["Omg."])
+
+[node name="QueenBossFightLoreManager" type="Node2D"]
+script = ExtResource("1_gy6bb")
+_temp_lore_dialog = Array[ExtResource("2_cdjad")]([SubResource("Resource_4ywri"), SubResource("Resource_2oj5s")])

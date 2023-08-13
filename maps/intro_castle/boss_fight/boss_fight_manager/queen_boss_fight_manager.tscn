@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctsggca0cuwwt"]
+
+[ext_resource type="Script" path="res://maps/intro_castle/boss_fight/boss_fight_manager/queen_boss_fight_manager.gd" id="1_8w5l7"]
+
+[node name="QueenBossFightManager" type="Node2D"]
+script = ExtResource("1_8w5l7")
