@@ -1,20 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyrdo4s5yatf8"]
+[gd_scene load_steps=8 format=3 uid="uid://cyrdo4s5yatf8"]
 
 [ext_resource type="Script" path="res://npcs/dialog_npc/dialog_npc.gd" id="1_3phip"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_7p2te"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_berar"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="3_xyhlm"]
 
 [sub_resource type="Resource" id="Resource_pw118"]
 script = ExtResource("2_7p2te")
-author = "Guard Captain"
-dialog = Array[String](["Hello."])
+author = "Placeholder"
+dialog = Array[String]([])
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30xgw"]
 radius = 9.0
 height = 28.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_axhyv"]
-radius = 25.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7amn"]
+radius = 8.0
+height = 26.0
 
 [node name="DialogNPC" type="CharacterBody2D"]
 input_pickable = true
@@ -25,8 +27,10 @@ _dialog = SubResource("Resource_pw118")
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_30xgw")
 
-[node name="HitboxArea" parent="." instance=ExtResource("2_berar")]
+[node name="InteractionComponent" parent="." instance=ExtResource("3_xyhlm")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("2_berar")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
 position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_axhyv")
+shape = SubResource("CapsuleShape2D_i7amn")

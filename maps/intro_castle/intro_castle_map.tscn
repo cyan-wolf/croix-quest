@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=19 format=3 uid="uid://om1fi1opyx1m"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_5qog3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bj5op0cwjscwv" path="res://maps/intro_castle/lore/intro_castle_lore_manager.tscn" id="6_bsn1n"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="6_vtr1o"]
 [ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="7_ysuuh"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="9_3npla"]
 [ext_resource type="PackedScene" uid="uid://bitufy53rv88t" path="res://npcs/wizard/wizard_npc_sprite.tscn" id="9_e1vf3"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="9_pdddj"]
 [ext_resource type="PackedScene" uid="uid://cst0mrjfn4dew" path="res://npcs/emmy/emmy_npc_sprite.tscn" id="12_esega"]
@@ -1985,6 +1986,11 @@ vertices = PackedVector2Array(254, 131, -111, 131, -110, 99, 19, 100, 125, 101, 
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(0, 4, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(17, 2, 125, 2, 125, 101, 254, 100, 254, 131, -111, 131, -110, 99, 19, 100)])
 
+[sub_resource type="Resource" id="Resource_lusp1"]
+script = ExtResource("9_3npla")
+author = "Royal Guard Captain"
+dialog = Array[String](["Well? Don't stay here, go through the door!"])
+
 [node name="IntroCastleMap" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -2036,6 +2042,7 @@ _enemy_sprite = NodePath("TauronWorshiperEnemySprite")
 [node name="GuardCaptainNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]
 position = Vector2(943, -2)
 _animated_sprite = NodePath("WizardNPCSprite")
+_dialog = SubResource("Resource_lusp1")
 
 [node name="WizardNPCSprite" parent="GuardCaptainNPC" instance=ExtResource("9_e1vf3")]
 frame_progress = 0.14814
