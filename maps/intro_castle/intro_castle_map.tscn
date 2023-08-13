@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=20 format=3 uid="uid://om1fi1opyx1m"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_5qog3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bitufy53rv88t" path="res://npcs/wizard/wizard_npc_sprite.tscn" id="9_e1vf3"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="9_pdddj"]
 [ext_resource type="PackedScene" uid="uid://cst0mrjfn4dew" path="res://npcs/emmy/emmy_npc_sprite.tscn" id="12_esega"]
+[ext_resource type="PackedScene" uid="uid://du0klnaq2v87k" path="res://npcs/queen_croix/queen_croix_npc_sprite.tscn" id="12_p3al2"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="13_pcxws"]
 [ext_resource type="PackedScene" uid="uid://b72jukylx6o6m" path="res://maps/intro_castle/lore/emmy_castle_room_lore_manager.tscn" id="13_syyx6"]
 
@@ -2055,9 +2056,9 @@ _animated_sprite = NodePath("EmmyNPCSprite")
 
 [node name="QueenNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]
 position = Vector2(-771, 15)
-_animated_sprite = NodePath("PlaceholderSprite")
+_animated_sprite = NodePath("QueenCroixNPCSprite")
 
-[node name="PlaceholderSprite" parent="QueenNPC" instance=ExtResource("12_esega")]
+[node name="QueenCroixNPCSprite" parent="QueenNPC" instance=ExtResource("12_p3al2")]
 
 [node name="EmmyCastleRoomLoreManager" parent="." instance=ExtResource("13_syyx6")]
 position = Vector2(-667, 30)
