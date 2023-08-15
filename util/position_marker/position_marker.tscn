@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd88n5g1t67a6"]
+
+[ext_resource type="Texture2D" uid="uid://cl7tosvrrjdw1" path="res://util/position_marker/position_marker.png" id="1_k1siu"]
+
+[node name="PositionMarker" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k1siu")

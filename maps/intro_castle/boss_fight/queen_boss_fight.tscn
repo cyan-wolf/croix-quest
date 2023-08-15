@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://da0dxsnqvwsi6"]
+[gd_scene load_steps=10 format=3 uid="uid://da0dxsnqvwsi6"]
 
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_kajif"]
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_kv7nl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c4em1vn2yairo" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_lore_manager.tscn" id="4_m82kk"]
 [ext_resource type="PackedScene" uid="uid://du0klnaq2v87k" path="res://npcs/queen_croix/queen_croix_npc_sprite.tscn" id="5_8hhgs"]
 [ext_resource type="PackedScene" uid="uid://ctsggca0cuwwt" path="res://maps/intro_castle/boss_fight/boss_fight_manager/queen_boss_fight_manager.tscn" id="5_xam18"]
+[ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="7_c16yb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1g0d1"]
 texture = ExtResource("1_kajif")
@@ -2013,5 +2014,5 @@ position = Vector2(70, -106)
 
 [node name="QueenBossFightManager" parent="." instance=ExtResource("5_xam18")]
 
-[node name="BossFightSpawnPosition" type="Node2D" parent="QueenBossFightManager"]
+[node name="BossFightSpawnPosition" parent="QueenBossFightManager" instance=ExtResource("7_c16yb")]
 position = Vector2(70, -106)
