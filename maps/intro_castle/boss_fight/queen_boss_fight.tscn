@@ -2016,3 +2016,17 @@ position = Vector2(70, -106)
 
 [node name="BossFightSpawnPosition" parent="QueenBossFightManager" instance=ExtResource("7_c16yb")]
 position = Vector2(70, -106)
+
+[node name="Attack1Positions" type="Node2D" parent="QueenBossFightManager"]
+
+[node name="PositionMarker1" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+position = Vector2(13, -131)
+
+[node name="PositionMarker2" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+position = Vector2(135, -135)
+
+[node name="PositionMarker3" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+position = Vector2(7, -21)
+
+[node name="PositionMarker4" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+position = Vector2(135, -19)
