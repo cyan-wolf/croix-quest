@@ -1,6 +1,7 @@
 extends Node2D
 
 const QueenBoss := preload("res://enemies/bosses/queen/queen_boss.gd")
+const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 # Emitting one of these signals corresponds with starting a different "phase" of the boss.
 # Phase cycle: 'Attack 1' -> 'Attack 2' -> 'Fall to ground' -> 'Attack 1' (etc.)
@@ -11,7 +12,9 @@ signal fall_to_ground
 @onready var _player: Player = SceneManager.find_player()
 @onready var _queen_boss_scene: PackedScene = preload("res://enemies/bosses/queen/queen_boss.tscn")
 @onready var _bullet_scene := preload("res://weapons/projectile/projectile.tscn")
-@onready var _attack_1_positions: Array[Vector2]
+@onready var _attack_1_teleport_positions: Array[Vector2]
+# Stores position and rotation in order to know in which direction to shoot the projectiles.
+@onready var _attack_2_projectile_transforms: Array[Transform2D]
 
 var _queen_boss: QueenBoss
 
@@ -21,8 +24,11 @@ func _ready() -> void:
 	self.perform_attack_2.connect(_async_on_perform_attack_2)
 	self.fall_to_ground.connect(_async_on_fall_to_the_ground)
 
-	for n in self.get_node("Attack1Positions").get_children():
-		_attack_1_positions.push_back((n as Node2D).global_position)
+	for n in self.get_node("Attack1TeleportPositions").get_children():
+		_attack_1_teleport_positions.push_back((n as Node2D).global_position)
+
+	for n in self.get_node("Attack2ProjectilePositions").get_children():
+		_attack_2_projectile_transforms.push_back((n as Node2D).global_transform)
 
 
 func _on_start_boss_fight() -> void:
@@ -36,17 +42,17 @@ func _on_start_boss_fight() -> void:
 
 
 func _async_on_perform_attack_1() -> void:
-	var attack_pos_amount := len(_attack_1_positions)
+	var attack_pos_amount := len(_attack_1_teleport_positions)
 
 	var teleport_positions := Util.choose_random_elements_from_array(
-		_attack_1_positions, attack_pos_amount) as Array[Vector2]
+		_attack_1_teleport_positions, attack_pos_amount) as Array[Vector2]
 
 	for teleport_pos in teleport_positions:
 		_teleport_queen(teleport_pos)
 
 		_fire_bullet_from_queen_towards_player()
 
-		await SceneManager.async_delay(5.0)
+		await SceneManager.async_delay(2.5)
 	
 	# Perform 'Attack 2' once finished with the current phase.
 	self.perform_attack_2.emit()
@@ -77,23 +83,21 @@ func _teleport_queen(to_position: Vector2) -> void:
 	_queen_boss.global_position = to_position
 
 
-# FIXME: Make the bullet's fired by the queen not hit her.
-# BUG: The reason the bullets aren't appearing is because the queen's bullets are hitting the queen.
 func _fire_bullet_from_queen_towards_player() -> void:
-	var bullet_instance := _bullet_scene.instantiate()
+	var bullet_instance := _bullet_scene.instantiate() as Projectile
 
 	var bullet_direction := _queen_boss.global_position.direction_to(_player.global_position)
-	var bullet_speed := 2
+	var bullet_speed := 100.0
 
-	# Set the bullet values.
-	bullet_instance.global_position = _queen_boss.global_position
-	bullet_instance.rotation = bullet_direction.angle()
-	bullet_instance.lifetime = 10.0
-	bullet_instance.damage = 1
+	bullet_instance.initialize(
+		_queen_boss.global_position,
+		bullet_direction.angle(),
+		10.0, # placeholder
+		1, # placeholder
+		Projectile.Source.QUEEN_BOSS,
+		# Calculated using math.
+		bullet_direction * bullet_speed
+	)
 
-	# Calculated using math.
-	var impulse := bullet_direction * bullet_speed
-
-	bullet_instance.apply_impulse(impulse)
 	self.get_tree().get_root().add_child(bullet_instance)
 

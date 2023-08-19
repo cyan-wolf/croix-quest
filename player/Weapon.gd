@@ -144,6 +144,7 @@ func _fire() -> void:
 				bullet_rotation,
 				_bullet_alive_time,
 				_bullet_damage,
+				Projectile.Source.PLAYER,
 				# Calculated using math.
 				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
 			)
@@ -161,6 +162,7 @@ func _fire() -> void:
 					bullet_rotation,
 					_bullet_alive_time,
 					_bullet_damage,
+					Projectile.Source.PLAYER,
 					# Not calculated using math, calculated using MATHS #unitedkingdom
 					Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
 				)
@@ -177,8 +179,9 @@ func _fire() -> void:
 				bullet_rotation,
 				_bullet_alive_time,
 				_bullet_damage,
+				Projectile.Source.PLAYER,
 				# Calculated using math.
-				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
+				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed,
 			)
 
 			self.get_tree().get_root().add_child(bullet_instance)
@@ -193,6 +196,7 @@ func _fire() -> void:
 				bullet_rotation,
 				_bullet_alive_time,
 				_bullet_damage,
+				Projectile.Source.PLAYER,
 				# Calculated using math.
 				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
 			)

@@ -3,6 +3,7 @@ class_name Player
 
 const MeleeEnemy := preload("res://enemies/melee_enemy/melee_enemy.gd")
 const PlayerWeapon := preload("res://player/Weapon.gd")
+const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
@@ -126,6 +127,12 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	elif other_hitbox.is_in_group("enemy_melee_attack_hitbox"):
 		var enemy: MeleeEnemy = other_hitbox.get_parent()
 		self.health_component.take_damage(enemy.get_damage())
+
+	elif other_hitbox.is_in_group("projectile_hitbox"):
+		var projectile: Projectile = other_hitbox.get_parent()
+	
+		if not projectile.is_from_player():
+			self.health_component.take_damage(projectile.get_damage())
 
 
 # Makes it so that the player can act (move, shoot, use spells, etc).

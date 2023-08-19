@@ -2017,16 +2017,43 @@ position = Vector2(70, -106)
 [node name="BossFightSpawnPosition" parent="QueenBossFightManager" instance=ExtResource("7_c16yb")]
 position = Vector2(70, -106)
 
-[node name="Attack1Positions" type="Node2D" parent="QueenBossFightManager"]
+[node name="Attack1TeleportPositions" type="Node2D" parent="QueenBossFightManager"]
+visible = false
 
-[node name="PositionMarker1" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+[node name="PositionMarker1" parent="QueenBossFightManager/Attack1TeleportPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(13, -131)
 
-[node name="PositionMarker2" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+[node name="PositionMarker2" parent="QueenBossFightManager/Attack1TeleportPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(135, -135)
 
-[node name="PositionMarker3" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+[node name="PositionMarker3" parent="QueenBossFightManager/Attack1TeleportPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(7, -21)
 
-[node name="PositionMarker4" parent="QueenBossFightManager/Attack1Positions" instance=ExtResource("7_c16yb")]
+[node name="PositionMarker4" parent="QueenBossFightManager/Attack1TeleportPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(135, -19)
+
+[node name="Attack2ProjectilePositions" type="Node2D" parent="QueenBossFightManager"]
+
+[node name="PositionMarker1" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(136, -117)
+rotation = 3.12526
+
+[node name="PositionMarker2" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(135, -35)
+rotation = 3.12526
+
+[node name="PositionMarker3" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(134, -75)
+rotation = 3.12526
+
+[node name="PositionMarker4" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(9, -57)
+
+[node name="PositionMarker6" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(8, -22)
+
+[node name="PositionMarker7" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(9, -132)
+
+[node name="PositionMarker5" parent="QueenBossFightManager/Attack2ProjectilePositions" instance=ExtResource("7_c16yb")]
+position = Vector2(8, -95)

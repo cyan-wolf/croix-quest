@@ -40,7 +40,9 @@ func _ready():
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	if other_hitbox.is_in_group("projectile_hitbox"):
 		var projectile: Projectile = other_hitbox.get_parent()
-		self.health_component.take_damage(projectile.get_damage())
+
+		if projectile.is_from_player():
+			self.health_component.take_damage(projectile.get_damage())
 
 
 func _on_melee_attack_timer_timeout() -> void:
