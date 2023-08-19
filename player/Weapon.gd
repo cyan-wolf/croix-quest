@@ -1,5 +1,7 @@
 extends Node2D
 
+const Projectile := preload("res://weapons/projectile/projectile.gd")
+
 enum WeaponType {
 	GUN = 0,
 	SHOTGUN = 1,
@@ -133,57 +135,68 @@ func get_weapon_filename(weapon_type: int) -> String:
 func _fire() -> void:
 	match _current_weapon_type:
 		WeaponType.GUN:
-			var bullet_instance := _bullet_scene.instantiate()
-			bullet_instance.position = self.global_position
-			bullet_instance.rotation = self.rotation
-			bullet_instance.lifetime = _bullet_alive_time
-			bullet_instance.damage = _bullet_damage
+			var bullet_instance := _bullet_scene.instantiate() as Projectile
 
-			# Calculated using math.
-			var impulse := Vector2(cos(self.rotation), sin(self.rotation)) * _bullet_speed
+			var bullet_rotation := self.rotation
 
-			bullet_instance.apply_impulse(impulse)
+			bullet_instance.initialize(
+				self.global_position,
+				bullet_rotation,
+				_bullet_alive_time,
+				_bullet_damage,
+				# Calculated using math.
+				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
+			)
+
 			self.get_tree().get_root().add_child(bullet_instance)
 
 		WeaponType.SHOTGUN:
 			for i in range(3):
-				var bullet_instance = _bullet_scene.instantiate()
-				bullet_instance.position = self.global_position
-				bullet_instance.rotation = self.rotation + (i - 1) * 0.1
-				bullet_instance.lifetime = _bullet_alive_time
-				bullet_instance.damage = _bullet_damage
+				var bullet_instance := _bullet_scene.instantiate() as Projectile
 
-				# Not calculated using math, calculated using MATHS #unitedkingdom
-				var impulse = Vector2(cos(bullet_instance.rotation), sin(bullet_instance.rotation)) * _bullet_speed
-				bullet_instance.apply_impulse(impulse)
+				var bullet_rotation := self.rotation + (i - 1) * 0.1
+
+				bullet_instance.initialize(
+					self.global_position,
+					bullet_rotation,
+					_bullet_alive_time,
+					_bullet_damage,
+					# Not calculated using math, calculated using MATHS #unitedkingdom
+					Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
+				)
 		
 				self.get_tree().get_root().add_child(bullet_instance)	
 
 		WeaponType.SNIPER:
-			var bullet_instance := _bullet_scene.instantiate()
-			bullet_instance.position = self.global_position
-			bullet_instance.rotation = self.rotation
-			bullet_instance.lifetime = _bullet_alive_time
-			bullet_instance.damage = _bullet_damage
+			var bullet_instance := _bullet_scene.instantiate() as Projectile
 
-			# Calculated using math.
-			var impulse := Vector2(cos(self.rotation), sin(self.rotation)) * _bullet_speed
+			var bullet_rotation := self.rotation
 
-			bullet_instance.apply_impulse(impulse)
+			bullet_instance.initialize(
+				self.global_position,
+				bullet_rotation,
+				_bullet_alive_time,
+				_bullet_damage,
+				# Calculated using math.
+				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
+			)
+
 			self.get_tree().get_root().add_child(bullet_instance)
 
 		WeaponType.SMG:
-			var random_number = randf_range(-0.2, 0.2) 
 			var bullet_instance := _bullet_scene.instantiate()
-			bullet_instance.position = self.global_position
-			bullet_instance.rotation = self.rotation + random_number
-			bullet_instance.lifetime = _bullet_alive_time
-			bullet_instance.damage = _bullet_damage
 
-			# Calculated using math.
-			var impulse := Vector2(cos(bullet_instance.rotation), sin(bullet_instance.rotation)) * _bullet_speed
+			var bullet_rotation := self.rotation + randf_range(-0.2, 0.2)
 
-			bullet_instance.apply_impulse(impulse)
+			bullet_instance.initialize(
+				self.global_position,
+				bullet_rotation,
+				_bullet_alive_time,
+				_bullet_damage,
+				# Calculated using math.
+				Vector2(cos(bullet_rotation), sin(bullet_rotation)) * _bullet_speed
+			)
+
 			self.get_tree().get_root().add_child(bullet_instance)
 
 		# Do nothing if there is an unknown weapon.

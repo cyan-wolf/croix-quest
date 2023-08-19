@@ -15,7 +15,7 @@ func _ready() -> void:
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	if other_hitbox.is_in_group("projectile_hitbox"):
 		var projectile: Projectile = other_hitbox.get_parent()
-		self.health_component.take_damage(projectile.damage)
+		self.health_component.take_damage(projectile.get_damage())
 
 
 # TODO: The Queen is defeated, but she just heals herself using magic and defeats you.

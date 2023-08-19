@@ -2,8 +2,8 @@ extends RigidBody2D
 
 signal projectile_hit
 
-var lifetime: float = 0.0
-var damage: int = 0
+var _lifetime: float = 0.0
+var _damage: int = 0
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
@@ -13,7 +13,7 @@ func _ready():
 	self.projectile_hit.connect(_on_projectile_hit)
 
 	# Despawn the projectile if it doesn't hit anything by this point.
-	await self.get_tree().create_timer(lifetime).timeout
+	await self.get_tree().create_timer(_lifetime).timeout
 	self.queue_free()
 
 
@@ -31,4 +31,20 @@ func _on_body_entered_hitbox(_body: Node2D) -> void:
 # TODO: Add an animation or particle effect when the projectile hits something and gets destroyed.
 func _on_projectile_hit() -> void:
 	self.queue_free()
+
+
+## Must be called before adding the projectile to the scene tree.
+func initialize(global_pos: Vector2, sprite_rotation: float, lifetime: float, damage: int, impulse: Vector2) -> void:
+	# Initialize important fields.
+	self.global_position = global_pos
+	self.rotation = sprite_rotation
+	_lifetime = lifetime
+	_damage = damage
+
+	# Make the projectile move in this direction (not affected by `self.rotation`).
+	self.apply_impulse(impulse)
+
+
+func get_damage() -> int:
+	return _damage
 
