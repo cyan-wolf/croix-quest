@@ -18,6 +18,7 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 		if projectile.is_from_player():
 			self.health_component.take_damage(projectile.get_damage())
+			print_debug(health_component.get_health())
 
 
 # TODO: The Queen is defeated, but she just heals herself using magic and defeats you.
