@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctsggca0cuwwt"]
+[gd_scene load_steps=4 format=3 uid="uid://ctsggca0cuwwt"]
 
 [ext_resource type="Script" path="res://maps/intro_castle/boss_fight/boss_fight_manager/queen_boss_fight_manager.gd" id="1_8w5l7"]
+[ext_resource type="PackedScene" path="res://particles/queen_boss_teleport_particles.tscn" id="2_tmjfi"]
+[ext_resource type="PackedScene" path="res://particles/queen_boss_shield_particles.tscn" id="3_0ivqb"]
 
 [node name="QueenBossFightManager" type="Node2D"]
 script = ExtResource("1_8w5l7")
+
+[node name="queen_boss_teleport_particles" parent="." instance=ExtResource("2_tmjfi")]
+
+[node name="queen_shield_particles" parent="." instance=ExtResource("3_0ivqb")]
+emitting = false

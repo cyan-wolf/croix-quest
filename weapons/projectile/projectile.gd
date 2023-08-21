@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var stuff = preload("res://particles/bullet_impact.tscn")
+var _bullet_particle_emitter_scene = preload("res://particles/bullet_impact.tscn")
 
 enum Source {
 	PLAYER = 0,
@@ -48,10 +48,14 @@ func _on_body_entered_hitbox(_body: Node2D) -> void:
 # TODO: Add an animation or particle effect when the projectile hits something and gets destroyed.
 func _on_projectile_hit() -> void:
 	var coords = self.position
-	var impact_particles = stuff.instantiate()
+	var impact_particles: GPUParticles2D = _bullet_particle_emitter_scene.instantiate()
 	impact_particles.emitting = true
 	impact_particles.position = coords
 	self.get_tree().get_root().add_child(impact_particles)
+
+	# Run this function asynchronously.
+	_async_remove_particles_after_delay(impact_particles)
+
 	self.queue_free()
 
 
@@ -83,4 +87,9 @@ func get_source() -> Source:
 
 func is_from_player() -> bool:
 	return _source == Source.PLAYER
+
+
+func _async_remove_particles_after_delay(particles: GPUParticles2D) -> void:
+	await SceneManager.async_delay(5.0)
+	particles.queue_free()
 

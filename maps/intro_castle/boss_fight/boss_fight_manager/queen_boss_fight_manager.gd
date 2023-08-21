@@ -11,10 +11,14 @@ signal fall_to_ground
 
 @onready var _player: Player = SceneManager.find_player()
 @onready var _queen_boss_scene: PackedScene = preload("res://enemies/bosses/queen/queen_boss.tscn")
-@onready var _bullet_scene := preload("res://weapons/projectile/projectile.tscn")
+@onready var _projectile_scene := preload("res://weapons/projectile/projectile.tscn")
 @onready var _attack_1_teleport_positions: Array[Vector2]
 # Stores position and rotation in order to know in which direction to shoot the projectiles.
-@onready var _attack_2_projectile_transforms: Array[Transform2D]
+@onready var _attack_2_projectile_pos_and_rot_left: Array[Node2D]
+@onready var _attack_2_projectile_pos_and_rot_right: Array[Node2D]
+
+@onready var _queen_teleport_particle_emitter: GPUParticles2D = self.get_node("queen_boss_teleport_particles")
+@onready var _queen_shield_particle_emitter: GPUParticles2D = self.get_node("queen_shield_particles")
 
 var _queen_boss: QueenBoss
 
@@ -27,13 +31,17 @@ func _ready() -> void:
 	for n in self.get_node("Attack1TeleportPositions").get_children():
 		_attack_1_teleport_positions.push_back((n as Node2D).global_position)
 
-	for n in self.get_node("Attack2ProjectilePositions").get_children():
-		_attack_2_projectile_transforms.push_back((n as Node2D).global_transform)
+	for n in self.get_node("Attack2ProjectilePositions/LeftPositions").get_children():
+		_attack_2_projectile_pos_and_rot_left.push_back(n)
+
+	for n in self.get_node("Attack2ProjectilePositions/RightPositions").get_children():
+		_attack_2_projectile_pos_and_rot_right.push_back(n)
 
 
 func _on_start_boss_fight() -> void:
 	# Spawn the boss.
 	_queen_boss = _queen_boss_scene.instantiate() as QueenBoss
+
 	self.get_tree().get_root().add_child(_queen_boss)
 	_queen_boss.global_position = self.get_node("BossFightSpawnPosition").global_position
 
@@ -48,9 +56,9 @@ func _async_on_perform_attack_1() -> void:
 		_attack_1_teleport_positions, attack_pos_amount) as Array[Vector2]
 
 	for teleport_pos in teleport_positions:
-		_teleport_queen(teleport_pos)
+		await _async_teleport_queen(teleport_pos)
 
-		_fire_bullet_from_queen_towards_player()
+		_fire_projectile_from_queen_towards_player()
 
 		await SceneManager.async_delay(2.5)
 	
@@ -59,10 +67,30 @@ func _async_on_perform_attack_1() -> void:
 
 
 func _async_on_perform_attack_2() -> void:
+	var attack_2_teleport_pos: Vector2 = (self.get_node("Attack2TeleportPosition") as Node2D).global_position
 
-	# Placeholder
-	_teleport_queen(Vector2(5 * 16, -5 * 16))
-	await SceneManager.async_delay(5.0)
+	await _async_teleport_queen(attack_2_teleport_pos)
+
+	_queen_shield_particle_emitter.global_position = _queen_boss.global_position
+	_queen_shield_particle_emitter.emitting = true
+
+	await SceneManager.async_delay(2.5)
+
+	for pos_and_rot in _attack_2_projectile_pos_and_rot_left:
+		_fire_projectile_in_game_world(
+			pos_and_rot.global_position,
+			Vector2.from_angle(pos_and_rot.rotation),
+		)
+
+	await SceneManager.async_delay(2.5)
+
+	for pos_and_rot in _attack_2_projectile_pos_and_rot_right:
+		_fire_projectile_in_game_world(
+			pos_and_rot.global_position,
+			Vector2.from_angle(pos_and_rot.rotation),
+		)
+
+	_queen_shield_particle_emitter.emitting = false
 
 	# Fall to the ground once finished with the current phase.
 	self.fall_to_ground.emit()
@@ -71,33 +99,58 @@ func _async_on_perform_attack_2() -> void:
 func _async_on_fall_to_the_ground() -> void:
 
 	# Placeholder
-	_teleport_queen(Vector2(10 * 16, -10 * 16))
+	await _async_teleport_queen(Vector2(10 * 16, -10 * 16))
 	await SceneManager.async_delay(5.0)
 
 	# Perform 'Attack 1' once finished with the current phase.
 	self.perform_attack_1.emit()
 
 
-func _teleport_queen(to_position: Vector2) -> void:
-	# TODO: Play a particle effect and SFX here. 
+func _async_teleport_queen(to_position: Vector2) -> void:
+	# TODO: Play some SFX here. 
+
+	_queen_boss.hide()
+
+	var queen_previous_position := _queen_boss.global_position
 	_queen_boss.global_position = to_position
 
+	# Show the particles at the Queen's previous position.
+	_queen_teleport_particle_emitter.global_position = queen_previous_position
+	_queen_teleport_particle_emitter.emitting = true
 
-func _fire_bullet_from_queen_towards_player() -> void:
-	var bullet_instance := _bullet_scene.instantiate() as Projectile
+	await SceneManager.async_delay(_queen_teleport_particle_emitter.lifetime)
 
-	var bullet_direction := _queen_boss.global_position.direction_to(_player.global_position)
-	var bullet_speed := 100.0
+	_queen_teleport_particle_emitter.global_position = _queen_boss.global_position
 
-	bullet_instance.initialize(
-		_queen_boss.global_position,
-		bullet_direction.angle(),
-		10.0, # placeholder
-		1, # placeholder
-		Projectile.Source.QUEEN_BOSS,
-		# Calculated using math.
-		bullet_direction * bullet_speed
+	# Show the particles at the Queen's new position.
+	_queen_teleport_particle_emitter.emitting = true
+
+	await SceneManager.async_delay(_queen_teleport_particle_emitter.lifetime)
+
+	_queen_boss.show()
+
+
+func _fire_projectile_from_queen_towards_player() -> void:
+	_fire_projectile_in_game_world(
+		_queen_boss.global_position, 
+		_queen_boss.global_position.direction_to(_player.global_position),
 	)
 
-	self.get_tree().get_root().add_child(bullet_instance)
+
+func _fire_projectile_in_game_world(pos: Vector2, direction: Vector2) -> void:
+	var projectile_instance := _projectile_scene.instantiate() as Projectile
+	var projectile_speed := 100.0 # speed in pixels per second
+
+	projectile_instance.initialize(
+		pos,
+		direction.angle(),
+		10.0, # projectile lifetime in seconds
+		1, # projectile damage
+		Projectile.Source.QUEEN_BOSS,
+		# Calculated using math.
+		direction * projectile_speed
+	)
+
+	self.get_tree().get_root().add_child(projectile_instance)
+
 

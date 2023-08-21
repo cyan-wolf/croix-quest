@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="9_pdddj"]
 [ext_resource type="PackedScene" uid="uid://cst0mrjfn4dew" path="res://npcs/emmy/emmy_npc_sprite.tscn" id="12_esega"]
 [ext_resource type="PackedScene" uid="uid://du0klnaq2v87k" path="res://npcs/queen_croix/queen_croix_npc_sprite.tscn" id="12_p3al2"]
-[ext_resource type="PackedScene" path="res://util/teleporter/teleporter_destination.tscn" id="13_pcxws"]
+[ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="13_pcxws"]
 [ext_resource type="PackedScene" uid="uid://b72jukylx6o6m" path="res://maps/intro_castle/lore/emmy_castle_room_lore_manager.tscn" id="13_syyx6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymkpg"]
