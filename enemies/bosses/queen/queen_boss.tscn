@@ -20,6 +20,8 @@ script = ExtResource("1_0htp1")
 health_component = SubResource("Resource_mycxj")
 
 [node name="QueenCroixNPCSprite" parent="." instance=ExtResource("3_etplv")]
+animation = &"attack"
+frame_progress = 0.371112
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4xj28")

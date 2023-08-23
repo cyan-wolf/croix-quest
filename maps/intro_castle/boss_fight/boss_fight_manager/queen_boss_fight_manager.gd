@@ -21,6 +21,7 @@ signal fall_to_ground
 @onready var _queen_shield_particle_emitter: GPUParticles2D = self.get_node("queen_shield_particles")
 
 var _queen_boss: QueenBoss
+var _queen_has_been_defeated := false
 
 func _ready() -> void:
 	self.get_node("../QueenBossFightLoreManager").start_boss_fight.connect(_on_start_boss_fight)
@@ -45,6 +46,10 @@ func _on_start_boss_fight() -> void:
 	self.get_tree().get_root().add_child(_queen_boss)
 	_queen_boss.global_position = self.get_node("BossFightSpawnPosition").global_position
 
+	# Further setup the boss fight manager now that the Queen has been spawned.
+	_queen_boss.health_component.death.connect(_async_on_queen_defeat)
+	_queen_boss.set_animation("float")
+
 	# Start performing 'Attack 1'.
 	self.perform_attack_1.emit()
 
@@ -58,10 +63,18 @@ func _async_on_perform_attack_1() -> void:
 	for teleport_pos in teleport_positions:
 		await _async_teleport_queen(teleport_pos)
 
-		_fire_projectile_from_queen_towards_player()
+		# Async call.
+		_queen_boss.async_play_animation("attack", 1.5, "float")
+		await SceneManager.async_delay(1.0)
 
-		await SceneManager.async_delay(2.5)
+		_fire_projectile_from_queen_towards_player()
+		await SceneManager.async_delay(1.5)
 	
+	if _queen_has_been_defeated:
+		# Async call (no need to wait for the cutscene to finish).
+		_async_play_queen_defeated_cutscene()
+		return
+
 	# Perform 'Attack 2' once finished with the current phase.
 	self.perform_attack_2.emit()
 
@@ -74,15 +87,20 @@ func _async_on_perform_attack_2() -> void:
 	_queen_shield_particle_emitter.global_position = _queen_boss.global_position
 	_queen_shield_particle_emitter.emitting = true
 
-	await SceneManager.async_delay(2.5)
+	# Async call.
+	_queen_boss.async_play_animation("attack", 1.5, "float")
+	await SceneManager.async_delay(1.0)
 
 	for pos_and_rot in _attack_2_projectile_pos_and_rot_left:
+
 		_fire_projectile_in_game_world(
 			pos_and_rot.global_position,
 			Vector2.from_angle(pos_and_rot.rotation),
 		)
 
-	await SceneManager.async_delay(2.5)
+	# Async call.
+	_queen_boss.async_play_animation("attack", 1.5, "float")
+	await SceneManager.async_delay(1.0)
 
 	for pos_and_rot in _attack_2_projectile_pos_and_rot_right:
 		_fire_projectile_in_game_world(
@@ -90,20 +108,49 @@ func _async_on_perform_attack_2() -> void:
 			Vector2.from_angle(pos_and_rot.rotation),
 		)
 
+	await SceneManager.async_delay(1.5)
+
 	_queen_shield_particle_emitter.emitting = false
+
+	if _queen_has_been_defeated:
+		# Async call (no need to wait for the cutscene to finish).
+		_async_play_queen_defeated_cutscene()
+		return
 
 	# Fall to the ground once finished with the current phase.
 	self.fall_to_ground.emit()
 
 
 func _async_on_fall_to_the_ground() -> void:
+	var landing_pos: Vector2 = self.get_node("FallToGroundLandingPosition").global_position
 
-	# Placeholder
-	await _async_teleport_queen(Vector2(10 * 16, -10 * 16))
+	await self.create_tween().tween_property(_queen_boss, "global_position", landing_pos, 0.5).finished
+
 	await SceneManager.async_delay(5.0)
+
+	if _queen_has_been_defeated:
+		# Async call (no need to wait for the cutscene to finish).
+		_async_play_queen_defeated_cutscene()
+		return
 
 	# Perform 'Attack 1' once finished with the current phase.
 	self.perform_attack_1.emit()
+
+
+func _async_on_queen_defeat() -> void:
+	_queen_has_been_defeated = true
+
+
+func _async_play_queen_defeated_cutscene() -> void:
+	
+	var defeat_pos: Vector2 = self.get_node("FallToGroundLandingPosition").global_position
+
+	await _async_teleport_queen(defeat_pos)
+
+	# TODO: Replace with a "defeated" animation.
+	_queen_boss.set_animation("idle")
+
+	print_debug("Oh my... You have defeated me...(not really)")
 
 
 func _async_teleport_queen(to_position: Vector2) -> void:

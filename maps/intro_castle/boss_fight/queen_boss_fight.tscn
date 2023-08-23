@@ -2059,14 +2059,14 @@ position = Vector2(8, -95)
 [node name="PositionMarker1" parent="QueenBossFightManager/Attack2ProjectilePositions/RightPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(136, -117)
 rotation = 3.12526
-scale = Vector2(1, 1)
 
 [node name="PositionMarker2" parent="QueenBossFightManager/Attack2ProjectilePositions/RightPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(135, -35)
 rotation = 3.12526
-scale = Vector2(1, 1)
 
 [node name="PositionMarker3" parent="QueenBossFightManager/Attack2ProjectilePositions/RightPositions" instance=ExtResource("7_c16yb")]
 position = Vector2(134, -75)
 rotation = 3.12526
-scale = Vector2(1, 1)
+
+[node name="FallToGroundLandingPosition" parent="QueenBossFightManager" instance=ExtResource("7_c16yb")]
+position = Vector2(70, -50)
