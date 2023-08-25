@@ -1,18 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4em1vn2yairo"]
+[gd_scene load_steps=7 format=3 uid="uid://c4em1vn2yairo"]
 
 [ext_resource type="Script" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_lore_manager.gd" id="1_gy6bb"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_cdjad"]
 
-[sub_resource type="Resource" id="Resource_4ywri"]
+[sub_resource type="Resource" id="Resource_qxfno"]
 script = ExtResource("2_cdjad")
 author = "Queen"
-dialog = Array[String](["Wow."])
+dialog = Array[String](["Ah, the Four Forest Spirits. A vital part of the ceremony tomorrow.", "Well, it was nice seeing ya!"])
 
-[sub_resource type="Resource" id="Resource_2oj5s"]
+[sub_resource type="Resource" id="Resource_kcva3"]
+script = ExtResource("2_cdjad")
+author = "Queen"
+dialog = Array[String](["..."])
+
+[sub_resource type="Resource" id="Resource_3jf2i"]
 script = ExtResource("2_cdjad")
 author = "Me"
-dialog = Array[String](["Omg."])
+dialog = Array[String](["???", "Queen, why were the Forest Spirits here?", "Where are they now?"])
+
+[sub_resource type="Resource" id="Resource_wbdlo"]
+script = ExtResource("2_cdjad")
+author = "Queen"
+dialog = Array[String](["...", "You know too much."])
 
 [node name="QueenBossFightLoreManager" type="Node2D"]
 script = ExtResource("1_gy6bb")
-_temp_lore_dialog = Array[ExtResource("2_cdjad")]([SubResource("Resource_4ywri"), SubResource("Resource_2oj5s")])
+_dialog_before_teleporting_spirits = Array[ExtResource("2_cdjad")]([SubResource("Resource_qxfno")])
+_dialog_after_teleporting_spirits = Array[ExtResource("2_cdjad")]([SubResource("Resource_kcva3"), SubResource("Resource_3jf2i"), SubResource("Resource_wbdlo")])

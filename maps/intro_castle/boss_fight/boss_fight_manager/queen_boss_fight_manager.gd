@@ -141,6 +141,8 @@ func _async_on_queen_defeat() -> void:
 	_queen_has_been_defeated = true
 
 
+# TODO: Finish this part by making the Queen heal herself and 
+# defeating you instead.
 func _async_play_queen_defeated_cutscene() -> void:
 	
 	var defeat_pos: Vector2 = self.get_node("FallToGroundLandingPosition").global_position
