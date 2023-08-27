@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0lw8igv2qeni"]
+[gd_scene load_steps=11 format=3 uid="uid://c0lw8igv2qeni"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_0delw"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_1gwxp"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_fwicy"]
+[ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="4_xs8ch"]
+[ext_resource type="PackedScene" uid="uid://l5uerm873fdl" path="res://maps/intro_area_outside_castle/forest_outside_castle/lore/forest_outside_castle_lore_manager.tscn" id="5_pi2lb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5u4i0"]
 load_path = "res://.godot/imported/ulmus_dungeon_tileset.png-04cfccd0b586914818361b435c065102.ctex"
@@ -136,6 +139,14 @@ physics_layer_1/collision_layer = 5
 physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_ms4pt")
 
+[sub_resource type="Resource" id="Resource_jckg5"]
+script = ExtResource("3_fwicy")
+_health = 8
+
+[sub_resource type="Resource" id="Resource_s3d56"]
+script = ExtResource("4_xs8ch")
+_mana_amount = 4
+
 [node name="ForestOutisdeCastle" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -164,6 +175,10 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 131068, 65536, 2, 65539, 196608, 2, 196604, 393216, 2, 262140, 393216, 2, 131075, 458752, 2, 196611, 458752, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_1gwxp")]
+health_component = SubResource("Resource_jckg5")
+mana_component = SubResource("Resource_s3d56")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="ForestOutsideCastleLoreManager" parent="." instance=ExtResource("5_pi2lb")]

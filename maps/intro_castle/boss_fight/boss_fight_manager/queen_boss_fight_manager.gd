@@ -22,6 +22,7 @@ signal fall_to_ground
 @onready var _queen_teleport_particle_emitter: GPUParticles2D = self.get_node("queen_boss_teleport_particles")
 @onready var _queen_shield_particle_emitter: GPUParticles2D = self.get_node("queen_shield_particles")
 @onready var _queen_laser: Node2D = self.get_node("QueenLaser")
+@onready var _boss_theme_player: AudioStreamPlayer = self.get_node("BossThemePlayer")
 
 var _queen_boss: QueenBoss
 var _queen_has_been_defeated := false
@@ -43,6 +44,8 @@ func _ready() -> void:
 
 
 func _on_start_boss_fight() -> void:
+	_boss_theme_player.play()
+
 	# Spawn the boss.
 	_queen_boss = _queen_boss_scene.instantiate() as QueenBoss
 
@@ -71,7 +74,7 @@ func _async_on_perform_attack_1() -> void:
 		await SceneManager.async_delay(1.0)
 
 		_fire_projectile_from_queen_towards_player()
-		await SceneManager.async_delay(1.5)
+		await SceneManager.async_delay(0.5)
 	
 	if _queen_has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
@@ -90,9 +93,9 @@ func _async_on_perform_attack_2() -> void:
 	_queen_shield_particle_emitter.global_position = _queen_boss.global_position
 	_queen_shield_particle_emitter.emitting = true
 
+	await SceneManager.async_delay(1.5)
 	# Async call.
 	_queen_boss.async_play_animation("attack", 1.5, "float")
-	await SceneManager.async_delay(1.0)
 
 	for pos_and_rot in _attack_2_projectile_pos_and_rot_left:
 
@@ -101,9 +104,9 @@ func _async_on_perform_attack_2() -> void:
 			Vector2.from_angle(pos_and_rot.rotation),
 		)
 
+	await SceneManager.async_delay(1.5)
 	# Async call.
 	_queen_boss.async_play_animation("attack", 1.5, "float")
-	await SceneManager.async_delay(1.0)
 
 	for pos_and_rot in _attack_2_projectile_pos_and_rot_right:
 		_fire_projectile_in_game_world(
@@ -208,7 +211,7 @@ func _fire_projectile_from_queen_towards_player() -> void:
 
 func _fire_projectile_in_game_world(pos: Vector2, direction: Vector2) -> void:
 	var projectile_instance := _projectile_scene.instantiate() as Projectile
-	var projectile_speed := 100.0 # speed in pixels per second
+	var projectile_speed := 120.0 # speed in pixels per second
 
 	projectile_instance.initialize(
 		pos,

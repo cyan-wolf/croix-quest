@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctsggca0cuwwt"]
+[gd_scene load_steps=8 format=3 uid="uid://ctsggca0cuwwt"]
 
 [ext_resource type="Script" path="res://maps/intro_castle/boss_fight/boss_fight_manager/queen_boss_fight_manager.gd" id="1_8w5l7"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_fxrnj"]
 [ext_resource type="PackedScene" uid="uid://yrc2apgt0dno" path="res://particles/queen_boss_teleport_particles.tscn" id="2_tmjfi"]
 [ext_resource type="PackedScene" uid="uid://b7okl1huy7h2q" path="res://particles/queen_boss_shield_particles.tscn" id="3_0ivqb"]
 [ext_resource type="PackedScene" uid="uid://65oqa76jb8k6" path="res://enemies/bosses/queen/queen_laser/queen_laser.tscn" id="5_v16s0"]
+[ext_resource type="AudioStream" uid="uid://6idtysnr8n7b" path="res://sounds/music/Orbital Colossus/Orbital Colossus.mp3" id="6_w2ri5"]
 
 [sub_resource type="Resource" id="Resource_fx0h3"]
 script = ExtResource("2_fxrnj")
@@ -22,3 +23,7 @@ emitting = false
 
 [node name="QueenLaser" parent="." instance=ExtResource("5_v16s0")]
 visible = false
+
+[node name="BossThemePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w2ri5")
+bus = &"music"

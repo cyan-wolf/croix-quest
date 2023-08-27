@@ -36,4 +36,4 @@ The queen would be sent to jail and the inauguration ceremony would be redone. A
 * House In A Forest Loop music by `HorrorPen`: [OpenGameArt.org page](https://opengameart.org/content/loop-house-in-a-forest)
 * Hero Immortal music by `Trevor Lentz`: [OpenGameArt.org page](https://opengameart.org/content/hero-immortal)
 * Pixel River music by `Trevor Lentz`: [OpenGameArt.org page](https://opengameart.org/content/pixel-river)
-
+* Orbital Colossus music by `Matthew Pablo`: [OpenGameArt.org page](https://opengameart.org/content/space-boss-battle-theme), [creator's site](https://matthewpablo.com/services/)

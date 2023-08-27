@@ -2166,30 +2166,31 @@ visible = false
 [node name="LeftPositions" type="Node2D" parent="QueenBossFightManager/Attack2ProjectilePositions"]
 
 [node name="PositionMarker4" parent="QueenBossFightManager/Attack2ProjectilePositions/LeftPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(9, -57)
+position = Vector2(7, -60)
 
 [node name="PositionMarker6" parent="QueenBossFightManager/Attack2ProjectilePositions/LeftPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(8, -22)
+position = Vector2(8, -18)
 
 [node name="PositionMarker7" parent="QueenBossFightManager/Attack2ProjectilePositions/LeftPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(9, -132)
+position = Vector2(8, -147)
 
 [node name="PositionMarker5" parent="QueenBossFightManager/Attack2ProjectilePositions/LeftPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(8, -95)
+position = Vector2(8, -101)
 
 [node name="RightPositions" type="Node2D" parent="QueenBossFightManager/Attack2ProjectilePositions"]
 
 [node name="PositionMarker1" parent="QueenBossFightManager/Attack2ProjectilePositions/RightPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(136, -117)
+position = Vector2(137, -125)
 rotation = 3.12526
 
 [node name="PositionMarker2" parent="QueenBossFightManager/Attack2ProjectilePositions/RightPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(135, -35)
+position = Vector2(137, -36)
 rotation = 3.12526
 
 [node name="PositionMarker3" parent="QueenBossFightManager/Attack2ProjectilePositions/RightPositions" instance=ExtResource("7_c16yb")]
-position = Vector2(134, -75)
+position = Vector2(136, -80)
 rotation = 3.12526
 
 [node name="FallToGroundLandingPosition" parent="QueenBossFightManager" instance=ExtResource("7_c16yb")]
+visible = false
 position = Vector2(70, -50)
