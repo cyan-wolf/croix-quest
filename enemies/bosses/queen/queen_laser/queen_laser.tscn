@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://65oqa76jb8k6"]
+
+[ext_resource type="Texture2D" uid="uid://dkea5vt7cihqq" path="res://enemies/bosses/queen/queen_laser/queen_laser.png" id="1_7t06r"]
+
+[node name="QueenLaser" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(0, -160)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(0, -192)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(0, -224)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(0, -256)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(0, -288)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(0, -320)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(0, -352)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(0, -384)
+texture = ExtResource("1_7t06r")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(0, -416)
+texture = ExtResource("1_7t06r")

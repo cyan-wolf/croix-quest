@@ -9,6 +9,8 @@ signal perform_attack_1
 signal perform_attack_2
 signal fall_to_ground
 
+@export var _queen_defeated_dialog: DialogResource
+
 @onready var _player: Player = SceneManager.find_player()
 @onready var _queen_boss_scene: PackedScene = preload("res://enemies/bosses/queen/queen_boss.tscn")
 @onready var _projectile_scene := preload("res://weapons/projectile/projectile.tscn")
@@ -19,6 +21,7 @@ signal fall_to_ground
 
 @onready var _queen_teleport_particle_emitter: GPUParticles2D = self.get_node("queen_boss_teleport_particles")
 @onready var _queen_shield_particle_emitter: GPUParticles2D = self.get_node("queen_shield_particles")
+@onready var _queen_laser: Node2D = self.get_node("QueenLaser")
 
 var _queen_boss: QueenBoss
 var _queen_has_been_defeated := false
@@ -43,7 +46,7 @@ func _on_start_boss_fight() -> void:
 	# Spawn the boss.
 	_queen_boss = _queen_boss_scene.instantiate() as QueenBoss
 
-	self.get_tree().get_root().add_child(_queen_boss)
+	self.get_tree().current_scene.add_child(_queen_boss)
 	_queen_boss.global_position = self.get_node("BossFightSpawnPosition").global_position
 
 	# Further setup the boss fight manager now that the Queen has been spawned.
@@ -152,7 +155,24 @@ func _async_play_queen_defeated_cutscene() -> void:
 	# TODO: Replace with a "defeated" animation.
 	_queen_boss.set_animation("idle")
 
-	print_debug("Oh my... You have defeated me...(not really)")
+	DialogManager.start_dialog(_queen_defeated_dialog)
+	await DialogManager.ended_dialog
+
+	_player.disable_actions()
+
+	await SceneManager.async_delay(1.0)
+
+	_queen_laser.global_position = _player.global_position
+	_queen_laser.show()
+
+	# TODO: Play some SFX here and some sort of on-screen effect.
+
+	await SceneManager.async_delay(0.3)
+
+	# Continue the story by going to the forest outside the castle.
+	SceneManager.load_scene_file(
+		"res://maps/intro_area_outside_castle/forest_outside_castle/forest_outisde_castle.tscn"
+	)
 
 
 func _async_teleport_queen(to_position: Vector2) -> void:

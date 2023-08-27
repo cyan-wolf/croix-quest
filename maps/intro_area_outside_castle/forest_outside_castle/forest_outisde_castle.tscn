@@ -1,17 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=6 format=3 uid="uid://c0lw8igv2qeni"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
-[ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
-[ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="4_4emnn"]
-[ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_yst44"]
-[ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
-[ext_resource type="PackedScene" uid="uid://d0st3mqxctevc" path="res://interactables/mana_crystal_refill/mana_crystal_refill.tscn" id="7_wda0x"]
+[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_0delw"]
+[ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_1gwxp"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vhdiu"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5u4i0"]
 load_path = "res://.godot/imported/ulmus_dungeon_tileset.png-04cfccd0b586914818361b435c065102.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ijq24"]
-texture = SubResource("CompressedTexture2D_vhdiu")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ms4pt"]
+texture = SubResource("CompressedTexture2D_5u4i0")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -134,52 +130,40 @@ texture = SubResource("CompressedTexture2D_vhdiu")
 7:2/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 7:2/0/physics_layer_1/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_6s6io"]
+[sub_resource type="TileSet" id="TileSet_jwb4w"]
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 5
 physics_layer_1/collision_mask = 5
-sources/0 = SubResource("TileSetAtlasSource_ijq24")
+sources/0 = SubResource("TileSetAtlasSource_ms4pt")
 
-[node name="UlmusDungeon" type="Node2D"]
+[node name="ForestOutisdeCastle" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_ju52u")]
+[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_0delw")]
 visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_6s6io")
+tile_set = SubResource("TileSet_jwb4w")
 format = 2
 layer_0/name = "Floor"
-layer_0/tile_data = PackedInt32Array(-2, 0, 1, -1, 0, 1, -65536, 0, 1, -65535, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 1, 131070, 0, 1, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, -3, 0, 1, 65533, 0, 1, 131069, 0, 1, 65538, 0, 1, 2, 0, 1, -65534, 0, 1, 196605, 0, 1, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, -32, 0, 1, -33, 0, 1, -34, 0, 1, -35, 0, 1, 65501, 0, 1, 65502, 0, 1, 65503, 0, 1, 65504, 0, 1, 131040, 0, 1, 131039, 0, 1, 131038, 0, 1, 131037, 0, 1, 65500, 0, 1, -36, 0, 1, -65572, 0, 1, -65571, 0, 1, -65570, 0, 1, -65569, 0, 1, -65568, 0, 1, 131036, 0, 1, 131035, 0, 1, 131034, 0, 1, 65497, 0, 1, -39, 0, 1, -38, 0, 1, -65574, 0, 1, -65573, 0, 1, -37, 0, 1, 65499, 0, 1, 65498, 0, 1, 131033, 0, 1, -65575, 0, 1, -131104, 0, 1, -131105, 0, 1, -131106, 0, 1, -131107, 0, 1, -131108, 0, 1, -131109, 0, 1, -131110, 0, 1, -131111, 0, 1, -131112, 0, 1, -65576, 0, 1, -65577, 0, 1, -41, 0, 1, -40, 0, 1, 65496, 0, 1, 131032, 0, 1, 131031, 0, 1, 65495, 0, 1, -131113, 0, 1)
+layer_0/tile_data = PackedInt32Array(-1, 0, 1, -65536, 0, 1, 0, 0, 1, 65535, 0, 1, -65538, 0, 1, -65537, 0, 1, -131072, 0, 1, -131071, 0, 1, -65535, 0, 1, 1, 0, 1, 131071, 0, 1, 131070, 0, 1, 65534, 0, 1, -2, 0, 1, 65536, 0, 1, 65537, 0, 1, -65539, 0, 1, -3, 0, 1, 65533, 0, 1, 131069, 0, 1, -131070, 0, 1, -65534, 0, 1, 2, 0, 1, 65538, 0, 1)
 layer_1/name = "Backwall"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-131073, 524288, 0, -196608, 589824, 0, -65537, 524288, 1, -131072, 589824, 1, -131075, 0, 0, -131074, 0, 0, -65538, 0, 0, -65539, 0, 0, -196607, 0, 0, -196606, 0, 0, -131070, 0, 0, -131071, 0, 0, -196611, 131072, 0, -196610, 131072, 0, -196609, 131072, 0, -262144, 131072, 0, -262143, 131072, 0, -262142, 131072, 0, -262141, 196608, 0, -196612, 65536, 0, -131076, 65536, 1, -65540, 65536, 1, -4, 65536, 1, 65532, 65536, 1, 131068, 65536, 1, -196605, 196608, 1, -131069, 196608, 1, -65533, 196608, 1, 3, 196608, 1, 65539, 196608, 1, -196649, 0, 0, -262185, 0, 0, -262184, 0, 0, -262183, 0, 0, -262182, 0, 0, -262181, 0, 0, -262180, 0, 0, -262179, 0, 0, -262178, 0, 0, -262177, 0, 0, -262176, 0, 0, -196640, 0, 0, -196641, 0, 0, -196642, 0, 0, -196643, 0, 0, -196644, 0, 0, -196645, 0, 0, -196646, 0, 0, -196648, 0, 0, -196647, 0, 0, -327721, 131072, 0, -327720, 131072, 0, -327719, 131072, 0, -327718, 131072, 0, -327717, 131072, 0, -327716, 131072, 0, -327715, 131072, 0, -327714, 131072, 0, -327713, 131072, 0, -327712, 131072, 0, -327722, 65536, 0, -327711, 196608, 0, -262186, 65536, 1, -196650, 65536, 1, -131114, 65536, 1, -65578, 65536, 1, -42, 65536, 1, 65494, 65536, 1, -262175, 196608, 1, -196639, 196608, 1, -131103, 196608, 1, -65567, 196608, 1, -31, 196608, 1, 65505, 196608, 1)
-layer_2/name = "FrontWall"
+layer_1/tile_data = PackedInt32Array(-196611, 524288, 0, -196610, 589824, 0, -131075, 524288, 1, -131074, 589824, 1, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -196606, 0, 0, -196607, 0, 0, -196608, 0, 0, -131073, 0, 0, -262147, 131072, 0, -262146, 131072, 0, -262145, 131072, 0, -327680, 131072, 0, -327679, 131072, 0, -327678, 131072, 0, -262148, 65536, 0, -327677, 196608, 0, -196612, 65536, 1, -131076, 65536, 1, -65540, 65536, 1, -4, 65536, 1, 65532, 65536, 1, -262141, 196608, 1, -196605, 196608, 1, -131069, 196608, 1, -65533, 196608, 1, 3, 196608, 1)
+layer_2/name = "Frontwall"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(196605, 131072, 0, 196606, 131072, 0, 196607, 131072, 0, 131072, 131072, 0, 131073, 131072, 0, 131074, 131072, 0, 262141, 0, 0, 327678, 0, 0, 262142, 0, 0, 327677, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 262146, 0, 0, 262145, 0, 0, 262144, 0, 0, 327679, 0, 0, 196604, 65536, 2, 131075, 196608, 2, 262140, 393216, 2, 327676, 393216, 2, 196611, 458752, 2, 262147, 458752, 2, 131031, 131072, 0, 131032, 131072, 0, 131033, 131072, 0, 131034, 131072, 0, 131035, 131072, 0, 131036, 131072, 0, 131037, 131072, 0, 131038, 131072, 0, 131039, 131072, 0, 131040, 131072, 0, 131030, 65536, 2, 131041, 196608, 2, 196567, 0, 0, 262103, 0, 0, 262104, 0, 0, 196568, 0, 0, 196569, 0, 0, 196570, 0, 0, 196571, 0, 0, 196572, 0, 0, 196573, 0, 0, 196574, 0, 0, 196575, 0, 0, 196576, 0, 0, 262111, 0, 0, 262110, 0, 0, 262109, 0, 0, 262108, 0, 0, 262107, 0, 0, 262106, 0, 0, 262105, 0, 0, 262112, 0, 0, 196566, 393216, 2, 262102, 393216, 2, 196577, 458752, 2, 262113, 458752, 2)
+layer_2/tile_data = PackedInt32Array(196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 131068, 65536, 2, 65539, 196608, 2, 196604, 393216, 2, 262140, 393216, 2, 131075, 458752, 2, 196611, 458752, 2)
 
-[node name="Player" parent="." instance=ExtResource("3_2dv2y")]
+[node name="Player" parent="." instance=ExtResource("2_1gwxp")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
-
-[node name="PushableRock" parent="." instance=ExtResource("4_4emnn")]
-position = Vector2(-580, -16)
-
-[node name="Teleporter" parent="." instance=ExtResource("5_yst44")]
-position = Vector2(1, -26)
-
-[node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("6_axfhp")]
-position = Vector2(-505, 11)
-
-[node name="ManaCrystalRefill" parent="." instance=ExtResource("7_wda0x")]
-position = Vector2(-634, -28)

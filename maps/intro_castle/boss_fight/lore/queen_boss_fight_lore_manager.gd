@@ -46,8 +46,10 @@ func _async_show_cutscene_before_boss_fight() -> void:
 		DialogManager.start_dialog(dialog)
 		await DialogManager.ended_dialog
 
-		# This delay is needed, because otherwise the dialog box doesn't activate.
-		await SceneManager.async_delay(0.5)
+	_player.disable_actions()
+	
+	# This delay is needed, because otherwise the dialog box doesn't activate.
+	await SceneManager.async_delay(0.5)
 
 	_teleport_away_forest_spirits()
 
@@ -62,5 +64,7 @@ func _async_show_cutscene_before_boss_fight() -> void:
 
 	# Hide the cutscene version of the queen in order to spawn the boss version elsewhere.
 	_queen_sprite.hide()
+
+	_player.enable_actions()
 
 
