@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://da0dxsnqvwsi6"]
+[gd_scene load_steps=29 format=3 uid="uid://da0dxsnqvwsi6"]
 
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_kajif"]
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_kv7nl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="7_c16yb"]
 [ext_resource type="Texture2D" uid="uid://din0ac6csiajt" path="res://npcs/forest_spirits/dog_forest_spirit/dog_forest_spirit.png" id="8_0floo"]
 [ext_resource type="Texture2D" uid="uid://cu2cg742ep2pb" path="res://npcs/forest_spirits/frog_forest_spirit/frog_forest_spirit.png" id="9_b7s4o"]
+[ext_resource type="Texture2D" uid="uid://jerd52bcfbxu" path="res://npcs/forest_spirits/penguin_forest_spirit/penguin_forest_spirit.png" id="10_xc31g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1g0d1"]
 texture = ExtResource("1_kajif")
@@ -2044,14 +2045,36 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgb3o"]
+atlas = ExtResource("10_xc31g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pni84"]
+atlas = ExtResource("10_xc31g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aovn3"]
+atlas = ExtResource("10_xc31g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0gir"]
+atlas = ExtResource("10_xc31g")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nqnjf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wmm54")
+"texture": SubResource("AtlasTexture_xgb3o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vij8k")
+"texture": SubResource("AtlasTexture_pni84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aovn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0gir")
 }],
 "loop": true,
 "name": &"idle",
@@ -2132,6 +2155,8 @@ position = Vector2(107, -98)
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="QueenBossFightLoreManager/ForestSpirits/PenguinForestSpirit"]
 sprite_frames = SubResource("SpriteFrames_nqnjf")
 animation = &"idle"
+frame = 3
+frame_progress = 0.937498
 
 [node name="queen_boss_teleport_particles" parent="QueenBossFightLoreManager/ForestSpirits/PenguinForestSpirit" instance=ExtResource("7_2nb6n")]
 
