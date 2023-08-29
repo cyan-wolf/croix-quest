@@ -90,8 +90,12 @@ func _async_on_perform_attack_2() -> void:
 
 	await _async_teleport_queen(attack_2_teleport_pos)
 
+	# Enable shield particles.
 	_queen_shield_particle_emitter.global_position = _queen_boss.global_position
 	_queen_shield_particle_emitter.emitting = true
+
+	# Enable shield collision.
+	_queen_boss.enable_shield()
 
 	await SceneManager.async_delay(1.5)
 	# Async call.
@@ -116,7 +120,13 @@ func _async_on_perform_attack_2() -> void:
 
 	await SceneManager.async_delay(1.5)
 
+	# Disables shield particles.
 	_queen_shield_particle_emitter.emitting = false
+
+	await SceneManager.async_delay(1.0)
+
+	# Disables shield collision.
+	_queen_boss.disable_shield()
 
 	if _queen_has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).

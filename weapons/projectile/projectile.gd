@@ -31,10 +31,13 @@ func _ready():
 # This is supposed to destroy the projectile if it hits an enemy.
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	match _source:
+		# Projectile was fired by the player.
 		Source.PLAYER:
+			# Happens when the projectile hits an enemy (or a boss).
 			if other_hitbox.is_in_group("enemy_hitbox"):
 				self.projectile_hit.emit()
 
+		# Projectile was fired by someone else.
 		_:
 			if other_hitbox.is_in_group("player_hitbox"):
 				self.projectile_hit.emit()

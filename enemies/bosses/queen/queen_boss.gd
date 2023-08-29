@@ -9,6 +9,8 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 @onready var _player: Player = SceneManager.find_player()
 
+var _should_take_damage := true
+
 func _ready() -> void:
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 
@@ -25,8 +27,18 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	if other_hitbox.is_in_group("projectile_hitbox"):
 		var projectile: Projectile = other_hitbox.get_parent()
 
-		if projectile.is_from_player():
+		if projectile.is_from_player() and _should_take_damage:
 			self.health_component.take_damage(projectile.get_damage())
+
+
+## Only enables the shield's collision, the particles are handled by the boss fight manager.
+func enable_shield() -> void:
+	_should_take_damage = false
+
+
+## Only disables the shield's collision, the particles are handled by the boss fight manager.
+func disable_shield() -> void:
+	_should_take_damage = true
 
 
 ## Plays `animation_name` for the specified `duration`.
