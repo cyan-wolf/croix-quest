@@ -3,6 +3,21 @@ extends Node2D
 @onready var _loading_screen: Control = self.get_node("CanvasLayer/LoadingScreen")
 @onready var _background_music_player: AudioStreamPlayer = self.get_node("BackgroundMusicPlayer")
 
+@export var _should_mute_game_volume_on_start := false
+
+func _ready() -> void:
+	if _should_mute_game_volume_on_start:
+		print_debug(
+			"Warning: Game volume is currently muted. Open the `SceneManager` scene to unmute. "
+			+ "Disable the `_should_mute_game_volume_on_start` export variable to unmute."
+		)
+
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(0.0),
+		)
+
+
 func load_scene_file(scene_path: String) -> void:
 	self.show_loading_screen()
 	self.get_tree().change_scene_to_file(scene_path)
