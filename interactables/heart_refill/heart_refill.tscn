@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0jw3re1tjv5g"]
+
+[ext_resource type="Texture2D" uid="uid://cr0p4ip36xxan" path="res://ui/hud/sprites/health_hearts/health_hearts.png" id="1_0krdv"]
+[ext_resource type="Script" path="res://interactables/heart_refill/heart_refill.gd" id="1_ffafl"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="2_lugot"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_46w2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxior"]
+atlas = ExtResource("1_0krdv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etnpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxior")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lxyo"]
+radius = 8.0
+
+[node name="HeartRefill" type="Node2D"]
+script = ExtResource("1_ffafl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_etnpl")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("2_lugot")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("3_46w2s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+shape = SubResource("CircleShape2D_7lxyo")

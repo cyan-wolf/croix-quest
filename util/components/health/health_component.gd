@@ -6,6 +6,8 @@ signal death
 
 @export var _health: int = 8
 
+var _max_health = _health
+
 func get_health() -> int:
 	return _health
 
@@ -30,4 +32,8 @@ func take_damage(amount: int) -> void:
 func is_dead() -> bool:
 	return _health == 0
 
+
+func gain_health(amount: int) -> void:
+	_health = clampi(_health + amount, 0, _max_health)
+	self.health_changed.emit()
 

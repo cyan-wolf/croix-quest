@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=18 format=3 uid="uid://crddnqharh8e8"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_uhrtc"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dkkf36s50im0l" path="res://enemies/melee_enemy/melee_enemy.tscn" id="6_1753n"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="7_bc8ii"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="7_ff5o7"]
+[ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="9_jgyvx"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="9_v88fk"]
+[ext_resource type="PackedScene" uid="uid://d0st3mqxctevc" path="res://interactables/mana_crystal_refill/mana_crystal_refill.tscn" id="10_fksb4"]
+[ext_resource type="PackedScene" uid="uid://d0jw3re1tjv5g" path="res://interactables/heart_refill/heart_refill.tscn" id="11_syf1l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1xj57"]
 load_path = "res://.godot/imported/cobalt_dungeon_tileset.png-55cee8b5739292d7245ee89ff8c2db64.ctex"
@@ -239,3 +242,7 @@ position = Vector2(0, -33)
 
 [node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("9_v88fk")]
 position = Vector2(-591, 20)
+
+[node name="Chest" parent="." instance=ExtResource("9_jgyvx")]
+position = Vector2(-705, -7)
+_contents = Array[PackedScene]([ExtResource("10_fksb4"), ExtResource("11_syf1l")])
