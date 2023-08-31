@@ -18,8 +18,12 @@ const WEAPONS_DATA_PATH = "res://weapons/weapon_data"
 # Determines whether the weapon can be used.
 var _is_usable: bool = true
 
-var _weapon_types: Array = WeaponType.values() # YOOOOO if we want to make the player have only one at the start, we remove all but one, then as flags get completed we use push_back or some shit ('_'): what do you mean by this
-var _current_weapon_index: int = 0
+# A hash set that says what weapons the player can use.
+# By default, the player can only use the regular gun (it's added in `_ready()`).
+# But the player can gain more weapons by picking them up from the ground.
+var _usable_weapons_set := {}
+
+var _current_weapons_list: Array = []
 var _current_weapon_type := WeaponType.GUN
 var _is_reload_timer_on := false
 
@@ -29,6 +33,11 @@ var _bullet_scene := preload("res://weapons/projectile/projectile.tscn")
 var _weapon_reload_time: float = 0.1
 var _bullet_alive_time: float = 0.0
 var _bullet_damage: int = 0
+
+func _ready() -> void:
+	# Make sure the weapons list isn't empty.
+	_add_weapon_type(WeaponType.GUN)
+
 
 func _process(_delta) -> void:
 	_reload_timer.wait_time = _weapon_reload_time
@@ -55,20 +64,47 @@ func _process(_delta) -> void:
 			$muzzle.emitting = true
 			_is_reload_timer_on = true
 			$muzzle.restart()
-			
-	if Input.is_action_just_pressed("Weapon_Up"): #Switches weapons. TODO: flags for picking them up
-		_current_weapon_index = (_current_weapon_index + 1) % _weapon_types.size()
-		_current_weapon_type = _weapon_types[_current_weapon_index]
-	
-	if Input.is_action_just_pressed("Weapon_Down"):
-		_current_weapon_index = (_current_weapon_index - 1) % _weapon_types.size()
-		_current_weapon_type = _weapon_types[_current_weapon_index]
-	
-	_change_stats_based_on_current_weapon(_current_weapon_type)
+
+	# Controls for selecting weapons.
+	_manage_weapon_selection()
 
 
 func _on_weapon_reload_timeout() -> void:
 	_is_reload_timer_on = false
+
+
+## Lets the player use the scroll wheel to change between the their usable weapons.
+func _manage_weapon_selection() -> void:
+	var current_weapon_index: int
+
+	if Input.is_action_just_pressed("Weapon_Up"):
+		current_weapon_index = (current_weapon_index + 1) % _current_weapons_list.size()
+	
+	if Input.is_action_just_pressed("Weapon_Down"):
+		current_weapon_index = (current_weapon_index - 1) % _current_weapons_list.size()
+	
+	_current_weapon_type = _current_weapons_list[current_weapon_index]
+
+	_change_stats_based_on_current_weapon(_current_weapon_type)
+
+
+func _add_weapon_type(weapon_type: WeaponType) -> void:
+	# Since GDScript doesn't have hash sets, this variable 
+	# is technically a `Dictionary` with dummy values (i.e. null).
+	_usable_weapons_set[weapon_type] = null
+
+	# Update the weapons list since a new weapon might have been added.
+	_adjust_weapons_list_using_usable_weapons_set()
+
+
+# Called automatically by `_add_weapon_type`.
+func _adjust_weapons_list_using_usable_weapons_set() -> void:
+	# Reset the current weapons list since it will be adjusted.
+	_current_weapons_list = []
+
+	# Add the keys from the `_usable_weapons_set` (the actual values) to the weapons list.
+	for weapon_type in _usable_weapons_set.keys():
+		_current_weapons_list.push_back(weapon_type)
 
 
 func _change_stats_based_on_current_weapon(weapon_type: int) -> void:
