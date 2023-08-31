@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ia1g7ujc2351"]
+
+[ext_resource type="Script" path="res://interactables/weapon_items/weapon_item.gd" id="1_585c5"]
+[ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="2_21hvx"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="3_sn3qu"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="4_33x42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtwhf"]
+atlas = ExtResource("2_21hvx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qo05e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtwhf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h870n"]
+radius = 8.03355
+height = 26.0
+
+[node name="GunWeaponItem" type="Node2D"]
+script = ExtResource("1_585c5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qo05e")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("3_sn3qu")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("4_33x42")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+rotation = -1.58818
+shape = SubResource("CapsuleShape2D_h870n")

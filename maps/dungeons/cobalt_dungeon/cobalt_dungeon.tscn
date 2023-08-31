@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=22 format=3 uid="uid://crddnqharh8e8"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_uhrtc"]
@@ -9,10 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="7_ff5o7"]
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="9_jgyvx"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="9_v88fk"]
-[ext_resource type="PackedScene" uid="uid://d0st3mqxctevc" path="res://interactables/mana_crystal_refill/mana_crystal_refill.tscn" id="10_fksb4"]
-[ext_resource type="PackedScene" uid="uid://d0jw3re1tjv5g" path="res://interactables/heart_refill/heart_refill.tscn" id="11_syf1l"]
+[ext_resource type="PackedScene" uid="uid://dp4xxd8cp43fy" path="res://interactables/weapon_items/shotgun_weapon_item.tscn" id="10_fvbj4"]
+[ext_resource type="PackedScene" uid="uid://bllx52mnfssvd" path="res://interactables/weapon_items/sniper_weapon_item.tscn" id="11_5bgxm"]
 [ext_resource type="PackedScene" uid="uid://dj3ij8ofoj04" path="res://interactables/defense_boost/defense_boost.tscn" id="12_gjrst"]
 [ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="13_se12k"]
+[ext_resource type="PackedScene" uid="uid://cmg4pa7bpd26i" path="res://interactables/weapon_items/smg_weapon_item.tscn" id="14_1kelo"]
+[ext_resource type="PackedScene" uid="uid://ia1g7ujc2351" path="res://interactables/weapon_items/gun_weapon_item.tscn" id="14_vhhuw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1xj57"]
 load_path = "res://.godot/imported/cobalt_dungeon_tileset.png-55cee8b5739292d7245ee89ff8c2db64.ctex"
@@ -246,8 +248,8 @@ position = Vector2(0, -33)
 position = Vector2(-591, 20)
 
 [node name="Chest1" parent="." instance=ExtResource("9_jgyvx")]
-position = Vector2(-705, -7)
-_contents = Array[PackedScene]([ExtResource("10_fksb4"), ExtResource("11_syf1l")])
+position = Vector2(-768, -14)
+_contents = Array[PackedScene]([ExtResource("10_fvbj4"), ExtResource("11_5bgxm")])
 
 [node name="Chest2" parent="." instance=ExtResource("9_jgyvx")]
 position = Vector2(-823, -13)
@@ -256,3 +258,7 @@ _contents = Array[PackedScene]([ExtResource("12_gjrst")])
 [node name="Chest3" parent="." instance=ExtResource("9_jgyvx")]
 position = Vector2(-914, -11)
 _contents = Array[PackedScene]([ExtResource("13_se12k")])
+
+[node name="Chest" parent="." instance=ExtResource("9_jgyvx")]
+position = Vector2(-714, -15)
+_contents = Array[PackedScene]([ExtResource("14_1kelo"), ExtResource("14_vhhuw")])

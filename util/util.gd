@@ -1,10 +1,18 @@
 extends Node
 class_name Util
 
-# Utility enum for keeping track of a character's direction.
+## Utility enum for keeping track of a character's direction.
 enum Direction {
 	RIGHT = 0,
 	LEFT = 1,
+}
+
+## Utility enum for keeping track of a player's weapon.
+enum WeaponType {
+	GUN = 0,
+	SHOTGUN = 1,
+	SNIPER = 2,
+	SMG = 3,
 }
 
 ## Returns an array of size `amount` containing unique random elements from `array`.

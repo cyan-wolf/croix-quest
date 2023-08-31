@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 func _on_player_interact() -> void:
+	# TODO: Make this actually do somehting.
 	print_debug("Placeholder: Player picked up a defense boost.")
 
 	self.queue_free()

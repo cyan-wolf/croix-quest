@@ -152,6 +152,11 @@ func set_animation(animation: String):
 	#_weapon_sprite.flip_h = (sprite_direction == "Left") #ANTHONY REMEMBER TO FIX THIS GOD DAMN # ('_'): what is going on here
 
 
+## Allows the player to use this weapon.
+func add_weapon_type(weapon_type: Util.WeaponType) -> void:
+	_weapon.add_weapon_type(weapon_type)
+
+
 func _get_input_direction() -> Vector2:
 	var x := int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")) 
 	var y := int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))

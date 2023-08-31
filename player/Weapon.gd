@@ -2,13 +2,6 @@ extends Node2D
 
 const Projectile := preload("res://weapons/projectile/projectile.gd")
 
-enum WeaponType {
-	GUN = 0,
-	SHOTGUN = 1,
-	SNIPER = 2,
-	SMG = 3,
-}
-
 const WEAPONS_DATA_PATH = "res://weapons/weapon_data"
 
 @onready var _reload_timer = $WeaponReload
@@ -24,7 +17,8 @@ var _is_usable: bool = true
 var _usable_weapons_set := {}
 
 var _current_weapons_list: Array = []
-var _current_weapon_type := WeaponType.GUN
+var _current_weapon_index: int = 0
+var _current_weapon_type := Util.WeaponType.GUN
 var _is_reload_timer_on := false
 
 # These fields should not be exported; these are set depending on the current weapon.
@@ -36,7 +30,7 @@ var _bullet_damage: int = 0
 
 func _ready() -> void:
 	# Make sure the weapons list isn't empty.
-	_add_weapon_type(WeaponType.GUN)
+	self.add_weapon_type(Util.WeaponType.GUN)
 
 
 func _process(_delta) -> void:
@@ -73,31 +67,31 @@ func _on_weapon_reload_timeout() -> void:
 	_is_reload_timer_on = false
 
 
-## Lets the player use the scroll wheel to change between the their usable weapons.
-func _manage_weapon_selection() -> void:
-	var current_weapon_index: int
-
-	if Input.is_action_just_pressed("Weapon_Up"):
-		current_weapon_index = (current_weapon_index + 1) % _current_weapons_list.size()
-	
-	if Input.is_action_just_pressed("Weapon_Down"):
-		current_weapon_index = (current_weapon_index - 1) % _current_weapons_list.size()
-	
-	_current_weapon_type = _current_weapons_list[current_weapon_index]
-
-	_change_stats_based_on_current_weapon(_current_weapon_type)
-
-
-func _add_weapon_type(weapon_type: WeaponType) -> void:
+# This function is public so that it can be called in the `Player` script; 
+# does nothing if `weapon_type` is already in the weapons list.
+func add_weapon_type(weapon_type: Util.WeaponType) -> void:
 	# Since GDScript doesn't have hash sets, this variable 
 	# is technically a `Dictionary` with dummy values (i.e. null).
 	_usable_weapons_set[weapon_type] = null
-
+	
 	# Update the weapons list since a new weapon might have been added.
 	_adjust_weapons_list_using_usable_weapons_set()
 
 
-# Called automatically by `_add_weapon_type`.
+## Lets the player use the scroll wheel to change between the their usable weapons.
+func _manage_weapon_selection() -> void:
+	if Input.is_action_just_pressed("Weapon_Up"):
+		_current_weapon_index = (_current_weapon_index + 1) % _current_weapons_list.size()
+	
+	if Input.is_action_just_pressed("Weapon_Down"):
+		_current_weapon_index = (_current_weapon_index - 1) % _current_weapons_list.size()
+	
+	_current_weapon_type = _current_weapons_list[_current_weapon_index]
+
+	_change_stats_based_on_current_weapon(_current_weapon_type)
+
+
+# Called automatically by `self.add_weapon_type`.
 func _adjust_weapons_list_using_usable_weapons_set() -> void:
 	# Reset the current weapons list since it will be adjusted.
 	_current_weapons_list = []
@@ -154,13 +148,13 @@ func load_weapon_data(weapon_type: int) -> Dictionary:
 
 func get_weapon_filename(weapon_type: int) -> String:
 	match weapon_type:
-		WeaponType.GUN:
+		Util.WeaponType.GUN:
 			return "gun.json"
-		WeaponType.SHOTGUN:
+		Util.WeaponType.SHOTGUN:
 			return "shotgun.json"
-		WeaponType.SNIPER:
+		Util.WeaponType.SNIPER:
 			return "sniper.json"
-		WeaponType.SMG:
+		Util.WeaponType.SMG:
 			return "smg.json"
 		_:
 			return "gun.json" # Default weapon data for unknown types.
@@ -170,7 +164,7 @@ func get_weapon_filename(weapon_type: int) -> String:
 # TODO: Add more weapons.
 func _fire() -> void:
 	match _current_weapon_type:
-		WeaponType.GUN:
+		Util.WeaponType.GUN:
 			var bullet_instance := _bullet_scene.instantiate() as Projectile
 
 			var bullet_rotation := self.rotation
@@ -187,7 +181,7 @@ func _fire() -> void:
 
 			self.get_tree().get_root().add_child(bullet_instance)
 
-		WeaponType.SHOTGUN:
+		Util.WeaponType.SHOTGUN:
 			for i in range(3):
 				var bullet_instance := _bullet_scene.instantiate() as Projectile
 
@@ -205,7 +199,7 @@ func _fire() -> void:
 		
 				self.get_tree().get_root().add_child(bullet_instance)	
 
-		WeaponType.SNIPER:
+		Util.WeaponType.SNIPER:
 			var bullet_instance := _bullet_scene.instantiate() as Projectile
 
 			var bullet_rotation := self.rotation
@@ -222,7 +216,7 @@ func _fire() -> void:
 
 			self.get_tree().get_root().add_child(bullet_instance)
 
-		WeaponType.SMG:
+		Util.WeaponType.SMG:
 			var bullet_instance := _bullet_scene.instantiate()
 
 			var bullet_rotation := self.rotation + randf_range(-0.2, 0.2)
