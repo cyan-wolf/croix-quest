@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj3ij8ofoj04"]
+
+[ext_resource type="Script" path="res://interactables/defense_boost/defense_boost.gd" id="1_rrs0c"]
+[ext_resource type="Texture2D" uid="uid://bfjdr8isnsl7g" path="res://interactables/defense_boost/defense_boost.png" id="1_wuawn"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="2_y2vu8"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_dn6l5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q45vr"]
+atlas = ExtResource("1_wuawn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4a3ra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q45vr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axgig"]
+radius = 7.0
+
+[node name="DefenseBoost" type="Node2D"]
+script = ExtResource("1_rrs0c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4a3ra")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("2_y2vu8")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("3_dn6l5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+shape = SubResource("CircleShape2D_axgig")

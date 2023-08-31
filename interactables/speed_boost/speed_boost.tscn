@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://wq5tnw6pgala"]
+
+[ext_resource type="Script" path="res://interactables/speed_boost/speed_boost.gd" id="1_6tcdd"]
+[ext_resource type="Texture2D" uid="uid://bwv0o6pqp2ubd" path="res://interactables/speed_boost/speed_boost.png" id="1_i5axs"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="2_akhj8"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_xx1ce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmw1p"]
+atlas = ExtResource("1_i5axs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ma2x7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmw1p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmqnj"]
+radius = 7.07107
+
+[node name="SpeedBoost" type="Node2D"]
+script = ExtResource("1_6tcdd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ma2x7")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("2_akhj8")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("3_xx1ce")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+shape = SubResource("CircleShape2D_nmqnj")

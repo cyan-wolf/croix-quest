@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=20 format=3 uid="uid://crddnqharh8e8"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_uhrtc"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="9_v88fk"]
 [ext_resource type="PackedScene" uid="uid://d0st3mqxctevc" path="res://interactables/mana_crystal_refill/mana_crystal_refill.tscn" id="10_fksb4"]
 [ext_resource type="PackedScene" uid="uid://d0jw3re1tjv5g" path="res://interactables/heart_refill/heart_refill.tscn" id="11_syf1l"]
+[ext_resource type="PackedScene" uid="uid://dj3ij8ofoj04" path="res://interactables/defense_boost/defense_boost.tscn" id="12_gjrst"]
+[ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="13_se12k"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1xj57"]
 load_path = "res://.godot/imported/cobalt_dungeon_tileset.png-55cee8b5739292d7245ee89ff8c2db64.ctex"
@@ -243,6 +245,14 @@ position = Vector2(0, -33)
 [node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("9_v88fk")]
 position = Vector2(-591, 20)
 
-[node name="Chest" parent="." instance=ExtResource("9_jgyvx")]
+[node name="Chest1" parent="." instance=ExtResource("9_jgyvx")]
 position = Vector2(-705, -7)
 _contents = Array[PackedScene]([ExtResource("10_fksb4"), ExtResource("11_syf1l")])
+
+[node name="Chest2" parent="." instance=ExtResource("9_jgyvx")]
+position = Vector2(-823, -13)
+_contents = Array[PackedScene]([ExtResource("12_gjrst")])
+
+[node name="Chest3" parent="." instance=ExtResource("9_jgyvx")]
+position = Vector2(-914, -11)
+_contents = Array[PackedScene]([ExtResource("13_se12k")])
