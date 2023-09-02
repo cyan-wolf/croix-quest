@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=55 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d1cs8arufufu5" path="res://particles/muzzle.tscn" id="8_ep5ee"]
 [ext_resource type="AudioStream" uid="uid://b6ypyusquahcu" path="res://sounds/sfx/shoot_sound/8bit_bomb_explosion.wav" id="11_kl2eo"]
 [ext_resource type="PackedScene" uid="uid://tfsw2lnthnk4" path="res://util/components/status_effect/status_effect_component.tscn" id="12_klq1u"]
+[ext_resource type="PackedScene" uid="uid://bhmk1l3q1rdmm" path="res://particles/player_trail_particles.tscn" id="13_avcf5"]
 
 [sub_resource type="Resource" id="Resource_kehnt"]
 script = ExtResource("2_0ex8n")
@@ -368,6 +369,9 @@ bus = &"sfx"
 one_shot = true
 
 [node name="StatusEffectComponent" parent="." instance=ExtResource("12_klq1u")]
+
+[node name="player_trail_particles" parent="." instance=ExtResource("13_avcf5")]
+emitting = true
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Weapon/WeaponReload" to="Weapon" method="_on_weapon_reload_timeout"]
