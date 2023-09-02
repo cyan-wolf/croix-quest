@@ -45,6 +45,7 @@ color_ramp = SubResource("GradientTexture1D_njb5j")
 hue_variation_max = 0.08
 
 [node name="player_trail_particles" type="GPUParticles2D"]
+emitting = false
 amount = 70
 process_material = SubResource("ParticleProcessMaterial_juvlm")
 lifetime = 3.0

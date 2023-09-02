@@ -1,6 +1,8 @@
 extends Node
 class_name Util
 
+### TYPE DEFINITIONS ###
+
 ## Utility enum for keeping track of a character's direction.
 enum Direction {
 	RIGHT = 0,
@@ -14,6 +16,25 @@ enum WeaponType {
 	SNIPER = 2,
 	SMG = 3,
 }
+
+## Utility class for keeping track of status effects.
+class StatusEffect:
+	var type: StatusEffectType 
+	var duration_in_secs: float = 60.0 # 1 minute
+
+	func _init(type_: StatusEffectType, duration_in_secs_: float) -> void:
+		self.type = type_
+		self.duration_in_secs = duration_in_secs_
+
+
+enum StatusEffectType {
+	NONE = 0,
+	SPEED = 1,
+	DEFENSE = 2,
+	NO_MANA_CONSUMPTION = 4,
+}
+
+### STATIC FUNCTION DEFINITIONS ###
 
 ## Returns an array of size `amount` containing unique random elements from `array`.
 static func choose_random_elements_from_array(array: Array, amount: int) -> Array:

@@ -14,6 +14,9 @@ const DASH_MULTIPLIER := 1.65
 # Manages the player's mana value.
 @export var mana_component: ManaComponent
 
+# Manages the player's status effects.
+@onready var status_effect_component: StatusEffectComponent = self.get_node("StatusEffectComponent")
+
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _weapon: PlayerWeapon = self.get_node("Weapon")
 
