@@ -48,7 +48,7 @@ func _physics_process(_delta):
 	var input_direction := _get_input_direction()
 	_current_sprite_direction = _get_sprite_direction()
 
-	self.velocity = input_direction * _current_speed
+	self.velocity = input_direction * _current_speed * self.status_effect_component.get_computed_speed_multiplier()
 	self.move_and_slide()
 
 	if input_direction == Vector2.ZERO or input_direction == Vector2(0, 0):
@@ -124,18 +124,23 @@ func _on_death() -> void:
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
+	var defense_multiplier := self.status_effect_component.get_computed_defense_multiplier()
+
 	if other_hitbox.is_in_group("placeholder_enemy"):
 		self.health_component.take_damage(1)
 
 	elif other_hitbox.is_in_group("enemy_melee_attack_hitbox"):
 		var enemy: MeleeEnemy = other_hitbox.get_parent()
-		self.health_component.take_damage(enemy.get_damage())
+		
+		var damage := enemy.get_damage() * defense_multiplier
+		self.health_component.take_damage(damage)
 
 	elif other_hitbox.is_in_group("projectile_hitbox"):
 		var projectile: Projectile = other_hitbox.get_parent()
-	
+		
 		if not projectile.is_from_player():
-			self.health_component.take_damage(projectile.get_damage())
+			var damage := projectile.get_damage() * defense_multiplier
+			self.health_component.take_damage(damage)
 
 
 # Makes it so that the player can act (move, shoot, use spells, etc).
@@ -160,11 +165,13 @@ func add_weapon_type(weapon_type: Util.WeaponType) -> void:
 	_weapon.add_weapon_type(weapon_type)
 
 
+## Gives the player a status effect.
+func add_status_effect(effect: Util.StatusEffect) -> void:
+	self.status_effect_component.gain_effect(effect)
+
+
 func _get_input_direction() -> Vector2:
-	var x := int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")) 
-	var y := int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
-	# Without normalized, diagonal movement is faster than horizontal or vertical.
-	var input_direction := Vector2(x, y).normalized()
+	var input_direction := Input.get_vector( "move_left", "move_right", "move_up", "move_down")
 	return input_direction
 
 
