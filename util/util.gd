@@ -31,7 +31,7 @@ enum StatusEffectType {
 	NONE = 0,
 	SPEED = 1,
 	DEFENSE = 2,
-	NO_MANA_CONSUMPTION = 4,
+	NO_MANA_CONSUMPTION = 4, # unused
 }
 
 ### STATIC FUNCTION DEFINITIONS ###
@@ -48,4 +48,11 @@ static func choose_random_elements_from_array(array: Array, amount: int) -> Arra
 	# Returns the first elements given by `amount`.
 	# Example: If `amount` = 2, this function would return [2, 3]. 
 	return copied_array.slice(0, amount)
+
+
+## Returns `true` depending on `probability`.
+## Example: If `probability` is 0.45, then this returns `true` 45% of the time.
+static func return_true_given_probability(probability: float) -> bool:
+	randomize()
+	return randf() < probability
 

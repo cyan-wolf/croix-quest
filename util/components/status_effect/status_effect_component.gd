@@ -57,11 +57,9 @@ func get_computed_defense_multiplier() -> int:
 	const PROBABILITY_TO_CANCEL_DAMAGE := 0.50	# 50% chance
 
 	if _current_effects_map.has(Util.StatusEffectType.DEFENSE):
-		randomize()
-
 		# This expression is true depending on `PROBABILITY_TO_CANCEL_DAMAGE`.
 		# Example: If the probability is 0.45, then this is true 45% of the time.
-		var should_cancel_damage := randf() < PROBABILITY_TO_CANCEL_DAMAGE
+		var should_cancel_damage := Util.return_true_given_probability(PROBABILITY_TO_CANCEL_DAMAGE)
 
 		if should_cancel_damage:
 			return 0	# complete damage reduction
@@ -70,5 +68,7 @@ func get_computed_defense_multiplier() -> int:
 
 	else:
 		return 1		# regular damage
+
+
 
 
