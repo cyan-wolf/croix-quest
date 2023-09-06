@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb8jb0kbmvvor"]
+
+[ext_resource type="Script" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch_door.gd" id="1_l6eqh"]
+[ext_resource type="Texture2D" uid="uid://bbqu7iiof2r37" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch_door.png" id="1_lk67c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4whc6"]
+atlas = ExtResource("1_lk67c")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avews"]
+atlas = ExtResource("1_lk67c")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rw1p1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4whc6")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avews")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="WallDiscSwitchDoor" type="Node2D"]
+script = ExtResource("1_l6eqh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rw1p1")
+animation = &"closed"

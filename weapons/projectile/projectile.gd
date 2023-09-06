@@ -37,6 +37,10 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 			if other_hitbox.is_in_group("enemy_hitbox"):
 				self.projectile_hit.emit()
 
+			# Happens when the projectile hits something like a projectile-activated switch.
+			if other_hitbox.is_in_group("projectile_interactable_hitbox"):
+				self.projectile_hit.emit()
+
 		# Projectile was fired by someone else.
 		_:
 			if other_hitbox.is_in_group("player_hitbox"):
