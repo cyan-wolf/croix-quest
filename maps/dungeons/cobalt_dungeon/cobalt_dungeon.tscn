@@ -17,9 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="14_vef15"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_syqcd"]
-vertices = PackedVector2Array(-844, -29, -845, -143, -806, -142, -805, -28, -808, 5, -579, -29, -580, 7, -741, 228, -910, 229, -909, 162, -845, 163, -957, 4, -957, -30, -844, 4, -807, 163, -741, 163)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 0, 13), PackedInt32Array(13, 0, 4), PackedInt32Array(10, 13, 4, 14), PackedInt32Array(7, 10, 14), PackedInt32Array(7, 14, 15)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -808, 5, -807, 163, -741, 163, -741, 228, -910, 229, -909, 162, -845, 163, -844, 4, -957, 4, -957, -30, -844, -29, -845, -143, -806, -142, -805, -28)])
+vertices = PackedVector2Array(-805, -28, -579, -29, -580, 7, -808, 5, -844, -29, -844, 4, -741, 163, -738, 280, -909, 279, -807, 163, -909, 243, -909, 162, -845, 163, -957, 4, -957, -30, -1086, 280, -1086, 195, -1028, 195, -1027, 243)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(13, 14, 4, 5), PackedInt32Array(12, 5, 3, 9), PackedInt32Array(12, 9, 8, 10), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(8, 15, 18, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -808, 5, -807, 163, -741, 163, -738, 280, -909, 279, -1086, 280, -1086, 195, -1028, 195, -1027, 243, -909, 243, -909, 162, -845, 163, -844, 4, -957, 4, -957, -30, -844, -29, -805, -28)])
 
 [sub_resource type="Resource" id="Resource_5q3cx"]
 script = ExtResource("7_bc8ii")
