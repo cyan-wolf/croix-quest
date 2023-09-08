@@ -18,7 +18,7 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 @export var health_component: HealthComponent
 
-@onready var _player: Player = self.get_node("../Player")
+@onready var _player: Player = SceneManager.find_player()
 
 @onready var _nav_agent: NavigationAgent2D = self.get_node("NavigationAgent2D")
 

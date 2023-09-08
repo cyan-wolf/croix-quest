@@ -5,6 +5,8 @@ extends Node2D
 @onready var _teleporter_destination: Node2D = self.get_node("TeleporterDestination")
 
 @export var _show_loading_screen: bool = true
+# The teleporter only works if its active.
+@export var _active: bool = true
 
 func _ready() -> void:
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
@@ -15,7 +17,7 @@ func _ready() -> void:
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
-	if other_hitbox.is_in_group("player_hitbox"):
+	if other_hitbox.is_in_group("player_hitbox") and _active:
 		if _show_loading_screen:
 			SceneManager.show_loading_screen()
 			await SceneManager.async_delay(0.5)
@@ -26,4 +28,13 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 			await SceneManager.async_delay(0.5)
 			SceneManager.hide_loading_screen()
 
+
+## Activates the teleporter.
+func activate() -> void:
+	_active = true
+
+
+## Deactivates the teleporter.
+func deactivate() -> void:
+	_active = false
 

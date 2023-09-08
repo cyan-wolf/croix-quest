@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_477ki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3qpu"]
-size = Vector2(32, 32)
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsb8d"]
 atlas = ExtResource("1_yxk4s")
@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8lw0"]
-radius = 11.0454
+radius = 8.0
 
 [node name="PushableRock" type="AnimatableBody2D"]
 sync_to_physics = false
@@ -34,7 +34,6 @@ script = ExtResource("1_mx0po")
 shape = SubResource("RectangleShape2D_b3qpu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2ck0f")
 
 [node name="InteractionComponent" parent="." instance=ExtResource("2_4mgl8")]

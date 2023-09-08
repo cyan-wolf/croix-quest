@@ -174,7 +174,7 @@ layer_2/tile_data = PackedInt32Array(196605, 131072, 0, 196606, 131072, 0, 19660
 zoom = Vector2(3, 3)
 
 [node name="PushableRock" parent="." instance=ExtResource("4_4emnn")]
-position = Vector2(-639, 5)
+position = Vector2(-616, -7)
 
 [node name="Teleporter" parent="." instance=ExtResource("5_yst44")]
 position = Vector2(1, -26)
@@ -195,3 +195,8 @@ position = Vector2(-38, -9)
 
 [node name="WallDiscSwitch3" parent="WallDiscSwitchDoor/WallDiscSwitches" instance=ExtResource("7_mrcwc")]
 position = Vector2(75, -8)
+
+[node name="Teleporter" parent="WallDiscSwitchDoor" instance=ExtResource("5_yst44")]
+
+[node name="TeleporterDestination" parent="WallDiscSwitchDoor/Teleporter" instance=ExtResource("6_axfhp")]
+position = Vector2(0, 69)
