@@ -27,6 +27,7 @@ animations = [{
 radius = 8.0
 
 [node name="PushableRock" type="AnimatableBody2D"]
+y_sort_enabled = true
 sync_to_physics = false
 script = ExtResource("1_mx0po")
 

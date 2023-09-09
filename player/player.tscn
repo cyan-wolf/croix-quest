@@ -316,6 +316,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_a2tsp")
 health_component = SubResource("Resource_kehnt")

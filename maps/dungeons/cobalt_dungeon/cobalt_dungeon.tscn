@@ -71,9 +71,11 @@ stream = ExtResource("4_ipnw7")
 autoplay = true
 bus = &"music"
 
-[node name="PropsCollection" type="Node" parent="."]
+[node name="PropsCollection" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="EnemiesCollection" type="Node" parent="PropsCollection"]
+[node name="EnemiesCollection" type="Node2D" parent="PropsCollection"]
+y_sort_enabled = true
 
 [node name="MeleeEnemy" parent="PropsCollection/EnemiesCollection" node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("6_1753n")]
 position = Vector2(-894, 218)
@@ -89,7 +91,8 @@ health_component = SubResource("Resource_ei20k")
 
 [node name="TauronWorshiperEnemySprite" parent="PropsCollection/EnemiesCollection/MeleeEnemy2" instance=ExtResource("7_ff5o7")]
 
-[node name="TeleportersCollection" type="Node" parent="PropsCollection"]
+[node name="TeleportersCollection" type="Node2D" parent="PropsCollection"]
+y_sort_enabled = true
 
 [node name="DungeonEntranceTeleporter" parent="PropsCollection/TeleportersCollection" instance=ExtResource("5_jc3a4")]
 position = Vector2(0, -33)
@@ -109,7 +112,8 @@ position = Vector2(-1025, -892)
 [node name="TeleporterDestination" parent="PropsCollection/TeleportersCollection/Teleporter2" instance=ExtResource("9_v88fk")]
 position = Vector2(0.00012207, -295)
 
-[node name="ChestCollection" type="Node" parent="PropsCollection"]
+[node name="ChestCollection" type="Node2D" parent="PropsCollection"]
+y_sort_enabled = true
 
 [node name="ShotgunChest" parent="PropsCollection/ChestCollection" instance=ExtResource("9_jgyvx")]
 position = Vector2(-824, 267)
@@ -119,7 +123,8 @@ _contents = Array[PackedScene]([ExtResource("10_fvbj4")])
 position = Vector2(-1025, -1835)
 _contents = Array[PackedScene]([ExtResource("14_1kelo")])
 
-[node name="WallDiscDoorsCollection" type="Node" parent="PropsCollection"]
+[node name="WallDiscDoorsCollection" type="Node2D" parent="PropsCollection"]
+y_sort_enabled = true
 
 [node name="WallDiscSwitchDoor" parent="PropsCollection/WallDiscDoorsCollection" instance=ExtResource("12_5cdu5")]
 position = Vector2(-872, -544)
@@ -159,7 +164,8 @@ position = Vector2(-127, 239)
 [node name="WallDiscSwitch4" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor2/WallDiscSwitches" instance=ExtResource("13_dqbec")]
 position = Vector2(128, 239)
 
-[node name="PushableRocksCollection" type="Node" parent="PropsCollection"]
+[node name="PushableRocksCollection" type="Node2D" parent="PropsCollection"]
+y_sort_enabled = true
 
 [node name="PushableRock" parent="PropsCollection/PushableRocksCollection" instance=ExtResource("14_vef15")]
 position = Vector2(-902, -798)

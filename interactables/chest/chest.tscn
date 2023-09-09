@@ -36,6 +36,7 @@ animations = [{
 size = Vector2(26, 19)
 
 [node name="Chest" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_d18jt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
