@@ -16,11 +16,16 @@ signal state_changed(old_state: EnemyState, new_state: EnemyState)
 
 const Projectile := preload("res://weapons/projectile/projectile.gd")
 
-@export var _enemy_sprite: AnimatedSprite2D
+@export var _sprite: AnimatedSprite2D
 @export var _speed: float = 35.0
 @export var _damage: int = 1
-## The minimum distance before the enemy starts following the player.
+## The minimum distance before the enemy can follow the player.
 @export var _min_player_follow_distance: float = 80.0
+
+# This is the same as the `target_desired_distance` field on the nav agent.
+## The minimun distance before the enemy can attack the player.
+@export var _min_player_attack_distance: float = 32.0
+
 ## The reciprocal of this value is the wait time (in seconds) between attacks.
 # @export var _attack_speed: float = 1.0
 
@@ -28,10 +33,13 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 @onready var _player: Player = SceneManager.find_player()
 
+# This is the "main" node of the enemy.
 @onready var _char_body: CharacterBody2D = self.get_parent()
 
 @onready var _nav_agent: NavigationAgent2D = self.get_node("NavigationAgent2D")
 
+# The hitbox used for when taking damage.
+# This node must be added manually to the `EnemyComponent`. 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 # TODO: Seperate the melee attack stuff into a `MeleeAttackComponent`.
@@ -47,6 +55,8 @@ var _current_state := EnemyState.IDLE
 func _ready():
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	self.health_component.death.connect(_on_death)
+
+	_nav_agent.target_desired_distance = _min_player_attack_distance
 
 	# _melee_attack_timer.wait_time = 1.0 / _attack_speed
 	# _melee_attack_timer.timeout.connect(_on_melee_attack_timer_timeout)
@@ -71,7 +81,8 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 
 func _on_death() -> void:
-	self.queue_free()
+	# Free the `_char_body` since `self` only refers to the `EnemyComponent`.
+	_char_body.queue_free()
 
 
 func _physics_process(_delta: float) -> void:
@@ -97,7 +108,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		pass
 
-	# _update_sprite_facing_direction()
+	_update_sprite_facing_direction()
 
 
 func get_damage() -> int:
@@ -111,7 +122,7 @@ func _update_current_enemy_state() -> void:
 		_current_state = EnemyState.IDLE
 		self.state_changed.emit(old_state, _current_state)
 
-		_enemy_sprite.play("idle")
+		_sprite.play("idle")
 
 	# The enemy should be attacking if it has "reached" (gotten close enough)
 	# to the player.
@@ -120,7 +131,7 @@ func _update_current_enemy_state() -> void:
 		_current_state = EnemyState.ATTACKING
 		self.state_changed.emit(old_state, _current_state)
 
-		_enemy_sprite.play("attack")
+		_sprite.play("attack")
 
 	# Otherwise, it should be following the player.
 	else:
@@ -128,11 +139,21 @@ func _update_current_enemy_state() -> void:
 		_current_state = EnemyState.FOLLOWING
 		self.state_changed.emit(old_state, _current_state)
 
-		_enemy_sprite.play("follow")
+		_sprite.play("follow")
 
 
 func _set_target_pos(pos: Vector2) -> void:
 	_nav_agent.target_position = pos
+
+
+func _update_sprite_facing_direction() -> void:
+	# The enemy is to the left of the player, so the sprite should face normally.
+	if self.global_position.x < _player.global_position.x:
+		_sprite.flip_h = false
+
+	# The enemy is to the right of the player, so the sprite should be flipped.
+	else:
+		_sprite.flip_h = true
 
 
 # # Turns the sprite direction `Direction` enum into an equivalent vector.
@@ -152,10 +173,10 @@ func _set_target_pos(pos: Vector2) -> void:
 # func _flip_sprite_depending_on_direction() -> void:
 # 	match _current_sprite_direction:
 # 		Util.Direction.RIGHT:
-# 			_enemy_sprite.flip_h = false
+# 			_sprite.flip_h = false
 			
 # 		Util.Direction.LEFT:
-# 			_enemy_sprite.flip_h = true
+# 			_sprite.flip_h = true
 
 
 # func _update_sprite_facing_direction() -> void:

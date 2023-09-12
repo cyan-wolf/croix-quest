@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=13 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cb8jb0kbmvvor" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch_door.tscn" id="6_7b027"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
 [ext_resource type="PackedScene" uid="uid://dsdmtf1ayd80i" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch.tscn" id="7_mrcwc"]
+[ext_resource type="PackedScene" uid="uid://64s3ugpjsat4" path="res://enemies/test_enemy/test_enemy.tscn" id="8_qhnvh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vhdiu"]
 load_path = "res://.godot/imported/ulmus_dungeon_tileset.png-04cfccd0b586914818361b435c065102.ctex"
@@ -141,6 +142,11 @@ physics_layer_1/collision_layer = 5
 physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_ijq24")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_71es4"]
+vertices = PackedVector2Array(-651, -46, -499, -46, -499, 19, -653, 18)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-651, -46, -499, -46, -499, 19, -653, 18)])
+
 [node name="UlmusDungeon" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -168,13 +174,16 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(196605, 131072, 0, 196606, 131072, 0, 196607, 131072, 0, 131072, 131072, 0, 131073, 131072, 0, 131074, 131072, 0, 262141, 0, 0, 327678, 0, 0, 262142, 0, 0, 327677, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 262146, 0, 0, 262145, 0, 0, 262144, 0, 0, 327679, 0, 0, 196604, 65536, 2, 131075, 196608, 2, 262140, 393216, 2, 327676, 393216, 2, 196611, 458752, 2, 262147, 458752, 2, 131031, 131072, 0, 131032, 131072, 0, 131033, 131072, 0, 131034, 131072, 0, 131035, 131072, 0, 131036, 131072, 0, 131037, 131072, 0, 131038, 131072, 0, 131039, 131072, 0, 131040, 131072, 0, 131030, 65536, 2, 131041, 196608, 2, 196567, 0, 0, 262103, 0, 0, 262104, 0, 0, 196568, 0, 0, 196569, 0, 0, 196570, 0, 0, 196571, 0, 0, 196572, 0, 0, 196573, 0, 0, 196574, 0, 0, 196575, 0, 0, 196576, 0, 0, 262111, 0, 0, 262110, 0, 0, 262109, 0, 0, 262108, 0, 0, 262107, 0, 0, 262106, 0, 0, 262105, 0, 0, 262112, 0, 0, 196566, 393216, 2, 262102, 393216, 2, 196577, 458752, 2, 262113, 458752, 2)
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_71es4")
+
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
 [node name="PushableRock" parent="." instance=ExtResource("4_4emnn")]
-position = Vector2(-616, -7)
+position = Vector2(-646, 12)
 
 [node name="Teleporter" parent="." instance=ExtResource("5_yst44")]
 position = Vector2(1, -26)
@@ -200,3 +209,6 @@ position = Vector2(75, -8)
 
 [node name="TeleporterDestination" parent="WallDiscSwitchDoor/Teleporter" instance=ExtResource("6_axfhp")]
 position = Vector2(0, 69)
+
+[node name="TestEnemy" parent="." instance=ExtResource("8_qhnvh")]
+position = Vector2(-641, -23)
