@@ -1,13 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=20 format=3 uid="uid://crddnqharh8e8"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="TileSet" uid="uid://bhti7kqt3devo" path="res://tilesets/cobalt_dungeon_tileset/cobalt_dungeon.tres" id="2_yfp3v"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_uhrtc"]
 [ext_resource type="AudioStream" uid="uid://c1s8nfwmg67i5" path="res://sounds/music/Hero Immortal/Hero Immortal.mp3" id="4_ipnw7"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_jc3a4"]
-[ext_resource type="PackedScene" uid="uid://dkkf36s50im0l" path="res://enemies/melee_enemy/melee_enemy.tscn" id="6_1753n"]
-[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="7_bc8ii"]
-[ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="7_ff5o7"]
+[ext_resource type="PackedScene" uid="uid://u1kik48hv8m7" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_melee_enemy.tscn" id="5_r7dgi"]
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="9_jgyvx"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="9_v88fk"]
 [ext_resource type="PackedScene" uid="uid://dp4xxd8cp43fy" path="res://interactables/weapon_items/shotgun_weapon_item.tscn" id="10_fvbj4"]
@@ -25,14 +23,6 @@
 vertices = PackedVector2Array(-805, -28, -579, -29, -580, 7, -808, 5, -844, -29, -844, 4, -741, 163, -738, 280, -909, 279, -807, 163, -909, 243, -909, 162, -845, 163, -957, 4, -957, -30, -1086, 280, -1086, 195, -1028, 195, -1027, 243)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(13, 14, 4, 5), PackedInt32Array(12, 5, 3, 9), PackedInt32Array(12, 9, 8, 10), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(8, 15, 18, 10)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -808, 5, -807, 163, -741, 163, -738, 280, -909, 279, -1086, 280, -1086, 195, -1028, 195, -1027, 243, -909, 243, -909, 162, -845, 163, -844, 4, -957, 4, -957, -30, -844, -29, -805, -28)])
-
-[sub_resource type="Resource" id="Resource_5q3cx"]
-script = ExtResource("7_bc8ii")
-_health = 3
-
-[sub_resource type="Resource" id="Resource_ei20k"]
-script = ExtResource("7_bc8ii")
-_health = 3
 
 [node name="CobaltDungeon" type="Node2D"]
 y_sort_enabled = true
@@ -82,19 +72,11 @@ y_sort_enabled = true
 [node name="EnemiesCollection" type="Node2D" parent="PropsCollection"]
 y_sort_enabled = true
 
-[node name="MeleeEnemy" parent="PropsCollection/EnemiesCollection" node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("6_1753n")]
-position = Vector2(-894, 218)
-_enemy_sprite = NodePath("TauronWorshiperEnemySprite")
-health_component = SubResource("Resource_5q3cx")
+[node name="TauronWorshiperMeleeEnemy" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
+position = Vector2(-894, 210)
 
-[node name="TauronWorshiperEnemySprite" parent="PropsCollection/EnemiesCollection/MeleeEnemy" instance=ExtResource("7_ff5o7")]
-
-[node name="MeleeEnemy2" parent="PropsCollection/EnemiesCollection" node_paths=PackedStringArray("_enemy_sprite") instance=ExtResource("6_1753n")]
-position = Vector2(-758, 218)
-_enemy_sprite = NodePath("TauronWorshiperEnemySprite")
-health_component = SubResource("Resource_ei20k")
-
-[node name="TauronWorshiperEnemySprite" parent="PropsCollection/EnemiesCollection/MeleeEnemy2" instance=ExtResource("7_ff5o7")]
+[node name="TauronWorshiperMeleeEnemy2" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
+position = Vector2(-754, 210)
 
 [node name="TeleportersCollection" type="Node2D" parent="PropsCollection"]
 y_sort_enabled = true

@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cemyjbvk3lsmu"]
+[gd_scene load_steps=4 format=3 uid="uid://cemyjbvk3lsmu"]
 
 [ext_resource type="Script" path="res://util/components/enemy/enemy_component.gd" id="1_pc715"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_tvfoy"]
+
+[sub_resource type="Resource" id="Resource_t86np"]
+script = ExtResource("2_tvfoy")
+_health = 8
 
 [node name="EnemyComponent" type="Node2D"]
 script = ExtResource("1_pc715")
+health_component = SubResource("Resource_t86np")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

@@ -130,9 +130,9 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		self.health_component.take_damage(1)
 
 	elif other_hitbox.is_in_group("enemy_melee_attack_hitbox"):
-		var enemy: MeleeEnemy = other_hitbox.get_parent()
+		var enemy_melee_component: EnemyMeleeComponent = other_hitbox.get_parent()
 		
-		var damage := enemy.get_damage() * defense_multiplier
+		var damage := enemy_melee_component.get_damage() * defense_multiplier
 		self.health_component.take_damage(damage)
 
 	elif other_hitbox.is_in_group("projectile_hitbox"):

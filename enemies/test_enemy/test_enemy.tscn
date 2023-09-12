@@ -1,21 +1,21 @@
 [gd_scene load_steps=8 format=3 uid="uid://64s3ugpjsat4"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_5hwo0"]
-[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_e4xlt"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="2_sg62h"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_08htb"]
+[ext_resource type="PackedScene" uid="uid://qxpn3g5r1lll" path="res://util/components/enemy/enemy_melee_component.tscn" id="5_0itsq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
 radius = 5.0
 height = 14.0
 
-[sub_resource type="Resource" id="Resource_567uw"]
-script = ExtResource("2_e4xlt")
-_health = 8
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
 radius = 6.0
 height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70d0i"]
+radius = 8.0
+height = 24.0
 
 [node name="TestEnemy" type="CharacterBody2D"]
 collision_layer = 0
@@ -27,7 +27,6 @@ shape = SubResource("CapsuleShape2D_10ypy")
 
 [node name="EnemyComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("1_5hwo0")]
 _sprite = NodePath("../TauronWorshiperEnemySprite")
-health_component = SubResource("Resource_567uw")
 
 [node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("3_08htb")]
 
@@ -35,3 +34,12 @@ health_component = SubResource("Resource_567uw")
 shape = SubResource("CapsuleShape2D_aj1hx")
 
 [node name="TauronWorshiperEnemySprite" parent="." instance=ExtResource("2_sg62h")]
+
+[node name="EnemyMeleeComponent" parent="." instance=ExtResource("5_0itsq")]
+_attack_speed = 2.0
+
+[node name="HitboxArea" parent="EnemyMeleeComponent" groups=["enemy_melee_attack_hitbox"] instance=ExtResource("3_08htb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMeleeComponent/HitboxArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_70d0i")

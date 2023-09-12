@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://u1kik48hv8m7"]
+
+[ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_cfbc7"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_f5d80"]
+[ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="4_4j5a7"]
+[ext_resource type="PackedScene" uid="uid://qxpn3g5r1lll" path="res://util/components/enemy/enemy_melee_component.tscn" id="5_08y6g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70d0i"]
+radius = 8.0
+height = 24.0
+
+[node name="TauronWorshiperMeleeEnemy" type="CharacterBody2D"]
+collision_layer = 0
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_10ypy")
+
+[node name="EnemyComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("1_cfbc7")]
+_sprite = NodePath("../TauronWorshiperEnemySprite")
+
+[node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("3_f5d80")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
+shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="TauronWorshiperEnemySprite" parent="." instance=ExtResource("4_4j5a7")]
+
+[node name="EnemyMeleeComponent" parent="." instance=ExtResource("5_08y6g")]
+_attack_speed = 2.0
+
+[node name="HitboxArea" parent="EnemyMeleeComponent" groups=["enemy_melee_attack_hitbox"] instance=ExtResource("3_f5d80")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMeleeComponent/HitboxArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_70d0i")
