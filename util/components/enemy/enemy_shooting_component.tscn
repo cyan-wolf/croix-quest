@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpu3i1c756eae"]
+
+[ext_resource type="Script" path="res://util/components/enemy/enemy_shooting_component.gd" id="1_njlbf"]
+
+[node name="EnemyShootingComponent" type="Node2D"]
+script = ExtResource("1_njlbf")
+
+[node name="ShootingAttackTimer" type="Timer" parent="."]
+autostart = true
