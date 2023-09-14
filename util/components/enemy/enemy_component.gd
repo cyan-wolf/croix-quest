@@ -21,7 +21,7 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 ## The minimum distance before the enemy can follow the player.
 @export var _min_player_follow_distance: float = 80.0
 
-# This is the same as the `target_desired_distance` field on the nav agent.
+# This is the same as the `path_desired_distance` field on the nav agent.
 ## The minimun distance before the enemy can attack the player.
 @export var _min_player_attack_distance: float = 32.0
 
@@ -49,7 +49,7 @@ func _ready():
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	self.health_component.death.connect(_on_death)
 
-	_nav_agent.target_desired_distance = _min_player_attack_distance
+	_nav_agent.path_desired_distance = _min_player_attack_distance
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
@@ -69,11 +69,12 @@ func _physics_process(_delta: float) -> void:
 	# Wait for things to process so that the navigation works.
 	await self.get_tree().process_frame
 
+	# This can't be done immediately after setting the target position.
+	_update_current_enemy_state()
+
 	# This needs to be done every frame, because otherwise the AI 
 	# loses track of the player.
 	_set_target_pos(_player.global_position)
-
-	_update_current_enemy_state()
 
 	# Actually move the enemy only if it's supposed to be following the player.
 	if _current_state == EnemyState.FOLLOWING:
@@ -96,22 +97,24 @@ func get_current_state() -> EnemyState:
 
 
 func _update_current_enemy_state() -> void:
-	# The enemy should be idle if the player is too far away.
-	if self.global_position.distance_to(_player.global_position) > _min_player_follow_distance:
-		var old_state := _current_state
-		_current_state = EnemyState.IDLE
-		self.state_changed.emit(old_state, _current_state)
-
-		_sprite.play("idle")
+	var dist_to_player := self.global_position.distance_to(_player.global_position)
 
 	# The enemy should be attacking if it has "reached" (gotten close enough)
 	# to the player.
-	elif _nav_agent.is_navigation_finished():
+	if _nav_agent.is_navigation_finished():
 		var old_state := _current_state
 		_current_state = EnemyState.ATTACKING
 		self.state_changed.emit(old_state, _current_state)
 
 		_sprite.play("attack")
+
+	# The enemy should be idle if the player is too far away.
+	elif dist_to_player > _min_player_follow_distance:
+		var old_state := _current_state
+		_current_state = EnemyState.IDLE
+		self.state_changed.emit(old_state, _current_state)
+
+		_sprite.play("idle")
 
 	# Otherwise, it should be following the player.
 	else:
