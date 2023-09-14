@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://duijy1sie6es6"]
+
+[ext_resource type="Texture2D" uid="uid://cqoalqxkqxntw" path="res://enemies/shooting_enemy/cuboidal_aberration/cuboidal_aberration.png" id="1_21wme"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1716y"]
+atlas = ExtResource("1_21wme")
+region = Rect2(0, 34, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0r8s"]
+atlas = ExtResource("1_21wme")
+region = Rect2(16, 34, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1iad"]
+atlas = ExtResource("1_21wme")
+region = Rect2(0, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbj40"]
+atlas = ExtResource("1_21wme")
+region = Rect2(16, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3cq6"]
+atlas = ExtResource("1_21wme")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vylc"]
+atlas = ExtResource("1_21wme")
+region = Rect2(16, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jy6ny"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_1716y")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_c0r8s")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_t1iad")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_bbj40")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_m3cq6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7vylc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CuboidalAberrationEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_jy6ny")
+animation = &"idle"
+frame_progress = 0.677112
