@@ -6,13 +6,9 @@ class_name EnemyComponent
 
 # Additionally, it manages the health and sprite animation of the enemy.
 
-enum EnemyState {
-	IDLE = 0,
-	FOLLOWING = 1,
-	ATTACKING = 2,
-}
 
-signal state_changed(old_state: EnemyState, new_state: EnemyState)
+
+signal state_changed(old_state: Util.EnemyState, new_state: Util.EnemyState)
 
 const Projectile := preload("res://weapons/projectile/projectile.gd")
 
@@ -39,7 +35,7 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 # This node must be added manually to the `EnemyComponent`. 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
-var _current_state := EnemyState.IDLE
+var _current_state := Util.EnemyState.IDLE
 
 func _ready():
 	# Make the health `Resource` unique so that different enemies can have 
@@ -77,7 +73,7 @@ func _physics_process(_delta: float) -> void:
 	_set_target_pos(_player.global_position)
 
 	# Actually move the enemy only if it's supposed to be following the player.
-	if _current_state == EnemyState.FOLLOWING:
+	if _current_state == Util.EnemyState.FOLLOWING:
 		var move_direction := self.global_position.direction_to(_nav_agent.get_next_path_position())
 	
 		_char_body.velocity = move_direction * _speed
@@ -92,7 +88,7 @@ func _physics_process(_delta: float) -> void:
 	_update_sprite_facing_direction()
 
 
-func get_current_state() -> EnemyState:
+func get_current_state() -> Util.EnemyState:
 	return _current_state
 
 
@@ -103,7 +99,7 @@ func _update_current_enemy_state() -> void:
 	# to the player.
 	if _nav_agent.is_navigation_finished():
 		var old_state := _current_state
-		_current_state = EnemyState.ATTACKING
+		_current_state = Util.EnemyState.ATTACKING
 		self.state_changed.emit(old_state, _current_state)
 
 		_sprite.play("attack")
@@ -111,7 +107,7 @@ func _update_current_enemy_state() -> void:
 	# The enemy should be idle if the player is too far away.
 	elif dist_to_player > _min_player_follow_distance:
 		var old_state := _current_state
-		_current_state = EnemyState.IDLE
+		_current_state = Util.EnemyState.IDLE
 		self.state_changed.emit(old_state, _current_state)
 
 		_sprite.play("idle")
@@ -119,7 +115,7 @@ func _update_current_enemy_state() -> void:
 	# Otherwise, it should be following the player.
 	else:
 		var old_state := _current_state
-		_current_state = EnemyState.FOLLOWING
+		_current_state = Util.EnemyState.FOLLOWING
 		self.state_changed.emit(old_state, _current_state)
 
 		_sprite.play("follow")

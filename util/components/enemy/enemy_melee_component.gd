@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _on_melee_attack_timer_timeout() -> void:
-	if _enemy_component.get_current_state() != EnemyComponent.EnemyState.ATTACKING:
+	if _enemy_component.get_current_state() != Util.EnemyState.ATTACKING:
 		return
 
 	var melee_attack_collison: CollisionShape2D = _melee_attack_hitbox.get_node("CollisionShape2D")

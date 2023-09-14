@@ -17,6 +17,13 @@ enum WeaponType {
 	SMG = 3,
 }
 
+## Utility enum for keeping track of an enemy's state.
+enum EnemyState {
+	IDLE = 0,
+	FOLLOWING = 1,
+	ATTACKING = 2,
+}
+
 ## Utility class for keeping track of status effects.
 class StatusEffect:
 	var type: StatusEffectType 
