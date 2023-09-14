@@ -32,6 +32,7 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 # This is the "main" node of the enemy.
 @onready var _char_body: CharacterBody2D = self.get_parent()
 
+# Used for the enemy's AI.
 @onready var _nav_agent: NavigationAgent2D = self.get_node("NavigationAgent2D")
 
 # The hitbox used for when taking damage.
@@ -41,6 +42,10 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 var _current_state := EnemyState.IDLE
 
 func _ready():
+	# Make the health `Resource` unique so that different enemies can have 
+	# different health values.
+	self.health_component = self.health_component.duplicate(true)
+
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	self.health_component.death.connect(_on_death)
 
