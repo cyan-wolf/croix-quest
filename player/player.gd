@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-const MeleeEnemy := preload("res://enemies/melee_enemy/melee_enemy.gd")
 const PlayerWeapon := preload("res://player/Weapon.gd")
 const Projectile := preload("res://weapons/projectile/projectile.gd")
 
