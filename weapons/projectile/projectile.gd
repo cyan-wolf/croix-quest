@@ -1,5 +1,10 @@
 extends RigidBody2D
 
+# This isn't set with `@onready` because it seems like `initialize()` runs first.
+var _sprite: AnimatedSprite2D
+
+const DEFAULT_PROJECTILE_SPRITE_FRAMES := preload("res://weapons/projectile/default_projectile_sprite_frames.tres")
+
 var _bullet_particle_emitter_scene = preload("res://particles/bullet_impact.tscn")
 
 enum Source {
@@ -68,20 +73,39 @@ func _on_projectile_hit() -> void:
 
 ## Must be called before adding the projectile to the scene tree.
 func initialize(global_pos: Vector2, 
-		sprite_rotation: float, 
-		lifetime: float, 
-		damage: int, 
+		# How long it takes for it to despawn.
+		lifetime: float,
+		# 1 damage is the same as 1/2 heart.							
+		damage: int,
+		# Whether the player or an enemy fired it.					
 		source: Source,
-		impulse: Vector2) -> void:
+		# The direction times the speed of the projectile.						
+		impulse: Vector2,
+		# The sprite frames of the projectile; if null, the default sprite is used.
+		projectile_sprite_frames: SpriteFrames = null,
+	) -> void:
+
 	# Initialize important fields.
 	self.global_position = global_pos
-	self.rotation = sprite_rotation
+	self.rotation = impulse.angle()
 	_lifetime = lifetime
 	_damage = damage
 	_source = source
 
 	# Make the projectile move in this direction (not affected by `self.rotation`).
 	self.apply_impulse(impulse)
+
+	# Set `_sprite` here because this function runs before `_ready()`.
+	_sprite = self.get_node("AnimatedSprite2D")
+
+	if projectile_sprite_frames != null:
+		_sprite.sprite_frames = projectile_sprite_frames
+
+	else:
+		_sprite.sprite_frames = DEFAULT_PROJECTILE_SPRITE_FRAMES
+
+	# Play whatever animation was provided by the sprite frames.
+	_sprite.play("default")
 
 
 func get_damage() -> int:

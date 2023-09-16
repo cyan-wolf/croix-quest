@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyot4k30xr0iu"]
+[gd_scene load_steps=10 format=3 uid="uid://cyot4k30xr0iu"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_0c317"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_h2w5v"]
 [ext_resource type="PackedScene" uid="uid://duijy1sie6es6" path="res://enemies/shooting_enemy/cuboidal_aberration/cuboidal_aberration_enemy_sprite.tscn" id="3_k1wti"]
 [ext_resource type="PackedScene" uid="uid://cpu3i1c756eae" path="res://util/components/enemy/enemy_shooting_component.tscn" id="4_ndlur"]
+[ext_resource type="Texture2D" uid="uid://cmrjx7qmw8yno" path="res://enemies/shooting_enemy/cuboidal_aberration/cuboidal_aberration_projectile.png" id="5_es4bd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
 radius = 5.0
@@ -12,6 +13,21 @@ height = 14.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
 radius = 6.0
 height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5a00"]
+atlas = ExtResource("5_es4bd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5wcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5a00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="CuboidalAberrationShootingEnemy" type="CharacterBody2D"]
 collision_layer = 0
@@ -34,3 +50,4 @@ shape = SubResource("CapsuleShape2D_aj1hx")
 [node name="CuboidalAberrationEnemySprite" parent="." instance=ExtResource("3_k1wti")]
 
 [node name="EnemyShootingComponent" parent="." instance=ExtResource("4_ndlur")]
+_projectile_sprite_frames = SubResource("SpriteFrames_e5wcp")

@@ -17,6 +17,9 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 ## The reciprocal of this value is the wait time (in seconds) between shots.
 @export var _fire_speed: float = 1.0
 
+## The sprite frames that the fired projectile will use; if `null`, the default sprite is used.
+@export var _projectile_sprite_frames: SpriteFrames = null
+
 var _projectile_scene := preload("res://weapons/projectile/projectile.tscn")
 
 func _ready() -> void:
@@ -38,12 +41,12 @@ func _shoot() -> void:
 
 	projectile_instance.initialize(
 		self.global_position,
-		direction.angle(),
 		10.0, # projectile lifetime in seconds
 		_projectile_damage,
 		Projectile.Source.ENEMY,
 		# Calculated using math.
-		direction * _projectile_speed
+		direction * _projectile_speed,
+		_projectile_sprite_frames,
 	)
 
 	self.get_tree().get_root().add_child(projectile_instance)
