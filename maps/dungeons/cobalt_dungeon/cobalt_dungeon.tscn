@@ -239,5 +239,5 @@ position = Vector2(-872, -2291)
 [node name="PushableRock9" parent="PropsCollection/PushableRocksCollection" instance=ExtResource("14_vef15")]
 position = Vector2(-1178, -2306)
 
-[node name="CuboidalAberrationShootingEnemy" parent="." instance=ExtResource("19_bui85")]
+[node name="TempCuboidalAberrationShootingEnemy" parent="." instance=ExtResource("19_bui85")]
 position = Vector2(-827.556, 226.412)
