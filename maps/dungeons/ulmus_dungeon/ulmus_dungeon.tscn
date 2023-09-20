@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=14 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
 [ext_resource type="PackedScene" uid="uid://dsdmtf1ayd80i" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch.tscn" id="7_mrcwc"]
 [ext_resource type="PackedScene" uid="uid://64s3ugpjsat4" path="res://enemies/test_enemy/test_enemy.tscn" id="8_qhnvh"]
+[ext_resource type="PackedScene" uid="uid://bjfuirw1by6xt" path="res://util/checkpoint/checkpoint.tscn" id="9_qvjlj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vhdiu"]
 load_path = "res://.godot/imported/ulmus_dungeon_tileset.png-04cfccd0b586914818361b435c065102.ctex"
@@ -212,3 +213,6 @@ position = Vector2(0, 69)
 
 [node name="TestEnemy" parent="." instance=ExtResource("8_qhnvh")]
 position = Vector2(-641, -23)
+
+[node name="Checkpoint" parent="." instance=ExtResource("9_qvjlj")]
+position = Vector2(36, -4)

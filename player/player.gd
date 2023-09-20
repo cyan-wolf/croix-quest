@@ -16,6 +16,9 @@ const DASH_MULTIPLIER := 1.65
 # Manages the player's status effects.
 @onready var status_effect_component: StatusEffectComponent = self.get_node("StatusEffectComponent")
 
+# Manages the player's checkpoints and respawning.
+@onready var _checkpoint_component: CheckpointComponent = self.get_node("CheckpointComponent")
+
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _weapon: PlayerWeapon = self.get_node("Weapon")
 
@@ -140,6 +143,9 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		if not projectile.is_from_player():
 			var damage := projectile.get_damage() * defense_multiplier
 			self.health_component.take_damage(damage)
+
+	elif other_hitbox.is_in_group("checkpoint_hitbox"):
+		_checkpoint_component.try_to_use(other_hitbox.get_parent())
 
 
 # Makes it so that the player can act (move, shoot, use spells, etc).

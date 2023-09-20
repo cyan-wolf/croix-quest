@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjfuirw1by6xt"]
+
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="1_8fsaf"]
+[ext_resource type="Script" path="res://util/checkpoint/checkpoint.gd" id="1_i3whc"]
+[ext_resource type="Texture2D" uid="uid://b04j0iaf5nndd" path="res://util/checkpoint/checkpoint.png" id="1_pje3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufi3f"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaslv"]
+atlas = ExtResource("1_pje3p")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5opn"]
+atlas = ExtResource("1_pje3p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hstaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaslv")
+}],
+"loop": true,
+"name": &"activated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5opn")
+}],
+"loop": true,
+"name": &"deactivated",
+"speed": 5.0
+}]
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_i3whc")
+
+[node name="HitboxArea" parent="." groups=["checkpoint_hitbox"] instance=ExtResource("1_8fsaf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_ufi3f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hstaq")
+animation = &"deactivated"
