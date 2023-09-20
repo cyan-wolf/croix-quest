@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dff74su14fh7i"]
 
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_1rtw1"]
-[ext_resource type="Texture2D" uid="uid://dl6qv1po7463b" path="res://ui/menus/dungeon_selector/placeholder_dungeon_map_icon.png" id="1_bcwf8"]
 [ext_resource type="Texture2D" uid="uid://cpbhjhe6vn441" path="res://ui/menus/dungeon_selector/placeholder_cobalt_dungeon_map_icon.png" id="1_fokqo"]
 [ext_resource type="Texture2D" uid="uid://dn5p0bxf1gqsu" path="res://ui/menus/dungeon_selector/placeholder_ulmus_dungeon_map_icon.png" id="2_d0jgl"]
+[ext_resource type="PackedScene" uid="uid://c5pxtkv8l7ble" path="res://ui/menus/dungeon_selector/dungeon_selector_button.tscn" id="2_jado4"]
 [ext_resource type="Texture2D" uid="uid://bv2qihvonoyxb" path="res://ui/menus/dungeon_selector/placeholder_volorod_dungeon_map_icon.png" id="3_hdtm0"]
 [ext_resource type="Texture2D" uid="uid://ca6jsdc1rsbxy" path="res://ui/menus/dungeon_selector/placeholder_dunkel_dungeon_map_icon.png" id="4_nb32p"]
 
@@ -50,52 +50,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CobtaltDungeonButton" type="TextureButton" parent="DungeonSelectorButtons"]
+[node name="CobaltDungeonSelectorButton2" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
-offset_left = 322.0
-offset_top = 133.0
-offset_right = 362.0
-offset_bottom = 173.0
-scale = Vector2(2, 2)
+offset_left = 230.0
+offset_top = 146.0
+offset_right = 270.0
+offset_bottom = 186.0
 texture_normal = ExtResource("1_fokqo")
-stretch_mode = 0
+_dungeon_scene_file = "res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn"
 
-[node name="UlmusDungeonButton" type="TextureButton" parent="DungeonSelectorButtons"]
+[node name="UlmusDungeonSelectorButton3" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
-offset_left = 341.0
-offset_top = 463.0
-offset_right = 381.0
-offset_bottom = 503.0
-scale = Vector2(2, 2)
+offset_left = 517.0
+offset_top = 121.0
+offset_right = 557.0
+offset_bottom = 161.0
 texture_normal = ExtResource("2_d0jgl")
-stretch_mode = 0
+_dungeon_scene_file = "res://maps/dungeons/ulmus_dungeon/ulmus_dungeon.tscn"
 
-[node name="VolorodDungeonButton" type="TextureButton" parent="DungeonSelectorButtons"]
+[node name="VolorodDungeonSelectorButton4" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 213.0
-offset_right = 890.0
-offset_bottom = 253.0
-scale = Vector2(2, 2)
+offset_left = 922.0
+offset_top = 203.0
+offset_right = 962.0
+offset_bottom = 243.0
 texture_normal = ExtResource("3_hdtm0")
-stretch_mode = 0
 
-[node name="DunkelDungeonButton" type="TextureButton" parent="DungeonSelectorButtons"]
+[node name="DunkelDungeonSelectorButton5" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
-offset_left = 770.0
-offset_top = 463.0
-offset_right = 810.0
-offset_bottom = 503.0
-scale = Vector2(2, 2)
+offset_left = 748.0
+offset_top = 487.0
+offset_right = 788.0
+offset_bottom = 527.0
 texture_normal = ExtResource("4_nb32p")
-stretch_mode = 0
+_dungeon_scene_file = "res://maps/dungeons/dunkel_dungeon/dunkel_dungeon.tscn"
 
-[node name="CastleButton" type="TextureButton" parent="DungeonSelectorButtons"]
+[node name="CastleSelectorButton" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
-offset_left = 127.0
-offset_top = 267.0
-offset_right = 167.0
-offset_bottom = 307.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("1_bcwf8")
-stretch_mode = 0
+offset_left = 78.0
+offset_top = 303.0
+offset_right = 118.0
+offset_bottom = 343.0
