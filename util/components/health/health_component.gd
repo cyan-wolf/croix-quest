@@ -12,6 +12,10 @@ func get_health() -> int:
 	return _health
 
 
+func get_max_health() -> int:
+	return _max_health
+
+
 func take_damage(amount: int) -> void:
 	# Takes damage.
 	if amount < _health:

@@ -34,15 +34,12 @@ var _can_act: bool = true
 var _current_sprite_direction := Util.Direction.RIGHT
 
 func _ready() -> void:
-	self.health_component.death.connect(_on_death)
+	self.health_component.death.connect(_async_on_death)
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
+	_checkpoint_component.initialize(self.global_position)
 
 
 func _physics_process(_delta):
-	# Temporary way to show that the player is dead.
-	if _is_dead:
-		return
-
 	# Disables player movement if actions are disabled or there is a dialog being shown.
 	if not _can_act or DialogManager.is_showing_dialog():
 		return
@@ -78,6 +75,9 @@ func _process(_delta: float) -> void:
 		_weapon.disable_weapon()
 	else:
 		_weapon.enable_weapon()
+
+	if _is_dead:
+		self.disable_actions()
 
 	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
 	if Input.is_action_just_pressed("debug_1"):
@@ -121,8 +121,13 @@ func _process(_delta: float) -> void:
 		)
 
 
-func _on_death() -> void:
+func _async_on_death() -> void:
 	_is_dead = true
+
+	# TODO: Show a death screen here and play some SFX or music.
+	await SceneManager.async_delay(1.0)
+
+	_respawn()
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
@@ -195,3 +200,15 @@ func _on_timer_timeout():
 	_is_running = true
 	$InitialDashParticles.emitting = true
 	$InitialDashSFX.play()
+
+
+func _respawn() -> void:
+	# Move the player over to the last checkpoint.
+	self.global_position = _checkpoint_component.get_last_checkpoint_pos()
+
+	# Regain all health.
+	self.health_component.gain_health(self.health_component.get_max_health())
+
+	_is_dead = false
+	self.enable_actions()
+
