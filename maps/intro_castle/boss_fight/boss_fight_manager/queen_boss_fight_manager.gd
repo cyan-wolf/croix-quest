@@ -225,12 +225,11 @@ func _fire_projectile_in_game_world(pos: Vector2, direction: Vector2) -> void:
 
 	projectile_instance.initialize(
 		pos,
-		direction.angle(),
 		10.0, # projectile lifetime in seconds
 		1, # projectile damage
 		Projectile.Source.QUEEN_BOSS,
 		# Calculated using math.
-		direction * projectile_speed
+		direction * projectile_speed,
 	)
 
 	self.get_tree().get_root().add_child(projectile_instance)
