@@ -127,7 +127,7 @@ func _async_on_death() -> void:
 	# TODO: Show a death screen here and play some SFX or music.
 	await SceneManager.async_delay(1.0)
 
-	_respawn()
+	SceneManager.show_game_over_screen()
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
@@ -202,7 +202,7 @@ func _on_timer_timeout():
 	$InitialDashSFX.play()
 
 
-func _respawn() -> void:
+func respawn() -> void:
 	# Move the player over to the last checkpoint.
 	self.global_position = _checkpoint_component.get_last_checkpoint_pos()
 

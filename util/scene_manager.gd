@@ -68,6 +68,17 @@ func hide_loading_screen() -> void:
 		player.enable_actions()
 
 
+func show_game_over_screen() -> void:
+	print_debug("TODO")
+	# _game_over_screen.show()
+
+
+func hide_game_over_screen() -> void:
+	print_debug("TODO")
+	# NOTE: This function might not be necessary.
+	# _game_over_screen.hide()
+
+
 func play_background_music(audio_track_file: String) -> void:
 	var audio_track: AudioStream = load(audio_track_file)
 	_background_music_player.stream = audio_track
