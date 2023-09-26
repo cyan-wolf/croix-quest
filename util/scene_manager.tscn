@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b20ncwhqhr8a3"]
+[gd_scene load_steps=5 format=3 uid="uid://b20ncwhqhr8a3"]
 
 [ext_resource type="Script" path="res://util/scene_manager.gd" id="1_thvi4"]
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="2_g706b"]
+[ext_resource type="PackedScene" uid="uid://iwjgvyyskig4" path="res://ui/menus/game_over_screen/game_over_screen.tscn" id="3_638he"]
 
 [sub_resource type="Theme" id="Theme_b8bfh"]
 default_font = ExtResource("2_g706b")
@@ -46,6 +47,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Loading..."
+
+[node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("3_638he")]
+visible = false
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"music"

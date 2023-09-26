@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var _loading_screen: Control = self.get_node("CanvasLayer/LoadingScreen")
+@onready var _game_over_screen: Control = self.get_node("CanvasLayer/GameOverScreen")
 @onready var _background_music_player: AudioStreamPlayer = self.get_node("BackgroundMusicPlayer")
 
 @export var _should_mute_game_volume_on_start := false
@@ -87,14 +88,7 @@ func hide_loading_screen() -> void:
 
 
 func show_game_over_screen() -> void:
-	print_debug("TODO")
-	# _game_over_screen.show()
-
-
-func hide_game_over_screen() -> void:
-	print_debug("TODO")
-	# NOTE: This function might not be necessary.
-	# _game_over_screen.hide()
+	_game_over_screen.show()
 
 
 func play_background_music(audio_track_file: String) -> void:

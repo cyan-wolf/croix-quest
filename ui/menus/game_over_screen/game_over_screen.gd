@@ -21,3 +21,6 @@ func _on_quit_button_pressed() -> void:
 	# Go to the main menu.
 	SceneManager.load_scene_file("res://ui/menus/main_menu.tscn")
 
+	# Hide the game over screen.
+	self.hide()
+
