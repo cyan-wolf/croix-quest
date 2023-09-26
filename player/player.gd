@@ -27,9 +27,6 @@ const DASH_MULTIPLIER := 1.65
 var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
-var _is_dead: bool = false
-# Determines whether the player can move, shoot, or use spells.
-var _can_act: bool = true
 
 var _current_sprite_direction := Util.Direction.RIGHT
 
@@ -40,8 +37,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	# Disables player movement if actions are disabled or there is a dialog being shown.
-	if not _can_act or DialogManager.is_showing_dialog():
+	# Disables player movement there is a dialog being shown, etc.
+	if not SceneManager.is_world_state_empty():
 		return
 
 	var input_direction := _get_input_direction()
@@ -70,14 +67,10 @@ func _physics_process(_delta):
 
 
 func _process(_delta: float) -> void:
-	# Disables the player's weapon if actions are disabled or there is a dialog being shown.
-	if not _can_act or DialogManager.is_showing_dialog():
-		_weapon.disable_weapon()
-	else:
+	if SceneManager.is_world_state_empty():
 		_weapon.enable_weapon()
-
-	if _is_dead:
-		self.disable_actions()
+	else:
+		_weapon.disable_weapon()
 
 	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
 	if Input.is_action_just_pressed("debug_1"):
@@ -122,7 +115,7 @@ func _process(_delta: float) -> void:
 
 
 func _async_on_death() -> void:
-	_is_dead = true
+	SceneManager.add_world_state(Util.WorldState.PLAYER_IS_DEAD)
 
 	# TODO: Show a death screen here and play some SFX or music.
 	await SceneManager.async_delay(1.0)
@@ -151,16 +144,6 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 	elif other_hitbox.is_in_group("checkpoint_hitbox"):
 		_checkpoint_component.try_to_use(other_hitbox.get_parent())
-
-
-# Makes it so that the player can act (move, shoot, use spells, etc).
-func enable_actions() -> void:
-	_can_act = true
-
-
-# Makes it so that the player cannot act.
-func disable_actions() -> void:
-	_can_act = false
 
 
 func set_animation(animation: String):
@@ -209,6 +192,6 @@ func respawn() -> void:
 	# Regain all health.
 	self.health_component.gain_health(self.health_component.get_max_health())
 
-	_is_dead = false
-	self.enable_actions()
+	SceneManager.remove_world_state(Util.WorldState.PLAYER_IS_DEAD)
+	
 

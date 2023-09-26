@@ -40,13 +40,12 @@ func _teleport_away_forest_spirits() -> void:
 		teleport_particle_emitter.emitting = true
 
 
-# TODO: Add the actual cutscene that happens before the boss fight.
 func _async_show_cutscene_before_boss_fight() -> void:
 	for dialog in _dialog_before_teleporting_spirits:
 		DialogManager.start_dialog(dialog)
 		await DialogManager.ended_dialog
 
-	_player.disable_actions()
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
 	
 	# This delay is needed, because otherwise the dialog box doesn't activate.
 	await SceneManager.async_delay(0.5)
@@ -65,6 +64,6 @@ func _async_show_cutscene_before_boss_fight() -> void:
 	# Hide the cutscene version of the queen in order to spawn the boss version elsewhere.
 	_queen_sprite.hide()
 
-	_player.enable_actions()
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 

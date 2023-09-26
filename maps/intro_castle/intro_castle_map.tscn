@@ -2061,4 +2061,4 @@ position = Vector2(-642, 140)
 position = Vector2(-72, 81)
 
 [node name="TeleporterDestination" parent="EmmyRoomTeleporter" instance=ExtResource("13_pcxws")]
-position = Vector2(-555, -82)
+position = Vector2(-596, -50)

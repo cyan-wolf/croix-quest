@@ -24,6 +24,16 @@ enum EnemyState {
 	ATTACKING = 2,
 }
 
+## Utility enum for keeping track of whether a cutscene is playing,
+## the loading screen is visible, etc.
+enum WorldState {
+	NONE = 0, # this state is unused, but it could be useful
+	CUTSCENE_PLAYING = 1,
+	DIALOG_PLAYING = 2,
+	LOADING_SCREEN_VISIBLE = 3,
+	PLAYER_IS_DEAD = 4,
+}
+
 ## Utility class for keeping track of status effects.
 class StatusEffect:
 	var type: StatusEffectType 

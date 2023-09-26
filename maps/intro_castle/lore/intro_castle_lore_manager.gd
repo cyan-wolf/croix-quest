@@ -48,7 +48,7 @@ func _async_show_lore_rects() -> void:
 
 func _async_show_lore_cutscene() -> void:
 	# Player can no longer move.
-	_player.disable_actions()
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 	# Introductory exposition with complementary visuals.
 	await _async_show_lore_rects()
@@ -60,6 +60,6 @@ func _async_show_lore_cutscene() -> void:
 
 	# TODO: Add more lore and story events here.
 
-	_player.enable_actions()
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 

@@ -16,6 +16,9 @@ var _currently_showing_dialog := false
 @onready var _continue_hint_label: RichTextLabel = $DialogBoxRect/ContinueHintLabel
 
 func _ready() -> void:
+	self.started_dialog.connect(_on_started_dialog)
+	self.ended_dialog.connect(_on_ended_dialog)
+
 	$DialogBoxRect.hide()
 
 	# Hides it seperately so that it isn't visible the first time the 
@@ -89,4 +92,12 @@ func get_current_author() -> String:
 
 func is_showing_dialog() -> bool:
 	return _currently_showing_dialog
+
+
+func _on_started_dialog() -> void:
+	SceneManager.add_world_state(Util.WorldState.DIALOG_PLAYING)
+
+
+func _on_ended_dialog() -> void:
+	SceneManager.remove_world_state(Util.WorldState.DIALOG_PLAYING)
 

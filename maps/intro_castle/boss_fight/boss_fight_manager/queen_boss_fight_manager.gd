@@ -171,7 +171,7 @@ func _async_play_queen_defeated_cutscene() -> void:
 	DialogManager.start_dialog(_queen_defeated_dialog)
 	await DialogManager.ended_dialog
 
-	_player.disable_actions()
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 	await SceneManager.async_delay(1.0)
 
@@ -181,6 +181,8 @@ func _async_play_queen_defeated_cutscene() -> void:
 	# TODO: Play some SFX here and some sort of on-screen effect.
 
 	await SceneManager.async_delay(0.3)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 	# Continue the story by going to the forest outside the castle.
 	SceneManager.load_scene_file(

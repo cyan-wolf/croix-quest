@@ -24,22 +24,18 @@ func _on_area_entered_queen_entrance_hitbox(other_hitbox: Area2D) -> void:
 
 
 func _async_show_queen_boss_fight_prelude_cutscene() -> void:
-	_player.disable_actions()
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 	await SceneManager.async_delay(1.0)
 
 	for dialog in _player_conversation_with_guard_dialog:
-		# Temporary fix; long-term solution is to make the player not be able to move if there 
-		# is a dialog currently being shown.
-		_player.disable_actions() 
-
 		# This is needed so that the `DialogManager` isn't "overwhelmed".
 		await SceneManager.async_delay(0.5)
 
 		DialogManager.start_dialog(dialog)
 		await DialogManager.ended_dialog
 
-	_player.enable_actions()
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 

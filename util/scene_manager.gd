@@ -5,6 +5,9 @@ extends Node2D
 
 @export var _should_mute_game_volume_on_start := false
 
+# This is actually a hash set (i.e. a Dictionary[Util.WorldState, null]).
+var _world_state: Dictionary = {}
+
 func _ready() -> void:
 	if _should_mute_game_volume_on_start:
 		print_debug(
@@ -50,13 +53,28 @@ func async_delay(delay_in_secs: float) -> void:
 	await self.get_tree().create_timer(delay_in_secs).timeout
 
 
+func add_world_state(state: Util.WorldState) -> void:
+	# This is a HashSet so the values are null.
+	_world_state[state] = null
+
+
+func remove_world_state(state: Util.WorldState) -> void:
+	_world_state.erase(state)
+
+
+## This function returning `true` implies that the player should be able to move normally.
+## Otherwise, the player should not be able to move.
+func is_world_state_empty() -> bool:
+	return _world_state.is_empty()
+
+
 func show_loading_screen() -> void:
 	_loading_screen.show()
 
 	# The player should not be able to do anything if the loading screen is visible.
 	var player := self.find_player()
 	if player != null:
-		player.disable_actions()
+		self.add_world_state(Util.WorldState.LOADING_SCREEN_VISIBLE)
 
 
 func hide_loading_screen() -> void:
@@ -65,7 +83,7 @@ func hide_loading_screen() -> void:
 	# Re-enable player actions once the "loading" is finished.
 	var player := self.find_player()
 	if player != null:
-		player.enable_actions()
+		self.remove_world_state(Util.WorldState.LOADING_SCREEN_VISIBLE)
 
 
 func show_game_over_screen() -> void:
