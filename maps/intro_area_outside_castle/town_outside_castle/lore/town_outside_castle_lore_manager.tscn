@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4etjbd61bgq7"]
+
+[ext_resource type="Script" path="res://maps/intro_area_outside_castle/town_outside_castle/lore/town_outside_castle_lore_manager.gd" id="1_rqejg"]
+
+[node name="TownOutsideCastleLoreManager" type="Node2D"]
+script = ExtResource("1_rqejg")

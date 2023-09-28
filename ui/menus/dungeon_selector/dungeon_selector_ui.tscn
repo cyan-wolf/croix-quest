@@ -75,6 +75,7 @@ offset_top = 203.0
 offset_right = 962.0
 offset_bottom = 243.0
 texture_normal = ExtResource("3_hdtm0")
+_dungeon_scene_file = "res://maps/dungeons/volorod_dungeon/volorod_dungeon.tscn"
 
 [node name="DunkelDungeonSelectorButton5" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
