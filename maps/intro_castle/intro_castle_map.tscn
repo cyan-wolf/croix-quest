@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=21 format=3 uid="uid://om1fi1opyx1m"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_5qog3"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_b7610"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="4_nul3n"]
+[ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="5_axc0v"]
 [ext_resource type="PackedScene" uid="uid://bj5op0cwjscwv" path="res://maps/intro_castle/lore/intro_castle_lore_manager.tscn" id="6_bsn1n"]
 [ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="7_ysuuh"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="9_3npla"]
@@ -1984,6 +1986,14 @@ vertices = PackedVector2Array(254, 131, -111, 131, -110, 99, 19, 100, 125, 101, 
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(0, 4, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(17, 2, 125, 2, 125, 101, 254, 100, 254, 131, -111, 131, -110, 99, 19, 100)])
 
+[sub_resource type="Resource" id="Resource_gawqb"]
+script = ExtResource("4_nul3n")
+_health = 8
+
+[sub_resource type="Resource" id="Resource_d4bwt"]
+script = ExtResource("5_axc0v")
+_mana_amount = 4
+
 [sub_resource type="Resource" id="Resource_lusp1"]
 script = ExtResource("9_3npla")
 author = "Royal Guard Captain"
@@ -2021,6 +2031,8 @@ navigation_polygon = SubResource("NavigationPolygon_7fm1p")
 
 [node name="Player" parent="." instance=ExtResource("3_b7610")]
 position = Vector2(956, 54)
+health_component = SubResource("Resource_gawqb")
+mana_component = SubResource("Resource_d4bwt")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(5, 1)

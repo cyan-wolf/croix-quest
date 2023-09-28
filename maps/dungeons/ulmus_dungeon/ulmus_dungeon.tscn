@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=18 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="4_4emnn"]
+[ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="4_mchms"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_yst44"]
 [ext_resource type="PackedScene" uid="uid://cb8jb0kbmvvor" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch_door.tscn" id="6_7b027"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
@@ -148,6 +150,14 @@ vertices = PackedVector2Array(-651, -46, -499, -46, -499, 19, -653, 18)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-651, -46, -499, -46, -499, 19, -653, 18)])
 
+[sub_resource type="Resource" id="Resource_p1nne"]
+script = ExtResource("3_34la5")
+_health = 8
+
+[sub_resource type="Resource" id="Resource_2x206"]
+script = ExtResource("4_mchms")
+_mana_amount = 4
+
 [node name="UlmusDungeon" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -179,6 +189,8 @@ layer_2/tile_data = PackedInt32Array(196605, 131072, 0, 196606, 131072, 0, 19660
 navigation_polygon = SubResource("NavigationPolygon_71es4")
 
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
+health_component = SubResource("Resource_p1nne")
+mana_component = SubResource("Resource_2x206")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)

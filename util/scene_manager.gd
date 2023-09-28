@@ -50,6 +50,10 @@ func find_camera() -> Camera2D:
 	return self.get_viewport().get_camera_2d()
 
 
+func find_player_hud() -> Control:
+	return self.get_tree().current_scene.get_node("CanvasLayer/PlayerHUD") as Control
+
+
 func async_delay(delay_in_secs: float) -> void:
 	await self.get_tree().create_timer(delay_in_secs).timeout
 
@@ -88,6 +92,9 @@ func hide_loading_screen() -> void:
 
 
 func show_game_over_screen() -> void:
+	# Hide the Player HUD, because otherwise the game over screen can't be used.
+	self.find_player_hud().hide()
+	
 	_game_over_screen.show()
 
 
