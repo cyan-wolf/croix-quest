@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnp0u5l6rif78"]
+
+[ext_resource type="Script" path="res://enemies/bosses/tauron/tauron_boss.gd" id="1_4ftyv"]
+[ext_resource type="Texture2D" uid="uid://c80vjbuic3qk7" path="res://enemies/bosses/tauron/tauron_unfinished.png" id="1_bkdbc"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_7btjt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwxia"]
+atlas = ExtResource("1_bkdbc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wb3rx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwxia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spa85"]
+radius = 7.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tamnc"]
+radius = 22.0
+height = 52.0
+
+[node name="TauronBoss" type="CharacterBody2D"]
+script = ExtResource("1_4ftyv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wb3rx")
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_spa85")
+
+[node name="HitboxArea" parent="." groups=["enemy_hitbox"] instance=ExtResource("3_7btjt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tamnc")
