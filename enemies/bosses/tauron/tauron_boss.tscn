@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnp0u5l6rif78"]
+[gd_scene load_steps=12 format=3 uid="uid://dnp0u5l6rif78"]
 
 [ext_resource type="Script" path="res://enemies/bosses/tauron/tauron_boss.gd" id="1_4ftyv"]
 [ext_resource type="Texture2D" uid="uid://c80vjbuic3qk7" path="res://enemies/bosses/tauron/tauron_unfinished.png" id="1_bkdbc"]
@@ -32,6 +32,14 @@ height = 60.0
 radius = 22.0
 height = 52.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0027p"]
+radius = 20.0
+height = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4tl6"]
+radius = 20.0
+height = 66.0
+
 [node name="TauronBoss" type="CharacterBody2D"]
 script = ExtResource("1_4ftyv")
 health_component = SubResource("Resource_e6uvj")
@@ -50,3 +58,31 @@ shape = SubResource("CapsuleShape2D_spa85")
 position = Vector2(0, 8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tamnc")
+
+[node name="StompAttackHitboxArea" parent="." instance=ExtResource("3_7btjt")]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompAttackHitboxArea"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_0027p")
+disabled = true
+
+[node name="ChargeAttackHitboxArea2" parent="." instance=ExtResource("3_7btjt")]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeAttackHitboxArea2"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_t4tl6")
+disabled = true
+
+[node name="StompAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="ChargeAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="ProjectileAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
