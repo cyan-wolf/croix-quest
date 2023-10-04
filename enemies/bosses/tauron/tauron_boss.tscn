@@ -59,7 +59,7 @@ position = Vector2(0, 8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tamnc")
 
-[node name="StompAttackHitboxArea" parent="." instance=ExtResource("3_7btjt")]
+[node name="StompAttackHitboxArea" parent="." groups=["tauron_boss_stomp_attack_hitbox"] instance=ExtResource("3_7btjt")]
 position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompAttackHitboxArea"]
@@ -67,7 +67,7 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_0027p")
 disabled = true
 
-[node name="ChargeAttackHitboxArea2" parent="." instance=ExtResource("3_7btjt")]
+[node name="ChargeAttackHitboxArea2" parent="." groups=["tauron_boss_charge_attack_hitbox"] instance=ExtResource("3_7btjt")]
 position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeAttackHitboxArea2"]

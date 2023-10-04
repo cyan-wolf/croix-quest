@@ -177,3 +177,13 @@ func _on_charge_attack_timer_timeout() -> void:
 
 	# Enables and disables the stomp attack each time the timer emits its `timeout` signal.
 	charge_attack_collison.set_deferred("disabled", not charge_attack_collison.disabled)
+
+
+func get_stomp_attack_damage() -> int:
+	return _stomp_attack_damage
+
+
+func get_charge_attack_damage() -> int:
+	return _charge_attack_damage
+
+

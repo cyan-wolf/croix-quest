@@ -3,6 +3,7 @@ class_name Player
 
 const PlayerWeapon := preload("res://player/Weapon.gd")
 const Projectile := preload("res://weapons/projectile/projectile.gd")
+const TauronBoss := preload("res://enemies/bosses/tauron/tauron_boss.gd")
 
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
@@ -141,6 +142,18 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		if not projectile.is_from_player():
 			var damage := projectile.get_damage() * defense_multiplier
 			self.health_component.take_damage(damage)
+
+	elif other_hitbox.is_in_group("tauron_boss_stomp_attack_hitbox"):
+		var boss: TauronBoss = other_hitbox.get_parent()
+
+		var damage := boss.get_stomp_attack_damage() * defense_multiplier
+		self.health_component.take_damage(damage)
+
+	elif other_hitbox.is_in_group("tauron_boss_charge_attack_hitbox"):
+		var boss: TauronBoss = other_hitbox.get_parent()
+
+		var damage := boss.get_charge_attack_damage() * defense_multiplier
+		self.health_component.take_damage(damage)
 
 	elif other_hitbox.is_in_group("checkpoint_hitbox"):
 		_checkpoint_component.try_to_use(other_hitbox.get_parent())
