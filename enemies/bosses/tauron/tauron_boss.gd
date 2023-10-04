@@ -28,6 +28,8 @@ signal perform_attack_3
 @onready var _stomp_attack_hitbox: Area2D = self.get_node("StompAttackHitboxArea")
 @onready var _charge_attack_hitbox: Area2D = self.get_node("ChargeAttackHitboxArea")
 
+@onready var _player: Player = SceneManager.find_player()
+
 var _current_attack_state := AttackState.NONE
 
 var _has_been_defeated := false
@@ -117,6 +119,11 @@ func _async_on_perform_attack_2() -> void:
 	print_debug("DEBUG: In phase 2")
 	await SceneManager.async_delay(4.0)
 
+	for _i in range(10):
+		_fire_projectile()
+
+		await SceneManager.async_delay(1.0)
+
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
 		_async_play_defeated_cutscene()
@@ -144,6 +151,31 @@ func _async_play_defeated_cutscene() -> void:
 	# TODO
 	print_debug("DEBUG: Tauron boss has died.")
 	pass
+
+
+
+
+func _fire_projectile() -> void:
+	var projectile_scene := preload("res://weapons/projectile/projectile.tscn")
+	var projectile: Projectile = projectile_scene.instantiate()
+
+	# The projectile is fired from the boss' mouth.
+	# The mouth is located some pixels down from the boss' origin.
+	var mouth_pos := self.global_position - Vector2.UP * 20
+
+	var direction := mouth_pos.direction_to(_player.global_position)
+	var speed := 120.0
+
+	projectile.initialize(
+		mouth_pos,
+		30.0,
+		_projectile_attack_damage,
+		Projectile.Source.TAURON_BOSS,
+		direction * speed,
+	)
+
+	self.get_tree().get_root().add_child(projectile)
+
 
 
 func _on_death() -> void:
@@ -185,5 +217,4 @@ func get_stomp_attack_damage() -> int:
 
 func get_charge_attack_damage() -> int:
 	return _charge_attack_damage
-
 

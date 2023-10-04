@@ -11,6 +11,10 @@ enum Source {
 	PLAYER = 0,
 	ENEMY = 1,
 	QUEEN_BOSS = 2,
+	TAURON_BOSS = 3,
+	PAUL_BOSS = 4,
+	SHALE_SABER_BOSS = 5,
+	ASTRAL_LINEUS_BOSS = 6,
 }
 
 signal projectile_hit
