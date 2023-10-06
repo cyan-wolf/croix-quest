@@ -74,6 +74,8 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		if projectile.is_from_player():
 			self.health_component.take_damage(projectile.get_damage())
 
+			SceneManager.async_shake_camera(0.9, 0.1) # async call
+
 
 func _physics_process(delta: float) -> void:
 	self.move_and_collide(self.velocity * delta)
@@ -117,6 +119,8 @@ func _async_on_perform_attack_1() -> void:
 		player_pos,
 		jump_duration,
 	).finished
+
+	SceneManager.async_shake_camera(1.5, 0.2) # async call
 
 	await SceneManager.async_delay(2.0)
 

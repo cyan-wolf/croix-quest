@@ -54,6 +54,27 @@ func find_player_hud() -> Control:
 	return self.get_tree().current_scene.get_node("CanvasLayer/PlayerHUD") as Control
 
 
+func async_shake_camera(amount: float, duration_in_secs: float) -> void:
+	var camera := self.find_camera()
+
+	var elapsed_duration_in_secs := 0.0
+
+	var dt := 0.01 # in seconds
+
+	while elapsed_duration_in_secs < duration_in_secs:
+		randomize()
+
+		var offset_x := randf() * amount
+		var offset_y := randf() * amount
+
+		camera.offset = Vector2(offset_x, offset_y)
+
+		elapsed_duration_in_secs += dt
+		await SceneManager.async_delay(dt)
+
+	camera.offset = Vector2.ZERO
+
+
 func async_delay(delay_in_secs: float) -> void:
 	await self.get_tree().create_timer(delay_in_secs).timeout
 
