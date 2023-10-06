@@ -59,6 +59,9 @@ func _ready() -> void:
 	self.perform_attack_2.connect(_async_on_perform_attack_2)
 	self.perform_attack_3.connect(_async_on_perform_attack_3)
 
+	# Play music.
+	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
+
 	# Start the cycle of attacks.
 	self.perform_attack_1.emit()
 
@@ -185,6 +188,9 @@ func _async_on_perform_attack_3() -> void:
 func _async_play_defeated_cutscene() -> void:
 	# TODO
 	print_debug("DEBUG: Tauron boss has died.")
+
+	# Stop playing the music that started when the boss appeared.
+	SceneManager.stop_playing_background_music()
 	pass
 
 
