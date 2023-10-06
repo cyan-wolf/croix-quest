@@ -21,8 +21,20 @@ signal perform_attack_3
 ## How much damage the projectile attack does.
 @export var _projectile_attack_damage: int = 1
 
+## How many projectiles are fired in a second.
+@export var _projectile_fire_speed: float = 2.0
+
+## How many projectiles are fired in a phase.
+@export var _projectile_amount: int = 10
+
 ## How much damage the charge (tackle) attack does.
 @export var _charge_attack_damage: int = 1
+
+## Speed in pixels per second.
+@export var _charge_attack_speed: float = 14.0 * 16
+
+## Duration in seconds.
+@export var _charge_attack_duration: float = 0.5
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 @onready var _stomp_attack_hitbox: Area2D = self.get_node("StompAttackHitboxArea")
@@ -56,7 +68,12 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	if other_hitbox.is_in_group("projectile_hitbox"):
 		var projectile: Projectile = other_hitbox.get_parent()
 
-		self.health_component.take_damage(projectile.get_damage())
+		if projectile.is_from_player():
+			self.health_component.take_damage(projectile.get_damage())
+
+
+func _physics_process(delta: float) -> void:
+	self.move_and_collide(self.velocity * delta)
 
 
 # A stomping attack.
@@ -102,6 +119,7 @@ func _async_on_perform_attack_1() -> void:
 
 	# This deactivates the stomp attack hitbox.
 	_current_attack_state = AttackState.NONE
+	_stomp_attack_hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 
 	await SceneManager.async_delay(2.0)
 
@@ -117,12 +135,12 @@ func _async_on_perform_attack_1() -> void:
 func _async_on_perform_attack_2() -> void:
 	# TODO: Attack logic goes here.
 	print_debug("DEBUG: In phase 2")
-	await SceneManager.async_delay(4.0)
+	await SceneManager.async_delay(1.0)
 
-	for _i in range(10):
+	for _i in range(_projectile_amount):
 		_fire_projectile()
 
-		await SceneManager.async_delay(1.0)
+		await SceneManager.async_delay(1 / _projectile_fire_speed)
 
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
@@ -138,6 +156,23 @@ func _async_on_perform_attack_3() -> void:
 	print_debug("DEBUG: In phase 3")
 	await SceneManager.async_delay(4.0)
 
+	var prev_player_pos: Vector2 = SceneManager.find_player().global_position
+
+	var charge_velocity := self.global_position.direction_to(prev_player_pos) * _charge_attack_speed
+
+	self.velocity = charge_velocity
+
+	# This activates the charge attack hitbox.
+	_current_attack_state = AttackState.CHARGE
+
+	await SceneManager.async_delay(_charge_attack_duration)
+
+	self.velocity = Vector2.ZERO
+
+	# This deactivates the charge attack hitbox.
+	_current_attack_state = AttackState.NONE
+	_charge_attack_hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
 		_async_play_defeated_cutscene()
@@ -151,8 +186,6 @@ func _async_play_defeated_cutscene() -> void:
 	# TODO
 	print_debug("DEBUG: Tauron boss has died.")
 	pass
-
-
 
 
 func _fire_projectile() -> void:
@@ -175,7 +208,6 @@ func _fire_projectile() -> void:
 	)
 
 	self.get_tree().get_root().add_child(projectile)
-
 
 
 func _on_death() -> void:
