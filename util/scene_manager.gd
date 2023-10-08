@@ -21,6 +21,10 @@ func _ready() -> void:
 			linear_to_db(0.0),
 		)
 
+func _process(_delta: float) -> void:
+	# Does different things depending on what "debug key" was pressed.
+	_handle_debug_keys()
+
 
 func load_scene_file(scene_path: String) -> void:
 	self.show_loading_screen()
@@ -35,7 +39,7 @@ func load_scene_file(scene_path: String) -> void:
 		self.hide_loading_screen()
 	)
 
-	callback.call()
+	callback.call() # async call
 
 
 func load_packed_scene(scene: PackedScene) -> void:
@@ -128,3 +132,49 @@ func play_background_music(audio_track_file: String) -> void:
 func stop_playing_background_music() -> void:
 	_background_music_player.stop()
 
+
+# Handles "debug key" presses.
+func _handle_debug_keys() -> void:
+	# Assume that the player is in the scene.
+	var _player := self.find_player()
+
+	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
+	if Input.is_action_just_pressed("debug_1"):
+		_player.health_component.take_damage(1)
+
+	# DEBUG: The player uses up mana if the 'Number Pad 2' key is pressed.
+	if Input.is_action_just_pressed("debug_2"):
+		_player.mana_component.use_mana(1)
+
+	# DEBUG: The player dies if the 'Number Pad 3' key is pressed.
+	if Input.is_action_just_pressed("debug_3"):
+		_player.health_component.take_damage(_player.health_component.get_health())
+
+	# DEBUG: The player goes to the 'Test Dungeon' map if the 'Number Pad 4' key is pressed.
+	if Input.is_action_just_pressed("debug_4"):
+		self.load_scene_file("res://maps/dungeons/test_dungeon/test_dungeon.tscn")
+
+	# DEBUG: The player goes to the 'Cobalt Dungeon' map if the 'Number Pad 5' key is pressed.
+	if Input.is_action_just_pressed("debug_5"):
+		self.load_scene_file("res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn")
+
+	# DEBUG: Mutes the game volume if the 'Number Pad 6' key is pressed.
+	if Input.is_action_just_pressed("debug_6"):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(0.0),
+		)
+
+	# DEBUG: Halves the game volume if the 'Number Pad 7' key is pressed.
+	if Input.is_action_just_pressed("debug_7"):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(0.5),
+		)
+
+	# DEBUG: Maxes out the game volume if the 'Number Pad 8' key is pressed.
+	if Input.is_action_just_pressed("debug_8"):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(1.0),
+		)

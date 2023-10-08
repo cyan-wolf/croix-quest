@@ -68,57 +68,16 @@ func _physics_process(_delta):
 
 
 func _process(_delta: float) -> void:
+	# Be able to use the weapon if there aren't any events (like being in a cutscene) currently happening.
 	if SceneManager.is_world_state_empty():
 		_weapon.enable_weapon()
 	else:
 		_weapon.disable_weapon()
 
-	# DEBUG: The player takes damage if the 'Number Pad 1' key is pressed.
-	if Input.is_action_just_pressed("debug_1"):
-		self.health_component.take_damage(1)
-
-	# DEBUG: The player uses up mana if the 'Number Pad 2' key is pressed.
-	if Input.is_action_just_pressed("debug_2"):
-		self.mana_component.use_mana(1)
-
-	# DEBUG: The player dies if the 'Number Pad 3' key is pressed.
-	if Input.is_action_just_pressed("debug_3"):
-		self.health_component.take_damage(self.health_component.get_health())
-
-	# DEBUG: The player goes to the 'Test Dungeon' map if the 'Number Pad 4' key is pressed.
-	if Input.is_action_just_pressed("debug_4"):
-		SceneManager.load_scene_file("res://maps/dungeons/test_dungeon/test_dungeon.tscn")
-
-	# DEBUG: The player goes to the 'Cobalt Dungeon' map if the 'Number Pad 5' key is pressed.
-	if Input.is_action_just_pressed("debug_5"):
-		SceneManager.load_scene_file("res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn")
-
-	# DEBUG: Mutes the game volume if the 'Number Pad 6' key is pressed.
-	if Input.is_action_just_pressed("debug_6"):
-		AudioServer.set_bus_volume_db(
-			AudioServer.get_bus_index("Master"),
-			linear_to_db(0.0),
-		)
-
-	# DEBUG: Halves the game volume if the 'Number Pad 7' key is pressed.
-	if Input.is_action_just_pressed("debug_7"):
-		AudioServer.set_bus_volume_db(
-			AudioServer.get_bus_index("Master"),
-			linear_to_db(0.5),
-		)
-
-	# DEBUG: Maxes out the game volume if the 'Number Pad 8' key is pressed.
-	if Input.is_action_just_pressed("debug_8"):
-		AudioServer.set_bus_volume_db(
-			AudioServer.get_bus_index("Master"),
-			linear_to_db(1.0),
-		)
-
 
 func _async_on_death() -> void:
 	SceneManager.add_world_state(Util.WorldState.PLAYER_IS_DEAD)
 
-	# TODO: Show a death screen here and play some SFX or music.
 	await SceneManager.async_delay(1.0)
 
 	SceneManager.show_game_over_screen()
