@@ -54,17 +54,18 @@ position = Vector2(0, -73)
 _melee_enemy_scene = ExtResource("4_au48o")
 _shooting_enemy_scene = ExtResource("5_xa5u0")
 
-[node name="EnemySummonPositions" type="Node2D" parent="PaulBoss"]
+[node name="EnemySummonPositions" type="Node2D" parent="."]
 visible = false
+position = Vector2(0, -73)
 
-[node name="PositionMarker1" parent="PaulBoss/EnemySummonPositions" instance=ExtResource("4_115tq")]
+[node name="PositionMarker1" parent="EnemySummonPositions" instance=ExtResource("4_115tq")]
 position = Vector2(-1, -105)
 
-[node name="PositionMarker2" parent="PaulBoss/EnemySummonPositions" instance=ExtResource("4_115tq")]
+[node name="PositionMarker2" parent="EnemySummonPositions" instance=ExtResource("4_115tq")]
 position = Vector2(106, -17)
 
-[node name="PositionMarker3" parent="PaulBoss/EnemySummonPositions" instance=ExtResource("4_115tq")]
+[node name="PositionMarker3" parent="EnemySummonPositions" instance=ExtResource("4_115tq")]
 position = Vector2(-104, -17)
 
-[node name="PositionMarker4" parent="PaulBoss/EnemySummonPositions" instance=ExtResource("4_115tq")]
+[node name="PositionMarker4" parent="EnemySummonPositions" instance=ExtResource("4_115tq")]
 position = Vector2(0, 78)
