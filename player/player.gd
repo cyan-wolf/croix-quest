@@ -141,13 +141,16 @@ func _get_input_direction() -> Vector2:
 
 
 func _get_sprite_direction() -> Util.Direction:
-	match _get_input_direction():
-		Vector2.LEFT:
-			return Util.Direction.LEFT
-		Vector2.RIGHT:
-			return Util.Direction.RIGHT
-		_:
-			return _current_sprite_direction
+	var input_x_component := _get_input_direction().x
+
+	if input_x_component < 0.0:
+		return Util.Direction.LEFT
+	
+	elif input_x_component > 0.0:
+		return Util.Direction.RIGHT
+	
+	else:
+		return _current_sprite_direction
 
 
 func _on_timer_timeout():
