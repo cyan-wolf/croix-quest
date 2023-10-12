@@ -12,6 +12,8 @@ signal perform_attack_3
 ## The scene of the ranged enemy to be summoned.
 @export var _shooting_enemy_scene: PackedScene
 
+@export_range(0.0, 100.0) var _enemy_spawn_chance_percent: float = 50.0
+
 @export var health_component: HealthComponent
 
 @export var _projectile_attack_damage: int = 1
@@ -39,6 +41,8 @@ func _ready() -> void:
 	self.perform_attack_1.connect(_async_on_perform_attack_1)
 	self.perform_attack_2.connect(_async_on_perform_attack_2)
 	self.perform_attack_3.connect(_async_on_perform_attack_3)
+
+	self.health_component.death.connect(_on_death)
 
 	# Add the child nodes of 'EnemySummonPositions' to `_enemy_summon_positions`.
 	_enemy_summon_positions.append_array(self.get_node("../EnemySummonPositions").get_children())
@@ -70,6 +74,8 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 			self.health_component.take_damage(projectile.get_damage())
 
 			SceneManager.async_shake_camera(0.9, 0.1) # async call
+
+			print("HP:", self.health_component.get_health())
 
 
 # A back-and-forth attack with a large club.
@@ -146,13 +152,21 @@ func _async_on_perform_attack_3() -> void:
 
 		var enemy_to_summon: Node2D
 
-		# Summon melee enemies for even indices.
-		if i % 2 == 0:
+		randomize()
+		var _should_summon_melee_enemy := Util.return_true_given_probability(_enemy_spawn_chance_percent / 100.0)
+		var _should_summon_shooting_enemy := Util.return_true_given_probability(_enemy_spawn_chance_percent / 100.0)
+
+		# A chance to summon melee enemies for even indices.
+		if (i % 2 == 0) and _should_summon_melee_enemy:
 			enemy_to_summon = _melee_enemy_scene.instantiate()
 
-		# Summon shooting enemies for odd indices.
-		else:
+		# A chance to summon shooting enemies for odd indices.
+		elif (i % 2 == 1) and _should_summon_shooting_enemy:
 			enemy_to_summon = _shooting_enemy_scene.instantiate()
+
+		# Continue to the next iteration if an enemy wasn't summoned.
+		else:
+			continue
 
 		# Move the enemy to the position marker.
 		enemy_to_summon.global_position = pos_marker.global_position
@@ -163,6 +177,10 @@ func _async_on_perform_attack_3() -> void:
 
 		# Keep track of when enemies die.
 		var enemy_component: EnemyComponent = enemy_to_summon.get_node("EnemyComponent")
+		
+		# Wait a moment for the enemy's health component to initialize.
+		await SceneManager.async_delay(0.1)
+
 		enemy_component.health_component.death.connect(_on_summoned_enemy_death)
 
 	if _has_been_defeated:
@@ -171,6 +189,10 @@ func _async_on_perform_attack_3() -> void:
 		return
 
 	self.perform_attack_1.emit()
+
+
+func _on_death() -> void:
+	_has_been_defeated = true
 
 
 func _async_play_defeated_cutscene() -> void:
