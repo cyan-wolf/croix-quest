@@ -16,12 +16,16 @@ signal perform_attack_3
 
 @export var health_component: HealthComponent
 
+@export var _melee_attack_damage: int = 3
+
 @export var _projectile_attack_damage: int = 1
 
 ## In pixels per second.
 @export var _follow_speed: float = 3.0 * 16
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
+
+@onready var _melee_attack_hitbox: Area2D = self.get_node("MeleeAttackHitboxArea")
 
 @onready var _player: Player = SceneManager.find_player()
 
@@ -90,9 +94,15 @@ func _async_on_perform_attack_1() -> void:
 
 	_is_following_player = false
 
-	await SceneManager.async_delay(1.0)
+	await SceneManager.async_delay(0.4)
 
-	# TODO: Make the boss do a powerful melee attack here.
+	# Makes the boss do a powerful melee attack.
+
+	var melee_attack_hitbox_col: CollisionShape2D = _melee_attack_hitbox.get_node("CollisionShape2D")
+
+	melee_attack_hitbox_col.set_deferred("disabled", false)
+	await SceneManager.async_delay(1.0)
+	melee_attack_hitbox_col.set_deferred("disabled", true)
 
 	await SceneManager.async_delay(1.0)
 
@@ -226,3 +236,7 @@ func _on_summoned_enemy_death() -> void:
 	_summoned_enemy_count -= 1
 
 	print_debug(_summoned_enemy_count)
+
+
+func get_melee_attack_damage() -> int:
+	return _melee_attack_damage
