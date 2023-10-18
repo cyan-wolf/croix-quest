@@ -1,6 +1,8 @@
 extends Node
 class_name Util
 
+const Projectile := preload("res://weapons/projectile/projectile.gd")
+
 ### TYPE DEFINITIONS ###
 
 ## Utility enum for keeping track of a character's direction.
@@ -72,4 +74,68 @@ static func choose_random_elements_from_array(array: Array, amount: int) -> Arra
 static func return_true_given_probability(probability: float) -> bool:
 	randomize()
 	return randf() < probability
+
+
+class ProjectileBuilder:
+	const PROJECTILE_SCENE := preload("res://weapons/projectile/projectile.tscn")
+
+	# Required properties
+	var _global_position: Vector2
+	var _impulse: Vector2		# speed + direction
+	var _source: Projectile.Source	# who (player or enemy) fired the projectile
+	var _damage: int
+
+	# Optional properties
+	var _lifetime: float = 2.0	# in seconds
+	var _sprite_frames: SpriteFrames = Projectile.DEFAULT_PROJECTILE_SPRITE_FRAMES
+	var _can_pass_through_wall_edges: bool = false	# if true, it the projectile can go through the map
+	var _scale: float = 1.0		# determines the sprite and collision box's scale
+
+	func with_global_pos(global_pos: Vector2) -> ProjectileBuilder:
+		_global_position = global_pos
+		return self
+
+
+	func with_impulse(impulse: Vector2) -> ProjectileBuilder:
+		_impulse = impulse
+		return self
+
+	
+	func from_source(source: Projectile.Source) -> ProjectileBuilder:
+		_source = source
+		return self
+
+
+	func with_damage(damage: int) -> ProjectileBuilder:
+		_damage = damage
+		return self
+
+	
+	func with_lifetime(lifetime_in_secs: float) -> ProjectileBuilder:
+		_lifetime = lifetime_in_secs
+		return self
+
+	
+	func with_sprite_frames(sprite_frames: SpriteFrames) -> ProjectileBuilder:
+		_sprite_frames = sprite_frames
+		return self
+
+
+	func can_pass_through_wall_edges(yes_or_no: bool) -> ProjectileBuilder:
+		_can_pass_through_wall_edges = yes_or_no
+		return self
+
+
+	func with_scale(scale: float) -> ProjectileBuilder:
+		_scale = scale
+		return self
+
+
+	func instantiate() -> Projectile:
+		var projectile: Projectile = PROJECTILE_SCENE.instantiate()
+
+		# TODO: Use the builder fields to initialize the projectile's fields 
+		# (damage, impulse, can_pass_through_wall_edges, etc.) ...
+
+		return projectile
 

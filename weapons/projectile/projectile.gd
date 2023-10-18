@@ -76,6 +76,7 @@ func _on_projectile_hit() -> void:
 
 
 ## Must be called before adding the projectile to the scene tree.
+## NOTE: This method is deprecated. Use `Projectile.start_building()` instead.
 func initialize(global_pos: Vector2, 
 		# How long it takes for it to despawn.
 		lifetime: float,
@@ -127,4 +128,10 @@ func is_from_player() -> bool:
 func _async_remove_particles_after_delay(particles: GPUParticles2D) -> void:
 	await SceneManager.async_delay(5.0)
 	particles.queue_free()
+
+
+static func start_building() -> Util.ProjectileBuilder:
+	return Util.ProjectileBuilder.new()
+
+
 
