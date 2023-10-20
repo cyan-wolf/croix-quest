@@ -134,4 +134,22 @@ static func start_building() -> Util.ProjectileBuilder:
 	return Util.ProjectileBuilder.new()
 
 
+func initialize_using_builder(builder: Util.ProjectileBuilder)  -> void:
+	# Initialize important fields.
+	self.global_position = builder.global_position
+	self.rotation = builder.impulse.angle()
+	_lifetime = builder.lifetime
+	_damage = builder.damage
+	_source = builder.source
+
+	# Make the projectile move in this direction (not affected by `self.rotation`).
+	self.apply_impulse(builder.impulse)
+
+	# Set `_sprite` here because this function runs before `_ready()`.
+	_sprite = self.get_node("AnimatedSprite2D")
+
+	_sprite.sprite_frames = builder.sprite_frames
+
+	# Play whatever animation was provided by the sprite frames.
+	_sprite.play("default")
 

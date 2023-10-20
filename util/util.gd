@@ -79,63 +79,84 @@ static func return_true_given_probability(probability: float) -> bool:
 class ProjectileBuilder:
 	const PROJECTILE_SCENE := preload("res://weapons/projectile/projectile.tscn")
 
+	const NUM_REQUIRED_PROPERTIES := 4
+
 	# Required properties
-	var _global_position: Vector2
-	var _impulse: Vector2		# speed + direction
-	var _source: Projectile.Source	# who (player or enemy) fired the projectile
-	var _damage: int
+	var global_position: Vector2
+	var impulse: Vector2		# speed + direction
+	var source: Projectile.Source	# who (player or enemy) fired the projectile
+	var damage: int
 
 	# Optional properties
-	var _lifetime: float = 2.0	# in seconds
-	var _sprite_frames: SpriteFrames = Projectile.DEFAULT_PROJECTILE_SPRITE_FRAMES
-	var _can_pass_through_wall_edges: bool = false	# if true, it the projectile can go through the map
-	var _scale: float = 1.0		# determines the sprite and collision box's scale
+	var lifetime: float = 2.0	# in seconds
+	var sprite_frames: SpriteFrames = Projectile.DEFAULT_PROJECTILE_SPRITE_FRAMES
+	var is_able_to_pass_through_wall_edges: bool = false	# if true, it the projectile can go through the map
+	var scale: float = 1.0		# determines the sprite and collision box's scale
 
-	func with_global_pos(global_pos: Vector2) -> ProjectileBuilder:
-		_global_position = global_pos
+	# A hash set for keeping track if all required properties have been set.
+	var _required_properties_set := {}
+
+	func with_global_pos(global_position_: Vector2) -> ProjectileBuilder:
+		_mark_required_property_as_set("global_position")
+		self.global_position = global_position_
 		return self
 
 
-	func with_impulse(impulse: Vector2) -> ProjectileBuilder:
-		_impulse = impulse
+	func with_impulse(impulse_: Vector2) -> ProjectileBuilder:
+		_mark_required_property_as_set("impulse")
+		self.impulse = impulse_
 		return self
 
 	
-	func from_source(source: Projectile.Source) -> ProjectileBuilder:
-		_source = source
+	func from_source(source_: Projectile.Source) -> ProjectileBuilder:
+		_mark_required_property_as_set("source")
+		self.source = source_
 		return self
 
 
-	func with_damage(damage: int) -> ProjectileBuilder:
-		_damage = damage
+	func with_damage(damage_: int) -> ProjectileBuilder:
+		_mark_required_property_as_set("damage")
+		damage = damage_
 		return self
 
 	
 	func with_lifetime(lifetime_in_secs: float) -> ProjectileBuilder:
-		_lifetime = lifetime_in_secs
+		self.lifetime = lifetime_in_secs
 		return self
 
 	
-	func with_sprite_frames(sprite_frames: SpriteFrames) -> ProjectileBuilder:
-		_sprite_frames = sprite_frames
+	func with_sprite_frames(sprite_frames_: SpriteFrames) -> ProjectileBuilder:
+		self.sprite_frames = sprite_frames_
 		return self
 
 
 	func can_pass_through_wall_edges(yes_or_no: bool) -> ProjectileBuilder:
-		_can_pass_through_wall_edges = yes_or_no
+		self.is_able_to_pass_through_wall_edges = yes_or_no
 		return self
 
 
-	func with_scale(scale: float) -> ProjectileBuilder:
-		_scale = scale
+	func with_scale(scale_: float) -> ProjectileBuilder:
+		self.scale = scale_
 		return self
 
 
 	func instantiate() -> Projectile:
 		var projectile: Projectile = PROJECTILE_SCENE.instantiate()
 
-		# TODO: Use the builder fields to initialize the projectile's fields 
-		# (damage, impulse, can_pass_through_wall_edges, etc.) ...
+		if not _all_required_properties_have_been_set():
+			print_debug("ERROR: Not all required properties have been set in projectile initialization")
 
+		# Use the builder fields to initialize the projectile's fields 
+		projectile.initialize_using_builder(self)
+ 
 		return projectile
+
+
+	func _mark_required_property_as_set(prop_name: String) -> void:
+		# This is a hash set so the value isn't important.
+		_required_properties_set[prop_name] = null
+
+
+	func _all_required_properties_have_been_set() -> bool:
+		return len(_required_properties_set) == NUM_REQUIRED_PROPERTIES
 
