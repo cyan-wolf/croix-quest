@@ -148,6 +148,23 @@ func initialize_using_builder(builder: Util.ProjectileBuilder)  -> void:
 	# Set `_sprite` here because this function runs before `_ready()`.
 	_sprite = self.get_node("AnimatedSprite2D")
 
+	# FIXME: For some reason, editing the size of the collision shapes of one projectile, changes the 
+	# size of the collision shapes OF THE SCENE ITSELF (????????????????????????????????????????????)
+	# NOTE: Try to use .duplicate() with the shapes or something like that.
+
+	# Adjust projectile scene properties by the scale.
+	#var rigid_body_col: CollisionShape2D = self.get_node("CollisionShape2D")
+	#var hitbox_col: CollisionShape2D = self.get_node("HitboxArea/CollisionShape2D2")
+
+	#rigid_body_col.shape.radius *= builder.scale
+	#hitbox_col.shape.radius *= builder.scale
+
+	#print_debug(rigid_body_col)
+	#print_debug(rigid_body_col.shape.radius)
+
+	#var adjusted_sprite_scale: float = hitbox_col.shape.radius / 8.0
+	#_sprite.scale = Vector2(adjusted_sprite_scale, adjusted_sprite_scale)
+
 	_sprite.sprite_frames = builder.sprite_frames
 
 	# Play whatever animation was provided by the sprite frames.
