@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_6cw5t"]
 [ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="4_4hia0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ydvf"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fcjew"]
 radius = 2.0
-height = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvpn8"]
 atlas = ExtResource("2_tfc63")
@@ -36,7 +35,7 @@ contact_monitor = true
 script = ExtResource("1_e1amn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7ydvf")
+shape = SubResource("CircleShape2D_fcjew")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

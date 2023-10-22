@@ -210,9 +210,6 @@ func _async_play_defeated_cutscene() -> void:
 
 
 func _fire_projectile(offset_angle_in_degrees: float) -> void:
-	var projectile_scene := preload("res://weapons/projectile/projectile.tscn")
-	var projectile: Projectile = projectile_scene.instantiate()
-
 	# The projectile is fired from the boss' club (top-right corner of its sprite).
 	var summon_pos := self.global_position + Vector2.UP * 32 + Vector2.RIGHT * 28
 
@@ -221,13 +218,13 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 
 	var speed := 120.0
 
-	projectile.initialize(
-		summon_pos,
-		30.0,
-		_projectile_attack_damage,
-		Projectile.Source.PAUL_BOSS,
-		direction * speed,
-	)
+	var projectile: Projectile = Projectile.start_building() \
+		.with_global_pos(summon_pos) \
+		.with_impulse(direction * speed) \
+		.from_source(Projectile.Source.PAUL_BOSS) \
+		.with_damage(_projectile_attack_damage) \
+		.with_scale(1.0) \
+		.create()
 
 	self.get_tree().get_root().add_child(projectile)
 

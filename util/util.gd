@@ -140,7 +140,7 @@ class ProjectileBuilder:
 		return self
 
 
-	func instantiate() -> Projectile:
+	func create() -> Projectile:
 		var projectile: Projectile = PROJECTILE_SCENE.instantiate()
 
 		if not _all_required_properties_have_been_set():
