@@ -25,12 +25,19 @@ var _damage: int = 0
 ## Indicates "who" shot the projectile.
 var _source: Source = Source.PLAYER
 
+## Indicates the scale of the projectile relative to the current sizes on the scene.
+var _scale: float = 1.0
+
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 func _ready():
+	# Connect signals.
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	_hitbox.body_entered.connect(_on_body_entered_hitbox)
 	self.projectile_hit.connect(_on_projectile_hit)
+
+	# Adjust the projectile's physical scale according to its `_scale` property.
+	_set_sprite_and_collision_scale()
 
 	# Despawn the projectile if it doesn't hit anything by this point.
 	await self.get_tree().create_timer(_lifetime).timeout
@@ -77,6 +84,7 @@ func _on_projectile_hit() -> void:
 
 ## Must be called before adding the projectile to the scene tree.
 ## NOTE: This method is deprecated. Use `Projectile.start_building()` instead.
+## This method is called before _ready().
 func initialize(global_pos: Vector2, 
 		# How long it takes for it to despawn.
 		lifetime: float,
@@ -130,6 +138,23 @@ func _async_remove_particles_after_delay(particles: GPUParticles2D) -> void:
 	particles.queue_free()
 
 
+func _set_sprite_and_collision_scale() -> void:
+	var rigid_body_col: CollisionShape2D = self.get_node("CollisionShape2D")
+	var hitbox_col: CollisionShape2D = self.get_node("HitboxArea/CollisionShape2D2")
+
+	# Make the `shape` properties unique (they aren't unique by default for some reason).
+	rigid_body_col.shape = rigid_body_col.shape.duplicate(true)
+	hitbox_col.shape = rigid_body_col.shape.duplicate(true)
+
+	# Apply the scale to the radii of the rigidbody and hitbox.
+	rigid_body_col.shape.radius *= _scale
+	hitbox_col.shape.radius *= _scale
+
+	# Apply the scale to the sprite by calculating an equivalent scale for it.
+	var adjusted_sprite_scale: float = hitbox_col.shape.radius / 8.0
+	_sprite.scale = Vector2(adjusted_sprite_scale, adjusted_sprite_scale)
+
+
 static func start_building() -> Util.ProjectileBuilder:
 	return Util.ProjectileBuilder.new()
 
@@ -148,24 +173,10 @@ func initialize_using_builder(builder: Util.ProjectileBuilder)  -> void:
 	# Set `_sprite` here because this function runs before `_ready()`.
 	_sprite = self.get_node("AnimatedSprite2D")
 
-	# FIXME: For some reason, editing the size of the collision shapes of one projectile, changes the 
-	# size of the collision shapes OF THE SCENE ITSELF (????????????????????????????????????????????)
-	# NOTE: Try to use .duplicate() with the shapes or something like that.
+	# Store the scale for now; the actual scale is applied when `_ready()` runs.
+	_scale = builder.scale
 
-	# Adjust projectile scene properties by the scale.
-	#var rigid_body_col: CollisionShape2D = self.get_node("CollisionShape2D")
-	#var hitbox_col: CollisionShape2D = self.get_node("HitboxArea/CollisionShape2D2")
-
-	#rigid_body_col.shape.radius *= builder.scale
-	#hitbox_col.shape.radius *= builder.scale
-
-	#print_debug(rigid_body_col)
-	#print_debug(rigid_body_col.shape.radius)
-
-	#var adjusted_sprite_scale: float = hitbox_col.shape.radius / 8.0
-	#_sprite.scale = Vector2(adjusted_sprite_scale, adjusted_sprite_scale)
-
-	_sprite.sprite_frames = builder.sprite_frames
+	_sprite.sprite_frames = builder.sprite_frames.duplicate(true)
 
 	# Play whatever animation was provided by the sprite frames.
 	_sprite.play("default")

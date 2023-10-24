@@ -84,8 +84,6 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 # A back-and-forth attack with a large club.
 func _async_on_perform_attack_1() -> void:
-	print_debug("DEBUG: In attack 1")
-
 	await SceneManager.async_delay(2.0)
 
 	_is_following_player = true
@@ -116,8 +114,6 @@ func _async_on_perform_attack_1() -> void:
 
 # A projectile attack.
 func _async_on_perform_attack_2() -> void:
-	print_debug("DEBUG: In attack 2")
-
 	await SceneManager.async_delay(2.0)
 
 	# The maximum angle spread of the projectiles.
@@ -149,8 +145,6 @@ func _async_on_perform_attack_2() -> void:
 
 # An attack that summons enemies.
 func _async_on_perform_attack_3() -> void:
-	print_debug("DEBUG: In attack 3")
-
 	await SceneManager.async_delay(2.0)
 	
 	for i in range(len(_enemy_summon_positions)):
@@ -231,8 +225,6 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 
 func _on_summoned_enemy_death() -> void:
 	_summoned_enemy_count -= 1
-
-	print_debug(_summoned_enemy_count)
 
 
 func get_melee_attack_damage() -> int:
