@@ -28,6 +28,9 @@ var _source: Source = Source.PLAYER
 ## Indicates the scale of the projectile relative to the current sizes on the scene.
 var _scale: float = 1.0
 
+## Indicates whether the projectile collides with the edges of the map.
+var _collides_with_wall_edges := true
+
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 func _ready():
@@ -38,6 +41,9 @@ func _ready():
 
 	# Adjust the projectile's physical scale according to its `_scale` property.
 	_set_sprite_and_collision_scale()
+
+	# Sets the projectile's collision.
+	_set_collision()
 
 	# Despawn the projectile if it doesn't hit anything by this point.
 	await self.get_tree().create_timer(_lifetime).timeout
@@ -155,6 +161,14 @@ func _set_sprite_and_collision_scale() -> void:
 	_sprite.scale = Vector2(adjusted_sprite_scale, adjusted_sprite_scale)
 
 
+## Sets the projectile's collision.
+func _set_collision() -> void:
+	const WALL_EDGE_COLLISION_LAYER_NUM := 3
+
+	if not _collides_with_wall_edges:
+		self.set_collision_mask_value(WALL_EDGE_COLLISION_LAYER_NUM, false)
+
+
 static func start_building() -> Util.ProjectileBuilder:
 	return Util.ProjectileBuilder.new()
 
@@ -177,6 +191,8 @@ func initialize_using_builder(builder: Util.ProjectileBuilder)  -> void:
 	_scale = builder.scale
 
 	_sprite.sprite_frames = builder.sprite_frames.duplicate(true)
+
+	_collides_with_wall_edges = not builder.is_able_to_pass_through_wall_edges
 
 	# Play whatever animation was provided by the sprite frames.
 	_sprite.play("default")
