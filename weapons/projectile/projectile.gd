@@ -42,8 +42,6 @@ func _ready():
 	# Adjust the projectile's physical scale according to its `_scale` property.
 	_set_sprite_and_collision_scale()
 
-	# Sets the projectile's collision.
-	_set_collision()
 
 	# Despawn the projectile if it doesn't hit anything by this point.
 	await self.get_tree().create_timer(_lifetime).timeout
@@ -71,7 +69,8 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 # This is supposed to destroy the projectile if it hits the "edge" of the dungeon.
 func _on_body_entered_hitbox(_body: Node2D) -> void:
-	self.projectile_hit.emit()
+	if _collides_with_wall_edges:
+		self.projectile_hit.emit()
 
 
 # TODO: Add an animation or particle effect when the projectile hits something and gets destroyed.
@@ -160,13 +159,6 @@ func _set_sprite_and_collision_scale() -> void:
 	var adjusted_sprite_scale: float = hitbox_col.shape.radius / 8.0
 	_sprite.scale = Vector2(adjusted_sprite_scale, adjusted_sprite_scale)
 
-
-## Sets the projectile's collision.
-func _set_collision() -> void:
-	const WALL_EDGE_COLLISION_LAYER_NUM := 3
-
-	if not _collides_with_wall_edges:
-		self.set_collision_mask_value(WALL_EDGE_COLLISION_LAYER_NUM, false)
 
 
 static func start_building() -> Util.ProjectileBuilder:

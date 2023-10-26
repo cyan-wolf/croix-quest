@@ -217,8 +217,6 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 		.with_impulse(direction * speed) \
 		.from_source(Projectile.Source.PAUL_BOSS) \
 		.with_damage(_projectile_attack_damage) \
-		.with_scale(1.0) \
-		.can_pass_through_wall_edges(false) \
 		.create()
 
 	self.get_tree().get_root().add_child(projectile)
