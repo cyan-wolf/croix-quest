@@ -140,6 +140,8 @@ class ProjectileBuilder:
 		return self
 
 
+	## Finishes the creation of the projectile. This function only returns the created projectile, 
+	## it does not add it to the scene, for that, use `.add_to_scene()` instead.
 	func create() -> Projectile:
 		var projectile: Projectile = PROJECTILE_SCENE.instantiate()
 
@@ -150,6 +152,12 @@ class ProjectileBuilder:
 		projectile.initialize_using_builder(self)
  
 		return projectile
+
+
+	## Convenience function to be used intstead of `.create()` to create the projectile and add it to the scene.
+	func add_to_scene() -> void:
+		var projectile := self.create()
+		SceneManager.get_tree().get_root().add_child(projectile)
 
 
 	func _mark_required_property_as_set(prop_name: String) -> void:

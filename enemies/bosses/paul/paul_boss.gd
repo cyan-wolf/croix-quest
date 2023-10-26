@@ -212,14 +212,12 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 
 	var speed := 120.0
 
-	var projectile: Projectile = Projectile.start_building() \
+	Projectile.start_building() \
 		.with_global_pos(summon_pos) \
 		.with_impulse(direction * speed) \
 		.from_source(Projectile.Source.PAUL_BOSS) \
 		.with_damage(_projectile_attack_damage) \
-		.create()
-
-	self.get_tree().get_root().add_child(projectile)
+		.add_to_scene()
 
 
 func _on_summoned_enemy_death() -> void:

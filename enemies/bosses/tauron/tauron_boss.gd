@@ -199,9 +199,6 @@ func _async_play_defeated_cutscene() -> void:
 
 
 func _fire_projectile() -> void:
-	var projectile_scene := preload("res://weapons/projectile/projectile.tscn")
-	var projectile: Projectile = projectile_scene.instantiate()
-
 	# The projectile is fired from the boss' mouth.
 	# The mouth is located some pixels down from the boss' origin.
 	var mouth_pos := self.global_position - Vector2.UP * 20
@@ -209,15 +206,12 @@ func _fire_projectile() -> void:
 	var direction := mouth_pos.direction_to(_player.global_position)
 	var speed := 120.0
 
-	projectile.initialize(
-		mouth_pos,
-		30.0,
-		_projectile_attack_damage,
-		Projectile.Source.TAURON_BOSS,
-		direction * speed,
-	)
-
-	self.get_tree().get_root().add_child(projectile)
+	Projectile.start_building() \
+		.with_global_pos(mouth_pos) \
+		.with_impulse(direction * speed) \
+		.from_source(Projectile.Source.TAURON_BOSS) \
+		.with_damage(_projectile_attack_damage) \
+		.add_to_scene()
 
 
 func _on_death() -> void:
