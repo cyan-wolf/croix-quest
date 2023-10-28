@@ -35,18 +35,13 @@ func _on_shooting_attack_timer_timeout() -> void:
 
 
 func _shoot() -> void:
-	var projectile_instance := _projectile_scene.instantiate() as Projectile
-
 	var direction := self.global_position.direction_to(_player.global_position)
 
-	projectile_instance.initialize(
-		self.global_position,
-		10.0, # projectile lifetime in seconds
-		_projectile_damage,
-		Projectile.Source.ENEMY,
-		# Calculated using math.
-		direction * _projectile_speed,
-		_projectile_sprite_frames,
-	)
+	Projectile.start_building() \
+		.with_global_pos(self.global_position) \
+		.with_impulse(direction * _projectile_speed) \
+		.from_source(Projectile.Source.ENEMY) \
+		.with_damage(_projectile_damage) \
+		.with_sprite_frames(_projectile_sprite_frames) \
+		.add_to_scene()
 
-	self.get_tree().get_root().add_child(projectile_instance)

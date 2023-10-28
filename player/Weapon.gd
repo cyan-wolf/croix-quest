@@ -129,7 +129,6 @@ func disable_weapon() -> void:
 
 func load_weapon_data(weapon_type: int) -> Dictionary:
 	var weapon_file_path = WEAPONS_DATA_PATH + "/" + get_weapon_filename(weapon_type)
-	var weapon_data = {}	
 
 	if FileAccess.file_exists(weapon_file_path):
 		var dataFile = FileAccess.open(weapon_file_path, FileAccess.READ)
@@ -165,69 +164,53 @@ func get_weapon_filename(weapon_type: int) -> String:
 func _fire() -> void:
 	match _current_weapon_type:
 		Util.WeaponType.GUN:
-			var bullet_instance := _bullet_scene.instantiate() as Projectile
-
 			var bullet_rotation := self.rotation
+			var bullet_impulse := Vector2.from_angle(bullet_rotation) * _bullet_speed
 
-			bullet_instance.initialize(
-				self.global_position,
-				_bullet_alive_time,
-				_bullet_damage,
-				Projectile.Source.PLAYER,
-				# Calculated using math.
-				Vector2.from_angle(bullet_rotation) * _bullet_speed
-			)
-
-			self.get_tree().get_root().add_child(bullet_instance)
+			Projectile.start_building() \
+				.with_global_pos(self.global_position) \
+				.with_impulse(bullet_impulse) \
+				.from_source(Projectile.Source.PLAYER) \
+				.with_damage(_bullet_damage) \
+				.with_lifetime(_bullet_alive_time) \
+				.add_to_scene()
 
 		Util.WeaponType.SHOTGUN:
 			for i in range(3):
-				var bullet_instance := _bullet_scene.instantiate() as Projectile
-
 				var bullet_rotation := self.rotation + (i - 1) * 0.1
+				var bullet_impulse := Vector2.from_angle(bullet_rotation) * _bullet_speed
 
-				bullet_instance.initialize(
-					self.global_position,
-					_bullet_alive_time,
-					_bullet_damage,
-					Projectile.Source.PLAYER,
-					# Not calculated using math, calculated using MATHS #unitedkingdom
-					Vector2.from_angle(bullet_rotation) * _bullet_speed
-				)
-		
-				self.get_tree().get_root().add_child(bullet_instance)	
+				Projectile.start_building() \
+					.with_global_pos(self.global_position) \
+					.with_impulse(bullet_impulse) \
+					.from_source(Projectile.Source.PLAYER) \
+					.with_damage(_bullet_damage) \
+					.with_lifetime(_bullet_alive_time) \
+					.add_to_scene()
 
 		Util.WeaponType.SNIPER:
-			var bullet_instance := _bullet_scene.instantiate() as Projectile
-
 			var bullet_rotation := self.rotation
+			var bullet_impulse := Vector2.from_angle(bullet_rotation) * _bullet_speed
 
-			bullet_instance.initialize(
-				self.global_position,
-				_bullet_alive_time,
-				_bullet_damage,
-				Projectile.Source.PLAYER,
-				# Calculated using math.
-				Vector2.from_angle(bullet_rotation) * _bullet_speed,
-			)
-
-			self.get_tree().get_root().add_child(bullet_instance)
+			Projectile.start_building() \
+				.with_global_pos(self.global_position) \
+				.with_impulse(bullet_impulse) \
+				.from_source(Projectile.Source.PLAYER) \
+				.with_damage(_bullet_damage) \
+				.with_lifetime(_bullet_alive_time) \
+				.add_to_scene()
 
 		Util.WeaponType.SMG:
-			var bullet_instance := _bullet_scene.instantiate()
-
 			var bullet_rotation := self.rotation + randf_range(-0.2, 0.2)
+			var bullet_impulse := Vector2.from_angle(bullet_rotation) * _bullet_speed
 
-			bullet_instance.initialize(
-				self.global_position,
-				_bullet_alive_time,
-				_bullet_damage,
-				Projectile.Source.PLAYER,
-				# Calculated using math.
-				Vector2.from_angle(bullet_rotation) * _bullet_speed
-			)
-
-			self.get_tree().get_root().add_child(bullet_instance)
+			Projectile.start_building() \
+				.with_global_pos(self.global_position) \
+				.with_impulse(bullet_impulse) \
+				.from_source(Projectile.Source.PLAYER) \
+				.with_damage(_bullet_damage) \
+				.with_lifetime(_bullet_alive_time) \
+				.add_to_scene()
 
 		# Do nothing if there is an unknown weapon.
 		_:

@@ -222,18 +222,12 @@ func _fire_projectile_from_queen_towards_player() -> void:
 
 
 func _fire_projectile_in_game_world(pos: Vector2, direction: Vector2) -> void:
-	var projectile_instance := _projectile_scene.instantiate() as Projectile
 	var projectile_speed := 120.0 # speed in pixels per second
 
-	projectile_instance.initialize(
-		pos,
-		10.0, # projectile lifetime in seconds
-		1, # projectile damage
-		Projectile.Source.QUEEN_BOSS,
-		# Calculated using math.
-		direction * projectile_speed,
-	)
-
-	self.get_tree().get_root().add_child(projectile_instance)
-
+	Projectile.start_building() \
+		.with_global_pos(pos) \
+		.with_impulse(direction * projectile_speed) \
+		.from_source(Projectile.Source.QUEEN_BOSS) \
+		.with_damage(1) \
+		.add_to_scene()
 

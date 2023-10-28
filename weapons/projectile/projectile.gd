@@ -1,6 +1,7 @@
 extends RigidBody2D
 
-# This isn't set with `@onready` because it seems like `initialize()` runs first.
+# This isn't set with `@onready`, because the projectile initialization code is run before it gets 
+# added to the scene.
 var _sprite: AnimatedSprite2D
 
 const DEFAULT_PROJECTILE_SPRITE_FRAMES := preload("res://weapons/projectile/default_projectile_sprite_frames.tres")
@@ -73,7 +74,6 @@ func _on_body_entered_hitbox(_body: Node2D) -> void:
 		self.projectile_hit.emit()
 
 
-# TODO: Add an animation or particle effect when the projectile hits something and gets destroyed.
 func _on_projectile_hit() -> void:
 	var coords = self.position
 	var impact_particles: GPUParticles2D = _bullet_particle_emitter_scene.instantiate()
@@ -85,45 +85,6 @@ func _on_projectile_hit() -> void:
 	_async_remove_particles_after_delay(impact_particles)
 
 	self.queue_free()
-
-
-## Must be called before adding the projectile to the scene tree.
-## NOTE: This method is deprecated. Use `Projectile.start_building()` instead.
-## This method is called before _ready().
-func initialize(global_pos: Vector2, 
-		# How long it takes for it to despawn.
-		lifetime: float,
-		# 1 damage is the same as 1/2 heart.							
-		damage: int,
-		# Whether the player or an enemy fired it.					
-		source: Source,
-		# The direction times the speed of the projectile.						
-		impulse: Vector2,
-		# The sprite frames of the projectile; if null, the default sprite is used.
-		projectile_sprite_frames: SpriteFrames = null,
-	) -> void:
-
-	# Initialize important fields.
-	self.global_position = global_pos
-	self.rotation = impulse.angle()
-	_lifetime = lifetime
-	_damage = damage
-	_source = source
-
-	# Make the projectile move in this direction (not affected by `self.rotation`).
-	self.apply_impulse(impulse)
-
-	# Set `_sprite` here because this function runs before `_ready()`.
-	_sprite = self.get_node("AnimatedSprite2D")
-
-	if projectile_sprite_frames != null:
-		_sprite.sprite_frames = projectile_sprite_frames
-
-	else:
-		_sprite.sprite_frames = DEFAULT_PROJECTILE_SPRITE_FRAMES
-
-	# Play whatever animation was provided by the sprite frames.
-	_sprite.play("default")
 
 
 func get_damage() -> int:
@@ -160,11 +121,12 @@ func _set_sprite_and_collision_scale() -> void:
 	_sprite.scale = Vector2(adjusted_sprite_scale, adjusted_sprite_scale)
 
 
-
+## The canonical way of creating a projectile.
 static func start_building() -> Util.ProjectileBuilder:
 	return Util.ProjectileBuilder.new()
 
 
+## This is a helper method, use `Projectile.start_building()` instead.
 func initialize_using_builder(builder: Util.ProjectileBuilder)  -> void:
 	# Initialize important fields.
 	self.global_position = builder.global_position
