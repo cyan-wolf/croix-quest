@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://byc5phtuest4o"]
+[gd_scene load_steps=16 format=3 uid="uid://byc5phtuest4o"]
 
 [ext_resource type="Texture2D" uid="uid://bqqilo6dt1s5g" path="res://enemies/bosses/shale_saber/shale_saber_unfinished.png" id="1_1rxx6"]
 [ext_resource type="Script" path="res://enemies/bosses/shale_saber/shale_saber_boss.gd" id="1_8c21l"]
@@ -9,6 +9,21 @@
 [sub_resource type="Resource" id="Resource_5xa28"]
 script = ExtResource("2_ax7o3")
 _health = 200
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4edo"]
+atlas = ExtResource("3_ir6ti")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwbsr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4edo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsqg7"]
 atlas = ExtResource("1_1rxx6")
@@ -54,6 +69,7 @@ radius = 4.0
 [node name="ShaleSaberBoss" type="CharacterBody2D"]
 script = ExtResource("1_8c21l")
 health_component = SubResource("Resource_5xa28")
+_sword_projectile_sprite_frames = SubResource("SpriteFrames_hwbsr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_35asn")
@@ -63,7 +79,7 @@ visible = false
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_y28gr")
 
-[node name="HitboxArea" parent="." instance=ExtResource("4_5qhuq")]
+[node name="HitboxArea" parent="." groups=["enemy_hitbox"] instance=ExtResource("4_5qhuq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(0, 4)
