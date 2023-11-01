@@ -14,6 +14,8 @@ signal perform_attack_3
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
+@onready var _sword_with_hitbox: Node2D = self.get_node("ShaleSword")
+
 @onready var _player: Player = SceneManager.find_player()
 
 var _has_been_defeated := false
@@ -52,6 +54,33 @@ func _on_death() -> void:
 func _async_on_perform_attack_1() -> void:
 	print_debug("TODO: In attack 1")
 	await SceneManager.async_delay(2.0)
+
+	var attack_duration_secs := 5.0
+	var dt := 0.1
+
+	var elapsed_t := 0.0
+
+	var attack_radius := 2 * 16
+
+	# TODO: WIP
+	# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+	while elapsed_t < attack_duration_secs:
+		var angle := lerpf(0, 3*TAU, elapsed_t / attack_duration_secs)
+
+		# print_debug(elapsed_t / attack_duration_secs)
+		#print_debug(lerp_angle(0, TAU /2, 0.5))
+
+		var sword_pos := self.global_position \
+			+ (Vector2.UP * attack_radius * sin(deg_to_rad(angle))) \
+			+ (Vector2.RIGHT * attack_radius * cos(deg_to_rad(angle)))
+
+		var direction := self.global_position.direction_to(sword_pos)
+
+		_sword_with_hitbox.global_position = sword_pos
+		_sword_with_hitbox.rotate(direction.angle())
+
+		elapsed_t += dt
+		await SceneManager.async_delay(dt)
 
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
