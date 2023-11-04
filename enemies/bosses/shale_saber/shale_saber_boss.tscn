@@ -91,8 +91,12 @@ position = Vector2(48, 0)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ShaleSword"]
 sprite_frames = SubResource("SpriteFrames_uqxy5")
 
-[node name="HitboxArea" parent="ShaleSword" instance=ExtResource("4_5qhuq")]
+[node name="HitboxArea" parent="ShaleSword" groups=["shale_saber_boss_melee_attack_hitbox"] instance=ExtResource("4_5qhuq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShaleSword/HitboxArea"]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_ylkfo")
+
+[node name="MeleeAttack1Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

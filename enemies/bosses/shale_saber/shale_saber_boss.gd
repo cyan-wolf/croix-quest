@@ -6,17 +6,32 @@ signal perform_attack_1
 signal perform_attack_2
 signal perform_attack_3
 
+enum AttackState {
+	NONE = 0,
+	ATTACK_1 = 1,
+	ATTACK_2 = 2,
+	ATTACK_3 = 3,
+}
+
 @export var health_component: HealthComponent
 
+@export var _attack_1_melee_damage: int = 1
+@export var _attack_1_duration_secs := 1.0
+@export var _attack_1_projectile_speed := 8 * 16
+
 @export var _attack_2_projectile_amount: int = 30
+@export var _attack_2_projectile_speed := 20 * 16
 
 @export var _sword_projectile_sprite_frames: SpriteFrames
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 @onready var _sword_with_hitbox: Node2D = self.get_node("ShaleSword")
+#@onready var _attack_1_hitbox_col: CollisionShape2D = self.get_node("ShaleSword/HitboxArea/CollisionShape2D")
 
 @onready var _player: Player = SceneManager.find_player()
+
+var _current_attack_state := AttackState.NONE
 
 var _has_been_defeated := false
 
@@ -53,32 +68,43 @@ func _on_death() -> void:
 
 func _async_on_perform_attack_1() -> void:
 	print_debug("TODO: In attack 1")
+	_current_attack_state = AttackState.ATTACK_1
 	await SceneManager.async_delay(2.0)
 
-	var attack_duration_secs := 5.0
-	var dt := 0.1
+	var dt := 0.01
+
+	var attack_radius := 3 * 16
 
 	var elapsed_t := 0.0
 
-	var attack_radius := 2 * 16
+	# This code spins the sword around the boss for the duration 
+	# given by `_attack_1_duration_secs`, and summons a few projectiles.
+	while elapsed_t <= _attack_1_duration_secs:
+		# Calculate the angle (in radians).
+		var angle := lerpf(0, 3*TAU, elapsed_t / _attack_1_duration_secs)
 
-	# TODO: WIP
-	# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-	while elapsed_t < attack_duration_secs:
-		var angle := lerpf(0, 3*TAU, elapsed_t / attack_duration_secs)
-
-		# print_debug(elapsed_t / attack_duration_secs)
-		#print_debug(lerp_angle(0, TAU /2, 0.5))
-
+		# Calculate the sword's position.
 		var sword_pos := self.global_position \
-			+ (Vector2.UP * attack_radius * sin(deg_to_rad(angle))) \
-			+ (Vector2.RIGHT * attack_radius * cos(deg_to_rad(angle)))
+			+ (Vector2.UP * attack_radius * sin(angle)) \
+			+ (Vector2.RIGHT * attack_radius * cos(angle))
 
+		# Calculate the direction the sword should face.
 		var direction := self.global_position.direction_to(sword_pos)
 
+		# Set the calculated values.
 		_sword_with_hitbox.global_position = sword_pos
-		_sword_with_hitbox.rotate(direction.angle())
+		_sword_with_hitbox.rotation = direction.angle()
 
+		# Spawn projectiles ocasionally.
+		if (floori(rad_to_deg(angle)) % 3 == 0):
+			Projectile.start_building() \
+				.with_global_pos(sword_pos) \
+				.with_impulse(direction * _attack_1_projectile_speed) \
+				.from_source(Projectile.Source.SHALE_SABER_BOSS) \
+				.with_damage(1) \
+				.add_to_scene()
+
+		# This code is used to simulate the passage of time.
 		elapsed_t += dt
 		await SceneManager.async_delay(dt)
 
@@ -92,6 +118,7 @@ func _async_on_perform_attack_1() -> void:
 
 func _async_on_perform_attack_2() -> void:
 	print_debug("TODO: In attack 2")
+	_current_attack_state = AttackState.ATTACK_2
 	await SceneManager.async_delay(2.0)
 
 	# Lock onto a previous player position.
@@ -118,12 +145,11 @@ func _async_on_perform_attack_2() -> void:
 			+ (Vector2.RIGHT * proj_spawn_dist * cos(deg_to_rad(angle)))
 
 		var direction := proj_spawn_pos.direction_to(player_lock_on_pos)
-		var speed := 20 * 16
 
 		# Spawn the projectile.
 		Projectile.start_building() \
 			.with_global_pos(proj_spawn_pos) \
-			.with_impulse(direction * speed) \
+			.with_impulse(direction * _attack_2_projectile_speed) \
 			.from_source(Projectile.Source.SHALE_SABER_BOSS) \
 			.with_damage(1) \
 			.can_pass_through_wall_edges(true) \
@@ -142,6 +168,7 @@ func _async_on_perform_attack_2() -> void:
 
 func _async_on_perform_attack_3() -> void:
 	print_debug("TODO: In attack 3")
+	_current_attack_state = AttackState.ATTACK_3
 	await SceneManager.async_delay(2.0)
 
 	if _has_been_defeated:
@@ -154,4 +181,11 @@ func _async_on_perform_attack_3() -> void:
 
 func _async_play_defeated_cutscene() -> void:
 	print_debug("Boss has been defeated")
+	_current_attack_state = AttackState.NONE
+
+
+func get_melee_attack_damage() -> int:
+	return _attack_1_melee_damage
+
+
 
