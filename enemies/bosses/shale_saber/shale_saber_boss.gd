@@ -22,12 +22,19 @@ enum AttackState {
 @export var _attack_2_projectile_amount: int = 30
 @export var _attack_2_projectile_speed := 20 * 16
 
+## The radius away from the boss from which the player is safe from attack 3.
+@export var _attack_3_safety_radius: float = 6 * 16
+
+## In seconds.
+@export var _attack_3_duration: float = 4.0
+
 @export var _sword_projectile_sprite_frames: SpriteFrames
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 @onready var _sword_with_hitbox: Node2D = self.get_node("ShaleSword")
-#@onready var _attack_1_hitbox_col: CollisionShape2D = self.get_node("ShaleSword/HitboxArea/CollisionShape2D")
+
+@onready var _attack_3_snow_particles: GPUParticles2D = self.get_node("ShaleSaberSnowParticles")
 
 @onready var _player: Player = SceneManager.find_player()
 
@@ -170,6 +177,26 @@ func _async_on_perform_attack_3() -> void:
 	print_debug("TODO: In attack 3")
 	_current_attack_state = AttackState.ATTACK_3
 	await SceneManager.async_delay(2.0)
+
+	_attack_3_snow_particles.emitting = true
+
+	var elapsed := 0.0
+	# Indirectly controls how fast the player takes damage.
+	var dt := 0.3
+
+	while elapsed < _attack_3_duration:
+		var dist := self.global_position.distance_to(_player.global_position)
+
+		if dist > _attack_3_safety_radius:
+			# Placeholder effect.
+			_player.health_component.take_damage(1)
+
+		elapsed += dt
+		await SceneManager.async_delay(dt)
+
+	_attack_3_snow_particles.emitting = false
+
+	await SceneManager.async_delay(1.0)
 
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
