@@ -1,12 +1,10 @@
-# Project2
+# Criox Quest
 
-## Criox Quest
-
-### Gameplay
+## Gameplay
 
 The game will be a top-down dungeon crawler RPG.
 
-### Story
+## Story
 
 The Kingdom of _______ was once ruled by a monarchy, a corrupt one. Day after day the people grew tired of the corruption and chose to lead an uprising. The people were successful in making the monarchy give up its power. Thus forming a government of their own.
 
@@ -25,7 +23,7 @@ After many trials and tribulations, you would be able to gather all the spirit a
 The queen would be sent to jail and the inauguration ceremony would be redone. After the ceremony an afterparty was held where all the people Emmy and MC met along the way attended and ate with them. END
 
 
-### Credits
+## Credits
 
 * Dungeon Tileset by `0x72`: [itch.io page](https://0x72.itch.io/dungeontileset-ii)
 * Player character by `Penzilla`: [itch.io page](https://penzilla.itch.io/hooded-protagonist)
@@ -37,3 +35,4 @@ The queen would be sent to jail and the inauguration ceremony would be redone. A
 * Hero Immortal music by `Trevor Lentz`: [OpenGameArt.org page](https://opengameart.org/content/hero-immortal)
 * Pixel River music by `Trevor Lentz`: [OpenGameArt.org page](https://opengameart.org/content/pixel-river)
 * Orbital Colossus music by `Matthew Pablo`: [OpenGameArt.org page](https://opengameart.org/content/space-boss-battle-theme), [creator's site](https://matthewpablo.com/services/)
+* Several particle effects by `ReddXAce`: [GitHub account](https://github.com/ReddXAce)
