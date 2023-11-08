@@ -24,7 +24,7 @@ size = Vector2(43, 40)
 [node name="AstralLineusTailSegment" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_v0ryj")
 
-[node name="HitboxArea" parent="." instance=ExtResource("2_cnxw3")]
+[node name="HitboxArea" parent="." groups=["enemy_hitbox"] instance=ExtResource("2_cnxw3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(10.5, 0)
