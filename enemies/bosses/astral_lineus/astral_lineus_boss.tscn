@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://br4kofxr8mg1y"]
+
+[ext_resource type="Script" path="res://enemies/bosses/astral_lineus/astral_lineus_boss.gd" id="1_8srl2"]
+[ext_resource type="PackedScene" uid="uid://wrcq1jwd5o17" path="res://enemies/bosses/astral_lineus/segments/astral_lineus_segments.tscn" id="1_bk1jp"]
+
+[node name="AstralLineusBoss" type="Node2D"]
+script = ExtResource("1_8srl2")
+
+[node name="AstralLineusSegments" parent="." instance=ExtResource("1_bk1jp")]

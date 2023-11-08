@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds28vqet05itk"]
+
+[ext_resource type="Texture2D" uid="uid://bwfbf24j7l6lj" path="res://enemies/bosses/astral_lineus/astral_lineus_head_segment.png" id="1_l8kwm"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_5cluk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mtmt"]
+atlas = ExtResource("1_l8kwm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cuyjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mtmt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3rhu"]
+size = Vector2(64, 52)
+
+[node name="AstralLineusHeadSegment" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_cuyjx")
+
+[node name="HitboxArea" parent="." instance=ExtResource("2_5cluk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_n3rhu")

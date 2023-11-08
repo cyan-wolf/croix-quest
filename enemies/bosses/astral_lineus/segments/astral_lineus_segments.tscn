@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://wrcq1jwd5o17"]
+
+[ext_resource type="PackedScene" uid="uid://ds28vqet05itk" path="res://enemies/bosses/astral_lineus/segments/astral_lineus_head_segment.tscn" id="1_a6644"]
+[ext_resource type="PackedScene" uid="uid://uhhx8ubrkqnp" path="res://enemies/bosses/astral_lineus/segments/astral_lineus_body_segment.tscn" id="2_kf3m3"]
+[ext_resource type="PackedScene" uid="uid://bf3f3ikv720sb" path="res://enemies/bosses/astral_lineus/segments/astral_lineus_tail_segment.tscn" id="3_mj8o0"]
+
+[node name="AstralLineusSegments" type="Node2D"]
+
+[node name="AstralLineusHeadSegment" parent="." instance=ExtResource("1_a6644")]
+
+[node name="AstralLineusBodySegment" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-64, 0)
+
+[node name="AstralLineusBodySegment2" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-128, 0)
+
+[node name="AstralLineusBodySegment3" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-192, 0)
+
+[node name="AstralLineusBodySegment4" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-256, 0)
+
+[node name="AstralLineusBodySegment5" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-320, 0)
+
+[node name="AstralLineusBodySegment6" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-384, 0)
+
+[node name="AstralLineusTailSegment" parent="." instance=ExtResource("3_mj8o0")]
+position = Vector2(-448, 0)
