@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://daord4ebf0bet"]
+[gd_scene load_steps=6 format=3 uid="uid://daord4ebf0bet"]
 
 [ext_resource type="TileSet" uid="uid://bf0tb2ao5aqyo" path="res://tilesets/dunkel_dungeon_tileset/dunkel_dungeon.tres" id="1_evjtl"]
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_x8ett"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_no4rb"]
 [ext_resource type="PackedScene" uid="uid://br4kofxr8mg1y" path="res://enemies/bosses/astral_lineus/astral_lineus_boss.tscn" id="4_lakah"]
+[ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="5_l4rh7"]
 
 [node name="DunkelDungeonBossFight" type="Node2D"]
 
@@ -39,4 +40,23 @@ layer_2/tile_data = PackedInt32Array(655354, 196608, 0, 720890, 393216, 0, 65535
 zoom = Vector2(3, 3)
 
 [node name="AstralLineusBoss" parent="." instance=ExtResource("4_lakah")]
-position = Vector2(36, -47)
+
+[node name="AstralLineusAttack1Positions" type="Node2D" parent="."]
+
+[node name="LeftPositions" type="Node2D" parent="AstralLineusAttack1Positions"]
+visible = false
+
+[node name="PositionMarker" parent="AstralLineusAttack1Positions/LeftPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-179, -130)
+
+[node name="PositionMarker3" parent="AstralLineusAttack1Positions/LeftPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-182, 23)
+
+[node name="RightPositions" type="Node2D" parent="AstralLineusAttack1Positions"]
+visible = false
+
+[node name="PositionMarker2" parent="AstralLineusAttack1Positions/RightPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(184, -56)
+
+[node name="PositionMarker4" parent="AstralLineusAttack1Positions/RightPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(180, 98)

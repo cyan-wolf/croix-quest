@@ -26,5 +26,14 @@ position = Vector2(-320, 0)
 [node name="AstralLineusBodySegment6" parent="." instance=ExtResource("2_kf3m3")]
 position = Vector2(-384, 0)
 
-[node name="AstralLineusTailSegment" parent="." instance=ExtResource("3_mj8o0")]
+[node name="AstralLineusBodySegment7" parent="." instance=ExtResource("2_kf3m3")]
 position = Vector2(-448, 0)
+
+[node name="AstralLineusBodySegment8" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-512, 0)
+
+[node name="AstralLineusBodySegment9" parent="." instance=ExtResource("2_kf3m3")]
+position = Vector2(-576, 0)
+
+[node name="AstralLineusTailSegment" parent="." instance=ExtResource("3_mj8o0")]
+position = Vector2(-640, 0)
