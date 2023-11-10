@@ -92,6 +92,11 @@ func get_current_state() -> Util.EnemyState:
 	return _current_state
 
 
+## Returns `true` is the sprite is facing left, `false` otherwise.
+func is_sprite_facing_left() -> bool:
+	return not _sprite.flip_h
+
+
 func _update_current_enemy_state() -> void:
 	var dist_to_player := self.global_position.distance_to(_player.global_position)
 

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_jc3a4"]
 [ext_resource type="PackedScene" uid="uid://u1kik48hv8m7" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_melee_enemy.tscn" id="5_r7dgi"]
 [ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="5_uij6a"]
+[ext_resource type="PackedScene" uid="uid://bvmupmo8sfwtx" path="res://enemies/shooting_enemy/cobalt_guard/cobalt_guard_shooting_enemy.tscn" id="8_l68c1"]
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="9_jgyvx"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="9_v88fk"]
 [ext_resource type="PackedScene" uid="uid://dp4xxd8cp43fy" path="res://interactables/weapon_items/shotgun_weapon_item.tscn" id="10_fvbj4"]
@@ -19,13 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="14_vef15"]
 [ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="15_u2m43"]
 [ext_resource type="PackedScene" uid="uid://d0jw3re1tjv5g" path="res://interactables/heart_refill/heart_refill.tscn" id="16_k6o5i"]
-[ext_resource type="PackedScene" uid="uid://cyot4k30xr0iu" path="res://enemies/shooting_enemy/cuboidal_aberration/cuboidal_aberration_shooting_enemy.tscn" id="19_bui85"]
 [ext_resource type="PackedScene" uid="uid://cvbkiyfjrm8ew" path="res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dungeon_boss_fight_transition.tscn" id="20_3io5r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_syqcd"]
-vertices = PackedVector2Array(-805, -28, -579, -29, -580, 7, -808, 5, -844, -29, -844, 4, -741, 163, -738, 280, -909, 279, -807, 163, -909, 243, -909, 162, -845, 163, -957, 4, -957, -30, -1086, 280, -1086, 195, -1028, 195, -1027, 243)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(13, 14, 4, 5), PackedInt32Array(12, 5, 3, 9), PackedInt32Array(12, 9, 8, 10), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(8, 15, 18, 10)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -808, 5, -807, 163, -741, 163, -738, 280, -909, 279, -1086, 280, -1086, 195, -1028, 195, -1027, 243, -909, 243, -909, 162, -845, 163, -844, 4, -957, 4, -957, -30, -844, -29, -805, -28)])
+vertices = PackedVector2Array(-805, -28, -579, -29, -580, 7, -808, 5, -844, -29, -844, 4, -741, 163, -738, 280, -909, 279, -807, 163, -909, 243, -909, 162, -845, 163, -957, 4, -957, -30, -1086, 280, -1086, 195, -1028, 195, -1027, 243, -995, -1240, -995, -1177, -1053, -1179, -1053, -1246, -1054, -1456, -1055, -1519, -993, -1518, -996, -1453, -1053, -1418, -1165, -1241, -1166, -1277, -1054, -1279, -995, -1279, -882, -1454, -882, -1418, -995, -1416, -884, -1279, -883, -1243, -1165, -1418, -1165, -1456, -1344, -2656, -672, -2658, -676, -2131, -1361, -2143)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(13, 14, 4, 5), PackedInt32Array(12, 5, 3, 9), PackedInt32Array(12, 9, 8, 10), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(8, 15, 18, 10), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(23, 24, 25, 26, 27), PackedInt32Array(22, 28, 29, 30, 31), PackedInt32Array(26, 32, 33, 34, 27), PackedInt32Array(31, 35, 36, 19, 22), PackedInt32Array(31, 30, 27, 34), PackedInt32Array(23, 27, 37, 38), PackedInt32Array(39, 40, 41, 42)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-579, -29, -580, 7, -808, 5, -807, 163, -741, 163, -738, 280, -909, 279, -1086, 280, -1086, 195, -1028, 195, -1027, 243, -909, 243, -909, 162, -845, 163, -844, 4, -957, 4, -957, -30, -844, -29, -805, -28), PackedVector2Array(-1055, -1519, -993, -1518, -996, -1453, -882, -1454, -882, -1418, -995, -1416, -995, -1279, -884, -1279, -883, -1243, -995, -1240, -995, -1177, -1053, -1179, -1053, -1246, -1165, -1241, -1166, -1277, -1054, -1279, -1053, -1418, -1165, -1418, -1165, -1456, -1054, -1456), PackedVector2Array(-1344, -2656, -672, -2658, -676, -2131, -1361, -2143)])
 
 [sub_resource type="Resource" id="Resource_ri03q"]
 script = ExtResource("4_d4ehf")
@@ -90,6 +90,33 @@ position = Vector2(-894, 210)
 
 [node name="TauronWorshiperMeleeEnemy2" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
 position = Vector2(-754, 210)
+
+[node name="TauronWorshiperMeleeEnemy4" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
+position = Vector2(-900, -1435)
+
+[node name="TauronWorshiperMeleeEnemy3" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
+position = Vector2(-1146.5, -1261)
+
+[node name="CobaltGuardShootingEnemy" parent="PropsCollection/EnemiesCollection" instance=ExtResource("8_l68c1")]
+position = Vector2(-822, 221.5)
+
+[node name="CobaltGuardShootingEnemy2" parent="PropsCollection/EnemiesCollection" instance=ExtResource("8_l68c1")]
+position = Vector2(-914.043, -1259.61)
+
+[node name="CobaltGuardShootingEnemy3" parent="PropsCollection/EnemiesCollection" instance=ExtResource("8_l68c1")]
+position = Vector2(-1149.15, -1439.3)
+
+[node name="TauronWorshiperMeleeEnemy6" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
+position = Vector2(-924.609, -2291.22)
+
+[node name="TauronWorshiperMeleeEnemy5" parent="PropsCollection/EnemiesCollection" instance=ExtResource("5_r7dgi")]
+position = Vector2(-1126.21, -2288.84)
+
+[node name="CobaltGuardShootingEnemy5" parent="PropsCollection/EnemiesCollection" instance=ExtResource("8_l68c1")]
+position = Vector2(-1117.48, -2457.1)
+
+[node name="CobaltGuardShootingEnemy4" parent="PropsCollection/EnemiesCollection" instance=ExtResource("8_l68c1")]
+position = Vector2(-930.959, -2460.28)
 
 [node name="TeleportersCollection" type="Node2D" parent="PropsCollection"]
 y_sort_enabled = true
@@ -250,6 +277,3 @@ position = Vector2(-872, -2291)
 
 [node name="PushableRock9" parent="PropsCollection/PushableRocksCollection" instance=ExtResource("14_vef15")]
 position = Vector2(-1178, -2306)
-
-[node name="TempCuboidalAberrationShootingEnemy" parent="." instance=ExtResource("19_bui85")]
-position = Vector2(-827.556, 226.412)

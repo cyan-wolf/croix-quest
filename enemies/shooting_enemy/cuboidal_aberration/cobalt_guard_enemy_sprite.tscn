@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://blmgs0hjiifos"]
+
+[ext_resource type="Texture2D" uid="uid://c57kpesiadn4y" path="res://enemies/shooting_enemy/cobalt_guard/cobalt_guard.png" id="1_yf5l1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8idq1"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oobn4"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4tt6"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t8x1"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cide0"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bafpo"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rftb"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcfh5"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tetnu"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u00g8"]
+atlas = ExtResource("1_yf5l1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xgx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8idq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oobn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4tt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t8x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cide0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bafpo")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rftb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcfh5")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_tetnu")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_u00g8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CobaltGuardEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1xgx3")
+animation = &"idle"
+frame_progress = 0.529895
