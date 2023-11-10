@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvmupmo8sfwtx"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_i01eo"]
-[ext_resource type="PackedScene" uid="uid://blmgs0hjiifos" path="res://enemies/shooting_enemy/cuboidal_aberration/cobalt_guard_enemy_sprite.tscn" id="1_x6srs"]
+[ext_resource type="PackedScene" uid="uid://blmgs0hjiifos" path="res://enemies/shooting_enemy/cobalt_guard/cobalt_guard_enemy_sprite.tscn" id="1_x6srs"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_8ipta"]
 [ext_resource type="PackedScene" uid="uid://cpu3i1c756eae" path="res://util/components/enemy/enemy_shooting_component.tscn" id="4_rnanx"]
 
