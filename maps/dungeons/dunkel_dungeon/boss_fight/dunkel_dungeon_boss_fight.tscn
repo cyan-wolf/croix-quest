@@ -42,6 +42,7 @@ zoom = Vector2(3, 3)
 [node name="AstralLineusBoss" parent="." instance=ExtResource("4_lakah")]
 
 [node name="AstralLineusAttack1Positions" type="Node2D" parent="."]
+visible = false
 
 [node name="LeftPositions" type="Node2D" parent="AstralLineusAttack1Positions"]
 
@@ -58,3 +59,38 @@ position = Vector2(184, -56)
 
 [node name="PositionMarker4" parent="AstralLineusAttack1Positions/RightPositions" instance=ExtResource("5_l4rh7")]
 position = Vector2(180, 111)
+
+[node name="AstralLineusAttack2Positions" type="Node2D" parent="."]
+visible = false
+
+[node name="Attack2FiringPositionMarker" parent="AstralLineusAttack2Positions" instance=ExtResource("5_l4rh7")]
+position = Vector2(0, -160)
+
+[node name="Attack2PodLandingPositions" type="Node2D" parent="AstralLineusAttack2Positions"]
+
+[node name="PositionMarker" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-57, -81)
+
+[node name="PositionMarker2" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(53, -53)
+
+[node name="PositionMarker3" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(46, 67)
+
+[node name="PositionMarker4" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-52, 41)
+
+[node name="PositionMarker5" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(0, -8)
+
+[node name="PositionMarker6" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-16, 103)
+
+[node name="PositionMarker7" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(57, -2)
+
+[node name="PositionMarker8" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-31, -41)
+
+[node name="PositionMarker9" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(21, -98)

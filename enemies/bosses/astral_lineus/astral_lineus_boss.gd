@@ -1,8 +1,10 @@
 extends Node2D
 
 const Projectile := preload("res://weapons/projectile/projectile.gd")
+const Attack2Pod := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_2_pod.gd")
 
 const SEGMENT_SCENE := preload("res://enemies/bosses/astral_lineus/segments/astral_lineus_segments.tscn")
+const ATTACK_2_POD_SCENE := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_2_pod.tscn")
 
 # The direction that the boss' segments could face.
 enum SegmentDirection {
@@ -27,10 +29,12 @@ signal perform_attack_3
 @export var _attack_1_body_segment_damage: int = 1
 @export var _attack_1_tail_segment_damage: int = 1
 
-@onready var _player: Player = SceneManager.find_player()
+@export var _attack_2_duration: float = 15.0
 
 var _attack_1_left_positions: Array[Vector2] = []
 var _attack_1_right_positions: Array[Vector2] = []
+
+var _attack_2_pod_landing_positions: Array[Vector2] = []
 
 var _has_been_defeated := false
 
@@ -46,6 +50,9 @@ func _ready() -> void:
 
 	for n in self.get_node("../AstralLineusAttack1Positions/RightPositions").get_children():
 		_attack_1_right_positions.append(n.global_position)
+
+	for n in self.get_node("../AstralLineusAttack2Positions/Attack2PodLandingPositions").get_children():
+		_attack_2_pod_landing_positions.append(n.global_position)
 
 	# Play music.
 	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
@@ -103,6 +110,47 @@ func _async_on_perform_attack_1() -> void:
 func _async_on_perform_attack_2() -> void:
 	print_debug("TODO: In attack 2")
 
+	var segment_pos: Vector2 = self \
+		.get_node("../AstralLineusAttack2Positions/Attack2FiringPositionMarker") \
+		.global_position
+
+	# This is just for visual effects.
+	_async_summon_segment(
+		segment_pos,
+		SegmentDirection.DOWN,
+		0 * 16,	# the segments should not move in this case
+		_attack_2_duration * 0.75 # remove some seconds since it's taking too long to despawn for some reason,	
+	)
+
+	# Make a copy of the pod landing positions since the code below uses `.pop_back()` which 
+	# mutates the list.
+	var attack_2_landing_positions_copy = _attack_2_pod_landing_positions.duplicate() # shallow copy
+
+	# Shuffle the copy of the list so that `.pop_back()` returns random elements.
+	randomize()
+	attack_2_landing_positions_copy.shuffle()
+
+	while len(attack_2_landing_positions_copy) > 0:
+		# Calculate how long the pod should take to land.
+		var duration := _attack_2_duration / len(_attack_2_pod_landing_positions)
+
+		var landing_pos: Vector2 = attack_2_landing_positions_copy.pop_back()
+		
+		# Instantiate the pod scene.
+		var pod: Attack2Pod = ATTACK_2_POD_SCENE.instantiate()
+		pod.global_position = segment_pos
+		self.get_tree().current_scene.add_child(pod)
+
+		# Waits for the tween to finish moving the pod to its landing position.
+		await self.get_tree() \
+			.create_tween() \
+			.tween_property(pod, "global_position", landing_pos, duration) \
+			.finished
+
+		# Async call.
+		# The pod explodes into a lot of projectiles moving in random directions.
+		pod.async_explode_into_projectiles(15, 1, 6 * 16)
+
 	await SceneManager.async_delay(1.0)
 
 	if _has_been_defeated:
@@ -132,6 +180,8 @@ func _on_death() -> void:
 
 
 func _async_play_defeated_cutscene() -> void:
+	SceneManager.stop_playing_background_music()
+	
 	print_debug("TODO: The boss has been defeated")
 
 
