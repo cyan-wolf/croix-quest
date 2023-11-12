@@ -23,6 +23,9 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 ## The offset (from the enemy's (0, 0) position) from where the projectile is fired.
 @export var _fire_offset_position: Vector2 = Vector2.ZERO
 
+## The scale of the projectile.
+@export var _projectile_scale: float = 1.0
+
 var _current_fire_offset: Vector2
 
 func _ready() -> void:
@@ -61,5 +64,6 @@ func _shoot() -> void:
 		.from_source(Projectile.Source.ENEMY) \
 		.with_damage(_projectile_damage) \
 		.with_sprite_frames(_projectile_sprite_frames) \
+		.with_scale(_projectile_scale) \
 		.add_to_scene()
 

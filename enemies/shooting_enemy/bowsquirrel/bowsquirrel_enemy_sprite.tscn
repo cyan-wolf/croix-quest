@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://sxk36udqg476"]
+
+[ext_resource type="Texture2D" uid="uid://df6t5n4pky3oh" path="res://enemies/shooting_enemy/bowsquirrel/bowsquirrel.png" id="1_0kktt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieytx"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dshk"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ke2s"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spjya"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiru0"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkyid"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7pj8"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xgvj"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgvs6"]
+atlas = ExtResource("1_0kktt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8yb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieytx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dshk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ke2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spjya")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_yiru0")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_tkyid")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_a7pj8")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_5xgvj")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_cgvs6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="BowsquirrelEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_x8yb0")
+animation = &"idle"
+frame_progress = 0.345479
