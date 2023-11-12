@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://br4kofxr8mg1y"]
+[gd_scene load_steps=4 format=3 uid="uid://br4kofxr8mg1y"]
 
 [ext_resource type="Script" path="res://enemies/bosses/astral_lineus/astral_lineus_boss.gd" id="1_8srl2"]
-[ext_resource type="PackedScene" uid="uid://wrcq1jwd5o17" path="res://enemies/bosses/astral_lineus/segments/astral_lineus_segments.tscn" id="1_bk1jp"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_wpyug"]
 
 [sub_resource type="Resource" id="Resource_1pg0w"]
@@ -11,7 +10,3 @@ _health = 200
 [node name="AstralLineusBoss" type="Node2D"]
 script = ExtResource("1_8srl2")
 health_component = SubResource("Resource_1pg0w")
-
-[node name="AstralLineusSegments" parent="." instance=ExtResource("1_bk1jp")]
-visible = false
-position = Vector2(-298, 0)

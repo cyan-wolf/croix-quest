@@ -44,19 +44,17 @@ zoom = Vector2(3, 3)
 [node name="AstralLineusAttack1Positions" type="Node2D" parent="."]
 
 [node name="LeftPositions" type="Node2D" parent="AstralLineusAttack1Positions"]
-visible = false
 
 [node name="PositionMarker" parent="AstralLineusAttack1Positions/LeftPositions" instance=ExtResource("5_l4rh7")]
 position = Vector2(-179, -130)
 
 [node name="PositionMarker3" parent="AstralLineusAttack1Positions/LeftPositions" instance=ExtResource("5_l4rh7")]
-position = Vector2(-182, 23)
+position = Vector2(-182, 41)
 
 [node name="RightPositions" type="Node2D" parent="AstralLineusAttack1Positions"]
-visible = false
 
 [node name="PositionMarker2" parent="AstralLineusAttack1Positions/RightPositions" instance=ExtResource("5_l4rh7")]
 position = Vector2(184, -56)
 
 [node name="PositionMarker4" parent="AstralLineusAttack1Positions/RightPositions" instance=ExtResource("5_l4rh7")]
-position = Vector2(180, 98)
+position = Vector2(180, 111)

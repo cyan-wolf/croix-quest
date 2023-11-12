@@ -19,9 +19,13 @@ signal perform_attack_3
 @export var health_component: HealthComponent
 
 ## In pixels per second.
-@export var attack_1_segment_speed: float = 20 * 16
+@export var _attack_1_segment_speed: float = 20 * 16
 ## In seconds.
-@export var attack_1_segment_despawn_time: float = 20
+@export var _attack_1_segment_despawn_time: float = 20
+
+@export var _attack_1_head_segment_damage: int = 3
+@export var _attack_1_body_segment_damage: int = 1
+@export var _attack_1_tail_segment_damage: int = 1
 
 @onready var _player: Player = SceneManager.find_player()
 
@@ -71,8 +75,8 @@ func _async_on_perform_attack_1() -> void:
 		_async_summon_segment(
 			left_pos, 
 			SegmentDirection.RIGHT, 
-			attack_1_segment_speed, 
-			attack_1_segment_despawn_time,
+			_attack_1_segment_speed, 
+			_attack_1_segment_despawn_time,
 		)
 
 		await SceneManager.async_delay(2.0)
@@ -80,8 +84,8 @@ func _async_on_perform_attack_1() -> void:
 		_async_summon_segment(
 			rigth_pos, 
 			SegmentDirection.LEFT, 
-			attack_1_segment_speed, 
-			attack_1_segment_despawn_time,
+			_attack_1_segment_speed, 
+			_attack_1_segment_despawn_time,
 		)
 
 		await SceneManager.async_delay(2.0)
@@ -193,3 +197,15 @@ func _async_summon_segment(pos: Vector2, direction: SegmentDirection, speed: flo
 	segments.queue_free()
 	
 	
+
+func get_head_segment_damage() -> int:
+	return _attack_1_head_segment_damage
+
+
+func get_body_segment_damage() -> int:
+	return _attack_1_body_segment_damage
+
+
+func get_tail_segment_damage() -> int:
+	return _attack_1_tail_segment_damage
+
