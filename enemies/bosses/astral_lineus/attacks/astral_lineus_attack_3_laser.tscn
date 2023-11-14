@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bplicylm6gluk"]
+
+[ext_resource type="PackedScene" uid="uid://65oqa76jb8k6" path="res://enemies/bosses/queen/queen_laser/queen_laser.tscn" id="1_213xy"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_nbjsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jlam"]
+size = Vector2(20, 885)
+
+[node name="AstralLineusAttack3Laser" type="Node2D"]
+
+[node name="QueenLaser" parent="." instance=ExtResource("1_213xy")]
+position = Vector2(0, -6)
+
+[node name="QueenLaser2" parent="." instance=ExtResource("1_213xy")]
+position = Vector2(0, -444)
+
+[node name="HitboxArea" parent="." groups=["astral_lineus_attack_3_laser_hitbox"] instance=ExtResource("2_nbjsx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, -432.5)
+shape = SubResource("RectangleShape2D_6jlam")

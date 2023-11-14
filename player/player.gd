@@ -147,6 +147,12 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		var damage := boss.get_tail_segment_damage() * defense_multiplier
 		self.health_component.take_damage(damage)
 
+	elif other_hitbox.is_in_group("astral_lineus_attack_3_laser_hitbox"):
+		var boss: AstralLineusBoss = other_hitbox.get_parent().get_parent()
+
+		var damage := boss.get_attack_3_laser_damage() * defense_multiplier
+		self.health_component.take_damage(damage)
+
 	elif other_hitbox.is_in_group("checkpoint_hitbox"):
 		_checkpoint_component.try_to_use(other_hitbox.get_parent())
 

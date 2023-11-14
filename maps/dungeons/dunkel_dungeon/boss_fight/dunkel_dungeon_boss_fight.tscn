@@ -94,3 +94,70 @@ position = Vector2(-31, -41)
 
 [node name="PositionMarker9" parent="AstralLineusAttack2Positions/Attack2PodLandingPositions" instance=ExtResource("5_l4rh7")]
 position = Vector2(21, -98)
+
+[node name="AstralLineusAttack3Positions" type="Node2D" parent="."]
+visible = false
+
+[node name="Attack3LaserPositions" type="Node2D" parent="AstralLineusAttack3Positions"]
+
+[node name="PositionMarker" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+
+[node name="PositionMarker2" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-72, 119)
+
+[node name="PositionMarker3" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(88, 67)
+
+[node name="PositionMarker4" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(24, 91)
+
+[node name="PositionMarker15" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(6, 91)
+
+[node name="PositionMarker16" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(34, 128)
+
+[node name="PositionMarker17" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-41, 73)
+
+[node name="PositionMarker18" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-84, 105)
+
+[node name="PositionMarker19" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(76, 105)
+
+[node name="PositionMarker20" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-19, 117)
+
+[node name="PositionMarker21" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(19, 121)
+
+[node name="PositionMarker5" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-83, 57)
+
+[node name="PositionMarker6" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-42, 127)
+
+[node name="PositionMarker7" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(69, 128)
+
+[node name="PositionMarker8" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(66, 73)
+
+[node name="PositionMarker10" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(49, 97)
+
+[node name="PositionMarker11" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-27, 97)
+
+[node name="PositionMarker12" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-3, 119)
+
+[node name="PositionMarker13" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-59, 85)
+
+[node name="PositionMarker14" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(86, 84)
+
+[node name="PositionMarker9" parent="AstralLineusAttack3Positions/Attack3LaserPositions" instance=ExtResource("5_l4rh7")]
+position = Vector2(-22, 62)

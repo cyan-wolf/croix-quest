@@ -5,6 +5,8 @@ const Attack2Pod := preload("res://enemies/bosses/astral_lineus/attacks/astral_l
 
 const SEGMENT_SCENE := preload("res://enemies/bosses/astral_lineus/segments/astral_lineus_segments.tscn")
 const ATTACK_2_POD_SCENE := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_2_pod.tscn")
+const ATTACK_3_LASER_SCENE := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_3_laser.tscn")
+const ATTACK_3_INDICATOR_SCENE := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_3_indicator.tscn")
 
 # The direction that the boss' segments could face.
 enum SegmentDirection {
@@ -31,10 +33,14 @@ signal perform_attack_3
 
 @export var _attack_2_duration: float = 15.0
 
+@export var _attack_3_laser_damage: int = 2
+
 var _attack_1_left_positions: Array[Vector2] = []
 var _attack_1_right_positions: Array[Vector2] = []
 
 var _attack_2_pod_landing_positions: Array[Vector2] = []
+
+var _attack_3_laser_positions: Array[Vector2] = []
 
 var _has_been_defeated := false
 
@@ -53,6 +59,9 @@ func _ready() -> void:
 
 	for n in self.get_node("../AstralLineusAttack2Positions/Attack2PodLandingPositions").get_children():
 		_attack_2_pod_landing_positions.append(n.global_position)
+
+	for n in self.get_node("../AstralLineusAttack3Positions/Attack3LaserPositions").get_children():
+		_attack_3_laser_positions.append(n.global_position)
 
 	# Play music.
 	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
@@ -167,6 +176,42 @@ func _async_on_perform_attack_3() -> void:
 
 	await SceneManager.async_delay(1.0)
 
+	var _attack_3_laser_positions_copy := _attack_3_laser_positions.duplicate() # shallow copy
+
+	randomize()
+	_attack_3_laser_positions_copy.shuffle()
+
+	# These probably should be exported.
+	var indicator_duration := 0.5
+	var laser_despawn_duration := 1.0
+	var duration_between_lasers := 0.3
+
+	for laser_pos in _attack_3_laser_positions_copy:
+		# Show an indicator showing where the laser will "land" before actually 
+		# summoning the laser.
+		var indicator := ATTACK_3_INDICATOR_SCENE.instantiate()
+		indicator.global_position = laser_pos
+		self.add_child(indicator)
+
+		# Remove the indicator before summoning the laser.
+		await SceneManager.async_delay(indicator_duration)
+		indicator.hide()
+		indicator.queue_free()
+		
+		# Summon the laser.
+		var laser := ATTACK_3_LASER_SCENE.instantiate()
+		laser.global_position = laser_pos
+		self.add_child(laser)
+
+		# Despawn the laser asynchronously.
+		var async_laser_despawner := func():
+			await SceneManager.async_delay(laser_despawn_duration)
+			laser.queue_free()
+
+		async_laser_despawner.call() # async call
+
+		await SceneManager.async_delay(duration_between_lasers)
+
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
 		_async_play_defeated_cutscene()
@@ -258,4 +303,9 @@ func get_body_segment_damage() -> int:
 
 func get_tail_segment_damage() -> int:
 	return _attack_1_tail_segment_damage
+
+
+func get_attack_3_laser_damage() -> int:
+	return _attack_3_laser_damage
+
 
