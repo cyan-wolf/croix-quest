@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_auhl7"]
 [ext_resource type="PackedScene" uid="uid://cv0avqon8dc5r" path="res://enemies/bosses/paul/paul_boss.tscn" id="3_6lnff"]
 [ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="4_115tq"]
-[ext_resource type="PackedScene" uid="uid://u1kik48hv8m7" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_melee_enemy.tscn" id="4_au48o"]
+[ext_resource type="PackedScene" uid="uid://x0u7ai35o4o4" path="res://enemies/melee_enemy/charjopt/charjopt_melee_enemy.tscn" id="5_gp14w"]
 [ext_resource type="PackedScene" uid="uid://c1oygilsvxp3v" path="res://enemies/shooting_enemy/bowsquirrel/bowsquirrel_shooting_enemy.tscn" id="6_8uenv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_p3ew6"]
@@ -51,7 +51,7 @@ zoom = Vector2(3, 3)
 
 [node name="PaulBoss" parent="." instance=ExtResource("3_6lnff")]
 position = Vector2(0, -73)
-_melee_enemy_scene = ExtResource("4_au48o")
+_melee_enemy_scene = ExtResource("5_gp14w")
 _shooting_enemy_scene = ExtResource("6_8uenv")
 
 [node name="EnemySummonPositions" type="Node2D" parent="."]

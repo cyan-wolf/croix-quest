@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://ugrsnoao6e5y"]
+
+[ext_resource type="Texture2D" uid="uid://durw2otsb7fg4" path="res://enemies/melee_enemy/charjopt/charjorpt.png" id="1_higsn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxhai"]
+atlas = ExtResource("1_higsn")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evb75"]
+atlas = ExtResource("1_higsn")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj30c"]
+atlas = ExtResource("1_higsn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltrgy"]
+atlas = ExtResource("1_higsn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n3ep"]
+atlas = ExtResource("1_higsn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s012p"]
+atlas = ExtResource("1_higsn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dywt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxhai")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_evb75")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj30c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltrgy")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5n3ep")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_s012p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CharjoptEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dywt4")
+animation = &"idle"
+frame_progress = 0.9872

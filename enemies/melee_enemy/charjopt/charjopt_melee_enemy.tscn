@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://x0u7ai35o4o4"]
+
+[ext_resource type="PackedScene" uid="uid://ugrsnoao6e5y" path="res://enemies/melee_enemy/charjopt/charjopt_enemy_sprite.tscn" id="1_0n1bn"]
+[ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_x7q78"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_vn32c"]
+[ext_resource type="PackedScene" uid="uid://qxpn3g5r1lll" path="res://util/components/enemy/enemy_melee_component.tscn" id="4_r6lbu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
+radius = 5.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
+radius = 13.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70d0i"]
+radius = 11.0
+height = 44.0
+
+[node name="CharjoptMeleeEnemy" type="CharacterBody2D"]
+collision_layer = 0
+
+[node name="CharjoptEnemySprite" parent="." instance=ExtResource("1_0n1bn")]
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_10ypy")
+
+[node name="EnemyComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("1_x7q78")]
+_sprite = NodePath("../CharjoptEnemySprite")
+_speed = 50.0
+_min_player_attack_distance = 25.0
+
+[node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("2_vn32c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
+shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="EnemyMeleeComponent" parent="." instance=ExtResource("4_r6lbu")]
+_attack_speed = 2.0
+
+[node name="HitboxArea" parent="EnemyMeleeComponent" groups=["enemy_melee_attack_hitbox"] instance=ExtResource("2_vn32c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMeleeComponent/HitboxArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_70d0i")
