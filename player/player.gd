@@ -43,6 +43,7 @@ func _ready() -> void:
 func _physics_process(_delta):
 	# Disables player movement there is a dialog being shown, etc.
 	if not SceneManager.is_world_state_empty():
+		_stop_running()
 		return
 
 	var input_direction := _get_input_direction()
@@ -50,13 +51,9 @@ func _physics_process(_delta):
 
 	self.velocity = input_direction * _current_speed * self.status_effect_component.get_computed_speed_multiplier()
 	self.move_and_slide()
-
-	if input_direction == Vector2.ZERO or input_direction == Vector2(0, 0):
-		self.set_animation("Idle")
-		_current_speed = WALKING_SPEED
-		_is_timer_on = false
-		_is_running = false
-		$RunCountdown.stop()
+		
+	if input_direction == Vector2.ZERO:
+		_stop_running()
 
 	else:
 		if _is_timer_on == false:
@@ -172,6 +169,15 @@ func add_weapon_type(weapon_type: Util.WeaponType) -> void:
 ## Gives the player a status effect.
 func add_status_effect(effect: Util.StatusEffect) -> void:
 	self.status_effect_component.gain_effect(effect)
+
+
+## Makes the player stop charging the dash.
+func _stop_running() -> void:
+	self.set_animation("Idle")
+	_current_speed = WALKING_SPEED
+	_is_timer_on = false
+	_is_running = false
+	$RunCountdown.stop()
 
 
 func _get_input_direction() -> Vector2:
