@@ -36,6 +36,7 @@ var _current_sprite_direction := Util.Direction.RIGHT
 
 func _ready() -> void:
 	self.health_component.death.connect(_async_on_death)
+	self.mana_component.ran_out_of_mana.connect(_async_on_ran_out_of_mana)
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	_checkpoint_component.initialize(self.global_position)
 
@@ -81,6 +82,16 @@ func _async_on_death() -> void:
 	await SceneManager.async_delay(1.0)
 
 	SceneManager.show_game_over_screen()
+
+
+func _async_on_ran_out_of_mana() -> void:
+	await SceneManager.async_delay(1.0)
+
+	# Player receives a full heart of damage in exchange for refilling the mana.
+	self.health_component.take_damage(2)
+
+	# Refill the mana to the max.
+	self.mana_component.gain_mana(self.mana_component.MAX_MANA)
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
