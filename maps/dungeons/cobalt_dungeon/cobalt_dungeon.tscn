@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=26 format=3 uid="uid://crddnqharh8e8"]
 
 [ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="TileSet" uid="uid://bhti7kqt3devo" path="res://tilesets/cobalt_dungeon_tileset/cobalt_dungeon.tres" id="2_yfp3v"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="15_u2m43"]
 [ext_resource type="PackedScene" uid="uid://d0jw3re1tjv5g" path="res://interactables/heart_refill/heart_refill.tscn" id="16_k6o5i"]
 [ext_resource type="PackedScene" uid="uid://cvbkiyfjrm8ew" path="res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dungeon_boss_fight_transition.tscn" id="20_3io5r"]
+[ext_resource type="PackedScene" uid="uid://bjfuirw1by6xt" path="res://util/checkpoint/checkpoint.tscn" id="22_kkrby"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_syqcd"]
 vertices = PackedVector2Array(-805, -28, -579, -29, -580, 7, -808, 5, -844, -29, -844, 4, -741, 163, -738, 280, -909, 279, -807, 163, -909, 243, -909, 162, -845, 163, -957, 4, -957, -30, -1086, 280, -1086, 195, -1028, 195, -1027, 243, -995, -1240, -995, -1177, -1053, -1179, -1053, -1246, -1054, -1456, -1055, -1519, -993, -1518, -996, -1453, -1053, -1418, -1165, -1241, -1166, -1277, -1054, -1279, -995, -1279, -882, -1454, -882, -1418, -995, -1416, -884, -1279, -883, -1243, -1165, -1418, -1165, -1456, -1344, -2656, -672, -2658, -676, -2131, -1361, -2143)
@@ -277,3 +278,6 @@ position = Vector2(-872, -2291)
 
 [node name="PushableRock9" parent="PropsCollection/PushableRocksCollection" instance=ExtResource("14_vef15")]
 position = Vector2(-1178, -2306)
+
+[node name="Checkpoint" parent="." instance=ExtResource("22_kkrby")]
+position = Vector2(-1022, -1226)
