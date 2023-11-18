@@ -21,7 +21,7 @@ const DASH_MULTIPLIER := 1.65
 @onready var status_effect_component: StatusEffectComponent = self.get_node("StatusEffectComponent")
 
 # Manages the player's checkpoints and respawning.
-@onready var _checkpoint_component: CheckpointComponent = self.get_node("CheckpointComponent")
+@onready var checkpoint_component: CheckpointComponent = self.get_node("CheckpointComponent")
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _weapon: PlayerWeapon = self.get_node("Weapon")
@@ -38,7 +38,7 @@ func _ready() -> void:
 	self.health_component.death.connect(_async_on_death)
 	self.mana_component.ran_out_of_mana.connect(_async_on_ran_out_of_mana)
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
-	_checkpoint_component.initialize(self.global_position)
+	self.checkpoint_component.initialize(self.global_position)
 
 
 func _physics_process(_delta):
@@ -162,7 +162,7 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		self.health_component.take_damage(damage)
 
 	elif other_hitbox.is_in_group("checkpoint_hitbox"):
-		_checkpoint_component.try_to_use(other_hitbox.get_parent())
+		self.checkpoint_component.try_to_use(other_hitbox.get_parent())
 
 
 func set_animation(animation: String):
@@ -218,7 +218,7 @@ func _on_timer_timeout():
 
 func respawn() -> void:
 	# Move the player over to the last checkpoint.
-	self.global_position = _checkpoint_component.get_last_checkpoint_pos()
+	self.global_position = self.checkpoint_component.get_last_checkpoint_pos()
 
 	# Regain all health.
 	self.health_component.gain_health(self.health_component.get_max_health())

@@ -40,8 +40,6 @@ signal perform_attack_3
 @onready var _stomp_attack_hitbox: Area2D = self.get_node("StompAttackHitboxArea")
 @onready var _charge_attack_hitbox: Area2D = self.get_node("ChargeAttackHitboxArea")
 
-@onready var _player: Player = SceneManager.find_player()
-
 var _current_attack_state := AttackState.NONE
 
 var _has_been_defeated := false
@@ -203,7 +201,7 @@ func _fire_projectile() -> void:
 	# The mouth is located some pixels down from the boss' origin.
 	var mouth_pos := self.global_position - Vector2.UP * 20
 
-	var direction := mouth_pos.direction_to(_player.global_position)
+	var direction := mouth_pos.direction_to(SceneManager.find_player().global_position)
 	var speed := 120.0
 
 	Projectile.start_building() \

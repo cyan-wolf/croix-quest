@@ -13,6 +13,9 @@ func _on_player_interact() -> void:
 	# Shows the dungeon selection UI when the player clicks on the dungeon selector manager.
 	_dungeon_selector_ui.show()
 
+	# Hide the player HUD.
+	SceneManager.find_player_hud().hide()
+
 
 func _setup_buttons() -> void:
 	# TODO: Conenct signals to the buttons that teleport the player to their corresponding dungeon.

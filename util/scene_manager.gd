@@ -26,20 +26,44 @@ func _process(_delta: float) -> void:
 	_handle_debug_keys()
 
 
-func load_scene_file(scene_path: String) -> void:
+## Loads the scene given by `scene_path` and unloads the previous scene.
+## If `keep_player` is `true`, the player is moved from the previous scene to 
+## the new one. The new scene must have a 'PlayerSpawnPosition' node to know 
+## where to spawn the player, and the new scene must not already have a player.
+func load_scene_file(scene_path: String, keep_player: bool = false) -> void:
+
+	# Reference to the player if they need to be moved across scenes.
+	var player_to_move: Player = null
+	
+	if keep_player:
+		player_to_move = self.find_player()
+		# Remove the player from the previous scene so they don't get freed.
+		self.get_tree().current_scene.remove_child(player_to_move)
+
 	self.show_loading_screen()
 	self.get_tree().change_scene_to_file(scene_path)
 
 	# Show the loading screen while the scene is loading.
 	# Hide it again after the scene has loaded.
-	var callback: Callable = (func():
+	var async_callback: Callable = (func():
 		await self.get_tree().tree_changed
 		await self.async_delay(0.5)
+		
+		if keep_player:
+			var player_spawn_pos = self.get_tree() \
+				.current_scene \
+				.get_node("PlayerSpawnPosition") \
+				.global_position
+
+			# Move the player from the previous scene to the new one.
+			player_to_move.global_position = player_spawn_pos
+			player_to_move.checkpoint_component.initialize(player_spawn_pos)
+			self.get_tree().current_scene.add_child(player_to_move)
 		
 		self.hide_loading_screen()
 	)
 
-	callback.call() # async call
+	async_callback.call() # async call
 
 
 func load_packed_scene(scene: PackedScene) -> void:

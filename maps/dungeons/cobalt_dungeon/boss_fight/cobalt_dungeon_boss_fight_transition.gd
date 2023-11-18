@@ -14,6 +14,7 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		# TODO: Make a way for the player to keep the weapons previously 
 		# obtained in the dungeon, since the player is technically still in the same dungeon.
 		SceneManager.load_scene_file(
-				"res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dugeon_boss_fight.tscn"
+				"res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dugeon_boss_fight.tscn",
+				true, # saves player data across scenes
 		)
 
