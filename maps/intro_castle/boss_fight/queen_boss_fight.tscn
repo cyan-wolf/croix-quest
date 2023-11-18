@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://da0dxsnqvwsi6"]
+[gd_scene load_steps=28 format=3 uid="uid://da0dxsnqvwsi6"]
 
 [ext_resource type="Texture2D" uid="uid://db2t4bojud350" path="res://tilesets/dark_dimension_tileset/tf_darkdimension_sheet.png" id="1_kajif"]
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_kv7nl"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_q1rwu"]
 [ext_resource type="PackedScene" uid="uid://c4em1vn2yairo" path="res://maps/intro_castle/boss_fight/lore/queen_boss_fight_lore_manager.tscn" id="4_m82kk"]
 [ext_resource type="PackedScene" uid="uid://du0klnaq2v87k" path="res://npcs/queen_croix/queen_croix_npc_sprite.tscn" id="5_8hhgs"]
@@ -2083,11 +2082,6 @@ animations = [{
 
 [node name="QueenBossFight" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_kv7nl")]
-visible = false
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_euukj")
 format = 2
@@ -2110,9 +2104,6 @@ layer_2/tile_data = PackedInt32Array(-65536, 1310720, 20, -65535, 1310720, 20, -
 
 [node name="Player" parent="." instance=ExtResource("2_q1rwu")]
 position = Vector2(72, -28)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="QueenBossFightLoreManager" parent="." instance=ExtResource("4_m82kk")]
 

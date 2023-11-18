@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=14 format=3 uid="uid://chvnxhqp7ljjx"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ju52u"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="4_4emnn"]
@@ -157,11 +156,6 @@ _mana_amount = 4
 
 [node name="UlmusDungeon" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_ju52u")]
-visible = false
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6s6io")
 format = 2
@@ -188,9 +182,6 @@ navigation_polygon = SubResource("NavigationPolygon_71es4")
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
 health_component = SubResource("Resource_p1nne")
 mana_component = SubResource("Resource_2x206")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="PropCollection" type="Node2D" parent="."]
 

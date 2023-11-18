@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://f13twvdpqwmx"]
+[gd_scene load_steps=12 format=3 uid="uid://f13twvdpqwmx"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_jova1"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_r7kka"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_68nan"]
 [ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="4_ywk14"]
@@ -24,11 +23,6 @@ author = "???"
 dialog = Array[String](["(a lot of lore is explained here)"])
 
 [node name="TownOutsideCastle" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_jova1")]
-visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("5_qvdhi")
@@ -54,9 +48,6 @@ layer_2/tile_data = PackedInt32Array()
 position = Vector2(1, 5)
 health_component = SubResource("Resource_espya")
 mana_component = SubResource("Resource_oq4mf")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="EmmyDialogNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("6_pame3")]
 position = Vector2(-130, -162)

@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://om1fi1opyx1m"]
+[gd_scene load_steps=18 format=3 uid="uid://om1fi1opyx1m"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_1l4xd"]
 [ext_resource type="TileSet" uid="uid://8161klnmo4uv" path="res://tilesets/dark_dimension_tileset/dark_dimension_modified_tileset.tres" id="2_cgrkn"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_b7610"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="4_nul3n"]
@@ -35,11 +34,6 @@ dialog = Array[String](["Well? Don't stay here, go through the door!"])
 
 [node name="IntroCastleMap" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_1l4xd")]
-visible = false
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_cgrkn")
 format = 2
@@ -67,10 +61,6 @@ navigation_polygon = SubResource("NavigationPolygon_7fm1p")
 position = Vector2(956, 54)
 health_component = SubResource("Resource_gawqb")
 mana_component = SubResource("Resource_d4bwt")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(5, 1)
-zoom = Vector2(3, 3)
 
 [node name="IntroCastleLoreManager" parent="." instance=ExtResource("6_bsn1n")]
 

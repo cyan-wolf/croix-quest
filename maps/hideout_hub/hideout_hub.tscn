@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://3iv2uw0ktxe5"]
+[gd_scene load_steps=6 format=3 uid="uid://3iv2uw0ktxe5"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_6cvhe"]
 [ext_resource type="Texture2D" uid="uid://clrql7na4xfba" path="res://tilesets/hideout_tileset/hideout_tileset.png" id="2_gis22"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_ru3yv"]
 [ext_resource type="PackedScene" uid="uid://lsg7qb8blto4" path="res://maps/hideout_hub/dungeon_selector_manager.tscn" id="4_rnqfy"]
@@ -183,11 +182,6 @@ sources/0 = SubResource("TileSetAtlasSource_178f1")
 
 [node name="HideoutHub" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_6cvhe")]
-visible = false
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1eajn")
 format = 2
@@ -218,9 +212,6 @@ layer_3/tile_data = PackedInt32Array(327668, 0, 0, 327669, 0, 0, 327670, 0, 0, 3
 
 [node name="Player" parent="." instance=ExtResource("2_ru3yv")]
 position = Vector2(-107, 2)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="DungeonSelectorManager" parent="." instance=ExtResource("4_rnqfy")]
 position = Vector2(24, 7)

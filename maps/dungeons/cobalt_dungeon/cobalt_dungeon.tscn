@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://crddnqharh8e8"]
+[gd_scene load_steps=25 format=3 uid="uid://crddnqharh8e8"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_ns553"]
 [ext_resource type="TileSet" uid="uid://bhti7kqt3devo" path="res://tilesets/cobalt_dungeon_tileset/cobalt_dungeon.tres" id="2_yfp3v"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_uhrtc"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="4_d4ehf"]
@@ -39,11 +38,6 @@ _mana_amount = 4
 [node name="CobaltDungeon" type="Node2D"]
 y_sort_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_ns553")]
-visible = false
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_yfp3v")
 format = 2
@@ -71,9 +65,6 @@ navigation_polygon = SubResource("NavigationPolygon_syqcd")
 [node name="Player" parent="." instance=ExtResource("3_uhrtc")]
 health_component = SubResource("Resource_ri03q")
 mana_component = SubResource("Resource_s3id4")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ipnw7")

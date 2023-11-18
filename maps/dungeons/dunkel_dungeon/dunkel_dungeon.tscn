@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://da0aphk27nflm"]
+[gd_scene load_steps=5 format=3 uid="uid://da0aphk27nflm"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_oe28h"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_vsolw"]
 [ext_resource type="TileSet" uid="uid://bf0tb2ao5aqyo" path="res://tilesets/dunkel_dungeon_tileset/dunkel_dungeon.tres" id="3_yhtpw"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="4_tuuw5"]
@@ -8,15 +7,7 @@
 
 [node name="DunkelDungeon" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_oe28h")]
-visible = false
-
 [node name="Player" parent="." instance=ExtResource("2_vsolw")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_yhtpw")

@@ -55,7 +55,7 @@ func find_camera() -> Camera2D:
 
 
 func find_player_hud() -> Control:
-	return self.get_tree().current_scene.get_node("CanvasLayer/PlayerHUD") as Control
+	return self.find_player().get_node("CanvasLayer/PlayerHUD") as Control
 
 
 func async_shake_camera(amount: float, duration_in_secs: float) -> void:

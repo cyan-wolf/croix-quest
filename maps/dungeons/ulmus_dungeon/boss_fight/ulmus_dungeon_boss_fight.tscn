@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck1uqkdo55jcr"]
+[gd_scene load_steps=8 format=3 uid="uid://ck1uqkdo55jcr"]
 
-[ext_resource type="PackedScene" uid="uid://d2fmifh13utrp" path="res://ui/hud/player_hud.tscn" id="1_foq0h"]
 [ext_resource type="TileSet" uid="uid://df3y6ueoyret4" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon.tres" id="1_nq7h1"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_auhl7"]
 [ext_resource type="PackedScene" uid="uid://cv0avqon8dc5r" path="res://enemies/bosses/paul/paul_boss.tscn" id="3_6lnff"]
@@ -14,11 +13,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-125, -204, 124, -204, 124, 19, -125, 20)])
 
 [node name="UlmusDungeonBossFight" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("1_foq0h")]
-visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_p3ew6")
@@ -45,9 +39,6 @@ layer_2/z_index = -1
 layer_2/tile_data = PackedInt32Array(196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131078, 0, 0, 131079, 0, 0, 131077, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 131064, 131072, 0, 131065, 131072, 0, 131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 131063, 65536, 2, 65544, 196608, 2, 196599, 393216, 2, 262135, 393216, 2, 131080, 458752, 2, 196616, 458752, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_auhl7")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="PaulBoss" parent="." instance=ExtResource("3_6lnff")]
 position = Vector2(0, -73)

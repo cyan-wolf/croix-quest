@@ -5,13 +5,13 @@ extends Node2D
 ## Dialog given to the player after the "lore rects" are over.
 @export var _final_intro_dialog: DialogResource 
 
-var _player: Player
-var _camera: Camera2D
-
 # TODO: Replace these `ColorRect`s with `TextureRect`s that display the lore using pixel art.
 var _ui_lore_rects: Array[ColorRect] = []
 
 func _ready() -> void:
+	# Hide the player HUD so that it doesn't appear in the intro cutscene.
+	SceneManager.find_player_hud().hide()
+
 	# Initialize fields.
 	_setup()
 
@@ -20,11 +20,11 @@ func _ready() -> void:
 
 	SceneManager.play_background_music("res://sounds/music/Hero Immortal/Hero Immortal.mp3")
 
+	# Show the player HUD as the cutscene has already finished.
+	SceneManager.find_player_hud().show()
+
 	
 func _setup() -> void:
-	_player = SceneManager.find_player()
-	_camera = SceneManager.find_camera()
-
 	for lore_rect in self.get_node("CanvasLayer/LoreRects").get_children():
 		# TODO: Replace with `TextureRect`.
 		_ui_lore_rects.push_back(lore_rect as ColorRect)
