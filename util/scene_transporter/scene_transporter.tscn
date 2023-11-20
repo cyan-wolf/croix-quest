@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://chmdygv0wf3e0"]
+
+[ext_resource type="Script" path="res://util/scene_transporter/scene_transporter.gd" id="1_t88sg"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_ofap2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dwk7"]
+size = Vector2(16, 16)
+
+[node name="SceneTransporter" type="Node2D"]
+script = ExtResource("1_t88sg")
+
+[node name="HitboxArea" parent="." instance=ExtResource("2_ofap2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_5dwk7")

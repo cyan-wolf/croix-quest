@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=20 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="4_4emnn"]
+[ext_resource type="PackedScene" uid="uid://chmdygv0wf3e0" path="res://util/scene_transporter/scene_transporter.tscn" id="4_28uki"]
 [ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="4_mchms"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_yst44"]
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="6_au5bi"]
@@ -191,6 +192,10 @@ navigation_polygon = SubResource("NavigationPolygon_71es4")
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
 health_component = SubResource("Resource_p1nne")
 mana_component = SubResource("Resource_2x206")
+
+[node name="TempBossSceneTransporter" parent="." instance=ExtResource("4_28uki")]
+position = Vector2(38, 28)
+_destination_scene_path = "res://maps/dungeons/ulmus_dungeon/boss_fight/ulmus_dungeon_boss_fight.tscn"
 
 [node name="PropCollection" type="Node2D" parent="."]
 y_sort_enabled = true

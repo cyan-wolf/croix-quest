@@ -27,8 +27,6 @@ signal perform_attack_3
 
 @onready var _melee_attack_hitbox: Area2D = self.get_node("MeleeAttackHitboxArea")
 
-@onready var _player: Player = SceneManager.find_player()
-
 # The enemy summon position markers need to be added manually under 
 # an 'EnemySummonPositions' node.
 var _enemy_summon_positions: Array[Node2D] = []
@@ -59,7 +57,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float):
 	if _is_following_player:
-		var vel_direction := self.global_position.direction_to(_player.global_position)
+		var vel_direction := self.global_position.direction_to(SceneManager.find_player().global_position)
 
 		self.velocity = vel_direction * _follow_speed
 
@@ -207,7 +205,7 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 	# The projectile is fired from the boss' club (top-right corner of its sprite).
 	var summon_pos := self.global_position + Vector2.UP * 32 + Vector2.RIGHT * 28
 
-	var direction := summon_pos.direction_to(_player.global_position)
+	var direction := summon_pos.direction_to(SceneManager.find_player().global_position)
 	direction = direction.rotated(deg_to_rad(offset_angle_in_degrees))
 
 	var speed := 120.0

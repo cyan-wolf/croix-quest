@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck1uqkdo55jcr"]
+[gd_scene load_steps=7 format=3 uid="uid://ck1uqkdo55jcr"]
 
 [ext_resource type="TileSet" uid="uid://df3y6ueoyret4" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon.tres" id="1_nq7h1"]
-[ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_auhl7"]
 [ext_resource type="PackedScene" uid="uid://cv0avqon8dc5r" path="res://enemies/bosses/paul/paul_boss.tscn" id="3_6lnff"]
 [ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="4_115tq"]
 [ext_resource type="PackedScene" uid="uid://x0u7ai35o4o4" path="res://enemies/melee_enemy/charjopt/charjopt_melee_enemy.tscn" id="5_gp14w"]
@@ -38,8 +37,6 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = -1
 layer_2/tile_data = PackedInt32Array(196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131078, 0, 0, 131079, 0, 0, 131077, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 131064, 131072, 0, 131065, 131072, 0, 131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 131063, 65536, 2, 65544, 196608, 2, 196599, 393216, 2, 262135, 393216, 2, 131080, 458752, 2, 196616, 458752, 2)
 
-[node name="Player" parent="." instance=ExtResource("2_auhl7")]
-
 [node name="PaulBoss" parent="." instance=ExtResource("3_6lnff")]
 position = Vector2(0, -73)
 _melee_enemy_scene = ExtResource("5_gp14w")
@@ -60,3 +57,6 @@ position = Vector2(-104, -17)
 
 [node name="PositionMarker4" parent="EnemySummonPositions" instance=ExtResource("4_115tq")]
 position = Vector2(0, 78)
+
+[node name="PlayerSpawnPosition" parent="." instance=ExtResource("4_115tq")]
+visible = false
