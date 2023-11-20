@@ -63,7 +63,6 @@ layer_2/tile_data = PackedInt32Array(196605, 131073, 4, 196606, 131073, 4, 19660
 navigation_polygon = SubResource("NavigationPolygon_syqcd")
 
 [node name="Player" parent="." instance=ExtResource("3_uhrtc")]
-position = Vector2(-135, -2551)
 health_component = SubResource("Resource_ri03q")
 mana_component = SubResource("Resource_s3id4")
 
@@ -274,3 +273,7 @@ position = Vector2(-1178, -2306)
 
 [node name="Checkpoint" parent="." instance=ExtResource("22_kkrby")]
 position = Vector2(-1022, -1226)
+
+[node name="TempBossSceneTransporter" parent="." instance=ExtResource("10_tytj2")]
+position = Vector2(38, 33)
+_destination_scene_path = "res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dugeon_boss_fight.tscn"

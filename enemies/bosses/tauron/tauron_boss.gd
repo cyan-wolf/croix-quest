@@ -40,6 +40,8 @@ signal perform_attack_3
 @onready var _stomp_attack_hitbox: Area2D = self.get_node("StompAttackHitboxArea")
 @onready var _charge_attack_hitbox: Area2D = self.get_node("ChargeAttackHitboxArea")
 
+@onready var _sprite: AnimatedSprite2D = self.get_node("AnimatedSprite2D")
+
 var _current_attack_state := AttackState.NONE
 
 var _has_been_defeated := false
