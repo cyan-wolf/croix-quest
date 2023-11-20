@@ -159,7 +159,7 @@ _projectile_amount = 20
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wb3rx")
 animation = &"idle"
-frame_progress = 0.762989
+frame_progress = 0.699584
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 23)

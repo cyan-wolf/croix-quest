@@ -10,6 +10,7 @@ const AstralLineusBoss := preload("res://enemies/bosses/astral_lineus/astral_lin
 
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
+const DODGE_DURATION := 0.6
 
 # Manages the player's health value.
 @export var health_component: HealthComponent
@@ -31,6 +32,7 @@ const DASH_MULTIPLIER := 1.65
 var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
+var _is_dodging: bool = false
 
 var _current_sprite_direction := Util.Direction.RIGHT
 
@@ -39,6 +41,11 @@ func _ready() -> void:
 	self.mana_component.ran_out_of_mana.connect(_async_on_ran_out_of_mana)
 	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 	self.checkpoint_component.initialize(self.global_position)
+
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("dodge"):
+		_try_to_dodge()
 
 
 func _physics_process(_delta):
@@ -96,6 +103,10 @@ func _async_on_ran_out_of_mana() -> void:
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	var defense_multiplier := self.status_effect_component.get_computed_defense_multiplier()
+
+	# Make the player not recieve damage if they are dodging.
+	if _is_dodging:
+		defense_multiplier = 0
 
 	if other_hitbox.is_in_group("placeholder_enemy"):
 		self.health_component.take_damage(1)
@@ -189,6 +200,34 @@ func _stop_running() -> void:
 	_is_timer_on = false
 	_is_running = false
 	$RunCountdown.stop()
+
+
+func _try_to_dodge() -> void:
+	# The dodge attempt fails if the player is already dodging or the 
+	# player doesn't have enough mana.
+	if _is_dodging or not self.mana_component.has_enough_mana(1):
+		return
+
+	_is_dodging = true
+
+	self.mana_component.use_mana(1)
+
+	# Make the player partially transparent.
+	self.modulate.a = 0.5
+
+	# Reuse dash SFX.
+	$InitialDashParticles.emitting = true
+	$InitialDashSFX.play()
+
+	var async_callback := func():
+		await SceneManager.async_delay(DODGE_DURATION)
+
+		# Make the player opaque.
+		self.modulate.a = 1.0
+
+		_is_dodging = false
+
+	async_callback.call() # async call
 
 
 func _get_input_direction() -> Vector2:
