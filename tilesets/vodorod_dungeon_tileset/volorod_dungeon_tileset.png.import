@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rrla84yockbg"
-path="res://.godot/imported/volorod_dungeon_tileset.png-608c0ca73c86116fb03f704c85f1aa7b.ctex"
+path="res://.godot/imported/volorod_dungeon_tileset.png-a6913970d4377e3e37e06d67129449fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/volorod_dungeon_tileset/volorod_dungeon_tileset.png"
-dest_files=["res://.godot/imported/volorod_dungeon_tileset.png-608c0ca73c86116fb03f704c85f1aa7b.ctex"]
+source_file="res://tilesets/vodorod_dungeon_tileset/volorod_dungeon_tileset.png"
+dest_files=["res://.godot/imported/volorod_dungeon_tileset.png-a6913970d4377e3e37e06d67129449fc.ctex"]
 
 [params]
 

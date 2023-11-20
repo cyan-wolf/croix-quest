@@ -36,8 +36,6 @@ enum AttackState {
 
 @onready var _attack_3_snow_particles: GPUParticles2D = self.get_node("ShaleSaberSnowParticles")
 
-@onready var _player: Player = SceneManager.find_player()
-
 var _current_attack_state := AttackState.NONE
 
 var _has_been_defeated := false
@@ -129,7 +127,7 @@ func _async_on_perform_attack_2() -> void:
 	await SceneManager.async_delay(2.0)
 
 	# Lock onto a previous player position.
-	var player_lock_on_pos := _player.global_position
+	var player_lock_on_pos: Vector2 = SceneManager.find_player().global_position
 
 	await SceneManager.async_delay(0.2)
 
@@ -185,11 +183,11 @@ func _async_on_perform_attack_3() -> void:
 	var dt := 0.3
 
 	while elapsed < _attack_3_duration:
-		var dist := self.global_position.distance_to(_player.global_position)
+		var dist := self.global_position.distance_to(SceneManager.find_player().global_position)
 
 		if dist > _attack_3_safety_radius:
 			# Placeholder effect.
-			_player.health_component.take_damage(1)
+			SceneManager.find_player().health_component.take_damage(1)
 
 		elapsed += dt
 		await SceneManager.async_delay(dt)

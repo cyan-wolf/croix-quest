@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b2yyd33iib1bk"]
 
-[ext_resource type="Texture2D" uid="uid://rrla84yockbg" path="res://tilesets/volorod_dungeon_tileset/volorod_dungeon_tileset.png" id="1_g4mlo"]
+[ext_resource type="Texture2D" uid="uid://rrla84yockbg" path="res://tilesets/vodorod_dungeon_tileset/volorod_dungeon_tileset.png" id="1_g4mlo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbi4p"]
 texture = ExtResource("1_g4mlo")

@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq7o03oxxexbv"]
 
-[ext_resource type="TileSet" uid="uid://b2yyd33iib1bk" path="res://tilesets/volorod_dungeon_tileset/volorod_dungeon.tres" id="1_sswsc"]
-[ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_f2gnk"]
-[ext_resource type="PackedScene" uid="uid://byc5phtuest4o" path="res://enemies/bosses/shale_saber/shale_saber_boss.tscn" id="4_bhc8u"]
+[ext_resource type="TileSet" uid="uid://b2yyd33iib1bk" path="res://tilesets/vodorod_dungeon_tileset/volorod_dungeon.tres" id="1_lx6lc"]
+[ext_resource type="PackedScene" uid="uid://byc5phtuest4o" path="res://enemies/bosses/shale_saber/shale_saber_boss.tscn" id="2_rq1uk"]
+[ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="3_sq3tp"]
 
 [node name="VodorodDungeonBossFight" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_sswsc")
+tile_set = ExtResource("1_lx6lc")
 format = 2
 layer_0/name = "Ground"
 layer_0/z_index = -1
@@ -27,7 +27,8 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = -1
 layer_2/tile_data = PackedInt32Array(262135, 0, 14, 262136, 0, 14, 327673, 0, 14, 327674, 0, 14, 327675, 0, 14, 327676, 0, 14, 327677, 0, 14, 262141, 0, 14, 262142, 0, 14, 262143, 0, 14, 196608, 0, 14, 196609, 0, 14, 327671, 0, 14, 327672, 0, 14, 262137, 0, 14, 262138, 0, 14, 262139, 0, 14, 262140, 0, 14, 327679, 0, 14, 327678, 0, 14, 262144, 0, 14, 262145, 0, 14, 262146, 0, 14, 262147, 0, 14, 262148, 0, 14, 262149, 0, 14, 262150, 0, 14, 262151, 0, 14, 262152, 0, 14, 196616, 0, 14, 196615, 0, 14, 196614, 0, 14, 196613, 0, 14, 196612, 0, 14, 196611, 0, 14, 196610, 0, 14, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 262134, 0, 12, 327670, 0, 12, 196617, 0, 11, 262153, 0, 11, 131081, 0, 4, 196598, 0, 3)
 
-[node name="Player" parent="." instance=ExtResource("2_f2gnk")]
-
-[node name="ShaleSaberBoss" parent="." instance=ExtResource("4_bhc8u")]
+[node name="ShaleSaberBoss" parent="." instance=ExtResource("2_rq1uk")]
 position = Vector2(1, -108)
+
+[node name="PlayerSpawnPosition" parent="." instance=ExtResource("3_sq3tp")]
+visible = false
