@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://64s3ugpjsat4"]
+[gd_scene load_steps=9 format=3 uid="uid://64s3ugpjsat4"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_5hwo0"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="2_sg62h"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_08htb"]
+[ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="3_nisvw"]
 [ext_resource type="PackedScene" uid="uid://qxpn3g5r1lll" path="res://util/components/enemy/enemy_melee_component.tscn" id="5_0itsq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
@@ -32,6 +33,12 @@ _sprite = NodePath("../TauronWorshiperEnemySprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
 shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="HealthBar" parent="EnemyComponent" instance=ExtResource("3_nisvw")]
+offset_left = -9.0
+offset_top = -13.0
+offset_right = 11.0
+offset_bottom = -10.0
 
 [node name="TauronWorshiperEnemySprite" parent="." instance=ExtResource("2_sg62h")]
 

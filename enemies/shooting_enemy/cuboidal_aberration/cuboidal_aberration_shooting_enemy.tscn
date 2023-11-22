@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyot4k30xr0iu"]
+[gd_scene load_steps=11 format=3 uid="uid://cyot4k30xr0iu"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_0c317"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_h2w5v"]
+[ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="3_hs517"]
 [ext_resource type="PackedScene" uid="uid://duijy1sie6es6" path="res://enemies/shooting_enemy/cuboidal_aberration/cuboidal_aberration_enemy_sprite.tscn" id="3_k1wti"]
 [ext_resource type="PackedScene" uid="uid://cpu3i1c756eae" path="res://util/components/enemy/enemy_shooting_component.tscn" id="4_ndlur"]
 [ext_resource type="Texture2D" uid="uid://cmrjx7qmw8yno" path="res://enemies/shooting_enemy/cuboidal_aberration/cuboidal_aberration_projectile.png" id="5_es4bd"]
@@ -46,6 +47,12 @@ _min_player_attack_distance = 64.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
 shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="HealthBar" parent="EnemyComponent" instance=ExtResource("3_hs517")]
+offset_left = -7.0
+offset_top = -12.0
+offset_right = 7.0
+offset_bottom = -10.0
 
 [node name="CuboidalAberrationEnemySprite" parent="." instance=ExtResource("3_k1wti")]
 

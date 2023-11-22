@@ -11,6 +11,7 @@ class_name EnemyComponent
 signal state_changed(old_state: Util.EnemyState, new_state: Util.EnemyState)
 
 const Projectile := preload("res://weapons/projectile/projectile.gd")
+const HealthBar := preload("res://ui/hud/health_bar/health_bar.gd")
 
 @export var _sprite: AnimatedSprite2D
 @export var _speed: float = 35.0
@@ -35,6 +36,8 @@ const Projectile := preload("res://weapons/projectile/projectile.gd")
 # This node must be added manually to the `EnemyComponent`. 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
+@onready var _health_bar: HealthBar = self.get_node("HealthBar")
+
 var _current_state := Util.EnemyState.IDLE
 
 func _ready():
@@ -46,6 +49,8 @@ func _ready():
 	self.health_component.death.connect(_on_death)
 
 	_nav_agent.path_desired_distance = _min_player_attack_distance
+
+	_health_bar.initialize(self.health_component)
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://x0u7ai35o4o4"]
+[gd_scene load_steps=9 format=3 uid="uid://x0u7ai35o4o4"]
 
 [ext_resource type="PackedScene" uid="uid://ugrsnoao6e5y" path="res://enemies/melee_enemy/charjopt/charjopt_enemy_sprite.tscn" id="1_0n1bn"]
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_x7q78"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_vn32c"]
+[ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="4_l8hpk"]
 [ext_resource type="PackedScene" uid="uid://qxpn3g5r1lll" path="res://util/components/enemy/enemy_melee_component.tscn" id="4_r6lbu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
@@ -36,6 +37,12 @@ _min_player_attack_distance = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
 shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="HealthBar" parent="EnemyComponent" instance=ExtResource("4_l8hpk")]
+offset_left = -14.0
+offset_top = -19.0
+offset_right = 17.0
+offset_bottom = -16.0
 
 [node name="EnemyMeleeComponent" parent="." instance=ExtResource("4_r6lbu")]
 _attack_speed = 2.0

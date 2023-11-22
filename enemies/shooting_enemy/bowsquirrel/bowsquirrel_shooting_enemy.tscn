@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1oygilsvxp3v"]
+[gd_scene load_steps=11 format=3 uid="uid://c1oygilsvxp3v"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_d2maj"]
 [ext_resource type="PackedScene" uid="uid://sxk36udqg476" path="res://enemies/shooting_enemy/bowsquirrel/bowsquirrel_enemy_sprite.tscn" id="1_skl20"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_tahe6"]
 [ext_resource type="PackedScene" uid="uid://cpu3i1c756eae" path="res://util/components/enemy/enemy_shooting_component.tscn" id="4_ua1w7"]
+[ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="4_xo1sn"]
 [ext_resource type="Texture2D" uid="uid://csqr3rj1ue4cx" path="res://enemies/shooting_enemy/bowsquirrel/bowsquirrel_arrow.png" id="5_iqeus"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
@@ -50,6 +51,12 @@ _min_player_attack_distance = 120.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="HealthBar" parent="EnemyComponent" instance=ExtResource("4_xo1sn")]
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 13.0
+offset_bottom = -14.0
 
 [node name="EnemyShootingComponent" parent="." instance=ExtResource("4_ua1w7")]
 _projectile_sprite_frames = SubResource("SpriteFrames_pcx63")
