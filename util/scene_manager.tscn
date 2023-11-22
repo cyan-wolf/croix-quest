@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b20ncwhqhr8a3"]
+[gd_scene load_steps=6 format=3 uid="uid://b20ncwhqhr8a3"]
 
 [ext_resource type="Script" path="res://util/scene_manager.gd" id="1_thvi4"]
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="2_g706b"]
 [ext_resource type="PackedScene" uid="uid://iwjgvyyskig4" path="res://ui/menus/game_over_screen/game_over_screen.tscn" id="3_638he"]
+[ext_resource type="PackedScene" uid="uid://fhdb0r8dk78s" path="res://ui/menus/pause_screen/pause_screen.tscn" id="4_lyuis"]
 
 [sub_resource type="Theme" id="Theme_b8bfh"]
 default_font = ExtResource("2_g706b")
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_thvi4")
+_should_mute_game_volume_on_start = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("4_lyuis")]
+visible = false
 
 [node name="LoadingScreen" type="Control" parent="CanvasLayer"]
 visible = false

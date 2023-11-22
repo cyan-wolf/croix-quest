@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var _loading_screen: Control = self.get_node("CanvasLayer/LoadingScreen")
 @onready var _game_over_screen: Control = self.get_node("CanvasLayer/GameOverScreen")
+@onready var _pause_screen: Control = self.get_node("CanvasLayer/PauseScreen")
 @onready var _background_music_player: AudioStreamPlayer = self.get_node("BackgroundMusicPlayer")
 
 @export var _should_mute_game_volume_on_start := false
@@ -24,6 +25,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# Does different things depending on what "debug key" was pressed.
 	_handle_debug_keys()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause_game") and not _pause_screen.visible:
+		self.find_player_hud().hide()
+		_pause_screen.show()
+		self.get_tree().paused = true
 
 
 ## Loads the scene given by `scene_path` and unloads the previous scene.
@@ -145,6 +153,9 @@ func show_game_over_screen() -> void:
 	self.find_player_hud().hide()
 	
 	_game_over_screen.show()
+
+	# Pause the game while in the game over screen.
+	self.get_tree().paused = true
 
 
 func play_background_music(audio_track_file: String) -> void:

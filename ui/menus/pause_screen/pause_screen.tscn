@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://fhdb0r8dk78s"]
+
+[ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_p8h1k"]
+[ext_resource type="Script" path="res://ui/menus/pause_screen/pause_screen.gd" id="2_o831b"]
+[ext_resource type="PackedScene" uid="uid://dq64dl4nypfso" path="res://ui/menus/settings_menu/settings_menu.tscn" id="3_jes42"]
+[ext_resource type="PackedScene" uid="uid://cj86io8xmudyv" path="res://ui/menus/components/back_button.tscn" id="4_w0may"]
+
+[sub_resource type="Theme" id="Theme_q3ade"]
+default_font = ExtResource("1_p8h1k")
+
+[node name="PauseScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q3ade")
+script = ExtResource("2_o831b")
+
+[node name="BackgroundRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.631373)
+
+[node name="PauseScreenElements" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="PauseScreenElements"]
+layout_mode = 0
+offset_right = 840.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 120
+text = "Croix Quest"
+
+[node name="ResumeGameButton" type="Button" parent="PauseScreenElements"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -105.0
+offset_right = 526.0
+offset_bottom = -28.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Resume Game"
+
+[node name="SettingsButton" type="Button" parent="PauseScreenElements"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_right = 333.0
+offset_bottom = 77.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PauseScreenElements"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = 108.0
+offset_right = 701.0
+offset_bottom = 185.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Quit to Main Menu"
+
+[node name="SettingsMenuElements" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMenu" parent="SettingsMenuElements" instance=ExtResource("3_jes42")]
+layout_mode = 1
+
+[node name="BackButton" parent="SettingsMenuElements" instance=ExtResource("4_w0may")]
+layout_mode = 0
+script = null

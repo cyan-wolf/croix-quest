@@ -10,6 +10,9 @@ func _ready() -> void:
 
 
 func _on_respawn_button_pressed() -> void:
+	# Unpause the game, since it was paused before showing the game over screen.
+	self.get_tree().paused = false
+
 	# Make the player respawn.
 	SceneManager.find_player().respawn()
 
@@ -17,6 +20,9 @@ func _on_respawn_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	# Unpause the game, since it was paused before showing the game over screen.
+	self.get_tree().paused = false
+
 	# Make the player respawn in order to reset any leftover state.
 	SceneManager.find_player().respawn()
 

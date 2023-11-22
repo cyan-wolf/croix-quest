@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gnp3phoypq2"]
+
+[ext_resource type="PackedScene" uid="uid://dq64dl4nypfso" path="res://ui/menus/settings_menu/settings_menu.tscn" id="1_hpja4"]
+[ext_resource type="PackedScene" uid="uid://cj86io8xmudyv" path="res://ui/menus/components/back_button.tscn" id="2_wiylk"]
+
+[node name="MainMenuSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("1_hpja4")]
+layout_mode = 1
+
+[node name="BackButton" parent="." instance=ExtResource("2_wiylk")]
+layout_mode = 0
+_new_scene_file = "res://ui/menus/main_menu.tscn"
