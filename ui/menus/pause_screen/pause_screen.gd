@@ -10,9 +10,6 @@ func _ready() -> void:
 
 
 func _on_resume_game_button_pressed() -> void:
-	# Unpause the game.
-	self.get_tree().paused = false
-
 	_reset_ui()
 
 
@@ -23,13 +20,10 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	# Unpause the game.
-	self.get_tree().paused = false
+	_reset_ui()
 
 	# Go to the main menu.
 	SceneManager.load_scene_file("res://ui/menus/main_menu.tscn")
-
-	_reset_ui()
 
 
 func _on_settings_screen_back_button_pressed() -> void:
@@ -40,7 +34,10 @@ func _on_settings_screen_back_button_pressed() -> void:
 
 # Resets various UIs to their previous states after the pause screen is done being used.
 func _reset_ui() -> void:
-	# Hide the game over screen.
+	# Unpause the game.
+	self.get_tree().paused = false
+
+	# Hide the pause screen.
 	self.hide()
 
 	# Show the Player HUD again since it was hidden by `SceneManager`.
