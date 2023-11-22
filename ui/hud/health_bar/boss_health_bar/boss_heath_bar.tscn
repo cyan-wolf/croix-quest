@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7u5nlk05pa5t"]
+
+[ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="1_xh16v"]
+
+[node name="BossHeathBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BossNameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HealthBar" parent="." instance=ExtResource("1_xh16v")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -521.0
+offset_top = 81.0
+offset_right = 519.0
+offset_bottom = 125.0
+grow_horizontal = 2
+_color = Color(0.521569, 0.2, 0.607843, 1)
