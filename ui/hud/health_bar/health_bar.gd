@@ -23,9 +23,5 @@ func _on_health_changed() -> void:
 	var ratio_to_full_health: float = \
 	(_health_component.get_health() as float) / _health_component.get_max_health()
 
-	print_debug("M:", _health_component.get_max_health())
-	print_debug("H:", _health_component.get_health())
-	print_debug("R:", ratio_to_full_health)
-
 	self.value = ratio_to_full_health
 

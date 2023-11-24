@@ -3,8 +3,8 @@
 	"sprite_path": "res://weapons/sprites/Shotgun/Shotgun.png",
 	"scale": [0.5, 0.5],
 	"bullet_speed": 500,
-	"bullet_alive_time": 0.25,
-	"weapon_reload_time": 1.0,
-	"bullet_damage": 3
+	"bullet_alive_time": 0.19,
+	"weapon_reload_time": 1.1,
+	"bullet_damage": 2
   }
   
