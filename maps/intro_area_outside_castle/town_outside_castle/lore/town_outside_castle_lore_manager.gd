@@ -2,7 +2,7 @@ extends Node2D
 
 const DialogNpc := preload("res://npcs/dialog_npc/dialog_npc.gd")
 
-@onready var _emmy_dialog_npc: DialogNpc = self.get_node("../EmmyDialogNPC")
+@onready var _emmy_dialog_npc: DialogNpc = self.get_node("../EmmyDisguisedDialogNPC")
 
 func _ready() -> void:
 	_emmy_dialog_npc.dialog_ended.connect(_on_emmy_dialog_ended)
