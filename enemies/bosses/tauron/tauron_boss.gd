@@ -59,6 +59,12 @@ func _ready() -> void:
 	self.perform_attack_2.connect(_async_on_perform_attack_2)
 	self.perform_attack_3.connect(_async_on_perform_attack_3)
 
+	# Setup the boss health bar.
+	SceneManager.find_boss_health_bar().initialize(
+		self.health_component,
+		"Tauron",
+	)
+
 	# Play music.
 	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
 

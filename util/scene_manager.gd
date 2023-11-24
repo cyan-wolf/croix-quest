@@ -90,6 +90,10 @@ func find_player_hud() -> Control:
 	return self.find_player().get_node("CanvasLayer/PlayerHUD") as Control
 
 
+func find_boss_health_bar() -> BossHealthBar:
+	return self.get_tree().current_scene.get_node("CanvasLayer/BossHeathBar")
+
+
 func async_shake_camera(amount: float, duration_in_secs: float) -> void:
 	var camera := self.find_camera()
 
