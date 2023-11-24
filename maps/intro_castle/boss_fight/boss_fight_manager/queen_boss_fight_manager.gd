@@ -56,6 +56,12 @@ func _on_start_boss_fight() -> void:
 	_queen_boss.health_component.death.connect(_async_on_queen_defeat)
 	_queen_boss.set_animation("float")
 
+	# Setup the boss health bar.
+	SceneManager.find_boss_health_bar().initialize(
+		_queen_boss.health_component,
+		"Queen",
+	)
+
 	# Start performing 'Attack 1'.
 	self.perform_attack_1.emit()
 

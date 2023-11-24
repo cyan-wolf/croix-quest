@@ -63,6 +63,12 @@ func _ready() -> void:
 	for n in self.get_node("../AstralLineusAttack3Positions/Attack3LaserPositions").get_children():
 		_attack_3_laser_positions.append(n.global_position)
 
+	# Setup the boss health bar.
+	SceneManager.find_boss_health_bar().initialize(
+		self.health_component,
+		"Astral Lineus",
+	)
+
 	# Play music.
 	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
 

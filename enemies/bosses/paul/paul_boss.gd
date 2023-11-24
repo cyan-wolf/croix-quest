@@ -49,6 +49,12 @@ func _ready() -> void:
 	# Add the child nodes of 'EnemySummonPositions' to `_enemy_summon_positions`.
 	_enemy_summon_positions.append_array(self.get_node("../EnemySummonPositions").get_children())
 
+	# Setup the boss health bar.
+	SceneManager.find_boss_health_bar().initialize(
+		self.health_component,
+		"Paul",
+	)
+
 	# Play music.
 	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
 

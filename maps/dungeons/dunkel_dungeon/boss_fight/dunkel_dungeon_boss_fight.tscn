@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://daord4ebf0bet"]
+[gd_scene load_steps=5 format=3 uid="uid://daord4ebf0bet"]
 
 [ext_resource type="TileSet" uid="uid://bf0tb2ao5aqyo" path="res://tilesets/dunkel_dungeon_tileset/dunkel_dungeon.tres" id="1_evjtl"]
+[ext_resource type="PackedScene" uid="uid://b7u5nlk05pa5t" path="res://ui/hud/health_bar/boss_health_bar/boss_heath_bar.tscn" id="1_wp18o"]
 [ext_resource type="PackedScene" uid="uid://br4kofxr8mg1y" path="res://enemies/bosses/astral_lineus/astral_lineus_boss.tscn" id="4_lakah"]
 [ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="5_l4rh7"]
 
 [node name="DunkelDungeonBossFight" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BossHeathBar" parent="CanvasLayer" instance=ExtResource("1_wp18o")]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_evjtl")
