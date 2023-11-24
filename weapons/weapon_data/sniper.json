@@ -5,6 +5,6 @@
     "bullet_speed": 2000,
     "bullet_alive_time": 5.0,
     "weapon_reload_time": 2.5,
-    "bullet_damage": 10
+    "bullet_damage": 6
   }
   
