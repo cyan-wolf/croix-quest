@@ -52,7 +52,6 @@ func _ready() -> void:
 	self.health_component.death.connect(_on_death)
 
 	($StompAttackTimer as Timer).timeout.connect(_on_stomp_attack_timer_timeout)
-	($ProjectileAttackTimer as Timer).timeout.connect(_on_projectile_attack_timer_timeout)
 	($ChargeAttackTimer as Timer).timeout.connect(_on_charge_attack_timer_timeout)
 
 	self.perform_attack_1.connect(_async_on_perform_attack_1)
@@ -89,8 +88,6 @@ func _physics_process(delta: float) -> void:
 
 # A stomping attack.
 func _async_on_perform_attack_1() -> void:
-	# TODO: Attack logic goes here.
-	print_debug("DEBUG: In phase 1")
 	await SceneManager.async_delay(4.0)
 
 	var jump_height := 20.0 * 16	# in pixels
@@ -115,8 +112,6 @@ func _async_on_perform_attack_1() -> void:
 
 	# This activates the stomp attack hitbox.
 	_current_attack_state = AttackState.STOMP
-
-	# TODO: Add a screen shake SFX when landing.
 
 	# Wait for the boss to land where the player was.
 	await self.get_tree().create_tween().tween_property(
@@ -146,14 +141,18 @@ func _async_on_perform_attack_1() -> void:
 
 # A projectile attack.
 func _async_on_perform_attack_2() -> void:
-	# TODO: Attack logic goes here.
-	print_debug("DEBUG: In phase 2")
 	await SceneManager.async_delay(1.0)
+
+	# Does nothing currently.
+	_current_attack_state = AttackState.PROJECTILE
 
 	for _i in range(_projectile_amount):
 		_fire_projectile()
 
 		await SceneManager.async_delay(1 / _projectile_fire_speed)
+
+	# Does nothing currently.
+	_current_attack_state = AttackState.NONE
 
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
@@ -165,8 +164,6 @@ func _async_on_perform_attack_2() -> void:
 
 # A charging attack.
 func _async_on_perform_attack_3() -> void:
-	# TODO: Attack logic goes here.
-	print_debug("DEBUG: In phase 3")
 	await SceneManager.async_delay(4.0)
 
 	var prev_player_pos: Vector2 = SceneManager.find_player().global_position
@@ -201,7 +198,6 @@ func _async_play_defeated_cutscene() -> void:
 
 	# Stop playing the music that started when the boss appeared.
 	SceneManager.stop_playing_background_music()
-	pass
 
 
 func _fire_projectile() -> void:
@@ -232,15 +228,6 @@ func _on_stomp_attack_timer_timeout() -> void:
 
 	# Enables and disables the stomp attack each time the timer emits its `timeout` signal.
 	stomp_attack_collison.set_deferred("disabled", not stomp_attack_collison.disabled)
-
-
-# NOTE: This method might not be necessary, the projectiles could 
-# just be fired in a loop.
-func _on_projectile_attack_timer_timeout() -> void:
-	if _current_attack_state != AttackState.PROJECTILE:
-		return
-
-	# TODO: Shoot projectiles.
 
 
 func _on_charge_attack_timer_timeout() -> void:

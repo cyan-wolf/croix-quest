@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Projectile
 
 # This isn't set with `@onready`, because the projectile initialization code is run before it gets 
 # added to the scene.

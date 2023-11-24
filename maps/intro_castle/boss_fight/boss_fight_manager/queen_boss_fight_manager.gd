@@ -1,7 +1,6 @@
 extends Node2D
 
 const QueenBoss := preload("res://enemies/bosses/queen/queen_boss.gd")
-const Projectile := preload("res://weapons/projectile/projectile.gd")
 
 # Emitting one of these signals corresponds with starting a different "phase" of the boss.
 # Phase cycle: 'Attack 1' -> 'Attack 2' -> 'Fall to ground' -> 'Attack 1' (etc.)
@@ -13,7 +12,6 @@ signal fall_to_ground
 
 @onready var _player: Player = SceneManager.find_player()
 @onready var _queen_boss_scene: PackedScene = preload("res://enemies/bosses/queen/queen_boss.tscn")
-@onready var _projectile_scene := preload("res://weapons/projectile/projectile.tscn")
 @onready var _attack_1_teleport_positions: Array[Vector2]
 # Stores position and rotation in order to know in which direction to shoot the projectiles.
 @onready var _attack_2_projectile_pos_and_rot_left: Array[Node2D]

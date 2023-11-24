@@ -1,6 +1,5 @@
 extends Node2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
 const Attack2Pod := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_2_pod.gd")
 
 const SEGMENT_SCENE := preload("res://enemies/bosses/astral_lineus/segments/astral_lineus_segments.tscn")
@@ -77,8 +76,6 @@ func _ready() -> void:
 
 # The boss "charges" horizontally from the sides of the map.
 func _async_on_perform_attack_1() -> void:
-	print_debug("TODO: In attack 1")
-
 	await SceneManager.async_delay(1.0)
 
 	# Copy the position arrays as to not modify the original ones.
@@ -123,8 +120,6 @@ func _async_on_perform_attack_1() -> void:
 # The boss fires projectiles that explode into other projectiles,
 # from the top of the map.
 func _async_on_perform_attack_2() -> void:
-	print_debug("TODO: In attack 2")
-
 	var segment_pos: Vector2 = self \
 		.get_node("../AstralLineusAttack2Positions/Attack2FiringPositionMarker") \
 		.global_position
@@ -178,8 +173,6 @@ func _async_on_perform_attack_2() -> void:
 
 # The boss fires vertical lasers, from the top of the map.
 func _async_on_perform_attack_3() -> void:
-	print_debug("TODO: In attack 3")
-
 	await SceneManager.async_delay(1.0)
 
 	var _attack_3_laser_positions_copy := _attack_3_laser_positions.duplicate() # shallow copy
@@ -246,8 +239,6 @@ func _on_area_entered_segment_hitbox(other_hitbox: Area2D) -> void:
 
 			SceneManager.async_shake_camera(0.9, 0.1) # async call
 
-			print("HP:", self.health_component.get_health())
-
 
 ## Summons a segment moving with the given `speed` facing the given `direction` that despawns in the given 
 ## `despawn_time`. When this function is awaited, it returns when the segment despawns.
@@ -298,7 +289,6 @@ func _async_summon_segment(pos: Vector2, direction: SegmentDirection, speed: flo
 	segments.queue_free()
 	
 	
-
 func get_head_segment_damage() -> int:
 	return _attack_1_head_segment_damage
 

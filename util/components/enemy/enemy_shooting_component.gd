@@ -1,7 +1,5 @@
 extends Node2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 @onready var _shooting_attack_timer: Timer = self.get_node("ShootingAttackTimer")
 
 @onready var _enemy_component: EnemyComponent = self.get_parent().get_node("EnemyComponent")

@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 @export var health_component: HealthComponent
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")

@@ -1,8 +1,6 @@
 extends Node
 class_name Util
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 ### TYPE DEFINITIONS ###
 
 ## Utility enum for keeping track of a character's direction.

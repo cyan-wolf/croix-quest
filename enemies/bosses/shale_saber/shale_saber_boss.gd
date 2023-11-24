@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 signal perform_attack_1
 signal perform_attack_2
 signal perform_attack_3
@@ -78,7 +76,6 @@ func _on_death() -> void:
 
 
 func _async_on_perform_attack_1() -> void:
-	print_debug("TODO: In attack 1")
 	_current_attack_state = AttackState.ATTACK_1
 	await SceneManager.async_delay(2.0)
 
@@ -128,7 +125,6 @@ func _async_on_perform_attack_1() -> void:
 
 
 func _async_on_perform_attack_2() -> void:
-	print_debug("TODO: In attack 2")
 	_current_attack_state = AttackState.ATTACK_2
 	await SceneManager.async_delay(2.0)
 
@@ -178,7 +174,6 @@ func _async_on_perform_attack_2() -> void:
 
 
 func _async_on_perform_attack_3() -> void:
-	print_debug("TODO: In attack 3")
 	_current_attack_state = AttackState.ATTACK_3
 	await SceneManager.async_delay(2.0)
 
@@ -211,6 +206,8 @@ func _async_on_perform_attack_3() -> void:
 
 
 func _async_play_defeated_cutscene() -> void:
+	SceneManager.stop_playing_background_music()
+
 	print_debug("Boss has been defeated")
 	_current_attack_state = AttackState.NONE
 

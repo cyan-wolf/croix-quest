@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 signal perform_attack_1
 signal perform_attack_2
 signal perform_attack_3
@@ -82,8 +80,6 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 			self.health_component.take_damage(projectile.get_damage())
 
 			SceneManager.async_shake_camera(0.9, 0.1) # async call
-
-			print("HP:", self.health_component.get_health())
 
 
 # A back-and-forth attack with a large club.
@@ -204,6 +200,8 @@ func _on_death() -> void:
 
 
 func _async_play_defeated_cutscene() -> void:
+	SceneManager.stop_playing_background_music()
+
 	print_debug("DEBUG: The boss has been defeated")
 
 

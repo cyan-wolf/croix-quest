@@ -7,11 +7,7 @@ class_name EnemyComponent
 # Additionally, it manages the health and sprite animation of the enemy.
 
 
-
 signal state_changed(old_state: Util.EnemyState, new_state: Util.EnemyState)
-
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-const HealthBar := preload("res://ui/hud/health_bar/health_bar.gd")
 
 @export var _sprite: AnimatedSprite2D
 @export var _speed: float = 35.0
