@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq64dl4nypfso"]
+[gd_scene load_steps=4 format=3 uid="uid://dq64dl4nypfso"]
 
 [ext_resource type="PackedScene" uid="uid://dp7bdnvqefb10" path="res://ui/menus/components/volume_slider.tscn" id="1_brcbd"]
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_scq26"]
-[ext_resource type="AudioStream" uid="uid://bap7mawx4pp8r" path="res://sounds/music/House In A Forest Loop/House In A Forest Loop.mp3" id="4_igned"]
 
 [sub_resource type="Theme" id="Theme_s56p1"]
 default_font = ExtResource("1_scq26")
@@ -71,8 +70,3 @@ text = "Music Volume"
 [node name="MusicVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_brcbd")]
 layout_mode = 2
 _bus_name = "music"
-
-[node name="SettingsMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_igned")
-autoplay = true
-bus = &"music"

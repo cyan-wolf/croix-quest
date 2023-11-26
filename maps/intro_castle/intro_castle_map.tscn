@@ -19,11 +19,11 @@ vertices = PackedVector2Array(254, 131, -111, 131, -110, 99, 19, 100, 125, 101, 
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(0, 4, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(17, 2, 125, 2, 125, 101, 254, 100, 254, 131, -111, 131, -110, 99, 19, 100)])
 
-[sub_resource type="Resource" id="Resource_gawqb"]
+[sub_resource type="Resource" id="Resource_sur25"]
 script = ExtResource("4_nul3n")
 _health = 8
 
-[sub_resource type="Resource" id="Resource_d4bwt"]
+[sub_resource type="Resource" id="Resource_2bgqq"]
 script = ExtResource("5_axc0v")
 _mana_amount = 4
 
@@ -60,11 +60,12 @@ layer_2/tile_data = PackedInt32Array(589817, 1310724, 18, 589818, 1310724, 18, 5
 navigation_polygon = SubResource("NavigationPolygon_7fm1p")
 
 [node name="Player" parent="." instance=ExtResource("3_b7610")]
-position = Vector2(956, 54)
-health_component = SubResource("Resource_gawqb")
-mana_component = SubResource("Resource_d4bwt")
+position = Vector2(948, 50)
+health_component = SubResource("Resource_sur25")
+mana_component = SubResource("Resource_2bgqq")
 
 [node name="IntroCastleLoreManager" parent="." instance=ExtResource("6_bsn1n")]
+_should_show_lore_cutscene = false
 
 [node name="GuardCaptainNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]
 position = Vector2(943, -2)

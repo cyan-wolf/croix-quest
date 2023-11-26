@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://86bh51fi4xn6"]
+[gd_scene load_steps=4 format=3 uid="uid://86bh51fi4xn6"]
 
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="1_6185y"]
 [ext_resource type="Script" path="res://ui/menus/main_menu.gd" id="1_eppgo"]
-[ext_resource type="PackedScene" uid="uid://om1fi1opyx1m" path="res://maps/intro_castle/intro_castle_map.tscn" id="3_gaq3b"]
-[ext_resource type="PackedScene" uid="uid://b1gnp3phoypq2" path="res://ui/menus/main_menu/main_menu_settings.tscn" id="4_7ucp8"]
-[ext_resource type="AudioStream" uid="uid://bap7mawx4pp8r" path="res://sounds/music/House In A Forest Loop/House In A Forest Loop.mp3" id="5_nlbr4"]
 
 [sub_resource type="Theme" id="Theme_ejhi2"]
 default_font = ExtResource("1_6185y")
@@ -18,8 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ejhi2")
 script = ExtResource("1_eppgo")
-_new_game_scene = ExtResource("3_gaq3b")
-_settings_menu_scene = ExtResource("4_7ucp8")
+_new_game_scene = "res://maps/intro_castle/intro_castle_map.tscn"
+_settings_menu_scene = "res://ui/menus/main_menu/main_menu_settings.tscn"
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 0
@@ -52,8 +49,3 @@ offset_bottom = 77.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Settings"
-
-[node name="MainMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_nlbr4")
-autoplay = true
-bus = &"music"
