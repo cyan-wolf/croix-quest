@@ -225,8 +225,23 @@ func _on_death() -> void:
 
 func _async_play_defeated_cutscene() -> void:
 	SceneManager.stop_playing_background_music()
+
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
 	
-	print_debug("TODO: The boss has been defeated")
+	# TODO
+	print_debug("DEBUG: Astral Lineus boss has died.")
+
+	await SceneManager.async_delay(1.0)
+
+	self.hide()
+	SceneManager.progression().add_milestone(Util.Milestone.DUNKEL_DUNGEON_COMPLETED)
+
+	await SceneManager.async_delay(0.5)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Go to the hub.
+	SceneManager.load_scene_file("res://maps/hideout_hub/hideout_hub.tscn")
 
 
 func _on_area_entered_segment_hitbox(other_hitbox: Area2D) -> void:

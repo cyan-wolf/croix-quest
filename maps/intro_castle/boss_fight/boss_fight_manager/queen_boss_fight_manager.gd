@@ -188,6 +188,8 @@ func _async_play_queen_defeated_cutscene() -> void:
 
 	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
+	SceneManager.progression().add_milestone(Util.Milestone.INTRO_CASTLE_COMPLETED)
+
 	# Continue the story by going to the forest outside the castle.
 	SceneManager.load_scene_file(
 		"res://maps/intro_area_outside_castle/forest_outside_castle/forest_outisde_castle.tscn"

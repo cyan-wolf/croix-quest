@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://3iv2uw0ktxe5"]
+[gd_scene load_steps=7 format=3 uid="uid://3iv2uw0ktxe5"]
 
+[ext_resource type="Script" path="res://maps/hideout_hub/hideout_hub.gd" id="1_svhmt"]
 [ext_resource type="Texture2D" uid="uid://clrql7na4xfba" path="res://tilesets/hideout_tileset/hideout_tileset.png" id="2_gis22"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_ru3yv"]
 [ext_resource type="PackedScene" uid="uid://lsg7qb8blto4" path="res://maps/hideout_hub/dungeon_selector_manager.tscn" id="4_rnqfy"]
@@ -181,6 +182,7 @@ physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_178f1")
 
 [node name="HideoutHub" type="Node2D"]
+script = ExtResource("1_svhmt")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1eajn")

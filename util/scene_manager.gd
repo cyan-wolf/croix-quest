@@ -4,6 +4,7 @@ extends Node2D
 @onready var _game_over_screen: Control = self.get_node("CanvasLayer/GameOverScreen")
 @onready var _pause_screen: Control = self.get_node("CanvasLayer/PauseScreen")
 @onready var _background_music_player: AudioStreamPlayer = self.get_node("BackgroundMusicPlayer")
+@onready var _progression_manager: ProgressionManager = self.get_node("ProgressionManager")
 
 @export var _should_mute_game_volume_on_start := false
 
@@ -92,6 +93,11 @@ func find_player_hud() -> Control:
 
 func find_boss_health_bar() -> BossHealthBar:
 	return self.get_tree().current_scene.get_node("CanvasLayer/BossHeathBar")
+
+
+## Returns the `ProgressionManager`.
+func progression() -> ProgressionManager:
+	return _progression_manager
 
 
 func async_shake_camera(amount: float, duration_in_secs: float) -> void:
@@ -217,3 +223,19 @@ func _handle_debug_keys() -> void:
 			AudioServer.get_bus_index("Master"),
 			linear_to_db(1.0),
 		)
+
+
+	# DEBUG: Instantly defeats the current boss if the 'Number Pad 9' key is pressed.
+	if Input.is_action_just_pressed("debug_9"):
+		var current_boss_health_bar := self.find_boss_health_bar()
+
+		if current_boss_health_bar != null:
+			# WARNING: Accessing private fields for debug purposes.
+			var boss_health_component := current_boss_health_bar._health_bar._health_component
+
+			# Sets the boss' health to 0.
+			boss_health_component.take_damage(boss_health_component.get_health())
+
+		else:
+			print_debug("WARNING: Cannot defeat boss as there is no boss in this scene.")
+

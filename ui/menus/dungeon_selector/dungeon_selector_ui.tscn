@@ -58,6 +58,7 @@ offset_right = 270.0
 offset_bottom = 186.0
 texture_normal = ExtResource("1_fokqo")
 _dungeon_scene_file = "res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn"
+_required_milestone = 1
 
 [node name="UlmusDungeonSelectorButton3" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
@@ -67,15 +68,17 @@ offset_right = 557.0
 offset_bottom = 161.0
 texture_normal = ExtResource("2_d0jgl")
 _dungeon_scene_file = "res://maps/dungeons/ulmus_dungeon/ulmus_dungeon.tscn"
+_required_milestone = 2
 
-[node name="VolorodDungeonSelectorButton4" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
+[node name="VodorodDungeonSelectorButton4" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
 offset_left = 922.0
 offset_top = 203.0
 offset_right = 962.0
 offset_bottom = 243.0
 texture_normal = ExtResource("3_hdtm0")
-_dungeon_scene_file = "res://maps/dungeons/volorod_dungeon/volorod_dungeon.tscn"
+_dungeon_scene_file = "res://maps/dungeons/vodorod_dungeon/vodorod_dungeon.tscn"
+_required_milestone = 3
 
 [node name="DunkelDungeonSelectorButton5" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
@@ -85,6 +88,7 @@ offset_right = 788.0
 offset_bottom = 527.0
 texture_normal = ExtResource("4_nb32p")
 _dungeon_scene_file = "res://maps/dungeons/dunkel_dungeon/dunkel_dungeon.tscn"
+_required_milestone = 4
 
 [node name="CastleSelectorButton" parent="DungeonSelectorButtons" instance=ExtResource("2_jado4")]
 layout_mode = 0
@@ -92,3 +96,4 @@ offset_left = 78.0
 offset_top = 303.0
 offset_right = 118.0
 offset_bottom = 343.0
+_required_milestone = 5

@@ -51,6 +51,16 @@ enum StatusEffectType {
 	NO_MANA_CONSUMPTION = 4, # unused
 }
 
+## Utility enum for keeping track of the player's "milestones" in the game.
+enum Milestone {
+	NONE, 
+	INTRO_CASTLE_COMPLETED,
+	COBALT_DUNGEON_COMPLETED,
+	ULMUS_DUNGEON_COMPLETED,
+	VODOROD_DUNGEON_COMPLETED,
+	DUNKEL_DUNGEON_COMPLETED,
+}
+
 ### STATIC FUNCTION DEFINITIONS ###
 
 ## Returns an array of size `amount` containing unique random elements from `array`.

@@ -193,11 +193,25 @@ func _async_on_perform_attack_3() -> void:
 
 # Plays after the boss finishes its current phase and health is 0.
 func _async_play_defeated_cutscene() -> void:
+	# Stop playing the music that started when the boss appeared.
+	SceneManager.stop_playing_background_music()
+
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 	# TODO
 	print_debug("DEBUG: Tauron boss has died.")
 
-	# Stop playing the music that started when the boss appeared.
-	SceneManager.stop_playing_background_music()
+	await SceneManager.async_delay(1.0)
+
+	self.hide()
+	SceneManager.progression().add_milestone(Util.Milestone.COBALT_DUNGEON_COMPLETED)
+
+	await SceneManager.async_delay(0.5)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Go to the hub.
+	SceneManager.load_scene_file("res://maps/hideout_hub/hideout_hub.tscn")
 
 
 func _fire_projectile() -> void:

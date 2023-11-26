@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b20ncwhqhr8a3"]
+[gd_scene load_steps=7 format=3 uid="uid://b20ncwhqhr8a3"]
 
 [ext_resource type="Script" path="res://util/scene_manager.gd" id="1_thvi4"]
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="2_g706b"]
 [ext_resource type="PackedScene" uid="uid://iwjgvyyskig4" path="res://ui/menus/game_over_screen/game_over_screen.tscn" id="3_638he"]
 [ext_resource type="PackedScene" uid="uid://fhdb0r8dk78s" path="res://ui/menus/pause_screen/pause_screen.tscn" id="4_lyuis"]
+[ext_resource type="PackedScene" uid="uid://cr7o0h0ffq8c4" path="res://util/progression_manager/progression_manager.tscn" id="5_4iqra"]
 
 [sub_resource type="Theme" id="Theme_b8bfh"]
 default_font = ExtResource("2_g706b")
@@ -55,6 +56,8 @@ text = "Loading..."
 
 [node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("3_638he")]
 visible = false
+
+[node name="ProgressionManager" parent="." instance=ExtResource("5_4iqra")]
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"music"

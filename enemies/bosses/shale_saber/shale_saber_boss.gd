@@ -208,8 +208,24 @@ func _async_on_perform_attack_3() -> void:
 func _async_play_defeated_cutscene() -> void:
 	SceneManager.stop_playing_background_music()
 
-	print_debug("Boss has been defeated")
 	_current_attack_state = AttackState.NONE
+
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# TODO
+	print_debug("DEBUG: Shale Saber boss has died.")
+
+	await SceneManager.async_delay(1.0)
+
+	self.hide()
+	SceneManager.progression().add_milestone(Util.Milestone.VODOROD_DUNGEON_COMPLETED)
+
+	await SceneManager.async_delay(0.5)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Go to the hub.
+	SceneManager.load_scene_file("res://maps/hideout_hub/hideout_hub.tscn")
 
 
 func get_melee_attack_damage() -> int:
