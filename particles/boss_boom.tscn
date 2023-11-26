@@ -1,0 +1,143 @@
+[gd_scene load_steps=21 format=3 uid="uid://c2b82oemdawg0"]
+
+[sub_resource type="Curve" id="Curve_h6k21"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1e-05, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5i1br"]
+curve = SubResource("Curve_h6k21")
+
+[sub_resource type="Curve" id="Curve_1jp8v"]
+min_value = -10.0
+max_value = 10.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.566265, 6.63158), 0.0, 0.0, 0, 0, Vector2(0.746988, -8.73684), 0.0, 0.0, 0, 0, Vector2(1, -0.315789), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6jvo5"]
+curve = SubResource("Curve_1jp8v")
+
+[sub_resource type="Gradient" id="Gradient_82eix"]
+offsets = PackedFloat32Array(0, 0.177778, 0.444444, 0.703704, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.729412, 0, 0.65098, 1, 0.435294, 0.32549, 0.764706, 1, 0.65098, 0.0196078, 0.0352941, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1yj3r"]
+gradient = SubResource("Gradient_82eix")
+
+[sub_resource type="Curve" id="Curve_7e0l0"]
+max_value = 10.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.554217, 1.1579), 0.0, 0.0, 0, 0, Vector2(0.885542, 7.36842), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_76jww"]
+curve = SubResource("Curve_7e0l0")
+
+[sub_resource type="Curve" id="Curve_sm4hg"]
+min_value = -30.0
+max_value = 10.0
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(0.168675, 0.526316), 0.0, 0.0, 0, 0, Vector2(0.421687, -0.105263), 0.0, 0.0, 0, 0, Vector2(0.578313, -22), 0.0, 0.0, 0, 0, Vector2(0.879518, -22), 0.0, 0.0, 0, 0, Vector2(1, -0.105263), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_ak0f0"]
+curve = SubResource("Curve_sm4hg")
+
+[sub_resource type="Curve" id="Curve_dql6i"]
+_data = [Vector2(0, 0), 0.0, -0.967293, 0, 0, Vector2(0.180723, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.975276, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xdgks"]
+curve = SubResource("Curve_dql6i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n0epr"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 100.0
+angular_velocity_curve = SubResource("CurveTexture_6jvo5")
+orbit_velocity_min = 0.0
+orbit_velocity_max = 1.0
+orbit_velocity_curve = SubResource("CurveTexture_76jww")
+radial_accel_min = 31.58
+radial_accel_max = 31.58
+radial_accel_curve = SubResource("CurveTexture_ak0f0")
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_5i1br")
+scale_min = 10.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_xdgks")
+color_ramp = SubResource("GradientTexture1D_1yj3r")
+hue_variation_min = -0.01
+hue_variation_max = 0.01
+
+[sub_resource type="Curve" id="Curve_pmwpk"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2qlvo"]
+curve = SubResource("Curve_pmwpk")
+
+[sub_resource type="Gradient" id="Gradient_81jy6"]
+offsets = PackedFloat32Array(0, 0.0962963, 0.644444, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.494118, 0, 0, 1, 0.807843, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1rhqb"]
+gradient = SubResource("Gradient_81jy6")
+
+[sub_resource type="Curve" id="Curve_6ic3j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0662651, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tb2kh"]
+curve = SubResource("Curve_6ic3j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0j10b"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+angular_velocity_curve = SubResource("CurveTexture_2qlvo")
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.01
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 5.0
+scale_max = 30.0
+scale_curve = SubResource("CurveTexture_tb2kh")
+color_ramp = SubResource("GradientTexture1D_1rhqb")
+hue_variation_min = -0.1
+hue_variation_max = 0.2
+
+[node name="boss_boom" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1125
+process_material = SubResource("ParticleProcessMaterial_n0epr")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.33
+fixed_fps = 60
+interpolate = false
+fract_delta = false
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_0j10b")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+fixed_fps = 60
