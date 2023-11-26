@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pns7tiw0xdkt"]
+[gd_scene load_steps=5 format=3 uid="uid://pns7tiw0xdkt"]
 
 [ext_resource type="TileSet" uid="uid://b2yyd33iib1bk" path="res://tilesets/vodorod_dungeon_tileset/vodorod_dungeon.tres" id="1_8vr8y"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_txeor"]
 [ext_resource type="PackedScene" uid="uid://chmdygv0wf3e0" path="res://util/scene_transporter/scene_transporter.tscn" id="3_xyofg"]
+[ext_resource type="AudioStream" uid="uid://c1s8nfwmg67i5" path="res://sounds/music/Hero Immortal/Hero Immortal.mp3" id="4_tdk4j"]
 
 [node name="VodorodDungeon" type="Node2D"]
 
@@ -33,3 +34,8 @@ position = Vector2(-15, -15)
 [node name="SceneTransporter" parent="." instance=ExtResource("3_xyofg")]
 position = Vector2(22, 12)
 _destination_scene_path = "res://maps/dungeons/vodorod_dungeon/boss_fight/vodorod_dungeon_boss_fight.tscn"
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tdk4j")
+autoplay = true
+bus = &"music"

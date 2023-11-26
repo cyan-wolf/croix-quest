@@ -20,7 +20,6 @@ signal fall_to_ground
 @onready var _queen_teleport_particle_emitter: GPUParticles2D = self.get_node("queen_boss_teleport_particles")
 @onready var _queen_shield_particle_emitter: GPUParticles2D = self.get_node("queen_shield_particles")
 @onready var _queen_laser: Node2D = self.get_node("QueenLaser")
-@onready var _boss_theme_player: AudioStreamPlayer = self.get_node("BossThemePlayer")
 
 var _queen_boss: QueenBoss
 var _queen_has_been_defeated := false
@@ -42,7 +41,7 @@ func _ready() -> void:
 
 
 func _on_start_boss_fight() -> void:
-	_boss_theme_player.play()
+	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
 
 	# Spawn the boss.
 	_queen_boss = _queen_boss_scene.instantiate() as QueenBoss
@@ -168,6 +167,8 @@ func _async_play_queen_defeated_cutscene() -> void:
 	var defeat_pos: Vector2 = self.get_node("FallToGroundLandingPosition").global_position
 
 	await _async_teleport_queen(defeat_pos)
+
+	SceneManager.stop_playing_background_music()
 
 	# TODO: Replace with a "defeated" animation.
 	_queen_boss.set_animation("idle")

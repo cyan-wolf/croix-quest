@@ -16,4 +16,4 @@ layout_mode = 1
 
 [node name="BackButton" parent="." instance=ExtResource("2_wiylk")]
 layout_mode = 0
-_new_scene_file = "res://ui/menus/main_menu.tscn"
+_new_scene_file = "res://ui/menus/main_menu/main_menu.tscn"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://da0aphk27nflm"]
+[gd_scene load_steps=7 format=3 uid="uid://da0aphk27nflm"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_vsolw"]
 [ext_resource type="TileSet" uid="uid://bf0tb2ao5aqyo" path="res://tilesets/dunkel_dungeon_tileset/dunkel_dungeon.tres" id="3_yhtpw"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="4_tuuw5"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="5_6uhak"]
 [ext_resource type="PackedScene" uid="uid://chmdygv0wf3e0" path="res://util/scene_transporter/scene_transporter.tscn" id="5_hjmjk"]
+[ext_resource type="AudioStream" uid="uid://c1s8nfwmg67i5" path="res://sounds/music/Hero Immortal/Hero Immortal.mp3" id="6_66oeh"]
 
 [node name="DunkelDungeon" type="Node2D"]
 
@@ -45,3 +46,8 @@ position = Vector2(267, 35)
 [node name="SceneTransporter" parent="." instance=ExtResource("5_hjmjk")]
 position = Vector2(22, 29)
 _destination_scene_path = "res://maps/dungeons/dunkel_dungeon/boss_fight/dunkel_dungeon_boss_fight.tscn"
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_66oeh")
+autoplay = true
+bus = &"music"

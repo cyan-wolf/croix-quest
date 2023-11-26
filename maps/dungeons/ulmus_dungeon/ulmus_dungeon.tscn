@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=21 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cb8jb0kbmvvor" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch_door.tscn" id="8_ndbne"]
 [ext_resource type="PackedScene" uid="uid://c1oygilsvxp3v" path="res://enemies/shooting_enemy/bowsquirrel/bowsquirrel_shooting_enemy.tscn" id="8_qgc7k"]
 [ext_resource type="PackedScene" uid="uid://dsdmtf1ayd80i" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch.tscn" id="9_ww0qc"]
+[ext_resource type="AudioStream" uid="uid://c1s8nfwmg67i5" path="res://sounds/music/Hero Immortal/Hero Immortal.mp3" id="14_y2tpw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vhdiu"]
 load_path = "res://.godot/imported/ulmus_dungeon_tileset.png-04cfccd0b586914818361b435c065102.ctex"
@@ -312,3 +313,8 @@ y_sort_enabled = true
 [node name="Chest" parent="PropCollection/ChestCollection" instance=ExtResource("6_au5bi")]
 position = Vector2(913.444, -873.053)
 _contents = Array[PackedScene]([ExtResource("7_nmeap")])
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_y2tpw")
+autoplay = true
+bus = &"music"
