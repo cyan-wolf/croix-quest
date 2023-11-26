@@ -11,6 +11,7 @@ default_font = ExtResource("2_g706b")
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_thvi4")
+_should_mute_game_volume_on_start = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
