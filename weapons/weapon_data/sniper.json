@@ -2,9 +2,9 @@
     "name": "Sniper",
     "sprite_path": "res://weapons/sprites/Sniper/Sniper.png",
     "scale": [0.5, 0.5],
-    "bullet_speed": 2000,
+    "bullet_speed": 900,
     "bullet_alive_time": 0.5,
     "weapon_reload_time": 2.5,
-    "bullet_damage": 6
+    "bullet_damage": 7
   }
   
