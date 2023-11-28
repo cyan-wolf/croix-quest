@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6wxxyq8m8fdq"]
+
+[ext_resource type="Texture2D" uid="uid://csd3qusnh6ts4" path="res://npcs/forest_spirits/cat_forest_spirit/cat_forest_spirit.png" id="1_so7gx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmm54"]
+atlas = ExtResource("1_so7gx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vij8k"]
+atlas = ExtResource("1_so7gx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsmhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmm54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vij8k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hsmhg")
+animation = &"idle"
+frame_progress = 0.0893251

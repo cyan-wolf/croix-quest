@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://3iv2uw0ktxe5"]
+[gd_scene load_steps=13 format=3 uid="uid://3iv2uw0ktxe5"]
 
 [ext_resource type="Script" path="res://maps/hideout_hub/hideout_hub.gd" id="1_svhmt"]
 [ext_resource type="Texture2D" uid="uid://clrql7na4xfba" path="res://tilesets/hideout_tileset/hideout_tileset.png" id="2_gis22"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_ru3yv"]
 [ext_resource type="PackedScene" uid="uid://lsg7qb8blto4" path="res://maps/hideout_hub/dungeon_selector_manager.tscn" id="4_rnqfy"]
+[ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="5_vi8no"]
+[ext_resource type="PackedScene" uid="uid://b6wxxyq8m8fdq" path="res://npcs/forest_spirits/cat_forest_spirit/cat_forest_spirit_sprite.tscn" id="6_0ahk7"]
+[ext_resource type="PackedScene" uid="uid://dd88n5g1t67a6" path="res://util/position_marker/position_marker.tscn" id="7_1efiv"]
+[ext_resource type="PackedScene" uid="uid://hu85mdx20iyb" path="res://npcs/forest_spirits/frog_forest_spirit/frog_forest_spirit_sprite.tscn" id="7_vvvq4"]
+[ext_resource type="PackedScene" uid="uid://ornrrfcqe7p2" path="res://npcs/forest_spirits/dog_forest_spirit/dog_forest_spirit_sprite.tscn" id="8_h0mhr"]
+[ext_resource type="PackedScene" uid="uid://d0h7bgo6fyejg" path="res://npcs/forest_spirits/penguin_forest_spirit/penguin_forest_spirit_sprite.tscn" id="9_x04u3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_178f1"]
 texture = ExtResource("2_gis22")
@@ -182,6 +188,7 @@ physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_178f1")
 
 [node name="HideoutHub" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_svhmt")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -217,3 +224,49 @@ position = Vector2(-107, 2)
 
 [node name="DungeonSelectorManager" parent="." instance=ExtResource("4_rnqfy")]
 position = Vector2(24, 7)
+
+[node name="HubElements" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ForestSprits" type="Node2D" parent="HubElements"]
+y_sort_enabled = true
+position = Vector2(-587, -13)
+
+[node name="CatDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
+_animated_sprite = NodePath("AnimatedSprite")
+
+[node name="AnimatedSprite" parent="HubElements/ForestSprits/CatDialogNPC" instance=ExtResource("6_0ahk7")]
+
+[node name="FrogDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
+position = Vector2(0, 37)
+_animated_sprite = NodePath("AnimatedSprite")
+
+[node name="AnimatedSprite" parent="HubElements/ForestSprits/FrogDialogNPC" instance=ExtResource("7_vvvq4")]
+
+[node name="DogDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
+position = Vector2(1, 76)
+_animated_sprite = NodePath("AnimatedSprite")
+
+[node name="AnimatedSprite" parent="HubElements/ForestSprits/DogDialogNPC" instance=ExtResource("8_h0mhr")]
+
+[node name="PenguinDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
+position = Vector2(-1, 119)
+_animated_sprite = NodePath("AnimatedSprite")
+
+[node name="AnimatedSprite" parent="HubElements/ForestSprits/PenguinDialogNPC" instance=ExtResource("9_x04u3")]
+
+[node name="ForestSpiritHubPositions" type="Node2D" parent="HubElements"]
+visible = false
+y_sort_enabled = true
+
+[node name="CatPosition" parent="HubElements/ForestSpiritHubPositions" instance=ExtResource("7_1efiv")]
+position = Vector2(-173, -19)
+
+[node name="FrogPosition" parent="HubElements/ForestSpiritHubPositions" instance=ExtResource("7_1efiv")]
+position = Vector2(-172, 43)
+
+[node name="DogPosition" parent="HubElements/ForestSpiritHubPositions" instance=ExtResource("7_1efiv")]
+position = Vector2(-48, -20)
+
+[node name="PenguinPosition" parent="HubElements/ForestSpiritHubPositions" instance=ExtResource("7_1efiv")]
+position = Vector2(-51, 48)
