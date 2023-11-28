@@ -217,7 +217,7 @@ func _async_play_defeated_cutscene() -> void:
 	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 	# Go to the hub.
-	SceneManager.load_scene_file("res://maps/hideout_hub/hideout_hub.tscn")
+	SceneManager.load_scene_file(Util.ScenePath.HIDEOUT_HUB)
 
 
 func _fire_projectile(offset_angle_in_degrees: float) -> void:

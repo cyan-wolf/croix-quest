@@ -1,6 +1,29 @@
 extends Node
 class_name Util
 
+### CONSTANTS ###
+
+## Namespace for the different scene paths.
+class ScenePath:
+	# Explorable areas.
+	const HIDEOUT_HUB := "res://maps/hideout_hub/hideout_hub.tscn"
+	const INTRO_CASTLE := "res://maps/intro_castle/intro_castle_map.tscn"
+	const COBALT_DUNGEON := "res://maps/dungeons/cobalt_dungeon/cobalt_dungeon.tscn"
+	const ULMUS_DUNGEON := "res://maps/dungeons/ulmus_dungeon/ulmus_dungeon.tscn"
+	const VODOROD_DUNGEON := "res://maps/dungeons/vodorod_dungeon/vodorod_dungeon.tscn"
+	const DUNKEL_DUNGEON := "res://maps/dungeons/dunkel_dungeon/dunkel_dungeon.tscn"
+
+	# Boss scenes.
+	const INTRO_CASTLE_FIGHT := "res://maps/intro_castle/boss_fight/queen_boss_fight.tscn"
+	const COBALT_BOSS_FIGHT := "res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dugeon_boss_fight.tscn"
+	const ULMUS_BOSS_FIGHT := "res://maps/dungeons/ulmus_dungeon/boss_fight/ulmus_dungeon_boss_fight.tscn"
+	const VODOROD_BOSS_FIGHT := "res://maps/dungeons/vodorod_dungeon/boss_fight/vodorod_dungeon_boss_fight.tscn"
+	const DUNKEL_BOSS_FIGHT := "res://maps/dungeons/dunkel_dungeon/boss_fight/dunkel_dungeon_boss_fight.tscn"
+
+	# Menus.
+	const MAIN_MENU := "res://ui/menus/main_menu/main_menu.tscn"
+
+
 ### TYPE DEFINITIONS ###
 
 ## Utility enum for keeping track of a character's direction.

@@ -23,7 +23,7 @@ func _on_quit_button_pressed() -> void:
 	_reset_ui()
 
 	# Go to the main menu.
-	SceneManager.load_scene_file("res://ui/menus/main_menu.tscn")
+	SceneManager.load_scene_file(Util.ScenePath.MAIN_MENU)
 
 
 func _on_settings_screen_back_button_pressed() -> void:
