@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://3iv2uw0ktxe5"]
+[gd_scene load_steps=25 format=3 uid="uid://3iv2uw0ktxe5"]
 
 [ext_resource type="Script" path="res://maps/hideout_hub/hideout_hub.gd" id="1_svhmt"]
 [ext_resource type="Texture2D" uid="uid://clrql7na4xfba" path="res://tilesets/hideout_tileset/hideout_tileset.png" id="2_gis22"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_ill4q"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_ru3yv"]
 [ext_resource type="PackedScene" uid="uid://lsg7qb8blto4" path="res://maps/hideout_hub/dungeon_selector_manager.tscn" id="4_rnqfy"]
 [ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="5_vi8no"]
@@ -10,6 +11,32 @@
 [ext_resource type="PackedScene" uid="uid://hu85mdx20iyb" path="res://npcs/forest_spirits/frog_forest_spirit/frog_forest_spirit_sprite.tscn" id="7_vvvq4"]
 [ext_resource type="PackedScene" uid="uid://ornrrfcqe7p2" path="res://npcs/forest_spirits/dog_forest_spirit/dog_forest_spirit_sprite.tscn" id="8_h0mhr"]
 [ext_resource type="PackedScene" uid="uid://d0h7bgo6fyejg" path="res://npcs/forest_spirits/penguin_forest_spirit/penguin_forest_spirit_sprite.tscn" id="9_x04u3"]
+[ext_resource type="PackedScene" uid="uid://cst0mrjfn4dew" path="res://npcs/emmy/emmy_npc_sprite.tscn" id="11_vo8kq"]
+
+[sub_resource type="Resource" id="Resource_bdqr0"]
+script = ExtResource("2_ill4q")
+author = "Emmy"
+dialog = Array[String](["(placeholder dialog for the first cutscene)", "Please rescue the forest spirits.", "The location of the spirits came to me in a dream.", "Please left click on the map on the table.", "Then, please left click on the blue icon to rescue the first spirit."])
+
+[sub_resource type="Resource" id="Resource_lg452"]
+script = ExtResource("2_ill4q")
+author = "Emmy"
+dialog = Array[String](["(placeholder dialog after beating Cobalt)"])
+
+[sub_resource type="Resource" id="Resource_i6sqi"]
+script = ExtResource("2_ill4q")
+author = "Emmy"
+dialog = Array[String](["(placeholder after beating Ulmus)"])
+
+[sub_resource type="Resource" id="Resource_sbmr8"]
+script = ExtResource("2_ill4q")
+author = "Emmy"
+dialog = Array[String](["(placeholder after beating Vodorod)"])
+
+[sub_resource type="Resource" id="Resource_ylq2g"]
+script = ExtResource("2_ill4q")
+author = "Emmy"
+dialog = Array[String](["(placeholder after beating Dunkel)", "Now you're ready to rematch the Queen.", "Please left click on the gray icon."])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_178f1"]
 texture = ExtResource("2_gis22")
@@ -187,9 +214,39 @@ physics_layer_1/collision_layer = 5
 physics_layer_1/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_178f1")
 
+[sub_resource type="Resource" id="Resource_7sp3s"]
+script = ExtResource("2_ill4q")
+author = "Cat Spirit"
+dialog = Array[String](["Meow.", "Hello."])
+
+[sub_resource type="Resource" id="Resource_lth6j"]
+script = ExtResource("2_ill4q")
+author = "Frog Spirit"
+dialog = Array[String](["Ribbit.", "Please defeat the Queen. That would be cool. Thanks."])
+
+[sub_resource type="Resource" id="Resource_nckq3"]
+script = ExtResource("2_ill4q")
+author = "Dog Spirit"
+dialog = Array[String](["Woof.", "You look too weak to defeat the Queen, in my opinion."])
+
+[sub_resource type="Resource" id="Resource_j6gxk"]
+script = ExtResource("2_ill4q")
+author = "Penguin Spirit"
+dialog = Array[String](["(Penguin sound)", "The world rests on your shoulders...", "...you do have shoulders right?"])
+
+[sub_resource type="Resource" id="Resource_wflvf"]
+script = ExtResource("2_ill4q")
+author = "Emmy"
+dialog = Array[String](["Hello."])
+
 [node name="HideoutHub" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_svhmt")
+_first_cutscene_dialog = SubResource("Resource_bdqr0")
+_return_from_cobalt_dialog = SubResource("Resource_lg452")
+_return_from_ulmus_dialog = SubResource("Resource_i6sqi")
+_return_from_vodorod_dialog = SubResource("Resource_sbmr8")
+_return_from_dunkel_dialog = SubResource("Resource_ylq2g")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1eajn")
@@ -234,24 +291,28 @@ position = Vector2(-587, -13)
 
 [node name="CatDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
 _animated_sprite = NodePath("AnimatedSprite")
+_dialog = SubResource("Resource_7sp3s")
 
 [node name="AnimatedSprite" parent="HubElements/ForestSprits/CatDialogNPC" instance=ExtResource("6_0ahk7")]
 
 [node name="FrogDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
 position = Vector2(0, 37)
 _animated_sprite = NodePath("AnimatedSprite")
+_dialog = SubResource("Resource_lth6j")
 
 [node name="AnimatedSprite" parent="HubElements/ForestSprits/FrogDialogNPC" instance=ExtResource("7_vvvq4")]
 
 [node name="DogDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
 position = Vector2(1, 76)
 _animated_sprite = NodePath("AnimatedSprite")
+_dialog = SubResource("Resource_nckq3")
 
 [node name="AnimatedSprite" parent="HubElements/ForestSprits/DogDialogNPC" instance=ExtResource("8_h0mhr")]
 
 [node name="PenguinDialogNPC" parent="HubElements/ForestSprits" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
 position = Vector2(-1, 119)
 _animated_sprite = NodePath("AnimatedSprite")
+_dialog = SubResource("Resource_j6gxk")
 
 [node name="AnimatedSprite" parent="HubElements/ForestSprits/PenguinDialogNPC" instance=ExtResource("9_x04u3")]
 
@@ -270,3 +331,19 @@ position = Vector2(-48, -20)
 
 [node name="PenguinPosition" parent="HubElements/ForestSpiritHubPositions" instance=ExtResource("7_1efiv")]
 position = Vector2(-51, 48)
+
+[node name="EmmyDefaultPosition" parent="HubElements" instance=ExtResource("7_1efiv")]
+visible = false
+position = Vector2(-96, -43)
+
+[node name="EmmyLorePosition" parent="HubElements" instance=ExtResource("7_1efiv")]
+visible = false
+position = Vector2(-28, 7)
+
+[node name="EmmyDialogNPC" parent="HubElements" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("5_vi8no")]
+position = Vector2(-96, -43)
+_animated_sprite = NodePath("EmmyNPCSprite")
+_dialog = SubResource("Resource_wflvf")
+
+[node name="EmmyNPCSprite" parent="HubElements/EmmyDialogNPC" instance=ExtResource("11_vo8kq")]
+flip_h = true

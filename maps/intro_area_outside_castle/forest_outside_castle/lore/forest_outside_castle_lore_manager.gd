@@ -4,10 +4,18 @@ extends Node2D
 
 @onready var _town_teleport_hitbox: Area2D = self.get_node("TeleporterToTownHitboxArea")
 
+const CUTSCENE_DIALOG_DELAY := 1.3
+
 func _ready() -> void:
 	_town_teleport_hitbox.area_entered.connect(_on_area_entered_town_teleport_hitbox)
 
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
+
 	await _async_show_cutscene_after_queen_fight()
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 func _on_area_entered_town_teleport_hitbox(other_hitbox: Area2D) -> void:

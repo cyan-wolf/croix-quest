@@ -1,6 +1,13 @@
 extends Node2D
 
+@export var _first_cutscene_dialog: DialogResource
+@export var _return_from_cobalt_dialog: DialogResource
+@export var _return_from_ulmus_dialog: DialogResource
+@export var _return_from_vodorod_dialog: DialogResource
+@export var _return_from_dunkel_dialog: DialogResource
 
+# The delay before dialog plays in a cutscene.
+const CUTSCENE_DIALOG_DELAY := 1.3
 
 func _ready() -> void:
 	_async_manage_hideout_state_based_on_completed_milestones()
@@ -8,6 +15,8 @@ func _ready() -> void:
 
 func _async_manage_hideout_state_based_on_completed_milestones() -> void:
 	var progression_manager: ProgressionManager = SceneManager.progression()
+
+	_move_emmy_to_default_position()
 
 	if progression_manager.has_milestone(Util.Milestone.DUNKEL_DUNGEON_COMPLETED):
 		# Configure the scene based on progression in the game.
@@ -74,21 +83,113 @@ func _async_manage_cutscenes(progression_manager: ProgressionManager) -> void:
 func _async_should_play_first_cutscene() -> void:
 	print_debug("Should play the first cutscene")
 
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Move Emmy to the center.
+	_move_emmy_to_lore_position()
+
+	# Reset the "just completed milestone" so that this cutcene doesn't play again.
+	SceneManager.progression().reset_just_completed_milestone()
+
+	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
+
+	# Play the appropriate dialog.
+	DialogManager.start_dialog(_first_cutscene_dialog)
+
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 
 func _async_play_return_from_cobalt_cutscene() -> void:
 	print_debug("Should play the 'Cobalt Dungeon' cutscene")
+
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Move Emmy to the center.
+	_move_emmy_to_lore_position()
+
+	# Reset the "just completed milestone" so that this cutcene doesn't play again.
+	SceneManager.progression().reset_just_completed_milestone()
+
+	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
+
+	# Play the appropriate dialog.
+	DialogManager.start_dialog(_return_from_cobalt_dialog)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 func _async_play_return_from_ulmus_cutscene() -> void:
 	print_debug("Should play the 'Ulmus Dungeon' cutscene")
 
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Move Emmy to the center.
+	_move_emmy_to_lore_position()
+
+	# Reset the "just completed milestone" so that this cutcene doesn't play again.
+	SceneManager.progression().reset_just_completed_milestone()
+
+	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
+
+	# Play the appropriate dialog.
+	DialogManager.start_dialog(_return_from_ulmus_dialog)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 
 func _async_play_return_from_vodorod_cutscene() -> void:
 	print_debug("Should play the 'Vodorod Dungeon' cutscene")
 
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Move Emmy to the center.
+	_move_emmy_to_lore_position()
+
+	# Reset the "just completed milestone" so that this cutcene doesn't play again.
+	SceneManager.progression().reset_just_completed_milestone()
+
+	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
+
+	# Play the appropriate dialog.
+	DialogManager.start_dialog(_return_from_vodorod_dialog)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 
 func _async_play_return_from_dunkel_cutscene() -> void:
 	print_debug("Should play the 'Dunkel Dungeon' cutscene")
+
+	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+	# Move Emmy to the center.
+	_move_emmy_to_lore_position()
+
+	# Reset the "just completed milestone" so that this cutcene doesn't play again.
+	SceneManager.progression().reset_just_completed_milestone()
+
+	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
+
+	# Play the appropriate dialog.
+	DialogManager.start_dialog(_return_from_dunkel_dialog)
+
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+
+# Moves Emmy to a corner when there isn't a cutscene playing.
+func _move_emmy_to_default_position() -> void:
+	var emmy_npc: Node2D = self.get_node("HubElements/EmmyDialogNPC")
+	var emmy_default_pos: Node2D = self.get_node("HubElements/EmmyDefaultPosition")
+
+	emmy_npc.global_position = emmy_default_pos.global_position
+
+
+# Move Emmy to the center of the room in cutscenes.
+func _move_emmy_to_lore_position() -> void:
+	var emmy_npc: Node2D = self.get_node("HubElements/EmmyDialogNPC")
+	var emmy_lore_pos: Node2D = self.get_node("HubElements/EmmyLorePosition")
+
+	emmy_npc.global_position = emmy_lore_pos.global_position
 
 
 func _put_cat_spirit_in_hub() -> void:
