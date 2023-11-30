@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://uoajiug5lqk6"]
+
+[ext_resource type="Script" path="res://interactables/stationary_rock/stationary_rock.gd" id="1_cmaas"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_irb0u"]
+[ext_resource type="Texture2D" uid="uid://dpsxb2650k6ki" path="res://interactables/stationary_rock/stationary_rock.png" id="2_s4djc"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="3_8ssqf"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="4_ylq2w"]
+
+[sub_resource type="Resource" id="Resource_duq2v"]
+script = ExtResource("2_irb0u")
+author = "Me"
+dialog = Array[String](["It seems like this rock is too heavy to move."])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_137xo"]
+atlas = ExtResource("2_s4djc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ck0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_137xo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3qpu"]
+size = Vector2(12, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8lw0"]
+radius = 8.0
+
+[node name="StationaryRock" type="AnimatableBody2D" groups=["projectile_interactable_hitbox"]]
+y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
+sync_to_physics = false
+script = ExtResource("1_cmaas")
+_cant_move_dialog = SubResource("Resource_duq2v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2ck0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b3qpu")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("3_8ssqf")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("4_ylq2w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_l8lw0")
