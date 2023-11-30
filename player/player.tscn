@@ -24,9 +24,8 @@ _health = 8
 script = ExtResource("3_ggtxy")
 _mana_amount = 4
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1a4d"]
-radius = 3.0
-height = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yffoq"]
+size = Vector2(15, 15)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hwk5"]
 radius = 7.0
@@ -325,9 +324,9 @@ health_component = SubResource("Resource_kehnt")
 mana_component = SubResource("Resource_7va06")
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, 8)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_s1a4d")
+shape = SubResource("RectangleShape2D_yffoq")
 
 [node name="HitboxArea" parent="." groups=["player_hitbox"] instance=ExtResource("4_8kxvr")]
 

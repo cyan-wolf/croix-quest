@@ -5,9 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="2_4mgl8"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_477ki"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3qpu"]
-size = Vector2(16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsb8d"]
 atlas = ExtResource("1_yxk4s")
 region = Rect2(0, 0, 16, 16)
@@ -23,6 +20,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3qpu"]
+size = Vector2(12, 12)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8lw0"]
 radius = 8.0
 
@@ -33,11 +33,11 @@ collision_mask = 3
 sync_to_physics = false
 script = ExtResource("1_mx0po")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_b3qpu")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ck0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b3qpu")
 
 [node name="InteractionComponent" parent="." instance=ExtResource("2_4mgl8")]
 

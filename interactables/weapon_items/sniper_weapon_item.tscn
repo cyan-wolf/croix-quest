@@ -21,14 +21,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h870n"]
-radius = 8.03355
-height = 61.9906
+radius = 2.99955
+height = 30.0302
 
 [node name="SniperWeaponItem" type="Node2D"]
 script = ExtResource("1_a2sni")
 _weapon_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_qo05e")
 
 [node name="InteractionComponent" parent="." instance=ExtResource("3_ayu5t")]

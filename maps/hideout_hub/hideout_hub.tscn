@@ -16,7 +16,7 @@
 [sub_resource type="Resource" id="Resource_bdqr0"]
 script = ExtResource("2_ill4q")
 author = "Emmy"
-dialog = Array[String](["(placeholder dialog for the first cutscene)", "Please rescue the forest spirits.", "The location of the spirits came to me in a dream.", "Please left click on the map on the table.", "Then, please left click on the blue icon to rescue the first spirit."])
+dialog = Array[String](["(placeholder dialog for the first cutscene)", "Please rescue the forest spirits.", "The location of the spirits came to me in a dream.", "Please right click on the map on the table.", "Then, please left click on the blue icon to rescue the first spirit."])
 
 [sub_resource type="Resource" id="Resource_lg452"]
 script = ExtResource("2_ill4q")

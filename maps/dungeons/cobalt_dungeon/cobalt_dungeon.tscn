@@ -257,7 +257,7 @@ position = Vector2(-902, -798)
 position = Vector2(-902, -824)
 
 [node name="PushableRock3" parent="PropsCollection/PushableRocksCollection" instance=ExtResource("14_vef15")]
-position = Vector2(-919, -810)
+position = Vector2(-920, -810.5)
 
 [node name="PushableRock6" parent="PropsCollection/PushableRocksCollection" instance=ExtResource("14_vef15")]
 position = Vector2(-1178, -2466)
