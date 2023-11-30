@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdvt5b5ell6gq"]
+
+[ext_resource type="Texture2D" uid="uid://c0yovi2s8dlet" path="res://puzzles/floor_x_puzzle/floor_x_switch.png" id="1_vyyhb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqukf"]
+atlas = ExtResource("1_vyyhb")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m3cb"]
+atlas = ExtResource("1_vyyhb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnuyx"]
+atlas = ExtResource("1_vyyhb")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_erpf6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqukf")
+}],
+"loop": true,
+"name": &"complete",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m3cb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnuyx")
+}],
+"loop": true,
+"name": &"partial",
+"speed": 5.0
+}]
+
+[node name="FloorXPuzzleSwitch" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_erpf6")

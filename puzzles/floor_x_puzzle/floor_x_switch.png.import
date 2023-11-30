@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0yovi2s8dlet"
-path="res://.godot/imported/floor_x_switch.png-14f30e3ac2242b4b89d1b784fce633ef.ctex"
+path="res://.godot/imported/floor_x_switch.png-72b442d6db238a40e082e97495113572.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interactables/floor_interactable/floor_x_switch/floor_x_switch.png"
-dest_files=["res://.godot/imported/floor_x_switch.png-14f30e3ac2242b4b89d1b784fce633ef.ctex"]
+source_file="res://puzzles/floor_x_puzzle/floor_x_switch.png"
+dest_files=["res://.godot/imported/floor_x_switch.png-72b442d6db238a40e082e97495113572.ctex"]
 
 [params]
 
