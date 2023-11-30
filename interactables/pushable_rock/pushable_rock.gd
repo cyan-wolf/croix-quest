@@ -5,7 +5,7 @@ const REQUIRED_MANA_AMOUNT_TO_MOVE: int = 1
 @onready var _interaction_component: InteractionComponent = self.get_node("InteractionComponent")
 
 ## In pixels per second.
-@export var _speed: float = 16.0
+@export var _speed: float = 50.0
 
 var _velocity := Vector2.ZERO
 var _is_moving := false
