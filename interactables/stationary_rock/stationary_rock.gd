@@ -14,3 +14,8 @@ func _on_player_interact() -> void:
 	DialogManager.start_dialog(_cant_move_dialog)
 
 
+func destroy() -> void:
+	# TODO: Add a sound and particle effect.
+	self.queue_free()
+
+

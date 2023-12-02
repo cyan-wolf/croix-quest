@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c83rqfm7yaph0"]
+
+[ext_resource type="Script" path="res://puzzles/floor_x_puzzle/floor_x_puzzle.gd" id="1_h141t"]
+
+[node name="FloorXPuzzle" type="Node2D"]
+script = ExtResource("1_h141t")

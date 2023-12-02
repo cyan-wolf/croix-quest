@@ -316,7 +316,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player_physics_body_collision"]]
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_a2tsp")

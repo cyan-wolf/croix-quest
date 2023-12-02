@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdvt5b5ell6gq"]
+[gd_scene load_steps=9 format=3 uid="uid://cdvt5b5ell6gq"]
 
+[ext_resource type="Script" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_switch.gd" id="1_god7m"]
 [ext_resource type="Texture2D" uid="uid://c0yovi2s8dlet" path="res://puzzles/floor_x_puzzle/floor_x_switch.png" id="1_vyyhb"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_g2gwd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqukf"]
 atlas = ExtResource("1_vyyhb")
@@ -29,7 +31,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0m3cb")
 }],
 "loop": true,
-"name": &"default",
+"name": &"off",
 "speed": 5.0
 }, {
 "frames": [{
@@ -37,11 +39,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_lnuyx")
 }],
 "loop": true,
-"name": &"partial",
+"name": &"on",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k81fd"]
+size = Vector2(9, 9)
+
 [node name="FloorXPuzzleSwitch" type="Node2D"]
+script = ExtResource("1_god7m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_erpf6")
+animation = &"off"
+
+[node name="HitboxArea" parent="." instance=ExtResource("3_g2gwd")]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_k81fd")
