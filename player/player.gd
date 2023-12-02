@@ -29,10 +29,14 @@ const DODGE_DURATION := 0.6
 
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
+@onready var _ground_hitbox: Area2D = self.get_node("GroundHitboxArea")
+
 var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
 var _is_dodging: bool = false
+
+var _is_slipping: bool = false
 
 var _current_sprite_direction := Util.Direction.RIGHT
 
@@ -54,6 +58,23 @@ func _physics_process(_delta):
 		_stop_running()
 		return
 
+	# Don't enter "slipping mode" if `self.velocity` is zero.
+	if _is_slipping and self.velocity != Vector2.ZERO:
+		# Continuously move with the previous velocity while slipping.
+		var collides_while_slipping := self.move_and_slide()
+
+		# Make the player stop moving if they collide something.
+		if collides_while_slipping:
+			self.velocity = Vector2.ZERO
+
+		# Check if the player should still be slipping.
+		_check_and_set_if_should_be_slipping()
+
+		_stop_running()
+
+		# Returning here disables input detection while slipping.
+		return
+
 	var input_direction := _get_input_direction()
 	_current_sprite_direction = _get_sprite_direction()
 
@@ -73,6 +94,8 @@ func _physics_process(_delta):
 
 		else:
 			self.set_animation("Walk")
+
+	_check_and_set_if_should_be_slipping()
 
 
 func _process(_delta: float) -> void:
@@ -228,6 +251,17 @@ func _try_to_dodge() -> void:
 		_is_dodging = false
 
 	async_callback.call() # async call
+
+
+func _check_and_set_if_should_be_slipping() -> void:
+	_is_slipping = false
+
+	# If any of the hitboxes overlapping with the ground hitbox 
+	# is a 'Slippery Floor Tile', then the player should be slipping.
+	for hitbox in _ground_hitbox.get_overlapping_areas():
+		if hitbox.is_in_group("slippery_floor_tile_hitbox"):
+			_is_slipping = true
+			break
 
 
 func _get_input_direction() -> Vector2:

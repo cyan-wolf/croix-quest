@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=58 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
@@ -25,11 +25,14 @@ script = ExtResource("3_ggtxy")
 _mana_amount = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yffoq"]
-size = Vector2(15, 15)
+size = Vector2(13, 13)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hwk5"]
 radius = 7.0
 height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0egpu"]
+size = Vector2(13, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqrqa"]
 atlas = ExtResource("1_1bkcv")
@@ -333,6 +336,12 @@ shape = SubResource("RectangleShape2D_yffoq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_8hwk5")
+
+[node name="GroundHitboxArea" parent="." groups=["player_ground_hitbox"] instance=ExtResource("4_8kxvr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundHitboxArea"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_0egpu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5a2gx")

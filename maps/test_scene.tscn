@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://41to35a76r2o"]
+[gd_scene load_steps=8 format=3 uid="uid://41to35a76r2o"]
 
 [ext_resource type="TileSet" uid="uid://df3y6ueoyret4" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon.tres" id="1_st4pu"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_um1fg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdvt5b5ell6gq" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_switch.tscn" id="4_mybw7"]
 [ext_resource type="PackedScene" uid="uid://uoajiug5lqk6" path="res://interactables/stationary_rock/stationary_rock.tscn" id="5_6360v"]
 [ext_resource type="PackedScene" uid="uid://blr8pf280xe3v" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_reset_switch.tscn" id="6_7r138"]
+[ext_resource type="PackedScene" uid="uid://bp62bn7lbj32i" path="res://util/slippery_floor_tile/slippery_floor_tile.tscn" id="7_xq4nh"]
 
 [node name="TestScene" type="Node2D"]
 y_sort_enabled = true
@@ -88,3 +89,65 @@ position = Vector2(38, -42)
 
 [node name="FloorXPuzzleResetSwitch" parent="FloorXPuzzle" instance=ExtResource("6_7r138")]
 position = Vector2(37, 22)
+
+[node name="SlipperyTiles" type="Node2D" parent="."]
+
+[node name="SlipperyFloorTile" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(50, -8)
+
+[node name="SlipperyFloorTile2" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(66, -8)
+
+[node name="SlipperyFloorTile3" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(82, -8)
+
+[node name="SlipperyFloorTile4" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(66, -24)
+
+[node name="SlipperyFloorTile5" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(66, -40)
+
+[node name="SlipperyFloorTile6" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(82, -40)
+
+[node name="SlipperyFloorTile7" parent="SlipperyTiles" instance=ExtResource("7_xq4nh")]
+position = Vector2(98, -40)
+
+[node name="FloorXPuzzle2" parent="." instance=ExtResource("3_op8jo")]
+position = Vector2(119, -43)
+
+[node name="FloorXSwitches" type="Node2D" parent="FloorXPuzzle2"]
+
+[node name="FloorXPuzzleSwitch" parent="FloorXPuzzle2/FloorXSwitches" instance=ExtResource("4_mybw7")]
+position = Vector2(-21, 19)
+
+[node name="FloorXPuzzleSwitch2" parent="FloorXPuzzle2/FloorXSwitches" instance=ExtResource("4_mybw7")]
+position = Vector2(-53, 51)
+
+[node name="FloorXPuzzleSwitch3" parent="FloorXPuzzle2/FloorXSwitches" instance=ExtResource("4_mybw7")]
+position = Vector2(-21, 35)
+
+[node name="Obstacles" type="Node2D" parent="FloorXPuzzle2"]
+
+[node name="StationaryRock" parent="FloorXPuzzle2/Obstacles" instance=ExtResource("5_6360v")]
+position = Vector2(-4, 2)
+
+[node name="StationaryRock2" parent="FloorXPuzzle2/Obstacles" instance=ExtResource("5_6360v")]
+position = Vector2(-36, 50)
+
+[node name="StationaryRock3" parent="FloorXPuzzle2/Obstacles" instance=ExtResource("5_6360v")]
+position = Vector2(-37, 18)
+
+[node name="StationaryRock4" parent="FloorXPuzzle2/Obstacles" instance=ExtResource("5_6360v")]
+position = Vector2(-70, 18)
+
+[node name="StationaryRock5" parent="FloorXPuzzle2/Obstacles" instance=ExtResource("5_6360v")]
+position = Vector2(-69, 51)
+
+[node name="ObstaclesToBreak" type="Node2D" parent="FloorXPuzzle2"]
+
+[node name="StationaryRock" parent="FloorXPuzzle2/ObstaclesToBreak" instance=ExtResource("5_6360v")]
+position = Vector2(-99, -8)
+
+[node name="FloorXPuzzleResetSwitch" parent="FloorXPuzzle2" instance=ExtResource("6_7r138")]
+position = Vector2(-100, 81)

@@ -5,11 +5,10 @@ signal activated
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 func _ready() -> void:
-	_hitbox.body_entered.connect(_on_body_entered_hitbox)
+	_hitbox.area_entered.connect(_on_area_entered_hitbox)
 
 
-# This hitbox needs to collide with the player's ground collision, not the regular hitbox.
-func _on_body_entered_hitbox(other_hitbox: Node2D) -> void:	
-	if other_hitbox.is_in_group("player_physics_body_collision"):
+func _on_area_entered_hitbox(other_hitbox: Node2D) -> void:	
+	if other_hitbox.is_in_group("player_ground_hitbox"):
 		self.activated.emit()
 

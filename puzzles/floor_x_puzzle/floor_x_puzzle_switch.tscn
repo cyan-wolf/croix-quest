@@ -54,7 +54,6 @@ sprite_frames = SubResource("SpriteFrames_erpf6")
 animation = &"off"
 
 [node name="HitboxArea" parent="." instance=ExtResource("3_g2gwd")]
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("RectangleShape2D_k81fd")
