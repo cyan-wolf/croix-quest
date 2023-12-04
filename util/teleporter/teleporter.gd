@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
-	if other_hitbox.is_in_group("player_hitbox") and _active:
+	if other_hitbox.is_in_group("player_ground_hitbox") and _active:
 		if _show_loading_screen:
 			SceneManager.show_loading_screen()
 			await SceneManager.async_delay(0.5)
