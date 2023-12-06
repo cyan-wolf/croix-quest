@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0qqgxaibl7tl"]
+[gd_scene load_steps=6 format=3 uid="uid://d0qqgxaibl7tl"]
 
 [ext_resource type="Script" path="res://maps/intro_castle/tutorial/intro_tutorial_lore_manager.gd" id="1_30it7"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_02e6s"]
 [ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="2_06gmi"]
+
+[sub_resource type="Resource" id="Resource_u1y8c"]
+script = ExtResource("2_02e6s")
+author = "Guard Captain"
+dialog = Array[String](["I'm sure you already know, since we've trained before, but you can shoot with LEFT CLICK.", "Please shoot these white targets on the wall. they turn yellow when shot.", "The door opens when you shoot all the targets."])
+
+[sub_resource type="Resource" id="Resource_j6y6q"]
+script = ExtResource("2_02e6s")
+author = "Guard Captain"
+dialog = Array[String](["As a Royal Guard, you must be ready to defeat enemies.", "Please practice shooting at this enemy to defeat it.", "Note that I weakened this enemy so it won't be able to damage you."])
 
 [node name="IntroTutorialLoreManager" type="Node2D"]
 script = ExtResource("1_30it7")
+_shooting_tutorial_dialog = SubResource("Resource_u1y8c")
+_enemy_shooting_tutorial_dialog = SubResource("Resource_j6y6q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
