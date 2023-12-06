@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0qqgxaibl7tl"]
+
+[ext_resource type="Script" path="res://maps/intro_castle/tutorial/intro_tutorial_lore_manager.gd" id="1_30it7"]
+[ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="2_06gmi"]
+
+[node name="IntroTutorialLoreManager" type="Node2D"]
+script = ExtResource("1_30it7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TutorialPrompt" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialButton" type="Button" parent="CanvasLayer/TutorialPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -66.0
+offset_right = 264.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_06gmi")
+theme_override_font_sizes/font_size = 60
+text = "Go to Training"
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/TutorialPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = 59.0
+offset_right = 252.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_06gmi")
+theme_override_font_sizes/font_size = 60
+text = "Skip Training"
