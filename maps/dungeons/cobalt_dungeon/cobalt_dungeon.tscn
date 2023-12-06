@@ -114,31 +114,31 @@ position = Vector2(-930.959, -2460.28)
 y_sort_enabled = true
 
 [node name="DungeonEntranceTeleporter" parent="PropsCollection/TeleportersCollection" instance=ExtResource("5_jc3a4")]
-position = Vector2(0, -33)
+position = Vector2(0, -22)
 
 [node name="TeleporterDestination" parent="PropsCollection/TeleportersCollection/DungeonEntranceTeleporter" instance=ExtResource("9_v88fk")]
-position = Vector2(-591, 20)
+position = Vector2(-590, 13)
 
 [node name="Teleporter" parent="PropsCollection/TeleportersCollection" instance=ExtResource("5_jc3a4")]
-position = Vector2(-1055, 181)
+position = Vector2(-1056, 186)
 
 [node name="TeleporterDestination" parent="PropsCollection/TeleportersCollection/Teleporter" instance=ExtResource("9_v88fk")]
 position = Vector2(12, -641)
 
 [node name="Teleporter2" parent="PropsCollection/TeleportersCollection" instance=ExtResource("5_jc3a4")]
-position = Vector2(-1025, -892)
+position = Vector2(-1024, -885)
 
 [node name="TeleporterDestination" parent="PropsCollection/TeleportersCollection/Teleporter2" instance=ExtResource("9_v88fk")]
-position = Vector2(0.00012207, -295)
+position = Vector2(-3.12866e-10, -303)
 
 [node name="Teleporter3" parent="PropsCollection/TeleportersCollection" instance=ExtResource("5_jc3a4")]
-position = Vector2(-1024, -1887)
+position = Vector2(-1024, -1877)
 
 [node name="TeleporterDestination" parent="PropsCollection/TeleportersCollection/Teleporter3" instance=ExtResource("9_v88fk")]
-position = Vector2(0.453613, -288.356)
+position = Vector2(-2.68221e-07, -290)
 
 [node name="SceneTransporter" parent="PropsCollection/TeleportersCollection" instance=ExtResource("10_tytj2")]
-position = Vector2(-145, -2640)
+position = Vector2(-144, -2629)
 _destination_scene_path = "res://maps/dungeons/cobalt_dungeon/boss_fight/cobalt_dugeon_boss_fight.tscn"
 
 [node name="ChestCollection" type="Node2D" parent="PropsCollection"]
@@ -199,17 +199,19 @@ position = Vector2(-33, 0)
 position = Vector2(32, 0)
 
 [node name="Teleporter" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor" instance=ExtResource("5_jc3a4")]
+position = Vector2(0, 11)
 
 [node name="TeleporterDestination" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor/Teleporter" instance=ExtResource("9_v88fk")]
-position = Vector2(8, -266)
+position = Vector2(9, -276)
 
 [node name="WallDiscSwitchDoor2" parent="PropsCollection/WallDiscDoorsCollection" instance=ExtResource("12_5cdu5")]
 position = Vector2(-1025, -1536)
 
 [node name="Teleporter" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor2" instance=ExtResource("5_jc3a4")]
+position = Vector2(0, 12)
 
 [node name="TeleporterDestination" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor2/Teleporter" instance=ExtResource("9_v88fk")]
-position = Vector2(0, -259)
+position = Vector2(1, -273)
 
 [node name="WallDiscSwitches" type="Node2D" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor2"]
 
@@ -243,9 +245,10 @@ position = Vector2(-255.313, 79.3647)
 position = Vector2(-255.313, 240.365)
 
 [node name="Teleporter" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor3" instance=ExtResource("5_jc3a4")]
+position = Vector2(-0.310059, 12.3601)
 
 [node name="TeleporterDestination" parent="PropsCollection/WallDiscDoorsCollection/WallDiscSwitchDoor3/Teleporter" instance=ExtResource("9_v88fk")]
-position = Vector2(879.687, 166.365)
+position = Vector2(880, 160)
 
 [node name="PushableRocksCollection" type="Node2D" parent="PropsCollection"]
 y_sort_enabled = true

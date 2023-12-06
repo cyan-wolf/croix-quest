@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cw0yaxkirilsr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7myys"]
+load_path = "res://.godot/imported/respawn_charms.png-a3a07ed3d50642b1919eaa693324cd4e.ctex"
+
+[resource]
+atlas = SubResource("CompressedTexture2D_7myys")
+region = Rect2(0, 0, 16, 16)

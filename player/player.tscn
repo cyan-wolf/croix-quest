@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=60 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://sf1vktsr351u" path="res://particles/initial_dash_particles.tscn" id="3_ka5ay"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="4_8kxvr"]
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
+[ext_resource type="Script" path="res://util/components/respawn/respawn_component.gd" id="4_t3vhg"]
 [ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
 [ext_resource type="Script" path="res://player/Weapon.gd" id="6_jfpub"]
 [ext_resource type="PackedScene" uid="uid://d1cs8arufufu5" path="res://particles/muzzle.tscn" id="8_ep5ee"]
@@ -23,6 +24,10 @@ _health = 8
 [sub_resource type="Resource" id="Resource_7va06"]
 script = ExtResource("3_ggtxy")
 _mana_amount = 4
+
+[sub_resource type="Resource" id="Resource_tuyat"]
+script = ExtResource("4_t3vhg")
+_lives_amount = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yffoq"]
 size = Vector2(13, 13)
@@ -325,6 +330,7 @@ motion_mode = 1
 script = ExtResource("1_a2tsp")
 health_component = SubResource("Resource_kehnt")
 mana_component = SubResource("Resource_7va06")
+respawn_component = SubResource("Resource_tuyat")
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

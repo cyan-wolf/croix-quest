@@ -2011,6 +2011,7 @@ _animated_sprite = NodePath("PlaceholderNPCSprite")
 [node name="PlaceholderNPCSprite" parent="FellowGuardNPC" instance=ExtResource("5_mycrv")]
 
 [node name="QueenBossFightPreludeLoreManager" parent="." instance=ExtResource("6_jc13y")]
+position = Vector2(0, 17)
 
 [node name="QueenRoomEntranceHitboxArea" parent="QueenBossFightPreludeLoreManager" instance=ExtResource("7_jl6o0")]
 position = Vector2(88, -984)
@@ -2019,7 +2020,7 @@ position = Vector2(88, -984)
 shape = SubResource("RectangleShape2D_78853")
 
 [node name="Teleporter" parent="." instance=ExtResource("7_0et4m")]
-position = Vector2(72, -23)
+position = Vector2(72, -4)
 
 [node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("8_24lgp")]
-position = Vector2(16, -563)
+position = Vector2(16, -581)

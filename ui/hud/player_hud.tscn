@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2fmifh13utrp"]
+[gd_scene load_steps=26 format=3 uid="uid://d2fmifh13utrp"]
 
 [ext_resource type="Script" path="res://ui/hud/player_hud.gd" id="1_vhtns"]
 
@@ -56,6 +56,34 @@ load_path = "res://.godot/imported/mana_crystals.png-6a3d5f7e7bfc5a7fc90eaf7521e
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrwpx"]
 atlas = SubResource("CompressedTexture2D_7q3bg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pkbqx"]
+load_path = "res://.godot/imported/respawn_charms.png-a3a07ed3d50642b1919eaa693324cd4e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu1aq"]
+atlas = SubResource("CompressedTexture2D_pkbqx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0fbyx"]
+load_path = "res://.godot/imported/respawn_charms.png-a3a07ed3d50642b1919eaa693324cd4e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib8re"]
+atlas = SubResource("CompressedTexture2D_0fbyx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0pucx"]
+load_path = "res://.godot/imported/respawn_charms.png-a3a07ed3d50642b1919eaa693324cd4e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh8je"]
+atlas = SubResource("CompressedTexture2D_0pucx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_80lo6"]
+load_path = "res://.godot/imported/respawn_charms.png-a3a07ed3d50642b1919eaa693324cd4e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4nc7"]
+atlas = SubResource("CompressedTexture2D_80lo6")
 region = Rect2(0, 0, 16, 16)
 
 [node name="PlayerHUD" type="Control"]
@@ -120,4 +148,35 @@ expand_mode = 2
 [node name="ManaTextureRect4" type="TextureRect" parent="ManaBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_mrwpx")
+expand_mode = 2
+
+[node name="RespawnCharmBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -361.0
+offset_top = 88.0
+offset_bottom = 168.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="RespawnCharmTextureRect1" type="TextureRect" parent="RespawnCharmBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_uu1aq")
+expand_mode = 2
+
+[node name="RespawnCharmTextureRect2" type="TextureRect" parent="RespawnCharmBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ib8re")
+expand_mode = 2
+
+[node name="RespawnCharmTextureRect3" type="TextureRect" parent="RespawnCharmBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gh8je")
+expand_mode = 2
+
+[node name="RespawnCharmTextureRect4" type="TextureRect" parent="RespawnCharmBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_d4nc7")
 expand_mode = 2

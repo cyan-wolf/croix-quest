@@ -18,6 +18,9 @@ const DODGE_DURATION := 0.6
 # Manages the player's mana value.
 @export var mana_component: ManaComponent
 
+# Manages the player's lives and respawning.
+@export var respawn_component: RespawnComponent
+
 # Manages the player's status effects.
 @onready var status_effect_component: StatusEffectComponent = self.get_node("StatusEffectComponent")
 
@@ -287,15 +290,4 @@ func _on_timer_timeout():
 	_is_running = true
 	$InitialDashParticles.emitting = true
 	$InitialDashSFX.play()
-
-
-func respawn() -> void:
-	# Move the player over to the last checkpoint.
-	self.global_position = self.checkpoint_component.get_last_checkpoint_pos()
-
-	# Regain all health.
-	self.health_component.gain_health(self.health_component.get_max_health())
-
-	SceneManager.remove_world_state(Util.WorldState.PLAYER_IS_DEAD)
-	
 

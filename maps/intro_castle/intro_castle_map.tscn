@@ -90,13 +90,13 @@ _animated_sprite = NodePath("QueenCroixNPCSprite")
 position = Vector2(-667, 30)
 
 [node name="MainHallTeleporter" parent="." instance=ExtResource("9_pdddj")]
-position = Vector2(888, -25)
+position = Vector2(888, -5)
 
 [node name="TeleporterDestination" parent="MainHallTeleporter" instance=ExtResource("13_pcxws")]
-position = Vector2(-642, 140)
+position = Vector2(-646, 121)
 
 [node name="EmmyRoomTeleporter" parent="." instance=ExtResource("9_pdddj")]
-position = Vector2(-72, 81)
+position = Vector2(-72, 92)
 
 [node name="TeleporterDestination" parent="EmmyRoomTeleporter" instance=ExtResource("13_pcxws")]
-position = Vector2(-596, -50)
+position = Vector2(-596, -61)

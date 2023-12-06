@@ -181,13 +181,13 @@ mana_component = SubResource("Resource_s3d56")
 [node name="ForestOutsideCastleLoreManager" parent="." instance=ExtResource("5_pi2lb")]
 
 [node name="TeleporterToTownHitboxArea" parent="ForestOutsideCastleLoreManager" instance=ExtResource("6_ksghu")]
-position = Vector2(0, -545)
+position = Vector2(0, -532)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestOutsideCastleLoreManager/TeleporterToTownHitboxArea"]
 shape = SubResource("RectangleShape2D_ouuhx")
 
 [node name="Teleporter" parent="." instance=ExtResource("7_s1hme")]
-position = Vector2(-32, -48)
+position = Vector2(-31, -35)
 
 [node name="TeleporterDestination" parent="Teleporter" instance=ExtResource("8_6h01n")]
-position = Vector2(31, -357)
+position = Vector2(31, -373)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=38 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://uoajiug5lqk6" path="res://interactables/stationary_rock/stationary_rock.tscn" id="24_lhn7b"]
 [ext_resource type="PackedScene" uid="uid://blr8pf280xe3v" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_reset_switch.tscn" id="25_5t0tx"]
 [ext_resource type="PackedScene" uid="uid://bp62bn7lbj32i" path="res://util/slippery_floor_tile/slippery_floor_tile.tscn" id="27_r604t"]
+[ext_resource type="PackedScene" uid="uid://gudib5xnhds0" path="res://interactables/respawn_charm/respawn_charm_refill.tscn" id="29_81rys"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vhdiu"]
 load_path = "res://.godot/imported/ulmus_dungeon_tileset.png-04cfccd0b586914818361b435c065102.ctex"
@@ -229,43 +230,43 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Teleporter" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(1, -26)
+position = Vector2(0, -22)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter" instance=ExtResource("6_axfhp")]
 position = Vector2(0, -242)
 
 [node name="Teleporter2" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(-0.398445, -762.563)
+position = Vector2(1.19209e-07, -758)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter2" instance=ExtResource("6_axfhp")]
 position = Vector2(298.398, 13.5632)
 
 [node name="Teleporter3" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(430.503, -844.718)
+position = Vector2(432, -838)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter3" instance=ExtResource("6_axfhp")]
 position = Vector2(-32.5032, -321.282)
 
 [node name="Teleporter4" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(913, -912)
+position = Vector2(912, -900)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter4" instance=ExtResource("6_axfhp")]
-position = Vector2(-515, -254)
+position = Vector2(-513, -259)
 
 [node name="Teleporter5" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(2399.64, -1307.25)
+position = Vector2(2400, -1302)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter5" instance=ExtResource("6_axfhp")]
 position = Vector2(503.36, 82.2468)
 
 [node name="Teleporter6" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(2944, -1359)
+position = Vector2(2945, -1351)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter6" instance=ExtResource("6_axfhp")]
 position = Vector2(532, 132)
 
 [node name="Teleporter7" parent="PropCollection/TeleporterCollection" instance=ExtResource("5_yst44")]
-position = Vector2(3521, -1361)
+position = Vector2(3520, -1351)
 
 [node name="TeleporterDestination" parent="PropCollection/TeleporterCollection/Teleporter7" instance=ExtResource("6_axfhp")]
 position = Vector2(514, 15)
@@ -393,9 +394,10 @@ position = Vector2(-121, 61.9999)
 position = Vector2(-51.0001, 61.9999)
 
 [node name="Teleporter" parent="PropCollection/WallDiscDoorCollection/WallDiscSwitchDoor" instance=ExtResource("5_yst44")]
+position = Vector2(0, 10)
 
 [node name="TeleporterDestination" parent="PropCollection/WallDiscDoorCollection/WallDiscSwitchDoor/Teleporter" instance=ExtResource("6_axfhp")]
-position = Vector2(306, 56.9999)
+position = Vector2(307, 50)
 
 [node name="ChestCollection" type="Node2D" parent="PropCollection"]
 y_sort_enabled = true
@@ -455,6 +457,10 @@ _contents = Array[PackedScene]([ExtResource("18_nrcsg")])
 [node name="Chest14" parent="PropCollection/ChestCollection" instance=ExtResource("6_au5bi")]
 position = Vector2(2035, -1485)
 _contents = Array[PackedScene]([ExtResource("14_b5pw7")])
+
+[node name="Chest15" parent="PropCollection/ChestCollection" instance=ExtResource("6_au5bi")]
+position = Vector2(965.758, -1709.56)
+_contents = Array[PackedScene]([ExtResource("29_81rys")])
 
 [node name="CheckpointCollection" type="Node2D" parent="PropCollection"]
 y_sort_enabled = true

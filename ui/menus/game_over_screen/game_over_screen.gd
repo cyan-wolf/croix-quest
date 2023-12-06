@@ -10,11 +10,17 @@ func _ready() -> void:
 
 
 func _on_respawn_button_pressed() -> void:
+	var player: Player = SceneManager.find_player()
+
+	# Don't do anything if the player cannot respawn.
+	if not player.respawn_component.can_respawn():
+		return
+
 	# Unpause the game, since it was paused before showing the game over screen.
 	self.get_tree().paused = false
 
 	# Make the player respawn.
-	SceneManager.find_player().respawn()
+	player.respawn_component.respawn()
 
 	_reset_ui()
 
@@ -23,11 +29,11 @@ func _on_quit_button_pressed() -> void:
 	# Unpause the game, since it was paused before showing the game over screen.
 	self.get_tree().paused = false
 
-	# Make the player respawn in order to reset any leftover state.
-	SceneManager.find_player().respawn()
+	# Force the player to respawn in order to reset any leftover state.
+	SceneManager.find_player().respawn_component.respawn()
 
 	# Go to the main menu.
-	SceneManager.load_scene_file("res://ui/menus/main_menu.tscn")
+	SceneManager.load_scene_file(Util.ScenePath.MAIN_MENU)
 
 	_reset_ui()
 
