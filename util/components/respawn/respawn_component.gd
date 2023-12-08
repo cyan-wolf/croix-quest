@@ -2,6 +2,7 @@ extends Resource
 class_name RespawnComponent
 
 signal lives_amount_changed
+signal respawned
 
 const MAX_LIVES := 4
 
@@ -21,6 +22,8 @@ func respawn() -> void:
 	SceneManager.remove_world_state(Util.WorldState.PLAYER_IS_DEAD)
 
 	self.use_life()
+
+	self.respawned.emit()
 
 	
 func get_lives_amount() -> int:

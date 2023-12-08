@@ -134,6 +134,16 @@ func remove_world_state(state: Util.WorldState) -> void:
 	_world_state.erase(state)
 
 
+## Utility method for calling `self.add_world_state(Util.WorldState.CUTSCENE_PLAYING)`.
+func start_cutscene() -> void:
+	self.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+
+## Utility method for calling `self.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)`.
+func end_cutscene() -> void:
+	self.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+
 ## This function returning `true` implies that the player should be able to move normally.
 ## Otherwise, the player should not be able to move.
 func is_world_state_empty() -> bool:
