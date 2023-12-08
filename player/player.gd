@@ -261,7 +261,7 @@ func _try_to_dodge() -> void:
 func _check_and_set_if_should_be_slipping() -> void:
 	_is_slipping = false
 
-	# If any of the hitboxes overlapping with the ground hitbox 
+	# If any of the hitboxes overlapping with the feet's hitbox 
 	# is a 'Slippery Floor Tile', then the player should be slipping.
 	for hitbox in _feet_hitbox.get_overlapping_areas():
 		if hitbox.is_in_group("slippery_floor_tile_hitbox"):
