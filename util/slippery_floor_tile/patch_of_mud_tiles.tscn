@@ -1,0 +1,336 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ry6tiati8ia"]
+
+[ext_resource type="PackedScene" uid="uid://bp62bn7lbj32i" path="res://util/slippery_floor_tile/slippery_floor_tile.tscn" id="1_8narl"]
+
+[node name="PatchOfMudTiles" type="Node2D"]
+y_sort_enabled = true
+
+[node name="SlipperyFloorTile" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 8)
+
+[node name="SlipperyFloorTile2" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 8)
+
+[node name="SlipperyFloorTile3" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 8)
+
+[node name="SlipperyFloorTile4" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 8)
+
+[node name="SlipperyFloorTile5" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 8)
+
+[node name="SlipperyFloorTile6" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 8)
+
+[node name="SlipperyFloorTile7" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 8)
+
+[node name="SlipperyFloorTile8" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 8)
+
+[node name="SlipperyFloorTile9" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 8)
+
+[node name="SlipperyFloorTile10" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 8)
+
+[node name="SlipperyFloorTile21" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 40)
+
+[node name="SlipperyFloorTile22" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 40)
+
+[node name="SlipperyFloorTile23" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 40)
+
+[node name="SlipperyFloorTile24" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 40)
+
+[node name="SlipperyFloorTile25" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 40)
+
+[node name="SlipperyFloorTile26" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 40)
+
+[node name="SlipperyFloorTile27" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 40)
+
+[node name="SlipperyFloorTile28" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 40)
+
+[node name="SlipperyFloorTile29" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 40)
+
+[node name="SlipperyFloorTile30" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 40)
+
+[node name="SlipperyFloorTile31" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 56)
+
+[node name="SlipperyFloorTile32" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 56)
+
+[node name="SlipperyFloorTile33" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 56)
+
+[node name="SlipperyFloorTile34" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 56)
+
+[node name="SlipperyFloorTile35" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 56)
+
+[node name="SlipperyFloorTile36" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 56)
+
+[node name="SlipperyFloorTile37" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 56)
+
+[node name="SlipperyFloorTile38" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 56)
+
+[node name="SlipperyFloorTile39" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 56)
+
+[node name="SlipperyFloorTile40" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 56)
+
+[node name="SlipperyFloorTile41" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 72)
+
+[node name="SlipperyFloorTile42" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 72)
+
+[node name="SlipperyFloorTile43" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 72)
+
+[node name="SlipperyFloorTile44" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 72)
+
+[node name="SlipperyFloorTile45" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 72)
+
+[node name="SlipperyFloorTile46" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 72)
+
+[node name="SlipperyFloorTile47" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 72)
+
+[node name="SlipperyFloorTile48" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 72)
+
+[node name="SlipperyFloorTile49" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 72)
+
+[node name="SlipperyFloorTile50" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 72)
+
+[node name="SlipperyFloorTile51" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 88)
+
+[node name="SlipperyFloorTile52" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 88)
+
+[node name="SlipperyFloorTile53" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 88)
+
+[node name="SlipperyFloorTile54" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 88)
+
+[node name="SlipperyFloorTile55" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 88)
+
+[node name="SlipperyFloorTile56" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 88)
+
+[node name="SlipperyFloorTile57" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 88)
+
+[node name="SlipperyFloorTile58" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 88)
+
+[node name="SlipperyFloorTile59" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 88)
+
+[node name="SlipperyFloorTile60" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 88)
+
+[node name="SlipperyFloorTile61" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 104)
+
+[node name="SlipperyFloorTile62" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 104)
+
+[node name="SlipperyFloorTile63" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 104)
+
+[node name="SlipperyFloorTile64" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 104)
+
+[node name="SlipperyFloorTile65" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 104)
+
+[node name="SlipperyFloorTile66" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 104)
+
+[node name="SlipperyFloorTile67" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 104)
+
+[node name="SlipperyFloorTile68" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 104)
+
+[node name="SlipperyFloorTile69" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 104)
+
+[node name="SlipperyFloorTile70" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 104)
+
+[node name="SlipperyFloorTile71" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 120)
+
+[node name="SlipperyFloorTile72" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 120)
+
+[node name="SlipperyFloorTile73" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 120)
+
+[node name="SlipperyFloorTile74" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 120)
+
+[node name="SlipperyFloorTile75" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 120)
+
+[node name="SlipperyFloorTile76" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 120)
+
+[node name="SlipperyFloorTile77" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 120)
+
+[node name="SlipperyFloorTile78" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 120)
+
+[node name="SlipperyFloorTile79" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 120)
+
+[node name="SlipperyFloorTile80" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 120)
+
+[node name="SlipperyFloorTile81" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 136)
+
+[node name="SlipperyFloorTile82" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 136)
+
+[node name="SlipperyFloorTile83" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 136)
+
+[node name="SlipperyFloorTile84" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 136)
+
+[node name="SlipperyFloorTile85" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 136)
+
+[node name="SlipperyFloorTile86" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 136)
+
+[node name="SlipperyFloorTile87" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 136)
+
+[node name="SlipperyFloorTile88" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 136)
+
+[node name="SlipperyFloorTile89" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 136)
+
+[node name="SlipperyFloorTile90" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 136)
+
+[node name="SlipperyFloorTile91" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile92" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile93" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile94" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile95" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile96" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile97" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile98" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile99" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile100" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile101" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile102" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile103" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile104" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile105" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile106" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile107" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile108" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile109" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile110" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile11" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(8, 24)
+
+[node name="SlipperyFloorTile12" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(24, 24)
+
+[node name="SlipperyFloorTile13" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(40, 24)
+
+[node name="SlipperyFloorTile14" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(56, 24)
+
+[node name="SlipperyFloorTile15" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(72, 24)
+
+[node name="SlipperyFloorTile16" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(88, 24)
+
+[node name="SlipperyFloorTile17" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(104, 24)
+
+[node name="SlipperyFloorTile18" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(120, 24)
+
+[node name="SlipperyFloorTile19" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(136, 24)
+
+[node name="SlipperyFloorTile20" parent="." instance=ExtResource("1_8narl")]
+position = Vector2(152, 24)

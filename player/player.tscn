@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ddqssg6qko7t7"]
+[gd_scene load_steps=61 format=3 uid="uid://ddqssg6qko7t7"]
 
 [ext_resource type="Texture2D" uid="uid://bmdig0ou30s7p" path="res://player/player.png" id="1_1bkcv"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2tsp"]
@@ -324,6 +324,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iulul"]
+size = Vector2(4, 4)
+
 [node name="Player" type="CharacterBody2D" groups=["player_physics_body_collision"]]
 y_sort_enabled = true
 motion_mode = 1
@@ -399,6 +402,12 @@ zoom = Vector2(3, 3)
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("15_4s4ca")]
 visible = false
+
+[node name="FeetHitboxArea" parent="." instance=ExtResource("4_8kxvr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeetHitboxArea"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_iulul")
 
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Weapon/WeaponReload" to="Weapon" method="_on_weapon_reload_timeout"]

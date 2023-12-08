@@ -125,7 +125,6 @@ health_component = SubResource("Resource_sur25")
 mana_component = SubResource("Resource_2bgqq")
 
 [node name="IntroCastleLoreManager" parent="." instance=ExtResource("6_bsn1n")]
-_should_show_lore_cutscene = false
 
 [node name="GuardCaptainNPC" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("7_ysuuh")]
 position = Vector2(943, -2)

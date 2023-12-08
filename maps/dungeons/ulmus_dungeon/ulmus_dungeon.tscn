@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=39 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
@@ -185,6 +185,11 @@ dialog = Array[String](["Ah, you finally arrived.", "I saw what you did to my fr
 script = ExtResource("21_1lba6")
 author = "Puzzlemaster"
 dialog = Array[String](["Huh? How did you solve the last puzzle?", "Hmmm... no matter. I made several puzzles just in case."])
+
+[sub_resource type="Resource" id="Resource_mwlwu"]
+script = ExtResource("21_1lba6")
+author = "Puzzlemaster"
+dialog = Array[String](["So you managed to solve the last puzzle too?", "IMPOSSIBLE.", "You're clearly cheating somehow.", "Good thing I added a bunch of slippery mud all over this puzzle.", "You're not the only one that can play dirty, CHEATER!"])
 
 [node name="UlmusDungeon" type="Node2D"]
 y_sort_enabled = true
@@ -490,6 +495,14 @@ _dialog = SubResource("Resource_7htlf")
 [node name="TauronWorshiperEnemySprite" parent="PropCollection/NpcCollection/PuzzleDialogNPC" instance=ExtResource("21_23fb1")]
 position = Vector2(-0.207764, 6.93311)
 
+[node name="PuzzlemasterNPC" parent="PropCollection/NpcCollection" node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("20_08cx8")]
+position = Vector2(4027, -1296)
+_animated_sprite = NodePath("TauronWorshiperEnemySprite")
+_dialog = SubResource("Resource_mwlwu")
+
+[node name="TauronWorshiperEnemySprite" parent="PropCollection/NpcCollection/PuzzlemasterNPC" instance=ExtResource("21_23fb1")]
+position = Vector2(0, 6)
+
 [node name="PuzzleCollection" type="Node2D" parent="PropCollection"]
 y_sort_enabled = true
 
@@ -682,210 +695,1242 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(4072, -1400)
 
-[node name="SlipperyTiles" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
+[node name="PatchOfMudTiles" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
 y_sort_enabled = true
-position = Vector2(20, 2)
+position = Vector2(8, 8)
 
-[node name="SlipperyFloorTile" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(12, 30)
+[node name="SlipperyFloorTile" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 8)
 
-[node name="SlipperyFloorTile6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 30)
+[node name="SlipperyFloorTile2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 8)
 
-[node name="SlipperyFloorTile7" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(60, 30)
+[node name="SlipperyFloorTile3" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(40, 8)
 
-[node name="SlipperyFloorTile8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(76, 30)
+[node name="SlipperyFloorTile4" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 8)
 
-[node name="SlipperyFloorTile9" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(92, 30)
+[node name="SlipperyFloorTile5" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 8)
 
-[node name="SlipperyFloorTile10" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(108, 30)
+[node name="SlipperyFloorTile6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 8)
 
-[node name="SlipperyFloorTile11" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 46)
+[node name="SlipperyFloorTile7" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 8)
 
-[node name="SlipperyFloorTile12" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(60, 46)
+[node name="SlipperyFloorTile8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 8)
 
-[node name="SlipperyFloorTile13" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(76, 46)
+[node name="SlipperyFloorTile9" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 8)
 
-[node name="SlipperyFloorTile14" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(92, 46)
+[node name="SlipperyFloorTile10" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 8)
 
-[node name="SlipperyFloorTile15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(108, 46)
+[node name="SlipperyFloorTile21" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 40)
 
-[node name="SlipperyFloorTile16" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(76, 62)
+[node name="SlipperyFloorTile22" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 40)
 
-[node name="SlipperyFloorTile17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(92, 62)
+[node name="SlipperyFloorTile23" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(40, 40)
 
-[node name="SlipperyFloorTile18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(108, 62)
+[node name="SlipperyFloorTile24" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 40)
 
-[node name="SlipperyFloorTile36" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(124, 62)
+[node name="SlipperyFloorTile25" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 40)
 
-[node name="SlipperyFloorTile37" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(140, 62)
+[node name="SlipperyFloorTile26" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 40)
 
-[node name="SlipperyFloorTile2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(28, 46)
+[node name="SlipperyFloorTile27" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 40)
 
-[node name="SlipperyFloorTile3" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(28, 62)
+[node name="SlipperyFloorTile28" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 40)
 
-[node name="SlipperyFloorTile4" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 62)
+[node name="SlipperyFloorTile29" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 40)
 
-[node name="SlipperyFloorTile5" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(60, 62)
+[node name="SlipperyFloorTile30" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 40)
 
-[node name="SlipperyFloorTile19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 14)
+[node name="SlipperyFloorTile31" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 56)
 
-[node name="SlipperyFloorTile20" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(28, 14)
+[node name="SlipperyFloorTile33" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(40, 56)
 
-[node name="SlipperyFloorTile21" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(12, 14)
+[node name="SlipperyFloorTile34" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 56)
 
-[node name="SlipperyFloorTile22" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(-4, 14)
+[node name="SlipperyFloorTile35" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 56)
 
-[node name="SlipperyFloorTile23" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(60, 14)
+[node name="SlipperyFloorTile36" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 56)
 
-[node name="SlipperyFloorTile24" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(76, 14)
+[node name="SlipperyFloorTile37" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 56)
 
-[node name="SlipperyFloorTile25" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(92, 14)
+[node name="SlipperyFloorTile38" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 56)
 
-[node name="SlipperyFloorTile26" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(108, 14)
+[node name="SlipperyFloorTile39" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 56)
 
-[node name="SlipperyFloorTile38" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(124, 46)
+[node name="SlipperyFloorTile40" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 56)
 
-[node name="SlipperyFloorTile39" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(124, 30)
+[node name="SlipperyFloorTile41" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 72)
 
-[node name="SlipperyFloorTile40" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(124, 14)
+[node name="SlipperyFloorTile42" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 72)
 
-[node name="SlipperyFloorTile41" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(140, 14)
+[node name="SlipperyFloorTile44" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 72)
 
-[node name="SlipperyFloorTile42" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(140, 30)
+[node name="SlipperyFloorTile45" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 72)
 
-[node name="SlipperyFloorTile43" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(140, 46)
+[node name="SlipperyFloorTile46" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 72)
 
-[node name="SlipperyFloorTile44" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(172, 30)
+[node name="SlipperyFloorTile47" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 72)
 
-[node name="SlipperyFloorTile45" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(188, 30)
+[node name="SlipperyFloorTile48" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 72)
 
-[node name="SlipperyFloorTile46" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(204, 30)
+[node name="SlipperyFloorTile49" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 72)
 
-[node name="SlipperyFloorTile47" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(220, 30)
+[node name="SlipperyFloorTile50" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 72)
 
-[node name="SlipperyFloorTile48" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(252, 30)
+[node name="SlipperyFloorTile51" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 88)
 
-[node name="SlipperyFloorTile49" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(156, 14)
+[node name="SlipperyFloorTile52" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 88)
 
-[node name="SlipperyFloorTile50" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(172, 14)
+[node name="SlipperyFloorTile54" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 88)
 
-[node name="SlipperyFloorTile51" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(188, 14)
+[node name="SlipperyFloorTile55" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 88)
 
-[node name="SlipperyFloorTile52" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(204, 14)
+[node name="SlipperyFloorTile56" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 88)
 
-[node name="SlipperyFloorTile53" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(220, 14)
+[node name="SlipperyFloorTile57" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 88)
 
-[node name="SlipperyFloorTile54" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(236, 14)
+[node name="SlipperyFloorTile58" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 88)
 
-[node name="SlipperyFloorTile55" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(252, 14)
+[node name="SlipperyFloorTile59" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 88)
 
-[node name="SlipperyFloorTile56" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(252, 46)
+[node name="SlipperyFloorTile61" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 104)
 
-[node name="SlipperyFloorTile57" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(236, 46)
+[node name="SlipperyFloorTile62" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 104)
 
-[node name="SlipperyFloorTile58" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(220, 46)
+[node name="SlipperyFloorTile65" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 104)
 
-[node name="SlipperyFloorTile59" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(204, 46)
+[node name="SlipperyFloorTile66" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 104)
 
-[node name="SlipperyFloorTile60" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(188, 46)
+[node name="SlipperyFloorTile67" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 104)
 
-[node name="SlipperyFloorTile61" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(172, 46)
+[node name="SlipperyFloorTile68" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 104)
 
-[node name="SlipperyFloorTile62" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(172, 62)
+[node name="SlipperyFloorTile69" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 104)
 
-[node name="SlipperyFloorTile63" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(188, 62)
+[node name="SlipperyFloorTile71" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 120)
 
-[node name="SlipperyFloorTile64" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(204, 62)
+[node name="SlipperyFloorTile75" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 120)
 
-[node name="SlipperyFloorTile65" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(220, 62)
+[node name="SlipperyFloorTile76" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 120)
 
-[node name="SlipperyFloorTile66" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(236, 62)
+[node name="SlipperyFloorTile77" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 120)
 
-[node name="SlipperyFloorTile67" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(252, 62)
+[node name="SlipperyFloorTile78" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 120)
 
-[node name="SlipperyFloorTile27" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(12, 46)
+[node name="SlipperyFloorTile79" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 120)
 
-[node name="SlipperyFloorTile28" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(-4, 46)
+[node name="SlipperyFloorTile80" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 120)
 
-[node name="SlipperyFloorTile29" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(28, 142)
+[node name="SlipperyFloorTile81" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 136)
 
-[node name="SlipperyFloorTile30" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(28, 158)
+[node name="SlipperyFloorTile82" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 136)
 
-[node name="SlipperyFloorTile31" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 174)
+[node name="SlipperyFloorTile83" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(40, 136)
 
-[node name="SlipperyFloorTile32" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 190)
+[node name="SlipperyFloorTile84" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 136)
 
-[node name="SlipperyFloorTile33" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(28, 190)
+[node name="SlipperyFloorTile85" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 136)
 
-[node name="SlipperyFloorTile34" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 142)
+[node name="SlipperyFloorTile86" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 136)
 
-[node name="SlipperyFloorTile35" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/SlipperyTiles" instance=ExtResource("27_r604t")]
-position = Vector2(44, 158)
+[node name="SlipperyFloorTile87" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 136)
+
+[node name="SlipperyFloorTile88" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 136)
+
+[node name="SlipperyFloorTile89" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 136)
+
+[node name="SlipperyFloorTile90" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 136)
+
+[node name="SlipperyFloorTile91" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile92" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile93" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile94" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile95" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile96" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile97" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile98" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile99" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile100" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile101" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile102" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile103" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile104" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile105" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile106" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile107" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile108" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile109" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile110" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile12" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(24, 24)
+
+[node name="SlipperyFloorTile14" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(56, 24)
+
+[node name="SlipperyFloorTile15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(72, 24)
+
+[node name="SlipperyFloorTile16" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(88, 24)
+
+[node name="SlipperyFloorTile17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(104, 24)
+
+[node name="SlipperyFloorTile18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(120, 24)
+
+[node name="SlipperyFloorTile19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(136, 24)
+
+[node name="SlipperyFloorTile20" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles" instance=ExtResource("27_r604t")]
+position = Vector2(152, 24)
+
+[node name="PatchOfMudTiles2" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
+y_sort_enabled = true
+position = Vector2(168, 8)
+
+[node name="SlipperyFloorTile" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 8)
+
+[node name="SlipperyFloorTile2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 8)
+
+[node name="SlipperyFloorTile3" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 8)
+
+[node name="SlipperyFloorTile4" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 8)
+
+[node name="SlipperyFloorTile5" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 8)
+
+[node name="SlipperyFloorTile6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 8)
+
+[node name="SlipperyFloorTile7" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 8)
+
+[node name="SlipperyFloorTile8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 8)
+
+[node name="SlipperyFloorTile9" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 8)
+
+[node name="SlipperyFloorTile10" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 8)
+
+[node name="SlipperyFloorTile22" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 40)
+
+[node name="SlipperyFloorTile23" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 40)
+
+[node name="SlipperyFloorTile24" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 40)
+
+[node name="SlipperyFloorTile25" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 40)
+
+[node name="SlipperyFloorTile26" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 40)
+
+[node name="SlipperyFloorTile27" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 40)
+
+[node name="SlipperyFloorTile28" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 40)
+
+[node name="SlipperyFloorTile29" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 40)
+
+[node name="SlipperyFloorTile30" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 40)
+
+[node name="SlipperyFloorTile32" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 56)
+
+[node name="SlipperyFloorTile33" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 56)
+
+[node name="SlipperyFloorTile34" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 56)
+
+[node name="SlipperyFloorTile35" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 56)
+
+[node name="SlipperyFloorTile36" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 56)
+
+[node name="SlipperyFloorTile37" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 56)
+
+[node name="SlipperyFloorTile38" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 56)
+
+[node name="SlipperyFloorTile39" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 56)
+
+[node name="SlipperyFloorTile40" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 56)
+
+[node name="SlipperyFloorTile41" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 72)
+
+[node name="SlipperyFloorTile42" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 72)
+
+[node name="SlipperyFloorTile43" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 72)
+
+[node name="SlipperyFloorTile44" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 72)
+
+[node name="SlipperyFloorTile45" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 72)
+
+[node name="SlipperyFloorTile46" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 72)
+
+[node name="SlipperyFloorTile47" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 72)
+
+[node name="SlipperyFloorTile48" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 72)
+
+[node name="SlipperyFloorTile49" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 72)
+
+[node name="SlipperyFloorTile50" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 72)
+
+[node name="SlipperyFloorTile51" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 88)
+
+[node name="SlipperyFloorTile52" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 88)
+
+[node name="SlipperyFloorTile53" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 88)
+
+[node name="SlipperyFloorTile54" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 88)
+
+[node name="SlipperyFloorTile55" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 88)
+
+[node name="SlipperyFloorTile56" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 88)
+
+[node name="SlipperyFloorTile57" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 88)
+
+[node name="SlipperyFloorTile58" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 88)
+
+[node name="SlipperyFloorTile59" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 88)
+
+[node name="SlipperyFloorTile60" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 88)
+
+[node name="SlipperyFloorTile61" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 104)
+
+[node name="SlipperyFloorTile62" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 104)
+
+[node name="SlipperyFloorTile63" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 104)
+
+[node name="SlipperyFloorTile64" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 104)
+
+[node name="SlipperyFloorTile67" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 104)
+
+[node name="SlipperyFloorTile68" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 104)
+
+[node name="SlipperyFloorTile69" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 104)
+
+[node name="SlipperyFloorTile70" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 104)
+
+[node name="SlipperyFloorTile71" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 120)
+
+[node name="SlipperyFloorTile72" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 120)
+
+[node name="SlipperyFloorTile73" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 120)
+
+[node name="SlipperyFloorTile74" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 120)
+
+[node name="SlipperyFloorTile75" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 120)
+
+[node name="SlipperyFloorTile76" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 120)
+
+[node name="SlipperyFloorTile77" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 120)
+
+[node name="SlipperyFloorTile78" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 120)
+
+[node name="SlipperyFloorTile79" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 120)
+
+[node name="SlipperyFloorTile80" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 120)
+
+[node name="SlipperyFloorTile81" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 136)
+
+[node name="SlipperyFloorTile82" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 136)
+
+[node name="SlipperyFloorTile83" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 136)
+
+[node name="SlipperyFloorTile84" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 136)
+
+[node name="SlipperyFloorTile85" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 136)
+
+[node name="SlipperyFloorTile86" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 136)
+
+[node name="SlipperyFloorTile87" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 136)
+
+[node name="SlipperyFloorTile88" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 136)
+
+[node name="SlipperyFloorTile89" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 136)
+
+[node name="SlipperyFloorTile90" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 136)
+
+[node name="SlipperyFloorTile91" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile92" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile93" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile94" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile95" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile96" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile97" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile98" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile99" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile100" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile101" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile102" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile103" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile104" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile105" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile106" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile107" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile108" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile109" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile110" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile12" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(24, 24)
+
+[node name="SlipperyFloorTile13" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(40, 24)
+
+[node name="SlipperyFloorTile14" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(56, 24)
+
+[node name="SlipperyFloorTile15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(72, 24)
+
+[node name="SlipperyFloorTile17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(104, 24)
+
+[node name="SlipperyFloorTile18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(120, 24)
+
+[node name="SlipperyFloorTile19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(136, 24)
+
+[node name="SlipperyFloorTile20" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles2" instance=ExtResource("27_r604t")]
+position = Vector2(152, 24)
+
+[node name="PatchOfMudTiles3" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
+y_sort_enabled = true
+position = Vector2(8, 40)
+
+[node name="SlipperyFloorTile" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 8)
+
+[node name="SlipperyFloorTile2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 8)
+
+[node name="SlipperyFloorTile3" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 8)
+
+[node name="SlipperyFloorTile4" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 8)
+
+[node name="SlipperyFloorTile5" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 8)
+
+[node name="SlipperyFloorTile6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 8)
+
+[node name="SlipperyFloorTile7" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 8)
+
+[node name="SlipperyFloorTile8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 8)
+
+[node name="SlipperyFloorTile9" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 8)
+
+[node name="SlipperyFloorTile10" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 8)
+
+[node name="SlipperyFloorTile21" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 40)
+
+[node name="SlipperyFloorTile22" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 40)
+
+[node name="SlipperyFloorTile24" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 40)
+
+[node name="SlipperyFloorTile25" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 40)
+
+[node name="SlipperyFloorTile26" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 40)
+
+[node name="SlipperyFloorTile27" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 40)
+
+[node name="SlipperyFloorTile28" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 40)
+
+[node name="SlipperyFloorTile29" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 40)
+
+[node name="SlipperyFloorTile30" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 40)
+
+[node name="SlipperyFloorTile31" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 56)
+
+[node name="SlipperyFloorTile32" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 56)
+
+[node name="SlipperyFloorTile34" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 56)
+
+[node name="SlipperyFloorTile35" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 56)
+
+[node name="SlipperyFloorTile36" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 56)
+
+[node name="SlipperyFloorTile37" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 56)
+
+[node name="SlipperyFloorTile38" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 56)
+
+[node name="SlipperyFloorTile39" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 56)
+
+[node name="SlipperyFloorTile41" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 72)
+
+[node name="SlipperyFloorTile42" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 72)
+
+[node name="SlipperyFloorTile45" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 72)
+
+[node name="SlipperyFloorTile46" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 72)
+
+[node name="SlipperyFloorTile47" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 72)
+
+[node name="SlipperyFloorTile48" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 72)
+
+[node name="SlipperyFloorTile49" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 72)
+
+[node name="SlipperyFloorTile51" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 88)
+
+[node name="SlipperyFloorTile55" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 88)
+
+[node name="SlipperyFloorTile56" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 88)
+
+[node name="SlipperyFloorTile57" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 88)
+
+[node name="SlipperyFloorTile58" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 88)
+
+[node name="SlipperyFloorTile59" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 88)
+
+[node name="SlipperyFloorTile60" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 88)
+
+[node name="SlipperyFloorTile61" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 104)
+
+[node name="SlipperyFloorTile62" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 104)
+
+[node name="SlipperyFloorTile63" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 104)
+
+[node name="SlipperyFloorTile64" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 104)
+
+[node name="SlipperyFloorTile65" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 104)
+
+[node name="SlipperyFloorTile66" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 104)
+
+[node name="SlipperyFloorTile67" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 104)
+
+[node name="SlipperyFloorTile68" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 104)
+
+[node name="SlipperyFloorTile69" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 104)
+
+[node name="SlipperyFloorTile70" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 104)
+
+[node name="SlipperyFloorTile71" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 120)
+
+[node name="SlipperyFloorTile72" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 120)
+
+[node name="SlipperyFloorTile73" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 120)
+
+[node name="SlipperyFloorTile74" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 120)
+
+[node name="SlipperyFloorTile75" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 120)
+
+[node name="SlipperyFloorTile76" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 120)
+
+[node name="SlipperyFloorTile77" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 120)
+
+[node name="SlipperyFloorTile78" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 120)
+
+[node name="SlipperyFloorTile79" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 120)
+
+[node name="SlipperyFloorTile80" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 120)
+
+[node name="SlipperyFloorTile81" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 136)
+
+[node name="SlipperyFloorTile82" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 136)
+
+[node name="SlipperyFloorTile84" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 136)
+
+[node name="SlipperyFloorTile85" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 136)
+
+[node name="SlipperyFloorTile86" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 136)
+
+[node name="SlipperyFloorTile87" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 136)
+
+[node name="SlipperyFloorTile88" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 136)
+
+[node name="SlipperyFloorTile89" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 136)
+
+[node name="SlipperyFloorTile90" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 136)
+
+[node name="SlipperyFloorTile91" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile92" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile93" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile94" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile95" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile96" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile97" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile98" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile99" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile100" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile101" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile102" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile103" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile104" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile105" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile106" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile107" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile108" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile109" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile110" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile11" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(8, 24)
+
+[node name="SlipperyFloorTile13" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(40, 24)
+
+[node name="SlipperyFloorTile14" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(56, 24)
+
+[node name="SlipperyFloorTile15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(72, 24)
+
+[node name="SlipperyFloorTile16" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(88, 24)
+
+[node name="SlipperyFloorTile17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(104, 24)
+
+[node name="SlipperyFloorTile18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(120, 24)
+
+[node name="SlipperyFloorTile19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(136, 24)
+
+[node name="SlipperyFloorTile20" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles3" instance=ExtResource("27_r604t")]
+position = Vector2(152, 24)
+
+[node name="PatchOfMudTiles4" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
+y_sort_enabled = true
+position = Vector2(168, 40)
+
+[node name="SlipperyFloorTile2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 8)
+
+[node name="SlipperyFloorTile3" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 8)
+
+[node name="SlipperyFloorTile4" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 8)
+
+[node name="SlipperyFloorTile5" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 8)
+
+[node name="SlipperyFloorTile6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 8)
+
+[node name="SlipperyFloorTile7" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 8)
+
+[node name="SlipperyFloorTile8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 8)
+
+[node name="SlipperyFloorTile9" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 8)
+
+[node name="SlipperyFloorTile10" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 8)
+
+[node name="SlipperyFloorTile21" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 40)
+
+[node name="SlipperyFloorTile22" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 40)
+
+[node name="SlipperyFloorTile23" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 40)
+
+[node name="SlipperyFloorTile24" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 40)
+
+[node name="SlipperyFloorTile25" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 40)
+
+[node name="SlipperyFloorTile26" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 40)
+
+[node name="SlipperyFloorTile27" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 40)
+
+[node name="SlipperyFloorTile28" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 40)
+
+[node name="SlipperyFloorTile29" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 40)
+
+[node name="SlipperyFloorTile30" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 40)
+
+[node name="SlipperyFloorTile31" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 56)
+
+[node name="SlipperyFloorTile32" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 56)
+
+[node name="SlipperyFloorTile33" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 56)
+
+[node name="SlipperyFloorTile34" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 56)
+
+[node name="SlipperyFloorTile35" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 56)
+
+[node name="SlipperyFloorTile36" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 56)
+
+[node name="SlipperyFloorTile37" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 56)
+
+[node name="SlipperyFloorTile38" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 56)
+
+[node name="SlipperyFloorTile39" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 56)
+
+[node name="SlipperyFloorTile40" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 56)
+
+[node name="SlipperyFloorTile41" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 72)
+
+[node name="SlipperyFloorTile42" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 72)
+
+[node name="SlipperyFloorTile43" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 72)
+
+[node name="SlipperyFloorTile44" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 72)
+
+[node name="SlipperyFloorTile47" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 72)
+
+[node name="SlipperyFloorTile48" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 72)
+
+[node name="SlipperyFloorTile49" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 72)
+
+[node name="SlipperyFloorTile50" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 72)
+
+[node name="SlipperyFloorTile51" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 88)
+
+[node name="SlipperyFloorTile52" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 88)
+
+[node name="SlipperyFloorTile53" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 88)
+
+[node name="SlipperyFloorTile54" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 88)
+
+[node name="SlipperyFloorTile55" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 88)
+
+[node name="SlipperyFloorTile56" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 88)
+
+[node name="SlipperyFloorTile57" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 88)
+
+[node name="SlipperyFloorTile58" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 88)
+
+[node name="SlipperyFloorTile59" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 88)
+
+[node name="SlipperyFloorTile60" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 88)
+
+[node name="SlipperyFloorTile61" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 104)
+
+[node name="SlipperyFloorTile62" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 104)
+
+[node name="SlipperyFloorTile63" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 104)
+
+[node name="SlipperyFloorTile64" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 104)
+
+[node name="SlipperyFloorTile65" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 104)
+
+[node name="SlipperyFloorTile66" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 104)
+
+[node name="SlipperyFloorTile67" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 104)
+
+[node name="SlipperyFloorTile68" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 104)
+
+[node name="SlipperyFloorTile69" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 104)
+
+[node name="SlipperyFloorTile70" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 104)
+
+[node name="SlipperyFloorTile71" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 120)
+
+[node name="SlipperyFloorTile72" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 120)
+
+[node name="SlipperyFloorTile73" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 120)
+
+[node name="SlipperyFloorTile74" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 120)
+
+[node name="SlipperyFloorTile75" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 120)
+
+[node name="SlipperyFloorTile76" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 120)
+
+[node name="SlipperyFloorTile77" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 120)
+
+[node name="SlipperyFloorTile78" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 120)
+
+[node name="SlipperyFloorTile79" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 120)
+
+[node name="SlipperyFloorTile80" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 120)
+
+[node name="SlipperyFloorTile81" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 136)
+
+[node name="SlipperyFloorTile82" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 136)
+
+[node name="SlipperyFloorTile83" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 136)
+
+[node name="SlipperyFloorTile84" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 136)
+
+[node name="SlipperyFloorTile85" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 136)
+
+[node name="SlipperyFloorTile86" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 136)
+
+[node name="SlipperyFloorTile87" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 136)
+
+[node name="SlipperyFloorTile88" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 136)
+
+[node name="SlipperyFloorTile89" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 136)
+
+[node name="SlipperyFloorTile90" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 136)
+
+[node name="SlipperyFloorTile91" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile92" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile93" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile94" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile95" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile96" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile97" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile98" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile99" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile100" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile101" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(8, 152)
+
+[node name="SlipperyFloorTile102" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 152)
+
+[node name="SlipperyFloorTile103" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 152)
+
+[node name="SlipperyFloorTile104" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 152)
+
+[node name="SlipperyFloorTile105" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 152)
+
+[node name="SlipperyFloorTile106" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 152)
+
+[node name="SlipperyFloorTile107" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 152)
+
+[node name="SlipperyFloorTile108" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 152)
+
+[node name="SlipperyFloorTile109" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 152)
+
+[node name="SlipperyFloorTile110" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 152)
+
+[node name="SlipperyFloorTile12" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(24, 24)
+
+[node name="SlipperyFloorTile13" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(40, 24)
+
+[node name="SlipperyFloorTile14" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(56, 24)
+
+[node name="SlipperyFloorTile15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(72, 24)
+
+[node name="SlipperyFloorTile16" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(88, 24)
+
+[node name="SlipperyFloorTile17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(104, 24)
+
+[node name="SlipperyFloorTile18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(120, 24)
+
+[node name="SlipperyFloorTile19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(136, 24)
+
+[node name="SlipperyFloorTile20" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/PatchOfMudTiles4" instance=ExtResource("27_r604t")]
+position = Vector2(152, 24)
 
 [node name="FloorXSwitches" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
 y_sort_enabled = true
@@ -936,6 +1981,26 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(48, 80)
 
+[node name="FloorXPuzzleSwitch16" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(160, 80)
+
+[node name="FloorXPuzzleSwitch17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(160, 96)
+
+[node name="FloorXPuzzleSwitch18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(256, 96)
+
+[node name="FloorXPuzzleSwitch19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(240, 96)
+
 [node name="FloorXPuzzleSwitch6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
 z_index = -1
 y_sort_enabled = true
@@ -945,6 +2010,11 @@ position = Vector2(48, 96)
 z_index = -1
 y_sort_enabled = true
 position = Vector2(48, 112)
+
+[node name="FloorXPuzzleSwitch15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(32, 112)
 
 [node name="FloorXPuzzleSwitch8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
 z_index = -1
@@ -959,7 +2029,7 @@ position = Vector2(64, 96)
 [node name="FloorXPuzzleSwitch10" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/FloorXSwitches" instance=ExtResource("23_nndhf")]
 z_index = -1
 y_sort_enabled = true
-position = Vector2(48, 160)
+position = Vector2(32, 160)
 
 [node name="Obstacles" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
 y_sort_enabled = true
@@ -968,7 +2038,19 @@ y_sort_enabled = true
 position = Vector2(15, 47)
 
 [node name="StationaryRock4" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/Obstacles" instance=ExtResource("24_lhn7b")]
-position = Vector2(48, 191)
+position = Vector2(32, 191)
+
+[node name="StationaryRock5" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/Obstacles" instance=ExtResource("24_lhn7b")]
+position = Vector2(273, 176)
+
+[node name="StationaryRock6" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/Obstacles" instance=ExtResource("24_lhn7b")]
+position = Vector2(144, 113)
+
+[node name="StationaryRock7" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/Obstacles" instance=ExtResource("24_lhn7b")]
+position = Vector2(159, 79)
+
+[node name="StationaryRock8" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/Obstacles" instance=ExtResource("24_lhn7b")]
+position = Vector2(176, 79)
 
 [node name="StationaryRock2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/Obstacles" instance=ExtResource("24_lhn7b")]
 position = Vector2(32, 47)
@@ -978,6 +2060,12 @@ position = Vector2(49, 15)
 
 [node name="ObstaclesToBreak" type="Node2D" parent="PropCollection/PuzzleCollection/FloorXPuzzle3"]
 y_sort_enabled = true
+
+[node name="StationaryRock" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/ObstaclesToBreak" instance=ExtResource("24_lhn7b")]
+position = Vector2(-17, -5)
+
+[node name="StationaryRock2" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/ObstaclesToBreak" instance=ExtResource("24_lhn7b")]
+position = Vector2(-31, -5)
 
 [node name="FloorXPuzzleResetSwitch" parent="PropCollection/PuzzleCollection/FloorXPuzzle3" instance=ExtResource("25_5t0tx")]
 z_index = -1
@@ -1044,6 +2132,66 @@ position = Vector2(160, 0)
 
 [node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter10" instance=ExtResource("6_axfhp")]
 position = Vector2(-209, 22)
+
+[node name="Teleporter11" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(176, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter11" instance=ExtResource("6_axfhp")]
+position = Vector2(-225, 22)
+
+[node name="Teleporter12" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(192, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter12" instance=ExtResource("6_axfhp")]
+position = Vector2(-241, 22)
+
+[node name="Teleporter13" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(208, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter13" instance=ExtResource("6_axfhp")]
+position = Vector2(-257, 22)
+
+[node name="Teleporter14" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(224, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter14" instance=ExtResource("6_axfhp")]
+position = Vector2(-273, 22)
+
+[node name="Teleporter15" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(240, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter15" instance=ExtResource("6_axfhp")]
+position = Vector2(-289, 22)
+
+[node name="Teleporter16" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(256, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter16" instance=ExtResource("6_axfhp")]
+position = Vector2(-305, 22)
+
+[node name="Teleporter17" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(272, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter17" instance=ExtResource("6_axfhp")]
+position = Vector2(-321, 22)
+
+[node name="Teleporter18" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(288, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter18" instance=ExtResource("6_axfhp")]
+position = Vector2(-337, 22)
+
+[node name="Teleporter19" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(304, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter19" instance=ExtResource("6_axfhp")]
+position = Vector2(-353, 22)
+
+[node name="Teleporter20" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters" instance=ExtResource("5_yst44")]
+position = Vector2(320, 0)
+
+[node name="TeleporterDestination" parent="PropCollection/PuzzleCollection/FloorXPuzzle3/VoidTeleporters/Teleporter20" instance=ExtResource("6_axfhp")]
+position = Vector2(-369, 22)
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_y2tpw")

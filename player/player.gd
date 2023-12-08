@@ -34,6 +34,8 @@ const DODGE_DURATION := 0.6
 
 @onready var _ground_hitbox: Area2D = self.get_node("GroundHitboxArea")
 
+@onready var _feet_hitbox: Area2D = self.get_node("FeetHitboxArea")
+
 var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
@@ -261,7 +263,7 @@ func _check_and_set_if_should_be_slipping() -> void:
 
 	# If any of the hitboxes overlapping with the ground hitbox 
 	# is a 'Slippery Floor Tile', then the player should be slipping.
-	for hitbox in _ground_hitbox.get_overlapping_areas():
+	for hitbox in _feet_hitbox.get_overlapping_areas():
 		if hitbox.is_in_group("slippery_floor_tile_hitbox"):
 			_is_slipping = true
 			break
