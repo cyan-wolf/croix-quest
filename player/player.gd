@@ -263,8 +263,8 @@ func _check_and_set_if_should_be_slipping() -> void:
 
 	# If any of the hitboxes overlapping with the feet's hitbox 
 	# is a 'Slippery Floor Tile', then the player should be slipping.
-	for hitbox in _feet_hitbox.get_overlapping_areas():
-		if hitbox.is_in_group("slippery_floor_tile_hitbox"):
+	for tile in _feet_hitbox.get_overlapping_bodies():
+		if tile.is_in_group("slippery_floor_tile_hitbox"):
 			_is_slipping = true
 			break
 

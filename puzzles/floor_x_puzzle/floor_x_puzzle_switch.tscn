@@ -47,6 +47,7 @@ animations = [{
 size = Vector2(9, 9)
 
 [node name="FloorXPuzzleSwitch" type="Node2D"]
+z_index = -1
 script = ExtResource("1_god7m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

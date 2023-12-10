@@ -70,8 +70,8 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 
 # This is supposed to destroy the projectile if it hits the "edge" of the dungeon.
-func _on_body_entered_hitbox(_body: Node2D) -> void:
-	if _collides_with_wall_edges:
+func _on_body_entered_hitbox(tile: Node2D) -> void:
+	if _collides_with_wall_edges and not tile.is_in_group("slippery_floor_tile_hitbox"):
 		self.projectile_hit.emit()
 
 

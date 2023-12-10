@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://yqv4nf6uuc7p"]
+
+[ext_resource type="Texture2D" uid="uid://cweiqlkqvmlco" path="res://util/slippery_floor_tile/mud.png" id="1_pqle8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tckfe"]
+texture = ExtResource("1_pqle8")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_jq2p7"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_tckfe")
+
+[node name="SlipperyTileMap" type="TileMap" groups=["slippery_floor_tile_hitbox"]]
+position = Vector2(-5160, 1400)
+tile_set = SubResource("TileSet_jq2p7")
+format = 2
+layer_0/name = "Mud"
