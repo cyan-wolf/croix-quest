@@ -28,6 +28,7 @@ radius = 8.0
 
 [node name="PushableRock" type="AnimatableBody2D" groups=["projectile_interactable_hitbox"]]
 y_sort_enabled = true
+collision_layer = 3
 sync_to_physics = false
 script = ExtResource("1_mx0po")
 
