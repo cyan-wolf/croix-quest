@@ -242,6 +242,7 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_71es4")
 
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
+position = Vector2(4050, -1302)
 health_component = SubResource("Resource_p1nne")
 mana_component = SubResource("Resource_2x206")
 

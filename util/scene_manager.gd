@@ -79,8 +79,15 @@ func load_packed_scene(scene: PackedScene) -> void:
 	self.load_scene_file(scene.resource_path)
 
 
+## Tries to find the player if there is one in the current scene.
+## If there isn't, this method returns `null`.
 func find_player() -> Player:
-	return self.get_tree().current_scene.get_node("Player") as Player
+	var cur_scene := self.get_tree().current_scene
+	
+	if cur_scene != null:
+		return cur_scene.get_node_or_null("Player")
+	else:
+		return null
 
 
 func find_camera() -> Camera2D:
