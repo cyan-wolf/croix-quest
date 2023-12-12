@@ -31,11 +31,11 @@ func _on_quit_button_pressed() -> void:
 
 	# Force the player to respawn in order to reset any leftover state.
 	SceneManager.find_player().respawn_component.respawn()
+	
+	_reset_ui()
 
 	# Go to the main menu.
 	SceneManager.load_scene_file(Util.ScenePath.MAIN_MENU)
-
-	_reset_ui()
 
 
 # Resets various UIs to their previous states after the game over screen is used.
