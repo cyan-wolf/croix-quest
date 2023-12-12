@@ -19,3 +19,4 @@ position = Vector2(-5160, 1400)
 tile_set = SubResource("TileSet_jq2p7")
 format = 2
 layer_0/name = "Mud"
+layer_0/z_index = -1
