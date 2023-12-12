@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckntld1k14ymv"]
+[gd_scene load_steps=10 format=3 uid="uid://dbhscitt7vsb"]
 
 [sub_resource type="Curve" id="Curve_dv4gj"]
 min_value = -360.0
@@ -31,8 +31,8 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_h3kab"]
 curve = SubResource("Curve_qkqcm")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cohy0"]
-lifetime_randomness = 0.21
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nxixh"]
+lifetime_randomness = 1.0
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 23.9
@@ -42,18 +42,19 @@ spread = 0.0
 initial_velocity_max = 1.0
 angular_velocity_max = 1.0
 angular_velocity_curve = SubResource("CurveTexture_nlstf")
-orbit_velocity_max = 0.02
+orbit_velocity_max = 0.5
+radial_velocity_max = 10.0
 gravity = Vector3(0, 1.145, 0)
-tangential_accel_max = 20.0
-scale_max = 3.0
+radial_accel_max = 50.0
+tangential_accel_max = 100.0
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_h3kab")
-color = Color(0, 0.576471, 0.882353, 1)
+color = Color(0, 1, 0.282353, 1)
 color_ramp = SubResource("GradientTexture1D_njb5j")
-hue_variation_max = 0.08
+hue_variation_max = 1.0
 hue_variation_curve = SubResource("CurveTexture_3s357")
 
-[node name="DefenseBoostParticles" type="GPUParticles2D"]
+[node name="SpeedBoostParticles" type="GPUParticles2D"]
 emitting = false
-amount = 113
-process_material = SubResource("ParticleProcessMaterial_cohy0")
-lifetime = 2.0
+amount = 183
+process_material = SubResource("ParticleProcessMaterial_nxixh")

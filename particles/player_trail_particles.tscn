@@ -3,41 +3,40 @@
 [sub_resource type="Curve" id="Curve_dv4gj"]
 min_value = -360.0
 max_value = 360.0
-_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_nlstf"]
 curve = SubResource("Curve_dv4gj")
 
 [sub_resource type="Gradient" id="Gradient_mvy0r"]
-offsets = PackedFloat32Array(0, 0.496296, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0.705882, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.47541, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.94902, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_njb5j"]
 gradient = SubResource("Gradient_mvy0r")
 
 [sub_resource type="Curve" id="Curve_qkqcm"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13253, 0.968421), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.52, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_h3kab"]
 curve = SubResource("Curve_qkqcm")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_juvlm"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kdxgi"]
 lifetime_randomness = 0.21
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 23.9
-particle_flag_disable_z = true
+angle_max = 360.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
-gravity = Vector3(0, 1.145, 0)
 initial_velocity_max = 1.0
 angular_velocity_max = 1.0
 angular_velocity_curve = SubResource("CurveTexture_nlstf")
-orbit_velocity_min = 0.0
 orbit_velocity_max = 0.05
+gravity = Vector3(0, 1.145, 0)
 tangential_accel_max = 20.0
-angle_max = 360.0
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_h3kab")
 color = Color(0.411765, 0, 0.211765, 1)
@@ -47,5 +46,5 @@ hue_variation_max = 0.08
 [node name="player_trail_particles" type="GPUParticles2D"]
 emitting = false
 amount = 70
-process_material = SubResource("ParticleProcessMaterial_juvlm")
+process_material = SubResource("ParticleProcessMaterial_kdxgi")
 lifetime = 3.0
