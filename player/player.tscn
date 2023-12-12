@@ -356,6 +356,9 @@ shape = SubResource("RectangleShape2D_0egpu")
 sprite_frames = SubResource("SpriteFrames_5a2gx")
 animation = &"Attack"
 
+[node name="player_trail_particles" parent="." instance=ExtResource("13_avcf5")]
+emitting = true
+
 [node name="RunCountdown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -389,9 +392,6 @@ bus = &"sfx"
 one_shot = true
 
 [node name="StatusEffectComponent" parent="." instance=ExtResource("12_klq1u")]
-
-[node name="player_trail_particles" parent="." instance=ExtResource("13_avcf5")]
-emitting = true
 
 [node name="CheckpointComponent" parent="." instance=ExtResource("14_2tpmt")]
 

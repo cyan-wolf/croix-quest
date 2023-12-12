@@ -71,7 +71,6 @@ enum StatusEffectType {
 	NONE = 0,
 	SPEED = 1,
 	DEFENSE = 2,
-	NO_MANA_CONSUMPTION = 4, # unused
 }
 
 ## Utility enum for keeping track of the player's "milestones" in the game.
