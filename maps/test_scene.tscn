@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://41to35a76r2o"]
+[gd_scene load_steps=12 format=3 uid="uid://41to35a76r2o"]
 
 [ext_resource type="TileSet" uid="uid://df3y6ueoyret4" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon.tres" id="1_st4pu"]
 [ext_resource type="PackedScene" uid="uid://yqv4nf6uuc7p" path="res://util/slippery_floor_tile/slippery_tile_map.tscn" id="2_hyhro"]
@@ -10,9 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="8_56i2a"]
 [ext_resource type="PackedScene" uid="uid://dj3ij8ofoj04" path="res://interactables/defense_boost/defense_boost.tscn" id="9_nxosi"]
 [ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="10_pblx8"]
+[ext_resource type="PackedScene" uid="uid://cer0p2vehecrd" path="res://util/light_cystals/light_crystal.tscn" id="11_sccbp"]
 
 [node name="TestScene" type="Node2D"]
 y_sort_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0862745, 0.0901961, 0.105882, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_st4pu")
@@ -130,3 +134,9 @@ position = Vector2(-100, 81)
 [node name="Chest" parent="." instance=ExtResource("8_56i2a")]
 position = Vector2(-22, 26)
 _contents = Array[PackedScene]([ExtResource("9_nxosi"), ExtResource("10_pblx8")])
+
+[node name="LightCrystal2" parent="." instance=ExtResource("11_sccbp")]
+position = Vector2(4, -13)
+
+[node name="LightCrystal3" parent="." instance=ExtResource("11_sccbp")]
+position = Vector2(-15, 29)

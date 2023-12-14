@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cer0p2vehecrd"]
+
+[ext_resource type="Script" path="res://util/light_cystals/light_crystal.gd" id="1_2ktea"]
+[ext_resource type="Texture2D" uid="uid://cafsk2ho3t2o8" path="res://util/light_cystals/vodorod_light_crystal.png" id="2_c8o8j"]
+[ext_resource type="Texture2D" uid="uid://b767xpm7wo6cl" path="res://util/light_cystals/light_texture.png" id="3_o3ad7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsy13"]
+atlas = ExtResource("2_c8o8j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f60ou"]
+atlas = ExtResource("2_c8o8j")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mubnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsy13")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f60ou")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="LightCrystal" type="Node2D"]
+script = ExtResource("1_2ktea")
+_light_color = Color(1, 0.517647, 1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mubnt")
+animation = &"on"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+blend_mode = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+texture = ExtResource("3_o3ad7")
+texture_scale = 2.0
