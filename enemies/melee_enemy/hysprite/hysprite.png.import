@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cva8pwej7dyw5"
-path="res://.godot/imported/hyprite.png-fc1f940178255007d4dfbaef072fa879.ctex"
+path="res://.godot/imported/hysprite.png-711c474f297d8de469bd8d8b27ff3469.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/melee_enemy/hysprite/hyprite.png"
-dest_files=["res://.godot/imported/hyprite.png-fc1f940178255007d4dfbaef072fa879.ctex"]
+source_file="res://enemies/melee_enemy/hysprite/hysprite.png"
+dest_files=["res://.godot/imported/hysprite.png-711c474f297d8de469bd8d8b27ff3469.ctex"]
 
 [params]
 

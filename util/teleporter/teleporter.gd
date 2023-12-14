@@ -1,5 +1,8 @@
 extends Node2D
 
+## Emitted when the player finished being teleported.
+signal used
+
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 # The teleporter should have a 'TeleporterDestination' child node (a separate one in each scene).
 @onready var _teleporter_destination: Node2D = self.get_node("TeleporterDestination")
@@ -27,6 +30,8 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 		if _show_loading_screen:
 			await SceneManager.async_delay(0.5)
 			SceneManager.hide_loading_screen()
+
+		self.used.emit()
 
 
 ## Activates the teleporter.

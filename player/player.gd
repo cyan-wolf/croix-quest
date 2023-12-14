@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Player
 
 const PlayerWeapon := preload("res://player/Weapon.gd")
-const Projectile := preload("res://weapons/projectile/projectile.gd")
 const TauronBoss := preload("res://enemies/bosses/tauron/tauron_boss.gd")
 const PaulBoss := preload("res://enemies/bosses/paul/paul_boss.gd")
 const ShaleSaberBoss := preload("res://enemies/bosses/shale_saber/shale_saber_boss.gd")

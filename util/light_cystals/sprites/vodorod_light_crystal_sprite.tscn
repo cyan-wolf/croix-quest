@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2gojubt2g2cm"]
+
+[ext_resource type="Texture2D" uid="uid://cafsk2ho3t2o8" path="res://util/light_cystals/sprites/vodorod_light_crystal.png" id="1_jupmi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsy13"]
+atlas = ExtResource("1_jupmi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f60ou"]
+atlas = ExtResource("1_jupmi")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mubnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsy13")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f60ou")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mubnt")
+animation = &"on"

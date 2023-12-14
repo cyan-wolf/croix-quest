@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b767xpm7wo6cl"
-path="res://.godot/imported/light_texture.png-5cafbc205298edefee790c6de5dde240.ctex"
+uid="uid://cafsk2ho3t2o8"
+path="res://.godot/imported/vodorod_light_crystal.png-275f7017aa23a35a558d186d2445b371.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://util/light_cystals/light_texture.png"
-dest_files=["res://.godot/imported/light_texture.png-5cafbc205298edefee790c6de5dde240.ctex"]
+source_file="res://util/light_cystals/sprites/vodorod_light_crystal.png"
+dest_files=["res://.godot/imported/vodorod_light_crystal.png-275f7017aa23a35a558d186d2445b371.ctex"]
 
 [params]
 

@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd3kvfdu3i31q"]
+
+[ext_resource type="Texture2D" uid="uid://cva8pwej7dyw5" path="res://enemies/melee_enemy/hysprite/hysprite.png" id="2_smxrh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcwcx"]
+atlas = ExtResource("2_smxrh")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn0lb"]
+atlas = ExtResource("2_smxrh")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leulb"]
+atlas = ExtResource("2_smxrh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl1p0"]
+atlas = ExtResource("2_smxrh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nm7l"]
+atlas = ExtResource("2_smxrh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf124"]
+atlas = ExtResource("2_smxrh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qbfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcwcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn0lb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leulb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl1p0")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nm7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf124")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="HyspriteEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8qbfj")
+animation = &"idle"
+frame_progress = 0.251354

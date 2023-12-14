@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmjgghebmhd0i"
-path="res://.godot/imported/dunkel_light_crystal.png-35c8e98e10fd4d1368a964e61d3b475b.ctex"
+uid="uid://dpbb4j4vp8odc"
+path="res://.godot/imported/ulmus_light_crystal.png-0824a1d7af8dc8e2859660bedf8feadd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://util/light_cystals/dunkel_light_crystal.png"
-dest_files=["res://.godot/imported/dunkel_light_crystal.png-35c8e98e10fd4d1368a964e61d3b475b.ctex"]
+source_file="res://util/light_cystals/sprites/ulmus_light_crystal.png"
+dest_files=["res://.godot/imported/ulmus_light_crystal.png-0824a1d7af8dc8e2859660bedf8feadd.ctex"]
 
 [params]
 

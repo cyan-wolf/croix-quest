@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://wt6itb8w1kh7"]
+
+[ext_resource type="Script" path="res://maps/dungeons/vodorod_dungeon/lore/vodorod_dungeon_lore_manager.gd" id="1_8d082"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_r5skc"]
+[ext_resource type="Texture2D" uid="uid://cpaks84ul84s" path="res://enemies/bosses/shale_saber/shale_saber_sword.png" id="2_vnls3"]
+
+[sub_resource type="Resource" id="Resource_c8r4h"]
+script = ExtResource("2_r5skc")
+author = "Puzzlemaster"
+dialog = Array[String](["RUN!!!"])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4edo"]
+atlas = ExtResource("2_vnls3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ug7ll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4edo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="VodorodDungeonLoreManager" type="Node2D"]
+script = ExtResource("1_8d082")
+_run_warning_dialog = SubResource("Resource_c8r4h")
+_sword_projectile_sprite_frames = SubResource("SpriteFrames_ug7ll")

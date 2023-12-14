@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctecbklr5lgn5"]
+
+[ext_resource type="Texture2D" uid="uid://dpbb4j4vp8odc" path="res://util/light_cystals/sprites/ulmus_light_crystal.png" id="1_41771"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsvrq"]
+atlas = ExtResource("1_41771")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_524m6"]
+atlas = ExtResource("1_41771")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mubnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsvrq")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_524m6")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mubnt")
+animation = &"on"
