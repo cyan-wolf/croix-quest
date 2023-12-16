@@ -4,6 +4,14 @@ signal perform_attack_1
 signal perform_attack_2
 signal perform_attack_3
 
+enum AttackState {
+	IDLE = 0,
+	WALKING = 1,
+	MELEE_ATTACK = 2,
+	MAGIC_ATTACK = 3,
+	DEFEATED = 4,
+}
+
 ## The scene of the melee enemy to be summoned.
 @export var _melee_enemy_scene: PackedScene
 
@@ -24,6 +32,10 @@ signal perform_attack_3
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 @onready var _melee_attack_hitbox: Area2D = self.get_node("MeleeAttackHitboxArea")
+
+@onready var _sprite: AnimatedSprite2D = self.get_node("AnimatedSprite2D")
+
+var _current_attack_state := AttackState.IDLE
 
 # The enemy summon position markers need to be added manually under 
 # an 'EnemySummonPositions' node.
@@ -59,6 +71,10 @@ func _ready() -> void:
 	self.perform_attack_1.emit()
 
 
+func _process(_delta: float) -> void:
+	_play_animation_based_on_state()
+
+
 func _physics_process(delta: float):
 	if _is_following_player:
 		var vel_direction := self.global_position.direction_to(SceneManager.find_player().global_position)
@@ -87,14 +103,17 @@ func _async_on_perform_attack_1() -> void:
 	await SceneManager.async_delay(2.0)
 
 	_is_following_player = true
+	_set_attack_state(AttackState.WALKING)
 
 	await SceneManager.async_delay(3.0)
 
 	_is_following_player = false
 
+	_clear_attack_state()
 	await SceneManager.async_delay(0.4)
 
 	# Makes the boss do a powerful melee attack.
+	_set_attack_state(AttackState.MELEE_ATTACK)
 
 	var melee_attack_hitbox_col: CollisionShape2D = _melee_attack_hitbox.get_node("CollisionShape2D")
 
@@ -102,6 +121,7 @@ func _async_on_perform_attack_1() -> void:
 	await SceneManager.async_delay(1.0)
 	melee_attack_hitbox_col.set_deferred("disabled", true)
 
+	_clear_attack_state()
 	await SceneManager.async_delay(1.0)
 
 	if _has_been_defeated:
@@ -115,6 +135,7 @@ func _async_on_perform_attack_1() -> void:
 # A projectile attack.
 func _async_on_perform_attack_2() -> void:
 	await SceneManager.async_delay(2.0)
+	_set_attack_state(AttackState.MAGIC_ATTACK)
 
 	# The maximum angle spread of the projectiles.
 	var max_angle_in_deg := 30.0
@@ -135,6 +156,8 @@ func _async_on_perform_attack_2() -> void:
 
 		await SceneManager.async_delay(0.3)
 
+	_clear_attack_state()
+
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
 		_async_play_defeated_cutscene()
@@ -146,6 +169,7 @@ func _async_on_perform_attack_2() -> void:
 # An attack that summons enemies.
 func _async_on_perform_attack_3() -> void:
 	await SceneManager.async_delay(2.0)
+	_set_attack_state(AttackState.MAGIC_ATTACK)
 	
 	for i in range(len(_enemy_summon_positions)):
 		# Stop spawning enemies if there are too many.
@@ -187,6 +211,9 @@ func _async_on_perform_attack_3() -> void:
 
 		enemy_component.health_component.death.connect(_on_summoned_enemy_death)
 
+	await SceneManager.async_delay(0.5)
+	_clear_attack_state()
+
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
 		_async_play_defeated_cutscene()
@@ -207,6 +234,8 @@ func _async_play_defeated_cutscene() -> void:
 	# TODO
 	print_debug("DEBUG: Paul boss has died.")
 
+	_set_attack_state(AttackState.DEFEATED)
+
 	await SceneManager.async_delay(1.0)
 
 	self.hide()
@@ -222,7 +251,7 @@ func _async_play_defeated_cutscene() -> void:
 
 func _fire_projectile(offset_angle_in_degrees: float) -> void:
 	# The projectile is fired from the boss' club (top-right corner of its sprite).
-	var summon_pos := self.global_position + Vector2.UP * 32 + Vector2.RIGHT * 28
+	var summon_pos := self.global_position + Vector2.UP * 18 + Vector2.RIGHT * 26
 
 	var direction := summon_pos.direction_to(SceneManager.find_player().global_position)
 	direction = direction.rotated(deg_to_rad(offset_angle_in_degrees))
@@ -235,6 +264,37 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 		.from_source(Projectile.Source.PAUL_BOSS) \
 		.with_damage(_projectile_attack_damage) \
 		.add_to_scene()
+
+
+func _play_animation_based_on_state() -> void:
+	var anim_name := ""
+
+	match _current_attack_state:
+		AttackState.IDLE:
+			anim_name = "idle"
+
+		AttackState.WALKING:
+			anim_name = "walk"
+
+		AttackState.MELEE_ATTACK:
+			anim_name = "melee_attack"
+
+		AttackState.MAGIC_ATTACK:
+			anim_name = "magic_attack"
+
+		AttackState.DEFEATED:
+			anim_name = "defeat"
+
+	_sprite.play(anim_name)
+
+
+func _set_attack_state(new_state: AttackState) -> void:
+	_current_attack_state = new_state
+
+
+## Sets `_current_attack_state` to `AttackState.IDLE`.
+func _clear_attack_state() -> void:
+	_current_attack_state = AttackState.IDLE
 
 
 func _on_summoned_enemy_death() -> void:

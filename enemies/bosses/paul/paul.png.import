@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0fw2ongni2gv"
-path="res://.godot/imported/paul_unfinished.png-39149082f90ab52d905f61caf66e3488.ctex"
+uid="uid://84eaojks6oqb"
+path="res://.godot/imported/paul.png-a3bbfa41b700fdad5c216232e6b1b43d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bosses/paul/paul_unfinished.png"
-dest_files=["res://.godot/imported/paul_unfinished.png-39149082f90ab52d905f61caf66e3488.ctex"]
+source_file="res://enemies/bosses/paul/paul.png"
+dest_files=["res://.godot/imported/paul.png-a3bbfa41b700fdad5c216232e6b1b43d.ctex"]
 
 [params]
 

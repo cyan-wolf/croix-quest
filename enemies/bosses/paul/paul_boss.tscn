@@ -1,26 +1,102 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv0avqon8dc5r"]
+[gd_scene load_steps=19 format=3 uid="uid://cv0avqon8dc5r"]
 
 [ext_resource type="Script" path="res://enemies/bosses/paul/paul_boss.gd" id="1_43uu6"]
-[ext_resource type="Texture2D" uid="uid://b0fw2ongni2gv" path="res://enemies/bosses/paul/paul_unfinished.png" id="1_blmqg"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_m63bj"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_nv0kq"]
+[ext_resource type="Texture2D" uid="uid://84eaojks6oqb" path="res://enemies/bosses/paul/paul.png" id="3_sk3in"]
 
 [sub_resource type="Resource" id="Resource_nih48"]
 script = ExtResource("2_m63bj")
 _health = 100
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajwam"]
-atlas = ExtResource("1_blmqg")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl1l6"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(0, 320, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehvhq"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(0, 64, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqrby"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(0, 256, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpw5b"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(0, 192, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jl4d"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(96, 192, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwgio"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(0, 128, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrqmw"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(96, 128, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a586"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(192, 128, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjeqj"]
+atlas = ExtResource("3_sk3in")
+region = Rect2(288, 128, 96, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlndv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajwam")
+"texture": SubResource("AtlasTexture_dl1l6")
 }],
 "loop": true,
-"name": &"default",
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehvhq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqrby")
+}],
+"loop": true,
+"name": &"magic_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpw5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jl4d")
+}],
+"loop": true,
+"name": &"melee_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwgio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrqmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a586")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjeqj")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -42,6 +118,7 @@ health_component = SubResource("Resource_nih48")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qlndv")
+animation = &"idle"
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 23)
