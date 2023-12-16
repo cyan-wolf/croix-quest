@@ -6,9 +6,35 @@ extends Node2D
 var _should_stop_swords_in_long_hall := false
 
 func _ready():
+	# Connect the first hall sword attack.
 	self.get_node("../PropCollection/TeleporterCollection/Teleporter3") \
 		.used \
-		.connect(_async_on_long_hall_teleporter_used)
+		.connect(_async_on_long_hall_teleporter_used.bind(_run_warning_dialog, Vector2.DOWN)) # currying
+
+	# Connect the first hall sword attack reset.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter4") \
+		.used \
+		.connect(_mark_projectile_areas_to_be_reset)
+
+	# Connect the first hall sword attack reset.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter6") \
+		.used \
+		.connect(_mark_projectile_areas_to_be_reset)
+
+	# Connect the second hall sword attack.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter5") \
+		.used \
+		.connect(_async_on_long_hall_teleporter_used.bind(_run_warning_dialog, Vector2.RIGHT)) # currying
+
+	# Connect the second hall sword attack.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter7") \
+		.used \
+		.connect(_async_on_long_hall_teleporter_used.bind(_run_warning_dialog, Vector2.RIGHT)) # currying
+
+	# Connect the 'Sword Storm' attack.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter8") \
+		.used \
+		.connect(_async_firing_sword_storm_attack)
 
 	# Reset the parts of the dungeon that have constantly spawn 
 	# projectiles when the player respawns.
@@ -16,22 +42,22 @@ func _ready():
 		.connect(_mark_projectile_areas_to_be_reset)
 
 
-func _async_on_long_hall_teleporter_used() -> void:
+func _async_on_long_hall_teleporter_used(dialog: DialogResource, direction: Vector2) -> void:
 	SceneManager.start_cutscene()
 
 	await SceneManager.async_delay(0.5)
 
-	DialogManager.start_dialog(_run_warning_dialog)
+	DialogManager.start_dialog(dialog)
 	await DialogManager.ended_dialog
 
 	SceneManager.end_cutscene()
 
-	_async_start_firing_sword_projectiles_in_long_hall() # async call
-
-
-func _async_start_firing_sword_projectiles_in_long_hall() -> void:
 	await SceneManager.async_delay(0.5)
 
+	_async_start_firing_sword_projectiles_in_long_hall(direction) # async call
+
+
+func _async_start_firing_sword_projectiles_in_long_hall(direction: Vector2) -> void:
 	var sword_spawn_positions: Array[Vector2] = []
 
 	sword_spawn_positions.append_array(
@@ -51,6 +77,7 @@ func _async_start_firing_sword_projectiles_in_long_hall() -> void:
 				pos, 
 				speed,
 				8,		# damage
+				direction,
 			)
 
 		# Stop running this async method if the player dies.
@@ -61,14 +88,16 @@ func _async_start_firing_sword_projectiles_in_long_hall() -> void:
 		await SceneManager.async_delay(0.8)
 
 
+func _async_firing_sword_storm_attack() -> void:
+	print_debug("TODO: Sword storm attack")
+
+
 # Resets projectile spawning in certain areas of the dungeon.
 func _mark_projectile_areas_to_be_reset() -> void:
 	_should_stop_swords_in_long_hall = true
 
 
-func _summon_sword_projectile(spawn_pos: Vector2, speed: float, damage: int) -> void:
-	var direction := Vector2.DOWN # the projectiles are falling downwards, so they face down
-
+func _summon_sword_projectile(spawn_pos: Vector2, speed: float, damage: int, direction: Vector2) -> void:
 	# Spawn the projectile.
 	Projectile.start_building() \
 		.with_global_pos(spawn_pos) \
