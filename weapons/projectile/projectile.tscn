@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_6cw5t"]
 [ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="4_4hia0"]
 [ext_resource type="Script" path="res://weapons/projectile/bullet_trail.gd" id="5_s4rp5"]
+[ext_resource type="Gradient" uid="uid://bhmxlrxmi7mve" path="res://weapons/projectile/default_projectile_trail_gradient.tres" id="5_vg8im"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gifdv"]
 radius = 2.0
@@ -31,10 +32,6 @@ radius = 2.3
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_21xht"]
-offsets = PackedFloat32Array(0, 0.165563, 0.748344, 1)
-colors = PackedColorArray(0.952094, 0.281077, 0, 0.521569, 0.839216, 0.14902, 0, 1, 0.807843, 0.807843, 0, 1, 1, 1, 0, 0.317647)
-
 [node name="Projectile" type="RigidBody2D"]
 collision_mask = 5
 gravity_scale = 0.0
@@ -60,11 +57,11 @@ shape = SubResource("CircleShape2D_wao1l")
 
 [node name="bullet_impact" parent="." instance=ExtResource("4_4hia0")]
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="ProjectileTrail" type="Line2D" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
 show_behind_parent = true
 points = PackedVector2Array(0, 0, -5, 0, -9, 0, -14, 0, -18, 0, -23, 0)
 width = 2.0
 width_curve = SubResource("Curve_bha47")
-gradient = SubResource("Gradient_21xht")
+gradient = ExtResource("5_vg8im")
 script = ExtResource("5_s4rp5")

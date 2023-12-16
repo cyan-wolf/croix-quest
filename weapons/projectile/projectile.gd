@@ -1,11 +1,13 @@
 extends RigidBody2D
 class_name Projectile
 
-# This isn't set with `@onready`, because the projectile initialization code is run before it gets 
+# These aren't set with `@onready`, because the projectile initialization code is run before it gets 
 # added to the scene.
 var _sprite: AnimatedSprite2D
+var _trail: Line2D
 
 const DEFAULT_PROJECTILE_SPRITE_FRAMES := preload("res://weapons/projectile/default_projectile_sprite_frames.tres")
+const DEFAULT_PROJECTILE_TRAIL_GRADIENT := preload("res://weapons/projectile/default_projectile_trail_gradient.tres")
 
 var _bullet_particle_emitter_scene = preload("res://particles/bullet_impact.tscn")
 
@@ -142,10 +144,15 @@ func initialize_using_builder(builder: Util.ProjectileBuilder)  -> void:
 	# Set `_sprite` here because this function runs before `_ready()`.
 	_sprite = self.get_node("AnimatedSprite2D")
 
+	# Set '_trail' here for the same reason.
+	_trail = self.get_node("ProjectileTrail")
+
 	# Store the scale for now; the actual scale is applied when `_ready()` runs.
 	_scale = builder.scale
 
 	_sprite.sprite_frames = builder.sprite_frames.duplicate(true)
+
+	_trail.gradient = builder.trail_gradient.duplicate(true)
 
 	_collides_with_wall_edges = not builder.is_able_to_pass_through_wall_edges
 

@@ -29,6 +29,8 @@ enum AttackState {
 ## In pixels per second.
 @export var _follow_speed: float = 3.0 * 16
 
+@export var _projectile_trail_gradient: Gradient
+
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 @onready var _melee_attack_hitbox: Area2D = self.get_node("MeleeAttackHitboxArea")
@@ -263,6 +265,7 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 		.with_impulse(direction * speed) \
 		.from_source(Projectile.Source.PAUL_BOSS) \
 		.with_damage(_projectile_attack_damage) \
+		.with_trail_gradient(_projectile_trail_gradient) \
 		.add_to_scene()
 
 

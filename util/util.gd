@@ -122,6 +122,7 @@ class ProjectileBuilder:
 	var sprite_frames: SpriteFrames = Projectile.DEFAULT_PROJECTILE_SPRITE_FRAMES
 	var is_able_to_pass_through_wall_edges: bool = false	# if true, it the projectile can go through the map
 	var scale: float = 1.0		# determines the sprite and collision box's scale
+	var trail_gradient: Gradient = Projectile.DEFAULT_PROJECTILE_TRAIL_GRADIENT # determines the trail colors
 
 	# A hash set for keeping track if all required properties have been set.
 	var _required_properties_set := {}
@@ -167,6 +168,11 @@ class ProjectileBuilder:
 
 	func with_scale(scale_: float) -> ProjectileBuilder:
 		self.scale = scale_
+		return self
+
+
+	func with_trail_gradient(gradient: Gradient) -> ProjectileBuilder:
+		self.trail_gradient = gradient
 		return self
 
 
