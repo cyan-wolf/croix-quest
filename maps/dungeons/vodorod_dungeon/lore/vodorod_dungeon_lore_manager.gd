@@ -5,6 +5,8 @@ extends Node2D
 
 var _should_stop_swords_in_long_hall := false
 
+var _should_stop_sword_storm := false
+
 func _ready():
 	# Connect the first hall sword attack.
 	self.get_node("../PropCollection/TeleporterCollection/Teleporter3") \
@@ -31,15 +33,29 @@ func _ready():
 		.used \
 		.connect(_async_on_long_hall_teleporter_used.bind(_run_warning_dialog, Vector2.RIGHT)) # currying
 
-	# Connect the 'Sword Storm' attack.
+	# Connect the first 'Sword Storm' attack.
 	self.get_node("../PropCollection/TeleporterCollection/Teleporter8") \
 		.used \
-		.connect(_async_firing_sword_storm_attack)
+		.connect(_async_firing_sword_storm_attack.bind(Vector2.DOWN, "SwordStormPositions1")) # currying
+
+	# Connect the second 'Sword Storm' attack.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter9") \
+		.used \
+		.connect(_async_firing_sword_storm_attack.bind(Vector2.RIGHT, "SwordStormPositions2")) # currying
+
+	# Connect 'Sword Storm' attack reset.
+	self.get_node("../PropCollection/TeleporterCollection/Teleporter10") \
+		.used \
+		.connect(func(): _should_stop_sword_storm = true) # stops the 'Sword Storm' attack
 
 	# Reset the parts of the dungeon that have constantly spawn 
 	# projectiles when the player respawns.
 	SceneManager.find_player().respawn_component.respawned \
 		.connect(_mark_projectile_areas_to_be_reset)
+
+	# Reset the 'Sword Storm' when the player respawns.
+	SceneManager.find_player().respawn_component.respawned \
+		.connect(func(): _should_stop_sword_storm = true)
 
 
 func _async_on_long_hall_teleporter_used(dialog: DialogResource, direction: Vector2) -> void:
@@ -88,8 +104,48 @@ func _async_start_firing_sword_projectiles_in_long_hall(direction: Vector2) -> v
 		await SceneManager.async_delay(0.8)
 
 
-func _async_firing_sword_storm_attack() -> void:
+func _async_firing_sword_storm_attack(direction: Vector2, node_with_position_name: NodePath) -> void:
 	print_debug("TODO: Sword storm attack")
+
+	var pos_markers: Array[Vector2] = []
+
+	pos_markers.append_array(
+		self.get_node(node_with_position_name) # should be either "SwordStormPositions1" or "SwordStormPositions2"
+			.get_children()
+			.map(func(n): return n.global_position)
+	)
+
+	var pos_1 = pos_markers[0]
+	var pos_2 = pos_markers[1]
+
+	while true:
+		randomize()
+		var random_coord: float = 0.0       # unitialized
+		var pos: Vector2 = Vector2.ZERO		# unitialized
+
+		# Checks if the direction is vertical (Vector2.UP or Vector2.DOWN).
+		if is_equal_approx(direction.dot(Vector2.RIGHT), 0.0):
+			random_coord = randf_range(pos_1.x, pos_2.x)	# the projectiles only vary in the x-coord
+			pos = Vector2(random_coord, pos_1.y)			# the projectiles have the same y-coord
+
+		# Runs if the direction is horizontal (Vector2.LEFT or Vector2.RIGHT).
+		else:
+			random_coord = randf_range(pos_1.y, pos_2.y)	# the projectiles only vary in the y-coord
+			pos = Vector2(pos_1.x, random_coord) 			# the projectiles have the same x-coord
+
+		_summon_sword_projectile(
+			pos,
+			16 * 25,
+			1,
+			direction,
+		)
+
+		# This delay determines how fast the projectiles spawn.
+		await SceneManager.async_delay(0.08)
+
+		if _should_stop_sword_storm:
+			_should_stop_sword_storm = false
+			return
 
 
 # Resets projectile spawning in certain areas of the dungeon.

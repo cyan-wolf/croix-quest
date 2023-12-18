@@ -164,6 +164,7 @@ func show_loading_screen() -> void:
 	var player := self.find_player()
 	if player != null:
 		self.add_world_state(Util.WorldState.LOADING_SCREEN_VISIBLE)
+		player.make_invulnerable() # the player shouldn't take damage
 
 
 func hide_loading_screen() -> void:
@@ -173,6 +174,7 @@ func hide_loading_screen() -> void:
 	var player := self.find_player()
 	if player != null:
 		self.remove_world_state(Util.WorldState.LOADING_SCREEN_VISIBLE)
+		player.remove_invulnerablility() # make the player be able to take damage again
 
 
 func show_game_over_screen() -> void:
