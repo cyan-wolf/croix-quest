@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://biwc6je5ixp81"]
+
+[ext_resource type="Texture2D" uid="uid://cc1ar16bdjp36" path="res://npcs/guard/female/guard_female.png" id="1_jssg3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_litoy"]
+atlas = ExtResource("1_jssg3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qol7o"]
+atlas = ExtResource("1_jssg3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mhc6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_litoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qol7o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="GuardFemaleSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mhc6h")
+animation = &"idle"
+frame_progress = 0.334141

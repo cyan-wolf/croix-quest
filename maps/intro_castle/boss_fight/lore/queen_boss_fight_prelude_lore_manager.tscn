@@ -15,7 +15,7 @@ dialog = Array[String](["...", "Did you hear that?"])
 
 [sub_resource type="Resource" id="Resource_n6phq"]
 script = ExtResource("2_le7br")
-author = "Other guard"
+author = "Guard"
 dialog = Array[String](["Hear what?"])
 
 [sub_resource type="Resource" id="Resource_3iiuh"]
@@ -25,7 +25,7 @@ dialog = Array[String](["The sound just now? Are you messing with me?"])
 
 [sub_resource type="Resource" id="Resource_apox1"]
 script = ExtResource("2_le7br")
-author = "Other guard"
+author = "Guard"
 dialog = Array[String](["???"])
 
 [sub_resource type="Resource" id="Resource_y0vey"]
@@ -45,7 +45,7 @@ dialog = Array[String](["Ok this is getting weird now. I'm checking the hall beh
 
 [sub_resource type="Resource" id="Resource_jovsg"]
 script = ExtResource("2_le7br")
-author = "Other guard"
+author = "Guard"
 dialog = Array[String](["We're not supposed to leave our posts, but go ahead, what could go wrong? I'm staying here though."])
 
 [node name="QueenBossFightPreludeLoreManager" type="Node2D"]

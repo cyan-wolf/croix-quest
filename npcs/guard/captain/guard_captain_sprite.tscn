@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://djtn2nr43r66x"]
+
+[ext_resource type="Texture2D" uid="uid://c5loxtgivbixu" path="res://npcs/guard/captain/guard_captain.png" id="1_fkppd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbtk6"]
+atlas = ExtResource("1_fkppd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euqb1"]
+atlas = ExtResource("1_fkppd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwnkp"]
+atlas = ExtResource("1_fkppd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03qgm"]
+atlas = ExtResource("1_fkppd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cmhq"]
+atlas = ExtResource("1_fkppd")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i32ba"]
+atlas = ExtResource("1_fkppd")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pv7l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbtk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euqb1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwnkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03qgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cmhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i32ba")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="GuardCaptainSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_6pv7l")
+animation = &"idle"
+frame_progress = 0.656017

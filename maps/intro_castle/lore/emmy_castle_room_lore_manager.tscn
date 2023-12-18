@@ -12,7 +12,7 @@ dialog = Array[String](["...?", "Oh you must be part of the Royal Guard, I assum
 [sub_resource type="Resource" id="Resource_bodqb"]
 script = ExtResource("2_tinly")
 author = "Emmy"
-dialog = Array[String](["Greetings, I am Emmy. I was elected ot become the new National Leader last month, and as you should know, my inauguration is tomorrow."])
+dialog = Array[String](["Greetings, I am Emmy. I was elected to become the new National Leader last month, and as you should know, my inauguration is tomorrow."])
 
 [sub_resource type="Resource" id="Resource_oa3m4"]
 script = ExtResource("2_tinly")

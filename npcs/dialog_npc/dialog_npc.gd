@@ -13,6 +13,11 @@ func _ready() -> void:
 	_animated_sprite.play("idle")
 
 
+## Plays the specified animation. Common animations include `"idle"` and `"walk"`.
+func play_animation(anim_name: String) -> void:
+	_animated_sprite.play(anim_name)
+
+
 func _async_on_player_interact() -> void:
 	self.dialog_started.emit()
 	DialogManager.start_dialog(_dialog)

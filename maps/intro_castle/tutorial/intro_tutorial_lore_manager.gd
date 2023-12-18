@@ -1,5 +1,7 @@
 extends Node2D
 
+const DialogNpc := preload("res://npcs/dialog_npc/dialog_npc.gd")
+
 @onready var _tutorial_prompt: Control = self.get_node("CanvasLayer/TutorialPrompt")
 @onready var _player: Player = SceneManager.find_player()
 
@@ -16,7 +18,10 @@ var _player_original_spawn_position: Vector2
 
 func _ready() -> void:
 	# Connect signals.
-	self.get_node("../GuardCaptainNPC").dialog_ended.connect(_on_beginning_captain_npc_dialog_ended)
+	self.get_node("../NpcCollection/TutorialStarterGuardCaptainNPC") \
+		.dialog_ended \
+		.connect(_on_beginning_captain_npc_dialog_ended)
+		
 	_tutorial_prompt.get_node("TutorialButton").pressed.connect(_async_on_tutorial_start_button_pressed)
 	_tutorial_prompt.get_node("SkipButton").pressed.connect(_on_tutorial_skip_button_pressed)
 
@@ -112,7 +117,10 @@ func _async_on_start_checkpoint_tutorial() -> void:
 	DialogManager.start_dialog(_checkpoint_tutorial_dialog2)
 	await DialogManager.ended_dialog
 
-	var captain_npc: Node2D = self.get_node("GuardCaptiainNPCs/DialogNPC3")
+	var captain_npc: DialogNpc = self.get_node("GuardCaptiainNPCs/DialogNPC3")
+
+	# Play the "walk" animation while the captain moves towards the player.
+	captain_npc.play_animation("walk")
 
 	# Move and wait for the captain to move to "attack" the player.
 	await self.create_tween().tween_property(
@@ -121,6 +129,9 @@ func _async_on_start_checkpoint_tutorial() -> void:
 		_player.global_position + (Vector2.RIGHT * 1 * 16),
 		0.8,
 	).finished
+
+	# Play the "idle" animation once finished.
+	captain_npc.play_animation("idle")
 
 	# The captain "attacking" the player.
 	for _i in range(8):

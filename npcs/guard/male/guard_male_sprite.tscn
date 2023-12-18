@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dljc3xu8iqdd"]
+
+[ext_resource type="Texture2D" uid="uid://uukpndhquogt" path="res://npcs/guard/male/guard_male.png" id="1_leveu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkp8j"]
+atlas = ExtResource("1_leveu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp6ld"]
+atlas = ExtResource("1_leveu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iw08r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkp8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp6ld")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="GuardMaleSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_iw08r")
+animation = &"idle"
+frame_progress = 0.118905
