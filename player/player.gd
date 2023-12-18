@@ -39,6 +39,7 @@ var _current_speed: float = WALKING_SPEED
 var _is_timer_on: bool = false
 var _is_running: bool = false
 var _is_dodging: bool = false
+var _is_invulnerable: bool = false
 
 var _is_slipping: bool = false
 
@@ -131,8 +132,8 @@ func _async_on_ran_out_of_mana() -> void:
 func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 	var defense_multiplier := self.status_effect_component.get_computed_defense_multiplier()
 
-	# Make the player not recieve damage if they are dodging.
-	if _is_dodging:
+	# Make the player not recieve damage if they're dodging or invulnerable.
+	if _is_dodging or _is_invulnerable:
 		defense_multiplier = 0
 
 	if other_hitbox.is_in_group("placeholder_enemy"):
@@ -218,6 +219,16 @@ func add_weapon_type(weapon_type: Util.WeaponType) -> void:
 ## Gives the player a status effect.
 func add_status_effect(effect: Util.StatusEffect) -> void:
 	self.status_effect_component.gain_effect(effect)
+
+
+## Makes the player immune to all forms of damage.
+func make_invulnerable() -> void:
+	_is_invulnerable = true
+
+
+# Makes the player be able to take damage.
+func remove_invulnerablility() -> void:
+	_is_invulnerable = false
 
 
 ## Makes the player stop charging the dash.
