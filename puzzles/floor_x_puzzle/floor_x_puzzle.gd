@@ -48,10 +48,22 @@ func _on_floor_switch_deactivated() -> void:
 
 
 func _on_puzzle_reset() -> void:
+	# Forcefully turn off all the switches.
 	for switch in _floor_x_switches:
 		switch.force_deactivate()
 
+	# Mark the number of active switches as zero.
 	_currently_active_switches = 0
+	
+	# If this puzzle has 'Pushable Rocks', reset their position.
+	if self.get_node_or_null("PushableRocks") != null:
+		for n in self.get_node("PushableRocks").get_children():
+			const PushableRock := preload("res://interactables/pushable_rock/pushable_rock.gd")
+			var rock: PushableRock = n
+
+			rock.reset_to_starting_position()
+
+
 
 
 func _complete_puzzle() -> void:

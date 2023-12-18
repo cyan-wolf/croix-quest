@@ -4,6 +4,8 @@ const REQUIRED_MANA_AMOUNT_TO_MOVE: int = 1
 
 @onready var _interaction_component: InteractionComponent = self.get_node("InteractionComponent")
 
+@onready var _starting_position: Vector2 = self.global_position
+
 ## In pixels per second.
 @export var _speed: float = 50.0
 
@@ -60,4 +62,10 @@ func _align_direction_to_nearest_cartesian_vector(direction: Vector2) -> Vector2
 			direction = Vector2.UP
 
 	return direction
+
+
+## Resets the rock's position to its starting position.
+func reset_to_starting_position() -> void:
+	_is_moving = false
+	self.global_position = _starting_position
 
