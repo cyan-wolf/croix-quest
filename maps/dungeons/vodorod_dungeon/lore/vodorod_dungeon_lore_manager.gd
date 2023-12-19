@@ -163,6 +163,7 @@ func _summon_sword_projectile(spawn_pos: Vector2, speed: float, damage: int, dir
 		.can_pass_through_wall_edges(true) \
 		.with_lifetime(20.0) \
 		.with_sprite_frames(_sword_projectile_sprite_frames) \
+		.with_trail_gradient(Projectile.SHALE_SABER_PROJECTILE_TRAIL) \
 		.add_to_scene()
 
 

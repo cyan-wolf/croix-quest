@@ -56,6 +56,8 @@ func _ready() -> void:
 	# Play music.
 	SceneManager.play_background_music("res://sounds/music/Orbital Colossus/Orbital Colossus.mp3")
 
+	await SceneManager.async_delay(1.2)
+
 	# Start the cycle of attacks.
 	self.perform_attack_1.emit()
 
@@ -77,7 +79,7 @@ func _on_death() -> void:
 
 func _async_on_perform_attack_1() -> void:
 	_current_attack_state = AttackState.ATTACK_1
-	await SceneManager.async_delay(2.0)
+	await SceneManager.async_delay(0.1)
 
 	var dt := 0.01
 
@@ -162,6 +164,7 @@ func _async_on_perform_attack_2() -> void:
 			.can_pass_through_wall_edges(true) \
 			.with_lifetime(10.0) \
 			.with_sprite_frames(_sword_projectile_sprite_frames) \
+			.with_trail_gradient(Projectile.SHALE_SABER_PROJECTILE_TRAIL) \
 			.add_to_scene()
 		
 
@@ -195,7 +198,7 @@ func _async_on_perform_attack_3() -> void:
 
 	_attack_3_snow_particles.emitting = false
 
-	await SceneManager.async_delay(1.0)
+	await SceneManager.async_delay(0.1)
 
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).

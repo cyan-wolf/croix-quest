@@ -1,12 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf474m352xjeb"]
+[gd_scene load_steps=16 format=3 uid="uid://bf474m352xjeb"]
 
-[ext_resource type="Script" path="res://weapons/projectile/projectile.gd" id="1_c8joe"]
 [ext_resource type="Texture2D" uid="uid://dgntwujv288xb" path="res://weapons/projectile/default_projectile.png" id="2_0lus6"]
 [ext_resource type="Texture2D" uid="uid://cj5m8qaa4g6gv" path="res://weapons/projectile/projectile2_sheet.png" id="3_8xx67"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_k1mdv"]
 [ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="4_00ywj"]
-[ext_resource type="Gradient" path="res://weapons/projectile/default_projectile_trail_gradient.tres" id="5_g58pt"]
-[ext_resource type="Script" path="res://weapons/projectile/bullet_trail.gd" id="6_kpmnr"]
+[ext_resource type="Gradient" uid="uid://bhmxlrxmi7mve" path="res://weapons/projectile/projectile_trails/default_projectile_trail_gradient.tres" id="5_g58pt"]
+[ext_resource type="Script" path="res://weapons/projectile/projectile.gd" id="6_kpmnr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04oa5"]
 radius = 4.0
@@ -73,7 +72,7 @@ gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource("1_c8joe")
+script = ExtResource("6_kpmnr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_6cw5t"]
 [ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="4_4hia0"]
 [ext_resource type="Script" path="res://weapons/projectile/bullet_trail.gd" id="5_s4rp5"]
-[ext_resource type="Gradient" uid="uid://bhmxlrxmi7mve" path="res://weapons/projectile/default_projectile_trail_gradient.tres" id="5_vg8im"]
+[ext_resource type="Gradient" uid="uid://bhmxlrxmi7mve" path="res://weapons/projectile/projectile_trails/default_projectile_trail_gradient.tres" id="5_vg8im"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gifdv"]
 radius = 2.0

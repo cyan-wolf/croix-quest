@@ -41,6 +41,10 @@ layer_2/tile_data = PackedInt32Array(196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 1
 position = Vector2(0, -73)
 _melee_enemy_scene = ExtResource("5_gp14w")
 _shooting_enemy_scene = ExtResource("6_8uenv")
+_enemy_spawn_chance_percent = null
+_melee_attack_damage = null
+_projectile_attack_damage = null
+_follow_speed = null
 
 [node name="EnemySummonPositions" type="Node2D" parent="."]
 visible = false
