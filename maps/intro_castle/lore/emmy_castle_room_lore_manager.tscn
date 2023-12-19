@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_nx6gc"]
 script = ExtResource("2_tinly")
 author = "The Queen"
-dialog = Array[String](["...?", "Oh you must be part of the Royal Guard, I assume you're here so that I can assign you a division."])
+dialog = Array[String](["...?", "Oh you must be part of the Royal Guard."])
 
 [sub_resource type="Resource" id="Resource_bodqb"]
 script = ExtResource("2_tinly")
@@ -17,12 +17,12 @@ dialog = Array[String](["Greetings, I am Emmy. I was elected to become the new N
 [sub_resource type="Resource" id="Resource_oa3m4"]
 script = ExtResource("2_tinly")
 author = "The Queen"
-dialog = Array[String](["As part of the inauguration ceremony, it's crucial for me, Emmy, and the four Forest Spirts to be there.", "The Royal Guards are being split into three divisions, one division is meant to protect the Royal Family (including me), another protecting the National Leader (Emmy), and lastly a division protecting the Forest Spirits.", "The division protecting the Forest Spirits is reserved for only the best of the best, as the spirits are crucial for the ceremony.", "I believe it's best if you join the division protecting the Royal Family, as you look like an intermediate-level guard at best."])
+dialog = Array[String](["As part of the inauguration ceremony, it's crucial for me, Emmy, and the four Forest Spirts to be there."])
 
 [sub_resource type="Resource" id="Resource_eysvh"]
 script = ExtResource("2_tinly")
 author = "Emmy"
-dialog = Array[String](["Now with that settled, you should go to your post to prepare for tomorrow.
+dialog = Array[String](["You should go to your post to prepare for tomorrow.
 "])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyvfs"]
