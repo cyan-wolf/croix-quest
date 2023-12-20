@@ -57,4 +57,5 @@ offset_bottom = -10.0
 [node name="CuboidalAberrationEnemySprite" parent="." instance=ExtResource("3_k1wti")]
 
 [node name="EnemyShootingComponent" parent="." instance=ExtResource("4_ndlur")]
+_projectile_damage = 2
 _projectile_sprite_frames = SubResource("SpriteFrames_e5wcp")

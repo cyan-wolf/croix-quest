@@ -8,6 +8,7 @@ script = ExtResource("1_2ktea")
 _light_color = Color(1, 0.517647, 1, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.482353, 1)
 blend_mode = 2
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
