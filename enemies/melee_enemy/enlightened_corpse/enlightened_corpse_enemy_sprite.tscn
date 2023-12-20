@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjvbhm74gnk65"]
+
+[ext_resource type="Texture2D" uid="uid://bpv0oaeooyndb" path="res://enemies/melee_enemy/enlightened_corpse/enlightened_corpse.png" id="1_s22av"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3c55"]
+atlas = ExtResource("1_s22av")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1ubo"]
+atlas = ExtResource("1_s22av")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua72y"]
+atlas = ExtResource("1_s22av")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdbww"]
+atlas = ExtResource("1_s22av")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c01c"]
+atlas = ExtResource("1_s22av")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdrlp"]
+atlas = ExtResource("1_s22av")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bwtj"]
+atlas = ExtResource("1_s22av")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igg4i"]
+atlas = ExtResource("1_s22av")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywood"]
+atlas = ExtResource("1_s22av")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qbfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3c55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1ubo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua72y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdbww")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_1c01c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdrlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bwtj")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_igg4i")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_ywood")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="EnlightenedCorpseEnemySprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8qbfj")
+animation = &"attack"
+frame_progress = 0.418626

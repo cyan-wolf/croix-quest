@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=3 uid="uid://bfjxq82xbya6"]
+
+[ext_resource type="PackedScene" uid="uid://du1mkk53va8w4" path="res://enemies/shooting_enemy/hyper_convergence/hyper_convergence_enemy_sprite.tscn" id="1_1hg4v"]
+[ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="2_e1n8n"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_lro0y"]
+[ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="4_53426"]
+[ext_resource type="PackedScene" uid="uid://cpu3i1c756eae" path="res://util/components/enemy/enemy_shooting_component.tscn" id="5_xspa2"]
+[ext_resource type="Texture2D" uid="uid://cet0wmh2bwod7" path="res://enemies/shooting_enemy/hyper_convergence/hyper_convergence_projectile.png" id="6_i6dnh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
+radius = 12.0
+height = 26.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi7kv"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7kj6"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vu70"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh2q5"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kwp8"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omern"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq7r1"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r43sr"]
+atlas = ExtResource("6_i6dnh")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlevr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi7kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7kj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vu70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh2q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kwp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omern")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq7r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r43sr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HyperConvergenceShootingEnemy" type="CharacterBody2D"]
+collision_layer = 0
+
+[node name="HyperConvergenceEnemySprite" parent="." instance=ExtResource("1_1hg4v")]
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_10ypy")
+
+[node name="EnemyComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("2_e1n8n")]
+_sprite = NodePath("../HyperConvergenceEnemySprite")
+_min_player_follow_distance = 135.0
+_min_player_attack_distance = 120.0
+
+[node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("3_lro0y")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent/HitboxArea"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_aj1hx")
+
+[node name="HealthBar" parent="EnemyComponent" instance=ExtResource("4_53426")]
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 13.0
+offset_bottom = -14.0
+
+[node name="EnemyShootingComponent" parent="." instance=ExtResource("5_xspa2")]
+_projectile_damage = 2
+_fire_speed = 2.0
+_projectile_sprite_frames = SubResource("SpriteFrames_qlevr")
+_fire_offset_position = Vector2(12, 0)
+_projectile_scale = 2.0
