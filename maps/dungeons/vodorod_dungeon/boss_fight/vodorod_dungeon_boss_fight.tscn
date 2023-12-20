@@ -38,7 +38,7 @@ _attack_3_safety_radius = null
 _attack_3_duration = null
 
 [node name="PlayerSpawnPosition" parent="." instance=ExtResource("3_sq3tp")]
-visible = false
+position = Vector2(0, -20)
 
 [node name="LightCrystal" parent="." instance=ExtResource("5_dwjkb")]
 position = Vector2(2, -106)

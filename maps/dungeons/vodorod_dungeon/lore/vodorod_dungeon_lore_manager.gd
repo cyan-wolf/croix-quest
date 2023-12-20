@@ -48,6 +48,19 @@ func _ready():
 		.used \
 		.connect(func(): _should_stop_sword_storm = true) # stops the 'Sword Storm' attack
 
+	# Connect 'Sword Intimidation Attack' to various hitboxes.
+	for n in self.get_node("IntimidationSwordAttackTriggerHitboxes").get_children():
+		var trigger_hitbox: Area2D = n
+
+		trigger_hitbox.area_entered.connect(
+			func(other_hitbox: Area2D) -> void:
+				if other_hitbox.is_in_group("player_hitbox"):
+					_async_fire_intimidation_sword_attack() # async call
+
+				# Disable this hitbox's collision since it will no longer be used.
+				trigger_hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+		)
+	
 	# Reset the parts of the dungeon that have constantly spawn 
 	# projectiles when the player respawns.
 	SceneManager.find_player().respawn_component.respawned \
@@ -74,6 +87,11 @@ func _async_on_long_hall_teleporter_used(dialog: DialogResource, direction: Vect
 
 
 func _async_start_firing_sword_projectiles_in_long_hall(direction: Vector2) -> void:
+	# Set this to `false` at the start of this method, since 
+	# this field only should be set to `true` after this 
+	# method has been running already for a while.
+	_should_stop_swords_in_long_hall = false 
+
 	var sword_spawn_positions: Array[Vector2] = []
 
 	sword_spawn_positions.append_array(
@@ -105,7 +123,10 @@ func _async_start_firing_sword_projectiles_in_long_hall(direction: Vector2) -> v
 
 
 func _async_firing_sword_storm_attack(direction: Vector2, node_with_position_name: NodePath) -> void:
-	print_debug("TODO: Sword storm attack")
+	# Set this to `false` at the start of this method, since 
+	# this field only should be set to `true` after this 
+	# method has been running already for a while.
+	_should_stop_sword_storm = false
 
 	var pos_markers: Array[Vector2] = []
 
@@ -147,6 +168,24 @@ func _async_firing_sword_storm_attack(direction: Vector2, node_with_position_nam
 			_should_stop_sword_storm = false
 			return
 
+
+func _async_fire_intimidation_sword_attack() -> void:
+	await SceneManager.async_delay(0.01)
+
+	for n in self.get_node("IntimidationSwordPositions").get_children():
+		var sword_pos: Vector2 = n.global_position
+
+		# The "forward" direction of the position marker, used here
+		# for marking what direction the projectile should go in.
+		var direction: Vector2 = n.global_transform.x 
+
+		_summon_sword_projectile(
+			sword_pos,
+			16 * 20,
+			1,		    
+			direction,
+		)
+	
 
 # Resets projectile spawning in certain areas of the dungeon.
 func _mark_projectile_areas_to_be_reset() -> void:
