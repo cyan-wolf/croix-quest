@@ -27,7 +27,7 @@ shape = SubResource("CapsuleShape2D_10ypy")
 
 [node name="EnemyComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("1_qd5qr")]
 _sprite = NodePath("EnlightenedCorpseEnemySprite")
-_speed = 20.0
+_speed = 40.0
 _min_player_follow_distance = 100.0
 _min_player_attack_distance = 15.0
 

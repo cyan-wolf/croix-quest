@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6htmmxnkau7d"]
+
+[ext_resource type="Script" path="res://maps/dungeons/dunkel_dungeon/lore/dunkel_dungeon_lore_manager.gd" id="1_ihtfa"]
+
+[node name="DunkelDungeonLoreManager" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ihtfa")

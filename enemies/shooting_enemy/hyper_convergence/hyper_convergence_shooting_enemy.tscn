@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfjxq82xbya6"]
+[gd_scene load_steps=20 format=3 uid="uid://bfjxq82xbya6"]
 
 [ext_resource type="PackedScene" uid="uid://du1mkk53va8w4" path="res://enemies/shooting_enemy/hyper_convergence/hyper_convergence_enemy_sprite.tscn" id="1_1hg4v"]
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="2_e1n8n"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_2dpsa"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_lro0y"]
 [ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="4_53426"]
 [ext_resource type="PackedScene" uid="uid://cpu3i1c756eae" path="res://util/components/enemy/enemy_shooting_component.tscn" id="5_xspa2"]
@@ -10,6 +11,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
 radius = 5.0
 height = 16.0
+
+[sub_resource type="Resource" id="Resource_71f06"]
+script = ExtResource("3_2dpsa")
+_health = 14
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
 radius = 12.0
@@ -91,8 +96,10 @@ shape = SubResource("CapsuleShape2D_10ypy")
 
 [node name="EnemyComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("2_e1n8n")]
 _sprite = NodePath("../HyperConvergenceEnemySprite")
+_speed = 10.0
 _min_player_follow_distance = 135.0
-_min_player_attack_distance = 120.0
+_min_player_attack_distance = 115.0
+health_component = SubResource("Resource_71f06")
 
 [node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("3_lro0y")]
 
