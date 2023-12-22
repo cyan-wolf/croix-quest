@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://yahfom1uoxwd"]
+
+[ext_resource type="Script" path="res://puzzles/light_puzzle/shadow_obstacle/shadow_obstacle.gd" id="1_w3t3x"]
+[ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_q5akm"]
+[ext_resource type="Texture2D" uid="uid://bbgi8ckd0prxu" path="res://puzzles/light_puzzle/dunkel_shadow_obstacle.png" id="3_nvl1q"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="4_q3cnu"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="5_ra4fr"]
+
+[sub_resource type="Resource" id="Resource_tqr83"]
+script = ExtResource("2_q5akm")
+author = "Me"
+dialog = Array[String](["(A shadow blocks my way.)"])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2but"]
+atlas = ExtResource("3_nvl1q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ck0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2but")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3qpu"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8lw0"]
+radius = 8.0
+
+[node name="ShadowObstacle" type="AnimatableBody2D" groups=["projectile_interactable_hitbox"]]
+y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
+sync_to_physics = false
+script = ExtResource("1_w3t3x")
+_cant_move_dialog = SubResource("Resource_tqr83")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2ck0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b3qpu")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("4_q3cnu")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("5_ra4fr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+shape = SubResource("CircleShape2D_l8lw0")

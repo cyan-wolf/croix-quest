@@ -26,7 +26,7 @@ size = Vector2(12, 12)
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8lw0"]
 radius = 8.0
 
-[node name="PushableRock" type="AnimatableBody2D" groups=["projectile_interactable_hitbox"]]
+[node name="PushableRock" type="AnimatableBody2D" groups=["projectile_interactable_hitbox", "pushable_rock_collision_hitbox"]]
 y_sort_enabled = true
 collision_layer = 3
 sync_to_physics = false
