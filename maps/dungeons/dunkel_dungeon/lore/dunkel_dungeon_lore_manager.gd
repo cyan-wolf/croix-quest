@@ -9,7 +9,6 @@ enum SceneLightLevel {
 
 @onready var _darkness_modulate: CanvasModulate = self.get_node("../DarknessModulate")
 
-
 func _ready():
 	# Dim the scene's "light" in the second part of the maze.
 	self.get_node("../Props/TeleportersCollection/Teleporter3") \
@@ -20,6 +19,11 @@ func _ready():
 	self.get_node("../Props/TeleportersCollection/Teleporter4") \
 		.used \
 		.connect(func(): _set_dungeon_light_level(SceneLightLevel.PITCH_DARK))
+
+	# Turn on the scene's "light" after exiting the third part of the maze.
+	self.get_node("../Props/TeleportersCollection/Teleporter5") \
+		.used \
+		.connect(func(): _set_dungeon_light_level(SceneLightLevel.NORMAL))
 
 
 func _set_dungeon_light_level(level: SceneLightLevel) -> void:
