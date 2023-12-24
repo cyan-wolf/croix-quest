@@ -1,6 +1,8 @@
 extends Node2D
+class_name LightCrystal
 
 signal activated
+signal deactivated
 
 @export var _is_on: bool = true
 @export var _light_color: Color = Color("ffffff")
@@ -39,6 +41,7 @@ func _update_light() -> void:
 		self.activated.emit()
 		_activate_light()
 	else:
+		self.deactivated.emit()
 		_deactivate_light()
 
 

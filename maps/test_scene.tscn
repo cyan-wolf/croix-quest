@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c83rqfm7yaph0" path="res://puzzles/floor_x_puzzle/floor_x_puzzle.tscn" id="3_op8jo"]
 [ext_resource type="PackedScene" uid="uid://cdvt5b5ell6gq" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_switch.tscn" id="4_mybw7"]
 [ext_resource type="PackedScene" uid="uid://uoajiug5lqk6" path="res://interactables/stationary_rock/stationary_rock.tscn" id="5_6360v"]
-[ext_resource type="PackedScene" uid="uid://blr8pf280xe3v" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_reset_switch.tscn" id="6_7r138"]
+[ext_resource type="PackedScene" uid="uid://blr8pf280xe3v" path="res://puzzles/floor_x_puzzle/reset_switch.tscn" id="6_7r138"]
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="8_56i2a"]
 [ext_resource type="PackedScene" uid="uid://dj3ij8ofoj04" path="res://interactables/defense_boost/defense_boost.tscn" id="9_nxosi"]
 [ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="10_pblx8"]
@@ -43,13 +43,13 @@ layer_2/tile_data = PackedInt32Array(524276, 0, 0, 589812, 0, 0, 524277, 0, 0, 5
 tile_set = ExtResource("2_occj7")
 format = 2
 layer_0/name = "Floor"
-layer_0/z_index = -1
+layer_0/z_index = -2
 layer_0/tile_data = PackedInt32Array(-262104, 524288, 0, -196568, 524288, 0, -131032, 524288, 0, -65496, 524288, 0, 40, 524288, 0, 65576, 524288, 0, 131112, 524288, 0, 196648, 524288, 0, 262184, 524288, 0, -262103, 524288, 0, -196567, 524288, 0, -131031, 524288, 0, -65495, 524288, 0, 41, 524288, 0, 65577, 524288, 0, 131113, 524288, 0, 196649, 524288, 0, 262185, 524288, 0, -262102, 524288, 0, -196566, 524288, 0, -131030, 524288, 0, -65494, 524288, 0, 42, 524288, 0, 65578, 524288, 0, 131114, 524288, 0, 196650, 524288, 0, 262186, 524288, 0, -262101, 524288, 0, -196565, 524288, 0, -131029, 524288, 0, -65493, 524288, 0, 43, 524288, 0, 65579, 524288, 0, 131115, 524288, 0, 196651, 524288, 0, 262187, 524288, 0, -262100, 524288, 0, -196564, 524288, 0, -131028, 524288, 0, -65492, 524288, 0, 44, 524288, 0, 65580, 524288, 0, 131116, 524288, 0, 196652, 524288, 0, 262188, 524288, 0, -262099, 524288, 0, -196563, 524288, 0, -131027, 524288, 0, -65491, 524288, 0, 45, 524288, 0, 65581, 524288, 0, 131117, 524288, 0, 196653, 524288, 0, 262189, 524288, 0, -262098, 524288, 0, -196562, 524288, 0, -131026, 524288, 0, -65490, 524288, 0, 46, 524288, 0, 65582, 524288, 0, 131118, 524288, 0, 196654, 524288, 0, 262190, 524288, 0, -262097, 524288, 0, -196561, 524288, 0, -131025, 524288, 0, -65489, 524288, 0, 47, 524288, 0, 65583, 524288, 0, 131119, 524288, 0, 196655, 524288, 0, 262191, 524288, 0, -262096, 524288, 0, -196560, 524288, 0, -131024, 524288, 0, -65488, 524288, 0, 48, 524288, 0, 65584, 524288, 0, 131120, 524288, 0, 196656, 524288, 0, 262192, 524288, 0, -262095, 524288, 0, -196559, 524288, 0, -131023, 524288, 0, -65487, 524288, 0, 49, 524288, 0, 65585, 524288, 0, 131121, 524288, 0, 196657, 524288, 0, 262193, 524288, 0, -262094, 524288, 0, -196558, 524288, 0, -131022, 524288, 0, -65486, 524288, 0, 50, 524288, 0, 65586, 524288, 0, 131122, 524288, 0, 196658, 524288, 0, 262194, 524288, 0, -262093, 524288, 0, -196557, 524288, 0, -131021, 524288, 0, -65485, 524288, 0, 51, 524288, 0, 65587, 524288, 0, 131123, 524288, 0, 196659, 524288, 0, 262195, 524288, 0, -262092, 524288, 0, -196556, 524288, 0, -131020, 524288, 0, -65484, 524288, 0, 52, 524288, 0, 65588, 524288, 0, 131124, 524288, 0, 196660, 524288, 0, 262196, 524288, 0)
 layer_1/name = "BackWall"
-layer_1/z_index = -1
+layer_1/z_index = -2
 layer_1/tile_data = PackedInt32Array(-393176, 0, 0, -327640, 0, 0, -393175, 0, 0, -327639, 0, 0, -393174, 0, 0, -327638, 0, 0, -393173, 0, 0, -327637, 0, 0, -393172, 0, 0, -327636, 0, 0, -393171, 0, 0, -327635, 0, 0, -393170, 0, 0, -327634, 0, 0, -393169, 0, 0, -327633, 0, 0, -393168, 0, 0, -327632, 0, 0, -393167, 0, 0, -327631, 0, 0, -393166, 0, 0, -327630, 0, 0, -393165, 0, 0, -327629, 0, 0, -393164, 0, 0, -327628, 0, 0, -458712, 65536, 1, -458711, 65536, 1, -458710, 65536, 1, -458709, 65536, 1, -458708, 65536, 1, -458707, 65536, 1, -458706, 65536, 1, -458705, 65536, 1, -458704, 65536, 1, -458703, 65536, 1, -458702, 65536, 1, -458701, 65536, 1, -458700, 65536, 1, -393177, 0, 2, -327641, 0, 2, -262105, 0, 2, -196569, 0, 2, -131033, 0, 2, -65497, 0, 2, 39, 0, 2, 65575, 0, 2, 131111, 0, 2, 196647, 0, 2, -393163, 131072, 2, -327627, 131072, 2, -262091, 131072, 2, -196555, 131072, 2, -131019, 131072, 2, -65483, 131072, 2, 53, 131072, 2, 65589, 131072, 2, 131125, 131072, 2, 196661, 131072, 2, -458713, 0, 1, -458699, 131072, 1)
 layer_2/name = "FrontWall"
-layer_2/z_index = -1
+layer_2/z_index = -2
 layer_2/tile_data = PackedInt32Array(327720, 0, 0, 393256, 0, 0, 327721, 0, 0, 393257, 0, 0, 327722, 0, 0, 393258, 0, 0, 327723, 0, 0, 393259, 0, 0, 327724, 0, 0, 393260, 0, 0, 327725, 0, 0, 393261, 0, 0, 327726, 0, 0, 393262, 0, 0, 327727, 0, 0, 393263, 0, 0, 327728, 0, 0, 393264, 0, 0, 327729, 0, 0, 393265, 0, 0, 327730, 0, 0, 393266, 0, 0, 327731, 0, 0, 393267, 0, 0, 327732, 0, 0, 393268, 0, 0, 262184, 65536, 1, 262185, 65536, 1, 262186, 65536, 1, 262187, 65536, 1, 262188, 65536, 1, 262189, 65536, 1, 262190, 65536, 1, 262191, 65536, 1, 262192, 65536, 1, 262193, 65536, 1, 262194, 65536, 1, 262195, 65536, 1, 262196, 65536, 1, 262183, 0, 3, 262197, 131072, 3, 327719, 0, 4, 393255, 0, 4, 327733, 131072, 4, 393269, 131072, 4)
 
 [node name="SlipperyTileMap" parent="." instance=ExtResource("2_hyhro")]
@@ -173,39 +173,47 @@ position = Vector2(744, -23)
 [node name="LightFloorSwitches" type="Node2D" parent="LightPuzzle"]
 y_sort_enabled = true
 
-[node name="LightFloorSwitch" parent="LightPuzzle/LightFloorSwitches" instance=ExtResource("15_qb08q")]
+[node name="LightFloorSwitch" parent="LightPuzzle/LightFloorSwitches" node_paths=PackedStringArray("_light_crystal") instance=ExtResource("15_qb08q")]
 position = Vector2(-95, 40)
+_light_crystal = NodePath("../../LightCrystals/LightCrystal")
 
-[node name="LightFloorSwitch2" parent="LightPuzzle/LightFloorSwitches" instance=ExtResource("15_qb08q")]
+[node name="LightFloorSwitch2" parent="LightPuzzle/LightFloorSwitches" node_paths=PackedStringArray("_light_crystal") instance=ExtResource("15_qb08q")]
 position = Vector2(96, 39)
+_light_crystal = NodePath("../../LightCrystals/LightCrystal2")
 
 [node name="LightCrystals" type="Node2D" parent="LightPuzzle"]
 y_sort_enabled = true
 
 [node name="LightCrystal" parent="LightPuzzle/LightCrystals" instance=ExtResource("11_sccbp")]
 position = Vector2(-36, -23)
+_is_on = false
 
 [node name="AnimatedSprite2D" parent="LightPuzzle/LightCrystals/LightCrystal" instance=ExtResource("15_juinj")]
 
 [node name="LightCrystal2" parent="LightPuzzle/LightCrystals" instance=ExtResource("11_sccbp")]
 position = Vector2(19, -21)
+_is_on = false
 
 [node name="AnimatedSprite2D" parent="LightPuzzle/LightCrystals/LightCrystal2" instance=ExtResource("15_juinj")]
 
 [node name="ShadowObstacles" type="Node2D" parent="LightPuzzle"]
 y_sort_enabled = true
 
-[node name="ShadowObstacle" parent="LightPuzzle/ShadowObstacles" instance=ExtResource("15_a6hfm")]
+[node name="ShadowObstacle" parent="LightPuzzle/ShadowObstacles" node_paths=PackedStringArray("_light_crystals_needed_to_activate") instance=ExtResource("15_a6hfm")]
 position = Vector2(-17, -31)
+_light_crystals_needed_to_activate = [NodePath("../../LightCrystals/LightCrystal"), NodePath("../../LightCrystals/LightCrystal2")]
 
-[node name="ShadowObstacle2" parent="LightPuzzle/ShadowObstacles" instance=ExtResource("15_a6hfm")]
+[node name="ShadowObstacle2" parent="LightPuzzle/ShadowObstacles" node_paths=PackedStringArray("_light_crystals_needed_to_activate") instance=ExtResource("15_a6hfm")]
 position = Vector2(-1, -31)
+_light_crystals_needed_to_activate = [NodePath("../../LightCrystals/LightCrystal"), NodePath("../../LightCrystals/LightCrystal2")]
 
-[node name="ShadowObstacle3" parent="LightPuzzle/ShadowObstacles" instance=ExtResource("15_a6hfm")]
+[node name="ShadowObstacle3" parent="LightPuzzle/ShadowObstacles" node_paths=PackedStringArray("_light_crystals_needed_to_activate") instance=ExtResource("15_a6hfm")]
 position = Vector2(-17, -47)
+_light_crystals_needed_to_activate = [NodePath("../../LightCrystals/LightCrystal"), NodePath("../../LightCrystals/LightCrystal2")]
 
-[node name="ShadowObstacle4" parent="LightPuzzle/ShadowObstacles" instance=ExtResource("15_a6hfm")]
+[node name="ShadowObstacle4" parent="LightPuzzle/ShadowObstacles" node_paths=PackedStringArray("_light_crystals_needed_to_activate") instance=ExtResource("15_a6hfm")]
 position = Vector2(-1, -47)
+_light_crystals_needed_to_activate = [NodePath("../../LightCrystals/LightCrystal"), NodePath("../../LightCrystals/LightCrystal2")]
 
 [node name="PushableRocks" type="Node2D" parent="LightPuzzle"]
 y_sort_enabled = true
@@ -215,3 +223,6 @@ position = Vector2(-52.6724, 39.0917)
 
 [node name="PushableRock2" parent="LightPuzzle/PushableRocks" instance=ExtResource("17_fjxa5")]
 position = Vector2(50, 40)
+
+[node name="ResetSwitch" parent="LightPuzzle" instance=ExtResource("6_7r138")]
+position = Vector2(-7, 14)

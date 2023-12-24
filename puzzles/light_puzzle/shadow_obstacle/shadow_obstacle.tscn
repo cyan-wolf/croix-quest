@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yahfom1uoxwd"]
+[gd_scene load_steps=12 format=3 uid="uid://yahfom1uoxwd"]
 
 [ext_resource type="Script" path="res://puzzles/light_puzzle/shadow_obstacle/shadow_obstacle.gd" id="1_w3t3x"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="2_q5akm"]
@@ -10,6 +10,11 @@
 script = ExtResource("2_q5akm")
 author = "Me"
 dialog = Array[String](["(A shadow blocks my way.)"])
+
+[sub_resource type="Resource" id="Resource_qv2dh"]
+script = ExtResource("2_q5akm")
+author = "Me"
+dialog = Array[String](["(A shadow hangs in the air.)"])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2but"]
 atlas = ExtResource("3_nvl1q")
@@ -39,6 +44,7 @@ collision_mask = 3
 sync_to_physics = false
 script = ExtResource("1_w3t3x")
 _cant_move_dialog = SubResource("Resource_tqr83")
+_walkable_dialog = SubResource("Resource_qv2dh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ck0f")

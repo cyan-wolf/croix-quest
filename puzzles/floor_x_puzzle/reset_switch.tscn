@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://blr8pf280xe3v"]
 
 [ext_resource type="Texture2D" uid="uid://cnwgisti2u8tq" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_reset_switch.png" id="1_2klry"]
-[ext_resource type="Script" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_reset_switch.gd" id="1_ag73c"]
+[ext_resource type="Script" path="res://puzzles/floor_x_puzzle/reset_switch.gd" id="1_ag73c"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_1stef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vbjw"]
@@ -22,7 +22,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kp0x4"]
 size = Vector2(12, 12)
 
-[node name="FloorXPuzzleResetSwitch" type="Node2D"]
+[node name="ResetSwitch" type="Node2D"]
 z_index = -1
 script = ExtResource("1_ag73c")
 
