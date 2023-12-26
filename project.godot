@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 SceneManager="*res://util/scene_manager.tscn"
 DialogManager="*res://ui/dialog/dialog_manager.tscn"
 
+[display]
+
+window/size/viewport_width=900
+
 [dotnet]
 
 project/assembly_name="Project 2"

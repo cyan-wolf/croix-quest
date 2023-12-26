@@ -98,7 +98,7 @@ shape = SubResource("CapsuleShape2D_10ypy")
 _sprite = NodePath("../HyperConvergenceEnemySprite")
 _speed = 10.0
 _min_player_follow_distance = 135.0
-_min_player_attack_distance = 115.0
+_min_player_attack_distance = 105.0
 health_component = SubResource("Resource_71f06")
 
 [node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("3_lro0y")]
