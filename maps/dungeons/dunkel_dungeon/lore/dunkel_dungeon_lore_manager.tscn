@@ -5,3 +5,7 @@
 [node name="DunkelDungeonLoreManager" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ihtfa")
+_damaging_light_dps = 4.0
+
+[node name="PlayerDamagingLightDamageTimer" type="Timer" parent="."]
+autostart = true
