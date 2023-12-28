@@ -7,7 +7,7 @@ extends Node2D
 @export var _return_from_dunkel_dialog: DialogResource
 
 # The delay before dialog plays in a cutscene.
-const CUTSCENE_DIALOG_DELAY := 1.3
+const CUTSCENE_DIALOG_DELAY := 1.9
 
 func _ready() -> void:
 	_async_manage_hideout_state_based_on_completed_milestones()
@@ -93,11 +93,10 @@ func _async_should_play_first_cutscene() -> void:
 
 	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
 
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 	# Play the appropriate dialog.
 	DialogManager.start_dialog(_first_cutscene_dialog)
-
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 func _async_play_return_from_cobalt_cutscene() -> void:
@@ -113,10 +112,10 @@ func _async_play_return_from_cobalt_cutscene() -> void:
 
 	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
 
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 	# Play the appropriate dialog.
 	DialogManager.start_dialog(_return_from_cobalt_dialog)
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 func _async_play_return_from_ulmus_cutscene() -> void:
@@ -132,10 +131,10 @@ func _async_play_return_from_ulmus_cutscene() -> void:
 
 	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
 
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 	# Play the appropriate dialog.
 	DialogManager.start_dialog(_return_from_ulmus_dialog)
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 func _async_play_return_from_vodorod_cutscene() -> void:
@@ -151,10 +150,10 @@ func _async_play_return_from_vodorod_cutscene() -> void:
 
 	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
 
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 	# Play the appropriate dialog.
 	DialogManager.start_dialog(_return_from_vodorod_dialog)
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 func _async_play_return_from_dunkel_cutscene() -> void:
@@ -170,10 +169,10 @@ func _async_play_return_from_dunkel_cutscene() -> void:
 
 	await SceneManager.async_delay(CUTSCENE_DIALOG_DELAY)
 
+	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 	# Play the appropriate dialog.
 	DialogManager.start_dialog(_return_from_dunkel_dialog)
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
 
 
 # Moves Emmy to a corner when there isn't a cutscene playing.
