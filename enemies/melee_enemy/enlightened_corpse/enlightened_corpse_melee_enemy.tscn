@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://4m1jq3lfq11c"]
+[gd_scene load_steps=11 format=3 uid="uid://4m1jq3lfq11c"]
 
 [ext_resource type="PackedScene" uid="uid://cemyjbvk3lsmu" path="res://util/components/enemy/enemy_component.tscn" id="1_qd5qr"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_q6kbl"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="2_upaeo"]
 [ext_resource type="PackedScene" uid="uid://bpfoc2otwtp7v" path="res://ui/hud/health_bar/health_bar.tscn" id="3_ptpk7"]
 [ext_resource type="PackedScene" uid="uid://cjvbhm74gnk65" path="res://enemies/melee_enemy/enlightened_corpse/enlightened_corpse_enemy_sprite.tscn" id="4_3bvbx"]
@@ -9,6 +10,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ypy"]
 radius = 5.0
 height = 14.0
+
+[sub_resource type="Resource" id="Resource_y5wvc"]
+script = ExtResource("2_q6kbl")
+_health = 4
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1hx"]
 radius = 8.0
@@ -30,6 +35,7 @@ _sprite = NodePath("EnlightenedCorpseEnemySprite")
 _speed = 40.0
 _min_player_follow_distance = 100.0
 _min_player_attack_distance = 15.0
+health_component = SubResource("Resource_y5wvc")
 
 [node name="HitboxArea" parent="EnemyComponent" groups=["enemy_hitbox"] instance=ExtResource("2_upaeo")]
 
