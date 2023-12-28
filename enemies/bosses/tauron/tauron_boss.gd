@@ -93,6 +93,9 @@ func _async_on_perform_attack_1() -> void:
 	var jump_height := 20.0 * 16	# in pixels
 	var jump_duration := 0.3		# in seconds
 
+	# This activates the stomp attack hitbox.
+	_current_attack_state = AttackState.STOMP
+
 	# Wait for the boss to jump.
 	await self.get_tree().create_tween().tween_property(
 		self, 
@@ -109,9 +112,6 @@ func _async_on_perform_attack_1() -> void:
 	self.global_position = player_pos + Vector2.UP * jump_height
 
 	await SceneManager.async_delay(0.5)
-
-	# This activates the stomp attack hitbox.
-	_current_attack_state = AttackState.STOMP
 
 	# Wait for the boss to land where the player was.
 	await self.get_tree().create_tween().tween_property(
