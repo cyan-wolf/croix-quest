@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cb8jb0kbmvvor" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch_door.tscn" id="12_5cdu5"]
 [ext_resource type="PackedScene" uid="uid://dsdmtf1ayd80i" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch.tscn" id="13_dqbec"]
 [ext_resource type="PackedScene" uid="uid://d0st3mqxctevc" path="res://interactables/mana_crystal_refill/mana_crystal_refill.tscn" id="13_frdie"]
+[ext_resource type="PackedScene" uid="uid://bllx52mnfssvd" path="res://interactables/weapon_items/sniper_weapon_item.tscn" id="13_pyjr0"]
 [ext_resource type="PackedScene" uid="uid://dj3ij8ofoj04" path="res://interactables/defense_boost/defense_boost.tscn" id="13_wv6k7"]
-[ext_resource type="PackedScene" uid="uid://cmg4pa7bpd26i" path="res://interactables/weapon_items/smg_weapon_item.tscn" id="14_1kelo"]
 [ext_resource type="PackedScene" uid="uid://bp1t4iaawov5v" path="res://interactables/pushable_rock/pushable_rock.tscn" id="14_vef15"]
 [ext_resource type="PackedScene" uid="uid://wq5tnw6pgala" path="res://interactables/speed_boost/speed_boost.tscn" id="15_u2m43"]
 [ext_resource type="PackedScene" uid="uid://d0jw3re1tjv5g" path="res://interactables/heart_refill/heart_refill.tscn" id="16_k6o5i"]
@@ -141,9 +141,9 @@ y_sort_enabled = true
 position = Vector2(-824, 267)
 _contents = Array[PackedScene]([ExtResource("10_fvbj4")])
 
-[node name="SmgChest" parent="PropsCollection/ChestCollection" instance=ExtResource("9_jgyvx")]
+[node name="SniperChest" parent="PropsCollection/ChestCollection" instance=ExtResource("9_jgyvx")]
 position = Vector2(-1025, -1835)
-_contents = Array[PackedScene]([ExtResource("14_1kelo")])
+_contents = Array[PackedScene]([ExtResource("13_pyjr0")])
 
 [node name="Chest" parent="PropsCollection/ChestCollection" instance=ExtResource("9_jgyvx")]
 position = Vector2(-1127.77, -2239.5)
