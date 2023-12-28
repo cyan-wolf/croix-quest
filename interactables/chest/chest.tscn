@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj5g07iuwf7pa"]
+[gd_scene load_steps=10 format=3 uid="uid://cj5g07iuwf7pa"]
 
 [ext_resource type="Texture2D" uid="uid://cv6bs5ju1npcd" path="res://interactables/chest/chest.png" id="1_8qelb"]
 [ext_resource type="Script" path="res://interactables/chest/chest.gd" id="1_d18jt"]
@@ -35,6 +35,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7w1q"]
 size = Vector2(26, 19)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iudxu"]
+size = Vector2(26, 19)
+
 [node name="Chest" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_d18jt")
@@ -49,3 +52,9 @@ sprite_frames = SubResource("SpriteFrames_iqke2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_n7w1q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_iudxu")

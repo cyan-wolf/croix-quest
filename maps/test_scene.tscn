@@ -56,7 +56,7 @@ layer_2/tile_data = PackedInt32Array(327720, 0, 0, 393256, 0, 0, 327721, 0, 0, 3
 layer_0/tile_data = PackedInt32Array(-5766843, 0, 0, -5766842, 0, 0, -5766841, 0, 0, -5832378, 0, 0, -5897914, 0, 0, -5897913, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_um1fg")]
-position = Vector2(743, 47)
+position = Vector2(-56, 77)
 
 [node name="FloorXPuzzle" parent="." instance=ExtResource("3_op8jo")]
 z_index = -1
