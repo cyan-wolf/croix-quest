@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://da0aphk27nflm"]
+[gd_scene load_steps=23 format=3 uid="uid://da0aphk27nflm"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_vsolw"]
 [ext_resource type="PackedScene" uid="uid://4m1jq3lfq11c" path="res://enemies/melee_enemy/enlightened_corpse/enlightened_corpse_melee_enemy.tscn" id="3_inoe0"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://ipryvb1hg7gv" path="res://util/light_cystals/sprites/dunkel_light_crystal_sprite.tscn" id="9_1y564"]
 [ext_resource type="PackedScene" uid="uid://dsdmtf1ayd80i" path="res://interactables/bullet_interactable/wall_disc_switch/wall_disc_switch.tscn" id="10_yt2gq"]
 [ext_resource type="PackedScene" uid="uid://c2gojubt2g2cm" path="res://util/light_cystals/sprites/vodorod_light_crystal_sprite.tscn" id="11_np8vd"]
+[ext_resource type="PackedScene" uid="uid://cmg4pa7bpd26i" path="res://interactables/weapon_items/smg_weapon_item.tscn" id="19_sxele"]
+[ext_resource type="PackedScene" uid="uid://bllx52mnfssvd" path="res://interactables/weapon_items/sniper_weapon_item.tscn" id="20_m1o0y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h7jch"]
 vertices = PackedVector2Array(8733, -2115, 8733, 931, 4501, 784, 4661, -2128, 16645, 744, 10179, 712, 10227, -2888, 16604, -3125, 630, 13, 409, 13, 409, -5, 630, -6, 3913, -426, 1729, -433, 1745, -1545, 3936, -1556, 662, -456, 423, -456, 425, -646, 662, -646, 17514, -1211, 18022, -1214, 18022, -1109, 17514, -1089, 18087, -1087, 18087, -1109)
@@ -32,7 +34,6 @@ polygon = PackedVector2Array(-40, 24, 484, 23, 486, 193, 455, 193, 456, 98, 420,
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_vsolw")]
-position = Vector2(8158, 508)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_yhtpw")
@@ -891,3 +892,9 @@ position = Vector2(2899, -1085)
 
 [node name="HyperConvergenceShootingEnemy2" parent="." instance=ExtResource("4_qha58")]
 position = Vector2(3356, -1087)
+
+[node name="SmgWeaponItem" parent="." instance=ExtResource("19_sxele")]
+position = Vector2(-20, -8)
+
+[node name="SniperWeaponItem" parent="." instance=ExtResource("20_m1o0y")]
+position = Vector2(16, -7)
