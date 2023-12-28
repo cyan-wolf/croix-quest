@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_mycxj"]
 script = ExtResource("2_tpp5n")
-_health = 60
+_health = 30
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4xj28"]
 radius = 7.0
