@@ -19,6 +19,9 @@ func respawn() -> void:
 	# Regain all health.
 	player.health_component.gain_health(player.health_component.get_max_health())
 
+	# Regain all mana.
+	player.mana_component.gain_mana(player.mana_component.MAX_MANA)
+
 	SceneManager.remove_world_state(Util.WorldState.PLAYER_IS_DEAD)
 
 	self.use_life()
