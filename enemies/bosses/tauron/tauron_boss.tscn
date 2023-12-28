@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dnp0u5l6rif78"]
+[gd_scene load_steps=26 format=3 uid="uid://dnp0u5l6rif78"]
 
 [ext_resource type="Script" path="res://enemies/bosses/tauron/tauron_boss.gd" id="1_4ftyv"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_q7p3d"]
@@ -61,9 +61,13 @@ region = Rect2(128, 64, 64, 64)
 atlas = ExtResource("3_63awk")
 region = Rect2(192, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_40ckc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_irojj"]
 atlas = ExtResource("3_63awk")
 region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixrnl"]
+atlas = ExtResource("3_63awk")
+region = Rect2(64, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wb3rx"]
 animations = [{
@@ -105,7 +109,7 @@ animations = [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_4ksdg")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -122,13 +126,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1bh7f")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_start",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_40ckc")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_irojj")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ixrnl")
 }],
 "loop": true,
 "name": &"mouth_attack",
@@ -148,18 +155,19 @@ radius = 20.0
 height = 66.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4tl6"]
-radius = 20.0
-height = 66.0
+radius = 24.0
+height = 58.0
 
 [node name="TauronBoss" type="CharacterBody2D"]
 script = ExtResource("1_4ftyv")
 health_component = SubResource("Resource_e6uvj")
 _projectile_amount = 20
+_charge_attack_damage = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wb3rx")
-animation = &"idle"
-frame_progress = 0.699584
+animation = &"mouth_attack"
+frame_progress = 0.587614
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 23)
@@ -185,6 +193,7 @@ disabled = true
 position = Vector2(0, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeAttackHitboxArea"]
+position = Vector2(0, -2)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_t4tl6")
 disabled = true

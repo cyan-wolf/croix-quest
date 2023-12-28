@@ -88,7 +88,10 @@ func _physics_process(delta: float) -> void:
 
 # A stomping attack.
 func _async_on_perform_attack_1() -> void:
-	await SceneManager.async_delay(4.0)
+	_sprite.play("idle")
+	await SceneManager.async_delay(1.0)
+
+	await _async_play_jumping_animation()
 
 	var jump_height := 20.0 * 16	# in pixels
 	var jump_duration := 0.3		# in seconds
@@ -112,6 +115,8 @@ func _async_on_perform_attack_1() -> void:
 	self.global_position = player_pos + Vector2.UP * jump_height
 
 	await SceneManager.async_delay(0.5)
+
+	_sprite.play("idle")
 
 	# Wait for the boss to land where the player was.
 	await self.get_tree().create_tween().tween_property(
@@ -146,10 +151,14 @@ func _async_on_perform_attack_2() -> void:
 	# Does nothing currently.
 	_current_attack_state = AttackState.PROJECTILE
 
+	_sprite.play("mouth_attack")
+
 	for _i in range(_projectile_amount):
 		_fire_projectile()
 
 		await SceneManager.async_delay(1 / _projectile_fire_speed)
+
+	_sprite.play("idle")
 
 	# Does nothing currently.
 	_current_attack_state = AttackState.NONE
@@ -164,7 +173,9 @@ func _async_on_perform_attack_2() -> void:
 
 # A charging attack.
 func _async_on_perform_attack_3() -> void:
-	await SceneManager.async_delay(4.0)
+	_sprite.play("charge_attack")
+
+	await SceneManager.async_delay(1.5)
 
 	var prev_player_pos: Vector2 = SceneManager.find_player().global_position
 
@@ -182,6 +193,8 @@ func _async_on_perform_attack_3() -> void:
 	# This deactivates the charge attack hitbox.
 	_current_attack_state = AttackState.NONE
 	_charge_attack_hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+
+	_sprite.play("idle")
 
 	if _has_been_defeated:
 		# Async call (no need to wait for the cutscene to finish).
@@ -228,6 +241,16 @@ func _fire_projectile() -> void:
 		.from_source(Projectile.Source.TAURON_BOSS) \
 		.with_damage(_projectile_attack_damage) \
 		.add_to_scene()
+
+
+func _async_play_jumping_animation() -> void:
+	_sprite.play("jump_start", 4)
+	await _sprite.animation_finished
+
+	await SceneManager.async_delay(0.5)
+
+	_sprite.play("jump", 2)
+	await _sprite.animation_finished
 
 
 func _on_death() -> void:
