@@ -41,8 +41,6 @@ var _current_attack_state := AttackState.IDLE
 # an 'EnemySummonPositions' node.
 var _enemy_summon_positions: Array[Node2D] = []
 
-var _summoned_enemy_count := 0
-
 var _has_been_defeated := false
 
 var _is_following_player := false
@@ -172,8 +170,11 @@ func _async_on_perform_attack_3() -> void:
 	_set_attack_state(AttackState.MAGIC_ATTACK)
 	
 	for i in range(len(_enemy_summon_positions)):
+		# The number of summoned enemies in the scene.
+		var summoned_enemy_amount := len(self.get_node("../SummonedEnemies").get_children())
+
 		# Stop spawning enemies if there are too many.
-		if _summoned_enemy_count > len(_enemy_summon_positions):
+		if summoned_enemy_amount == len(_enemy_summon_positions):
 			break
 
 		var pos_marker: Node2D = _enemy_summon_positions[i]
@@ -199,18 +200,13 @@ func _async_on_perform_attack_3() -> void:
 		# Move the enemy to the position marker.
 		enemy_to_summon.global_position = pos_marker.global_position
 
-		# Add the enemy to the scene.
-		self.get_tree().current_scene.add_child(enemy_to_summon)
-		_summoned_enemy_count += 1
+		# Add the enemy to the a node called 'SummonedEnemies' in the current scene.
+		self.get_tree().current_scene.get_node("SummonedEnemies").add_child(enemy_to_summon)
 
-		# Keep track of when enemies die.
-		var enemy_component: EnemyComponent = enemy_to_summon.get_node("EnemyComponent")
-		
-		# Wait a moment for the enemy's health component to initialize.
+		# Small delay to avoid processing everything at once.
 		await SceneManager.async_delay(0.1)
 
-		enemy_component.health_component.death.connect(_on_summoned_enemy_death)
-
+	# Clear the attack state (used for animations) after leaving the summoning loop.
 	await SceneManager.async_delay(0.5)
 	_clear_attack_state()
 
@@ -296,10 +292,6 @@ func _set_attack_state(new_state: AttackState) -> void:
 ## Sets `_current_attack_state` to `AttackState.IDLE`.
 func _clear_attack_state() -> void:
 	_current_attack_state = AttackState.IDLE
-
-
-func _on_summoned_enemy_death() -> void:
-	_summoned_enemy_count -= 1
 
 
 func get_melee_attack_damage() -> int:
