@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://c57r1aqdipnvo"]
+
+[ext_resource type="Script" path="res://util/defeated_boss/defeated_boss.gd" id="1_sd1vc"]
+[ext_resource type="Texture2D" uid="uid://bqqilo6dt1s5g" path="res://enemies/bosses/shale_saber/shale_saber_unfinished.png" id="2_ggpp2"]
+[ext_resource type="PackedScene" uid="uid://b2pbbusv85v6e" path="res://particles/boss_implosion_particles.tscn" id="3_udsdi"]
+[ext_resource type="PackedScene" uid="uid://dm7xr0uye71hi" path="res://particles/boss_burst_particles.tscn" id="4_kbrlh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsqg7"]
+atlas = ExtResource("2_ggpp2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uf3u1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsqg7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShaleSaberBossDefeated" type="Node2D"]
+script = ExtResource("1_sd1vc")
+_milestone_after_boss_defeat = 4
+_forest_spirit_sprite_scene_path = "res://npcs/forest_spirits/dog_forest_spirit/dog_forest_spirit_sprite.tscn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uf3u1")
+
+[node name="BossImplosionParticles" parent="." instance=ExtResource("3_udsdi")]
+
+[node name="BossBurstParticles" parent="." instance=ExtResource("4_kbrlh")]

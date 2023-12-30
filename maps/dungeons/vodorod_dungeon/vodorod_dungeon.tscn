@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="7_2jook"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="7_tteof"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="8_ererd"]
-[ext_resource type="PackedScene" path="res://enemies/melee_enemy/hysprite/hysprite_melee_enemy.tscn" id="9_8wmux"]
+[ext_resource type="PackedScene" uid="uid://dr3mhrwdcdmbu" path="res://enemies/melee_enemy/hysprite/hysprite_melee_enemy.tscn" id="9_8wmux"]
 [ext_resource type="PackedScene" uid="uid://cyrdo4s5yatf8" path="res://npcs/dialog_npc/dialog_npc.tscn" id="10_0gvb0"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="11_ef3dt"]
 [ext_resource type="Script" path="res://ui/dialog/dialog_resource.gd" id="11_pqtdn"]

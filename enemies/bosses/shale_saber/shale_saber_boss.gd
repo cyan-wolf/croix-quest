@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const DEFEATED_SCENE := preload("res://enemies/bosses/shale_saber/defeated/shale_saber_boss_defeated.tscn")
+
 signal perform_attack_1
 signal perform_attack_2
 signal perform_attack_3
@@ -35,8 +37,6 @@ enum AttackState {
 @onready var _attack_3_snow_particles: GPUParticles2D = self.get_node("ShaleSaberSnowParticles")
 
 var _current_attack_state := AttackState.NONE
-
-var _has_been_defeated := false
 
 func _ready() -> void:
 	# Connect the necessary signals.
@@ -74,7 +74,15 @@ func _on_area_entered_hitbox(other_hitbox: Area2D) -> void:
 
 
 func _on_death() -> void:
-	_has_been_defeated = true
+	self.hide()
+
+	# Replace the boss with its defeated version, in order to 
+	# show the defeat animation.
+	var defeated_version := DEFEATED_SCENE.instantiate()
+	defeated_version.global_position = self.global_position
+	self.get_tree().current_scene.add_child(defeated_version)
+
+	self.queue_free()
 
 
 func _async_on_perform_attack_1() -> void:
@@ -117,11 +125,6 @@ func _async_on_perform_attack_1() -> void:
 		# This code is used to simulate the passage of time.
 		elapsed_t += dt
 		await SceneManager.async_delay(dt)
-
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
 
 	self.perform_attack_2.emit()
 
@@ -166,12 +169,6 @@ func _async_on_perform_attack_2() -> void:
 			.with_sprite_frames(_sword_projectile_sprite_frames) \
 			.with_trail_gradient(Projectile.SHALE_SABER_PROJECTILE_TRAIL) \
 			.add_to_scene()
-		
-
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
 
 	self.perform_attack_3.emit()
 
@@ -200,35 +197,7 @@ func _async_on_perform_attack_3() -> void:
 
 	await SceneManager.async_delay(0.1)
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_1.emit()
-
-
-func _async_play_defeated_cutscene() -> void:
-	SceneManager.stop_playing_background_music()
-
-	_current_attack_state = AttackState.NONE
-
-	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
-
-	# TODO
-	print_debug("DEBUG: Shale Saber boss has died.")
-
-	await SceneManager.async_delay(1.0)
-
-	self.hide()
-	SceneManager.progression().add_milestone(Util.Milestone.VODOROD_DUNGEON_COMPLETED)
-
-	await SceneManager.async_delay(0.5)
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
-
-	# Go to the hub.
-	SceneManager.load_scene_file(Util.ScenePath.HIDEOUT_HUB)
 
 
 func get_melee_attack_damage() -> int:

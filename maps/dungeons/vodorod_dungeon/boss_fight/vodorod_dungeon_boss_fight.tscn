@@ -29,13 +29,6 @@ layer_2/tile_data = PackedInt32Array(262135, 0, 14, 262136, 0, 14, 327673, 0, 14
 
 [node name="ShaleSaberBoss" parent="." instance=ExtResource("2_rq1uk")]
 position = Vector2(1, -108)
-_attack_1_melee_damage = null
-_attack_1_duration_secs = null
-_attack_1_projectile_speed = null
-_attack_2_projectile_amount = null
-_attack_2_projectile_speed = null
-_attack_3_safety_radius = null
-_attack_3_duration = null
 
 [node name="PlayerSpawnPosition" parent="." instance=ExtResource("3_sq3tp")]
 visible = false
