@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvj3nnystvb0a"]
+
+[ext_resource type="Script" path="res://util/forest_spirit_after_boss_defeat/forest_spirit_after_boss_defeat.gd" id="1_8177y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ita2c"]
+
+[node name="ForestSpiritAfterBossDefeat" type="Node2D"]
+script = ExtResource("1_8177y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ita2c")

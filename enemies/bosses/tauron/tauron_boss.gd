@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
+const DEFEATED_SCENE := preload("res://enemies/bosses/tauron/defeated/tauron_boss_defeated.tscn")
 
 enum AttackState {
 	NONE,
@@ -43,8 +43,6 @@ signal perform_attack_3
 @onready var _sprite: AnimatedSprite2D = self.get_node("AnimatedSprite2D")
 
 var _current_attack_state := AttackState.NONE
-
-var _has_been_defeated := false
 
 func _ready() -> void:
 	# Connect the necessary signals.
@@ -136,11 +134,6 @@ func _async_on_perform_attack_1() -> void:
 
 	await SceneManager.async_delay(2.0)
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_2.emit()
 
 
@@ -162,11 +155,6 @@ func _async_on_perform_attack_2() -> void:
 
 	# Does nothing currently.
 	_current_attack_state = AttackState.NONE
-
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
 
 	self.perform_attack_3.emit()
 
@@ -196,35 +184,7 @@ func _async_on_perform_attack_3() -> void:
 
 	_sprite.play("idle")
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_1.emit()
-
-
-# Plays after the boss finishes its current phase and health is 0.
-func _async_play_defeated_cutscene() -> void:
-	# Stop playing the music that started when the boss appeared.
-	SceneManager.stop_playing_background_music()
-
-	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
-
-	# TODO
-	print_debug("DEBUG: Tauron boss has died.")
-
-	await SceneManager.async_delay(1.0)
-
-	self.hide()
-	SceneManager.progression().add_milestone(Util.Milestone.COBALT_DUNGEON_COMPLETED)
-
-	await SceneManager.async_delay(0.5)
-
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
-
-	# Go to the hub.
-	SceneManager.load_scene_file(Util.ScenePath.HIDEOUT_HUB)
 
 
 func _fire_projectile() -> void:
@@ -254,7 +214,15 @@ func _async_play_jumping_animation() -> void:
 
 
 func _on_death() -> void:
-	_has_been_defeated = true
+	self.hide()
+
+	# Replace the boss with its defeated version, in order to 
+	# show the defeat animation.
+	var defeated_version := DEFEATED_SCENE.instantiate()
+	defeated_version.global_position = self.global_position
+	self.get_tree().current_scene.add_child(defeated_version)
+
+	self.queue_free()
 
 
 func _on_stomp_attack_timer_timeout() -> void:

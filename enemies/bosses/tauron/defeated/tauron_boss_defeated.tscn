@@ -1,0 +1,152 @@
+[gd_scene load_steps=21 format=3 uid="uid://dqrvlgb3eeif6"]
+
+[ext_resource type="Script" path="res://util/defeated_boss/defeated_boss.gd" id="1_a5noy"]
+[ext_resource type="Texture2D" uid="uid://ckx17n7jgiki2" path="res://enemies/bosses/tauron/tauron.png" id="1_xg8pd"]
+[ext_resource type="PackedScene" uid="uid://b2pbbusv85v6e" path="res://particles/boss_implosion_particles.tscn" id="3_x22qw"]
+[ext_resource type="PackedScene" uid="uid://dm7xr0uye71hi" path="res://particles/boss_burst_particles.tscn" id="4_517v7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsjxh"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mste7"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpt7t"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i8v2"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujuv2"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp03m"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a870l"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w85y4"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ksdg"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ughy"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l83uv"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl4xm"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bh7f"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irojj"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixrnl"]
+atlas = ExtResource("1_xg8pd")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34rfe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsjxh")
+}],
+"loop": true,
+"name": &"charge_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mste7")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_rpt7t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_0i8v2")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ujuv2")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_hp03m")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_a870l")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_w85y4")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4ksdg")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ughy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l83uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl4xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bh7f")
+}],
+"loop": false,
+"name": &"jump_start",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_irojj")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ixrnl")
+}],
+"loop": true,
+"name": &"mouth_attack",
+"speed": 5.0
+}]
+
+[node name="TauronBossDefeated" type="Node2D"]
+script = ExtResource("1_a5noy")
+_milestone_after_boss_defeat = 2
+_forest_spirit_sprite_scene_path = "res://npcs/forest_spirits/cat_forest_spirit/cat_forest_spirit_sprite.tscn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_34rfe")
+animation = &"charge_attack"
+
+[node name="BossImplosionParticles" parent="." instance=ExtResource("3_x22qw")]
+
+[node name="BossBurstParticles" parent="." instance=ExtResource("4_517v7")]
