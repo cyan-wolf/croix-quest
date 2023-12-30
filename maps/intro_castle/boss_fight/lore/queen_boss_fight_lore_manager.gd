@@ -6,8 +6,6 @@ signal start_boss_fight
 @export var _dialog_before_teleporting_spirits: Array[DialogResource] = []
 @export var _dialog_after_teleporting_spirits: Array[DialogResource] = []
 
-@onready var _player: Player = SceneManager.find_player()
-
 # Not part of this scene; needs to be added manually.
 # This sprite is only for the cutscene, it's not the boss itself.
 @onready var _queen_sprite: AnimatedSprite2D = self.get_node("QueenCroixNPCSprite")
@@ -65,5 +63,6 @@ func _async_show_cutscene_before_boss_fight() -> void:
 	_queen_sprite.hide()
 
 	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
 
 
