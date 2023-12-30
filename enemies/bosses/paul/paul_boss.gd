@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const DEFEATED_SCENE := preload("res://enemies/bosses/paul/defeated/paul_boss_defeated.tscn")
+
 signal perform_attack_1
 signal perform_attack_2
 signal perform_attack_3
@@ -40,8 +42,6 @@ var _current_attack_state := AttackState.IDLE
 # The enemy summon position markers need to be added manually under 
 # an 'EnemySummonPositions' node.
 var _enemy_summon_positions: Array[Node2D] = []
-
-var _has_been_defeated := false
 
 var _is_following_player := false
 
@@ -122,11 +122,6 @@ func _async_on_perform_attack_1() -> void:
 	_clear_attack_state()
 	await SceneManager.async_delay(1.0)
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_2.emit()
 
 
@@ -155,11 +150,6 @@ func _async_on_perform_attack_2() -> void:
 		await SceneManager.async_delay(0.3)
 
 	_clear_attack_state()
-
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
 
 	self.perform_attack_3.emit()
 
@@ -210,16 +200,24 @@ func _async_on_perform_attack_3() -> void:
 	await SceneManager.async_delay(0.5)
 	_clear_attack_state()
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_1.emit()
 
 
 func _on_death() -> void:
-	_has_been_defeated = true
+	self.hide()
+
+	# Defeat all the summoned enemies.
+	for enemy in self.get_node("../SummonedEnemies").get_children():
+		var enemy_health_component: HealthComponent = enemy.get_node("EnemyComponent").health_component
+		enemy_health_component.take_damage(enemy_health_component.get_max_health())
+
+	# Replace the boss with its defeated version, in order to 
+	# show the defeat animation.
+	var defeated_version := DEFEATED_SCENE.instantiate()
+	defeated_version.global_position = self.global_position
+	self.get_tree().current_scene.add_child(defeated_version)
+
+	self.queue_free()
 
 
 func _async_play_defeated_cutscene() -> void:
