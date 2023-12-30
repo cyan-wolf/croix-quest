@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://clygcxhup8ka5"]
+
+[ext_resource type="Script" path="res://util/defeated_boss/defeated_boss.gd" id="1_3flwb"]
+[ext_resource type="PackedScene" uid="uid://b2pbbusv85v6e" path="res://particles/boss_implosion_particles.tscn" id="1_cdi04"]
+[ext_resource type="PackedScene" uid="uid://dm7xr0uye71hi" path="res://particles/boss_burst_particles.tscn" id="2_yimnm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijj6n"]
+
+[node name="AstralLineusBossDefeated" type="Node2D"]
+script = ExtResource("1_3flwb")
+_milestone_after_boss_defeat = 5
+_forest_spirit_sprite_scene_path = "res://npcs/forest_spirits/penguin_forest_spirit/penguin_forest_spirit_sprite.tscn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ijj6n")
+
+[node name="BossImplosionParticles" parent="." instance=ExtResource("1_cdi04")]
+
+[node name="BossBurstParticles" parent="." instance=ExtResource("2_yimnm")]

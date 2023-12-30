@@ -1,5 +1,7 @@
 extends Node2D
 
+const DEFEATED_SCENE := preload("res://enemies/bosses/astral_lineus/defeated/astral_lineus_boss_defeated.tscn")
+
 const Attack2Pod := preload("res://enemies/bosses/astral_lineus/attacks/astral_lineus_attack_2_pod.gd")
 
 const SEGMENT_SCENE := preload("res://enemies/bosses/astral_lineus/segments/astral_lineus_segments.tscn")
@@ -40,8 +42,6 @@ var _attack_1_right_positions: Array[Vector2] = []
 var _attack_2_pod_landing_positions: Array[Vector2] = []
 
 var _attack_3_laser_positions: Array[Vector2] = []
-
-var _has_been_defeated := false
 
 func _ready() -> void:
 	self.perform_attack_1.connect(_async_on_perform_attack_1)
@@ -109,11 +109,6 @@ func _async_on_perform_attack_1() -> void:
 
 		await SceneManager.async_delay(2.0)
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_2.emit()
 
 
@@ -163,11 +158,6 @@ func _async_on_perform_attack_2() -> void:
 
 	await SceneManager.async_delay(1.0)
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_3.emit()
 
 
@@ -196,7 +186,7 @@ func _async_on_perform_attack_3() -> void:
 		await SceneManager.async_delay(indicator_duration)
 		indicator.hide()
 		indicator.queue_free()
-		
+
 		# Summon the laser.
 		var laser := ATTACK_3_LASER_SCENE.instantiate()
 		laser.global_position = laser_pos
@@ -205,43 +195,27 @@ func _async_on_perform_attack_3() -> void:
 		# Despawn the laser asynchronously.
 		var async_laser_despawner := func():
 			await SceneManager.async_delay(laser_despawn_duration)
-			laser.queue_free()
+			# Check to see if the laser hasn't been freed yet.
+			if is_instance_valid(laser):
+				laser.queue_free()
 
 		async_laser_despawner.call() # async call
 
 		await SceneManager.async_delay(duration_between_lasers)
 
-	if _has_been_defeated:
-		# Async call (no need to wait for the cutscene to finish).
-		_async_play_defeated_cutscene()
-		return
-
 	self.perform_attack_1.emit()
 
 
 func _on_death() -> void:
-	_has_been_defeated = true
-
-
-func _async_play_defeated_cutscene() -> void:
-	SceneManager.stop_playing_background_music()
-
-	SceneManager.add_world_state(Util.WorldState.CUTSCENE_PLAYING)
-	
-	# TODO
-	print_debug("DEBUG: Astral Lineus boss has died.")
-
-	await SceneManager.async_delay(1.0)
-
 	self.hide()
-	SceneManager.progression().add_milestone(Util.Milestone.DUNKEL_DUNGEON_COMPLETED)
 
-	await SceneManager.async_delay(0.5)
+	# Replace the boss with its defeated version, in order to 
+	# show the defeat animation.
+	var defeated_version := DEFEATED_SCENE.instantiate()
+	defeated_version.global_position = self.global_position
+	self.get_tree().current_scene.add_child(defeated_version)
 
-	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
-
-	# Go to the hub.
-	SceneManager.load_scene_file(Util.ScenePath.HIDEOUT_HUB)
+	self.queue_free()
 
 
 func _on_area_entered_segment_hitbox(other_hitbox: Area2D) -> void:
