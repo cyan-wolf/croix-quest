@@ -242,8 +242,10 @@ func _stop_running() -> void:
 
 func _try_to_dodge() -> void:
 	# The dodge attempt fails if the player is already dodging or the 
-	# player doesn't have enough mana.
-	if _is_dodging or not self.mana_component.has_enough_mana(1):
+	# player doesn't have enough mana or the player is in a cutscene.
+	if (_is_dodging 
+		or not self.mana_component.has_enough_mana(1)
+		or not SceneManager.is_world_state_empty()):
 		return
 
 	_is_dodging = true
