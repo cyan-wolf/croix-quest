@@ -18,6 +18,10 @@ func play_animation(anim_name: String) -> void:
 	_animated_sprite.play(anim_name)
 
 
+func set_dialog(dialog: DialogResource) -> void:
+	_dialog = dialog
+
+
 func _async_on_player_interact() -> void:
 	self.dialog_started.emit()
 	DialogManager.start_dialog(_dialog)

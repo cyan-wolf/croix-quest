@@ -1,5 +1,8 @@
 extends Node2D
 
+## This signal is only fired once, when the puzzle is completed for the first time.
+signal completed
+
 const FloorPuzzleSwitch := preload("res://puzzles/floor_x_puzzle/floor_x_puzzle_switch.gd")
 const StationaryRock := preload("res://interactables/stationary_rock/stationary_rock.gd")
 
@@ -12,6 +15,9 @@ var _obstacles_to_break: Array[StationaryRock] = []
 
 var _required_active_switches := 0
 var _currently_active_switches := 0
+
+## Marks whether the puzzle has been completed before.
+var _already_completed := false
 
 func _ready() -> void:
 	# These nodes must be added manually.
@@ -64,9 +70,11 @@ func _on_puzzle_reset() -> void:
 			rock.reset_to_starting_position()
 
 
-
-
 func _complete_puzzle() -> void:
+	if not _already_completed:
+		_already_completed = true
+		self.completed.emit()
+
 	for switch in _floor_x_switches:
 		switch.finish()
 

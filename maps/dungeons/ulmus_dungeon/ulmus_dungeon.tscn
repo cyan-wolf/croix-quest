@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://chvnxhqp7ljjx"]
+[gd_scene load_steps=57 format=3 uid="uid://chvnxhqp7ljjx"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="3_2dv2y"]
 [ext_resource type="Script" path="res://util/components/health/health_component.gd" id="3_34la5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chmdygv0wf3e0" path="res://util/scene_transporter/scene_transporter.tscn" id="4_28uki"]
 [ext_resource type="Script" path="res://util/components/mana/mana_component.gd" id="4_mchms"]
 [ext_resource type="PackedScene" uid="uid://bwjgthkomaj78" path="res://util/teleporter/teleporter.tscn" id="5_yst44"]
+[ext_resource type="PackedScene" uid="uid://dm6ilcsdiedsv" path="res://maps/dungeons/ulmus_dungeon/lore/ulmus_dungeon_lore_manager.tscn" id="6_8c1w6"]
 [ext_resource type="PackedScene" uid="uid://cj5g07iuwf7pa" path="res://interactables/chest/chest.tscn" id="6_au5bi"]
 [ext_resource type="PackedScene" uid="uid://dhdg4yr1tqism" path="res://util/teleporter/teleporter_destination.tscn" id="6_axfhp"]
 [ext_resource type="PackedScene" uid="uid://x0u7ai35o4o4" path="res://enemies/melee_enemy/charjopt/charjopt_melee_enemy.tscn" id="7_jilfp"]
@@ -193,7 +194,7 @@ dialog = Array[String](["Huh? How did you solve the last puzzle?", "Hmmm... no m
 [sub_resource type="Resource" id="Resource_mwlwu"]
 script = ExtResource("21_1lba6")
 author = "Puzzlemaster"
-dialog = Array[String](["So you managed to solve the last puzzle too?", "IMPOSSIBLE.", "You're clearly cheating somehow.", "Good thing I added a bunch of slippery mud all over this puzzle.", "You're not the only one that can play dirty, CHEATER!", "Oh and be careful about falling into the void."])
+dialog = Array[String](["So you managed to solve the last puzzle too?", "IMPOSSIBLE.", "You're clearly cheating somehow.", "Good thing I added a bunch of slippery mud all over this puzzle.", "You're not the only one that can play dirty, CHEATER!", "Oh and be careful about falling into the void, it'll teleport you outside of the puzzle."])
 
 [sub_resource type="Resource" id="Resource_keugm"]
 script = ExtResource("21_1lba6")
@@ -266,6 +267,7 @@ layer_0/tile_data = PackedInt32Array(-5701309, 0, 0, -5701308, 0, 0, -5635772, 0
 navigation_polygon = SubResource("NavigationPolygon_71es4")
 
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
+position = Vector2(4047, -1259)
 health_component = SubResource("Resource_p1nne")
 mana_component = SubResource("Resource_2x206")
 
@@ -276,6 +278,8 @@ _destination_scene_path = "res://maps/dungeons/ulmus_dungeon/boss_fight/ulmus_du
 [node name="BossSceneTransporter" parent="." instance=ExtResource("4_28uki")]
 position = Vector2(4848, 634)
 _destination_scene_path = "res://maps/dungeons/ulmus_dungeon/boss_fight/ulmus_dungeon_boss_fight.tscn"
+
+[node name="UlmusDungeonLoreManager" parent="." instance=ExtResource("6_8c1w6")]
 
 [node name="PropCollection" type="Node2D" parent="."]
 y_sort_enabled = true
