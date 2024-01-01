@@ -1,8 +1,12 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	_connect_npc_reaction_dialog_signals()
+
+
+# Connects puzzle completion signals to update NPC dialogs accordingly.
+func _connect_npc_reaction_dialog_signals() -> void:
 	self.get_node("../PropCollection/PuzzleCollection/FloorXPuzzle") \
 		.completed \
 		.connect(func(): 
@@ -54,5 +58,4 @@ func _ready():
 			)
 
 			)
-
 
