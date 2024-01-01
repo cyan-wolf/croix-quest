@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://d14duv40kw4ei"]
+
+[ext_resource type="Script" path="res://maps/dungeons/dunkel_dungeon/lore/riddles/puzzlemaster_riddles_manager.gd" id="1_wxxy7"]
+[ext_resource type="Script" path="res://util/components/health/health_component.gd" id="2_hkj04"]
+[ext_resource type="FontFile" uid="uid://cvsylnqir5air" path="res://fonts/Not Jam Third Dimension 15/Not Jam Third Dimension 15.ttf" id="2_irbac"]
+[ext_resource type="PackedScene" uid="uid://b7u5nlk05pa5t" path="res://ui/hud/health_bar/boss_health_bar/boss_heath_bar.tscn" id="3_0psf0"]
+
+[sub_resource type="Resource" id="Resource_3ofob"]
+script = ExtResource("2_hkj04")
+_health = 5
+
+[node name="PuzzlemasterRiddlesManager" type="Node2D"]
+script = ExtResource("1_wxxy7")
+_puzzlemaster_health_component = SubResource("Resource_3ofob")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RiddlePrompt" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionLabel" type="Label" parent="CanvasLayer/RiddlePrompt"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -686.5
+offset_right = 686.5
+offset_bottom = 189.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_irbac")
+theme_override_font_sizes/font_size = 45
+text = "Question #1: A very intricate and involved question that makes the player ponder the meaning of everything...?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ResponseButton1" type="Button" parent="CanvasLayer/RiddlePrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -76.5
+offset_right = 152.5
+offset_bottom = -23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_irbac")
+theme_override_font_sizes/font_size = 45
+text = "Response 1"
+
+[node name="ResponseButton2" type="Button" parent="CanvasLayer/RiddlePrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -9.5
+offset_right = 158.5
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_irbac")
+theme_override_font_sizes/font_size = 45
+text = "Response 2
+"
+
+[node name="ResponseButton3" type="Button" parent="CanvasLayer/RiddlePrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = 59.5
+offset_right = 157.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_irbac")
+theme_override_font_sizes/font_size = 45
+text = "Response 3"
+
+[node name="ResponseButton4" type="Button" parent="CanvasLayer/RiddlePrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = 130.5
+offset_right = 158.5
+offset_bottom = 183.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_irbac")
+theme_override_font_sizes/font_size = 45
+text = "Response 4"
+
+[node name="BossHeathBar" parent="CanvasLayer" instance=ExtResource("3_0psf0")]
+visible = false

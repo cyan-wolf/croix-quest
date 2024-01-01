@@ -130,7 +130,6 @@ health_component = SubResource("Resource_sur25")
 mana_component = SubResource("Resource_2bgqq")
 
 [node name="IntroCastleLoreManager" parent="." instance=ExtResource("6_bsn1n")]
-_should_show_lore_cutscene = false
 
 [node name="NpcCollection" type="Node2D" parent="."]
 y_sort_enabled = true

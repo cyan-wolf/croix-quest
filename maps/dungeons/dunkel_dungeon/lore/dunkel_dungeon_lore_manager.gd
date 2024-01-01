@@ -26,13 +26,13 @@ func _ready():
 	# Dim the scene's "light" in the second part of the maze.
 	self.get_node("../Props/TeleportersCollection/Teleporter3") \
 		.used \
-		.connect(func(): _set_dungeon_light_level(SceneLightLevel.VERY_DIM))
+		.connect(func(): self.set_dungeon_light_level(SceneLightLevel.VERY_DIM))
 
 	# Turn off the scene's "light" in the third part of the maze.
 	self.get_node("../Props/TeleportersCollection/Teleporter4") \
 		.used \
 		.connect(func(): 
-			_set_dungeon_light_level(SceneLightLevel.PITCH_DARK)
+			self.set_dungeon_light_level(SceneLightLevel.PITCH_DARK)
 			
 			var tile_map: TileMap = self.get_node("../TileMap")
 
@@ -45,7 +45,7 @@ func _ready():
 	self.get_node("../Props/TeleportersCollection/Teleporter5") \
 		.used \
 		.connect(func(): 
-			_set_dungeon_light_level(SceneLightLevel.NORMAL)
+			self.set_dungeon_light_level(SceneLightLevel.NORMAL)
 			
 			var tile_map: TileMap = self.get_node("../TileMap")
 
@@ -79,7 +79,7 @@ func _physics_process(_delta: float) -> void:
 				return # no need to keep checking
 
 
-func _set_dungeon_light_level(level: SceneLightLevel) -> void:
+func set_dungeon_light_level(level: SceneLightLevel) -> void:
 	match level:
 		SceneLightLevel.NORMAL:
 			_darkness_modulate.color = Color("ffffff")
