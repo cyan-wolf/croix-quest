@@ -16,6 +16,8 @@ const DialogNpc := preload("res://npcs/dialog_npc/dialog_npc.gd")
 # The spawn position of the player in the 'Intro Castle' scene.
 var _player_original_spawn_position: Vector2
 
+var _tutorial_already_completed := false
+
 func _ready() -> void:
 	# Connect signals.
 	self.get_node("../NpcCollection/TutorialStarterGuardCaptainNPC") \
@@ -24,6 +26,8 @@ func _ready() -> void:
 		
 	_tutorial_prompt.get_node("TutorialButton").pressed.connect(_async_on_tutorial_start_button_pressed)
 	_tutorial_prompt.get_node("SkipButton").pressed.connect(_on_tutorial_skip_button_pressed)
+
+	_set_guard_captain_npc_dialogs()
 
 	# Connect signal to start the second part of the tutorial.
 	self.get_node("EnemyShootingTutorialHitboxArea").area_entered.connect(_async_on_start_enemy_shooting_tutorial)
@@ -55,6 +59,18 @@ func _on_beginning_captain_npc_dialog_ended() -> void:
 func _async_on_tutorial_start_button_pressed() -> void:
 	_tutorial_prompt.hide()
 
+	# Don't let the player retry the tutorial.
+	if _tutorial_already_completed:
+		DialogManager.start_dialog(DialogResource.create("Guard Captain", [
+			"Huh? You want to do the training again? No way! You're an expert now.",
+			"Please head through the door next to me.",
+		]))
+
+		# Allows the player to move again.
+		SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
+
+		return
+
 	# "Teleport" the player to the tutorial area.
 	SceneManager.show_loading_screen()
 	_player.global_position = self.get_node("TutorialStartPosition").global_position
@@ -71,9 +87,16 @@ func _async_on_tutorial_start_button_pressed() -> void:
 
 # Skips the tutorial.
 func _on_tutorial_skip_button_pressed() -> void:
+	_tutorial_prompt.hide()
+
+	DialogManager.start_dialog(DialogResource.create("Guard Captain", [
+		"I understand.",
+		"You should be an expert by now, you've been a guard for months now.",
+		"Please head through the doorway next to me.",
+	]))
+
 	# Allows the player to move again.
 	SceneManager.remove_world_state(Util.WorldState.CUTSCENE_PLAYING)
-	_tutorial_prompt.hide()
 
 
 # The 'Enemy Shooting' (second) part of the tutorial.
@@ -198,4 +221,23 @@ func _async_on_end_tutorial(other_hitbox: Area2D) -> void:
 
 		await SceneManager.async_delay(0.2)
 		SceneManager.hide_loading_screen()
+
+		_tutorial_already_completed = true
+
+		DialogManager.start_dialog(DialogResource.create("Guard Captain", [
+			"Now that you have completed your training, please head through the doorway next to me.",
+			"You need to meet the Queen.",
+		]))
+
+
+# Sets the Guard Captain NPC dialogs to match the ones that automatically play as part of the tutorial.
+func _set_guard_captain_npc_dialogs() -> void:
+	self.get_node("GuardCaptiainNPCs/DialogNPC").set_dialog(_shooting_tutorial_dialog)
+	self.get_node("GuardCaptiainNPCs/DialogNPC2").set_dialog(_enemy_shooting_tutorial_dialog)
+	self.get_node("GuardCaptiainNPCs/DialogNPC3").set_dialog(_checkpoint_tutorial_dialog)
+	self.get_node("GuardCaptiainNPCs/DialogNPC4").set_dialog(_item_pickup_tutorial_dialog)
+	self.get_node("GuardCaptiainNPCs/DialogNPC5").set_dialog(DialogResource.create("Guard Captain", [
+		"Excellent job.",
+		"That concludes our training for today.",
+	]))
 

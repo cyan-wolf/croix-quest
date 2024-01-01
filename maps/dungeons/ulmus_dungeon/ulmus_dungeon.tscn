@@ -267,7 +267,6 @@ layer_0/tile_data = PackedInt32Array(-5701309, 0, 0, -5701308, 0, 0, -5635772, 0
 navigation_polygon = SubResource("NavigationPolygon_71es4")
 
 [node name="Player" parent="." instance=ExtResource("3_2dv2y")]
-position = Vector2(4047, -1259)
 health_component = SubResource("Resource_p1nne")
 mana_component = SubResource("Resource_2x206")
 
