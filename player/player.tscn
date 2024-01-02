@@ -360,6 +360,10 @@ shape = SubResource("RectangleShape2D_0egpu")
 [node name="player_trail_particles" parent="." instance=ExtResource("13_avcf5")]
 emitting = true
 
+[node name="ManaRecharge" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
 [node name="RunCountdown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -410,5 +414,6 @@ visible = false
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_iulul")
 
+[connection signal="timeout" from="ManaRecharge" to="." method="_on_mana_recharge_timeout"]
 [connection signal="timeout" from="RunCountdown" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Weapon/WeaponReload" to="Weapon" method="_on_weapon_reload_timeout"]

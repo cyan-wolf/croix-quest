@@ -60,6 +60,8 @@ func _input(event: InputEvent):
 
 
 func _physics_process(_delta):
+	if not self.mana_component.has_enough_mana(4) and $ManaRecharge.is_stopped():
+		$ManaRecharge.start()
 
 	# Disables player movement there is a dialog being shown, etc.
 	if not SceneManager.is_world_state_empty():
@@ -327,3 +329,6 @@ func _on_timer_timeout():
 	$InitialDashParticles.emitting = true
 	$InitialDashSFX.play()
 
+
+func _on_mana_recharge_timeout():
+	self.mana_component.gain_mana(1)
