@@ -10,6 +10,7 @@ const AstralLineusBoss := preload("res://enemies/bosses/astral_lineus/astral_lin
 const WALKING_SPEED := 70.0
 const DASH_MULTIPLIER := 1.65
 const DODGE_DURATION := 0.6
+const DODGE_MULTIPLIER := 2.3
 
 # Manages the player's health value.
 @export var health_component: HealthComponent
@@ -40,6 +41,7 @@ var _is_timer_on: bool = false
 var _is_running: bool = false
 var _is_dodging: bool = false
 var _is_invulnerable: bool = false
+var _ded: bool = false
 
 var _is_slipping: bool = false
 
@@ -58,6 +60,7 @@ func _input(event: InputEvent):
 
 
 func _physics_process(_delta):
+
 	# Disables player movement there is a dialog being shown, etc.
 	if not SceneManager.is_world_state_empty():
 		_stop_running()
@@ -94,11 +97,20 @@ func _physics_process(_delta):
 			$RunCountdown.start()
 			_is_timer_on = true
 
-		if _is_running:
+		#if _ded:
+		#	self.set_animation("Dead")
+		#if it died make the gun disappear too
+
+		if _is_dodging:
+			self.set_animation("Slide")
+
+		elif _is_running:
 			self.set_animation("Run")
 
 		else:
 			self.set_animation("Walk")
+			
+		
 
 	_check_and_set_if_should_be_slipping()
 
@@ -112,6 +124,9 @@ func _process(_delta: float) -> void:
 
 
 func _async_on_death() -> void:
+	
+	_ded = true #TODO: Make this shit work
+
 	SceneManager.add_world_state(Util.WorldState.PLAYER_IS_DEAD)
 
 	await SceneManager.async_delay(1.0)
@@ -122,8 +137,8 @@ func _async_on_death() -> void:
 func _async_on_ran_out_of_mana() -> void:
 	await SceneManager.async_delay(1.0)
 
-	# Player receives a full heart of damage in exchange for refilling the mana.
-	self.health_component.take_damage(2)
+	# Player receives a half heart of damage in exchange for refilling the mana.
+	self.health_component.take_damage(1)
 
 	# Refill the mana to the max.
 	self.mana_component.gain_mana(self.mana_component.MAX_MANA)
@@ -240,6 +255,8 @@ func _stop_running() -> void:
 	$RunCountdown.stop()
 
 
+
+
 func _try_to_dodge() -> void:
 	# The dodge attempt fails if the player is already dodging or the 
 	# player doesn't have enough mana or the player is in a cutscene.
@@ -248,8 +265,9 @@ func _try_to_dodge() -> void:
 		or not SceneManager.is_world_state_empty()):
 		return
 
-	_is_dodging = true
+	_current_speed = WALKING_SPEED * DODGE_MULTIPLIER
 
+	_is_dodging = true
 	self.mana_component.use_mana(1)
 
 	# Make the player partially transparent.
@@ -262,9 +280,13 @@ func _try_to_dodge() -> void:
 	var async_callback := func():
 		await SceneManager.async_delay(DODGE_DURATION)
 
+		if _is_running:
+			_current_speed = WALKING_SPEED * DASH_MULTIPLIER
+		else:
+			_current_speed = WALKING_SPEED
+
 		# Make the player opaque.
 		self.modulate.a = 1.0
-
 		_is_dodging = false
 
 	async_callback.call() # async call

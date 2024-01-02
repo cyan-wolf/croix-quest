@@ -229,7 +229,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dwkuj")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dead",
 "speed": 10.0
 }, {
@@ -338,7 +338,7 @@ respawn_component = SubResource("Resource_tuyat")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5a2gx")
-animation = &"Attack"
+animation = &"Dead"
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
