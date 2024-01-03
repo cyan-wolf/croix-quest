@@ -111,7 +111,7 @@ polygon = PackedVector2Array(-16, -56, 16, -56, 16, 56, -16, 56)
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_vsolw")]
-position = Vector2(24, -2738)
+position = Vector2(34, -2786)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_yhtpw")

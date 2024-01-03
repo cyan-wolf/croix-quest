@@ -170,6 +170,7 @@ func _fire() -> void:
 				.from_source(Projectile.Source.PLAYER) \
 				.with_damage(_bullet_damage) \
 				.with_lifetime(_bullet_alive_time) \
+				.with_sprite_frames(Projectile.SpriteFramesConsts.PLAYER) \
 				.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 				.add_to_scene()
 
@@ -184,6 +185,7 @@ func _fire() -> void:
 					.from_source(Projectile.Source.PLAYER) \
 					.with_damage(_bullet_damage) \
 					.with_lifetime(_bullet_alive_time) \
+					.with_sprite_frames(Projectile.SpriteFramesConsts.PLAYER) \
 					.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 					.add_to_scene()
 
@@ -197,6 +199,7 @@ func _fire() -> void:
 				.from_source(Projectile.Source.PLAYER) \
 				.with_damage(_bullet_damage) \
 				.with_lifetime(_bullet_alive_time) \
+				.with_sprite_frames(Projectile.SpriteFramesConsts.PLAYER) \
 				.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 				.add_to_scene()
 
@@ -210,6 +213,7 @@ func _fire() -> void:
 				.from_source(Projectile.Source.PLAYER) \
 				.with_damage(_bullet_damage) \
 				.with_lifetime(_bullet_alive_time) \
+				.with_sprite_frames(Projectile.SpriteFramesConsts.PLAYER) \
 				.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 				.add_to_scene()
 

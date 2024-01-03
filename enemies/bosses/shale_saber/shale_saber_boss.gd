@@ -164,8 +164,8 @@ func _async_on_perform_attack_2() -> void:
 			.with_damage(1) \
 			.can_pass_through_wall_edges(true) \
 			.with_lifetime(10.0) \
-			.with_sprite_frames(Projectile.SpriteFramesConsts.SHALE_SABER) \
-			.with_trail_gradient(Projectile.TrailConsts.SHALE_SABER) \
+			.with_sprite_frames(Projectile.SpriteFramesConsts.SHALE_SABER_BOSS) \
+			.with_trail_gradient(Projectile.TrailConsts.SHALE_SABER_BOSS) \
 			.add_to_scene()
 
 	self.perform_attack_3.emit()

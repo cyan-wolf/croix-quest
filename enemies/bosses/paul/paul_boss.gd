@@ -234,6 +234,7 @@ func _fire_projectile(offset_angle_in_degrees: float) -> void:
 		.with_impulse(direction * speed) \
 		.from_source(Projectile.Source.PAUL_BOSS) \
 		.with_damage(_projectile_attack_damage) \
+		.with_sprite_frames(Projectile.SpriteFramesConsts.PAUL_BOSS) \
 		.with_trail_gradient(Projectile.TrailConsts.PAUL_BOSS) \
 		.add_to_scene()
 

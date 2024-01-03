@@ -16,6 +16,8 @@ func async_explode_into_projectiles(projectile_amount: int, damage: int, speed: 
 			.with_impulse(direction * speed) \
 			.from_source(Projectile.Source.ASTRAL_LINEUS_BOSS) \
 			.with_damage(damage) \
+			.with_sprite_frames(Projectile.SpriteFramesConsts.ASTRAL_LINEUS_BOSS) \
+			.with_trail_gradient(Projectile.TrailConsts.ASTRAL_LINEUS_BOSS) \
 			.add_to_scene()
 
 		await SceneManager.async_delay(0.1)

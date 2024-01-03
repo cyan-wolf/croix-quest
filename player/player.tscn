@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="4_8kxvr"]
 [ext_resource type="AudioStream" uid="uid://b83u0qo3cei2u" path="res://sounds/sfx/InitialDash.wav" id="4_omw7c"]
 [ext_resource type="Script" path="res://util/components/respawn/respawn_component.gd" id="4_t3vhg"]
-[ext_resource type="Texture2D" uid="uid://bkvyalk3b43cd" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
+[ext_resource type="Texture2D" uid="uid://clmui70tkkcig" path="res://weapons/sprites/Pistol/pistol.png" id="5_sqf7h"]
 [ext_resource type="Script" path="res://player/Weapon.gd" id="6_jfpub"]
 [ext_resource type="PackedScene" uid="uid://d1cs8arufufu5" path="res://particles/muzzle.tscn" id="8_ep5ee"]
 [ext_resource type="AudioStream" uid="uid://b6ypyusquahcu" path="res://sounds/sfx/shoot_sound/8bit_bomb_explosion.wav" id="11_kl2eo"]

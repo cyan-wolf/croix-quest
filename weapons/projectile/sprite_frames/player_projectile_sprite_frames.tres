@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://cpsyh2q5h5ewe"]
+
+[ext_resource type="Texture2D" uid="uid://dwcjj0frq7gdu" path="res://weapons/projectile/sprite_frames/paul_projectile_sprite_frames.png" id="1_a4vy7"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a4vy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
