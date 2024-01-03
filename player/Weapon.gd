@@ -1,7 +1,5 @@
 extends Node2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 const WEAPONS_DATA_PATH = "res://weapons/weapon_data"
 
 @onready var _reload_timer = $WeaponReload
@@ -23,7 +21,6 @@ var _is_reload_timer_on := false
 
 # These fields should not be exported; these are set depending on the current weapon.
 var _bullet_speed: float = 0
-var _bullet_scene := preload("res://weapons/projectile/projectile.tscn")
 var _weapon_reload_time: float = 0.1
 var _bullet_alive_time: float = 0.0
 var _bullet_damage: int = 0
@@ -173,6 +170,7 @@ func _fire() -> void:
 				.from_source(Projectile.Source.PLAYER) \
 				.with_damage(_bullet_damage) \
 				.with_lifetime(_bullet_alive_time) \
+				.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 				.add_to_scene()
 
 		Util.WeaponType.SHOTGUN:
@@ -186,6 +184,7 @@ func _fire() -> void:
 					.from_source(Projectile.Source.PLAYER) \
 					.with_damage(_bullet_damage) \
 					.with_lifetime(_bullet_alive_time) \
+					.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 					.add_to_scene()
 
 		Util.WeaponType.SNIPER:
@@ -198,6 +197,7 @@ func _fire() -> void:
 				.from_source(Projectile.Source.PLAYER) \
 				.with_damage(_bullet_damage) \
 				.with_lifetime(_bullet_alive_time) \
+				.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 				.add_to_scene()
 
 		Util.WeaponType.SMG:
@@ -210,6 +210,7 @@ func _fire() -> void:
 				.from_source(Projectile.Source.PLAYER) \
 				.with_damage(_bullet_damage) \
 				.with_lifetime(_bullet_alive_time) \
+				.with_trail_gradient(Projectile.TrailConsts.PLAYER) \
 				.add_to_scene()
 
 		# Do nothing if there is an unknown weapon.

@@ -1,7 +1,5 @@
 extends Node2D
 
-const Projectile := preload("res://weapons/projectile/projectile.gd")
-
 func async_explode_into_projectiles(projectile_amount: int, damage: int, speed: float) -> void:
 	# TODO: Show a particle effect here.
 	self.hide()

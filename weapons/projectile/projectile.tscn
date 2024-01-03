@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dd6l8efrirnrx"]
 
 [ext_resource type="Script" path="res://weapons/projectile/projectile.gd" id="1_e1amn"]
-[ext_resource type="Texture2D" uid="uid://dgntwujv288xb" path="res://weapons/projectile/default_projectile.png" id="2_tfc63"]
+[ext_resource type="Texture2D" uid="uid://dgntwujv288xb" path="res://weapons/projectile/sprite_frames/default_projectile_sprite.png" id="2_tfc63"]
 [ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_6cw5t"]
 [ext_resource type="PackedScene" uid="uid://m3843i3e810p" path="res://particles/bullet_impact.tscn" id="4_4hia0"]
 [ext_resource type="Script" path="res://weapons/projectile/bullet_trail.gd" id="5_s4rp5"]

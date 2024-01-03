@@ -1,16 +1,13 @@
 extends RigidBody2D
 class_name Projectile
 
+const SpriteFramesConsts := preload("res://weapons/projectile/sprite_frames/projectile_sprite_frames.gd")
+const TrailConsts := preload("res://weapons/projectile/projectile_trails/projectile_trails.gd")
+
 # These aren't set with `@onready`, because the projectile initialization code is run before it gets 
 # added to the scene.
 var _sprite: AnimatedSprite2D
 var _trail: Line2D
-
-const DEFAULT_PROJECTILE_SPRITE_FRAMES := preload("res://weapons/projectile/default_projectile_sprite_frames.tres")
-const DEFAULT_PROJECTILE_TRAIL_GRADIENT := preload("res://weapons/projectile/projectile_trails/default_projectile_trail_gradient.tres")
-
-const PAUL_BOSS_PROJECTILE_TRAIL := preload("res://weapons/projectile/projectile_trails/paul_boss_projectile_trail.tres")
-const SHALE_SABER_PROJECTILE_TRAIL := preload("res://weapons/projectile/projectile_trails/shale_saber_boss_projectile_trail.tres")
 
 var _bullet_particle_emitter_scene = preload("res://particles/bullet_impact.tscn")
 

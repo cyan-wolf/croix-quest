@@ -31,7 +31,7 @@ func _ready() -> void:
 	_shooting_attack_timer.timeout.connect(_on_shooting_attack_timer_timeout)
 
 	if _projectile_sprite_frames == null:
-		_projectile_sprite_frames = Projectile.DEFAULT_PROJECTILE_SPRITE_FRAMES
+		_projectile_sprite_frames = Projectile.SpriteFramesConsts.DEFAULT
 
 
 func _process(_delta: float) -> void:

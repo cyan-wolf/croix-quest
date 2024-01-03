@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccjth4bl0il74"
-path="res://.godot/imported/SMG.png-bc604886a110f7d5ffa9e1254040f647.ctex"
+uid="uid://cqy2raqj4wcyo"
+path="res://.godot/imported/smg.png-7f3590a484b263b903f5535fa8ccad54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/sprites/SMG/SMG.png"
-dest_files=["res://.godot/imported/SMG.png-bc604886a110f7d5ffa9e1254040f647.ctex"]
+source_file="res://weapons/sprites/SMG/smg.png"
+dest_files=["res://.godot/imported/smg.png-7f3590a484b263b903f5535fa8ccad54.ctex"]
 
 [params]
 

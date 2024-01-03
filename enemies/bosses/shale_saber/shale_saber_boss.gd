@@ -28,8 +28,6 @@ enum AttackState {
 ## In seconds.
 @export var _attack_3_duration: float = 4.0
 
-@export var _sword_projectile_sprite_frames: SpriteFrames
-
 @onready var _hitbox: Area2D = self.get_node("HitboxArea")
 
 @onready var _sword_with_hitbox: Node2D = self.get_node("ShaleSword")
@@ -166,8 +164,8 @@ func _async_on_perform_attack_2() -> void:
 			.with_damage(1) \
 			.can_pass_through_wall_edges(true) \
 			.with_lifetime(10.0) \
-			.with_sprite_frames(_sword_projectile_sprite_frames) \
-			.with_trail_gradient(Projectile.SHALE_SABER_PROJECTILE_TRAIL) \
+			.with_sprite_frames(Projectile.SpriteFramesConsts.SHALE_SABER) \
+			.with_trail_gradient(Projectile.TrailConsts.SHALE_SABER) \
 			.add_to_scene()
 
 	self.perform_attack_3.emit()
