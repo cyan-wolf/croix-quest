@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://da0aphk27nflm"]
+[gd_scene load_steps=43 format=3 uid="uid://da0aphk27nflm"]
 
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_vsolw"]
 [ext_resource type="PackedScene" uid="uid://4m1jq3lfq11c" path="res://enemies/melee_enemy/enlightened_corpse/enlightened_corpse_melee_enemy.tscn" id="3_inoe0"]
@@ -28,9 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://uoajiug5lqk6" path="res://interactables/stationary_rock/stationary_rock.tscn" id="14_ixux6"]
 [ext_resource type="PackedScene" uid="uid://b1q3qpha1dq7l" path="res://enemies/melee_enemy/tauron_worshiper/tauron_worshiper_enemy_sprite.tscn" id="26_q1yc4"]
 [ext_resource type="PackedScene" uid="uid://d14duv40kw4ei" path="res://maps/dungeons/dunkel_dungeon/lore/riddles/puzzlemaster_riddles_manager.tscn" id="27_y456w"]
-[ext_resource type="PackedScene" uid="uid://dp4xxd8cp43fy" path="res://interactables/weapon_items/shotgun_weapon_item.tscn" id="29_lwid2"]
-[ext_resource type="PackedScene" uid="uid://bllx52mnfssvd" path="res://interactables/weapon_items/sniper_weapon_item.tscn" id="30_hq6hm"]
-[ext_resource type="PackedScene" uid="uid://cmg4pa7bpd26i" path="res://interactables/weapon_items/smg_weapon_item.tscn" id="31_6knok"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h7jch"]
 vertices = PackedVector2Array(8733, -2115, 8733, 931, 4501, 784, 4661, -2128, 16645, 744, 10179, 712, 10227, -2888, 16604, -3125, 630, 13, 409, 13, 409, -5, 630, -6, 3913, -426, 1729, -433, 1745, -1545, 3936, -1556, 662, -456, 423, -456, 425, -646, 662, -646, 17514, -1211, 18022, -1214, 18022, -1109, 17514, -1089, 18087, -1087, 18087, -1109, 20246, -1089, 19128, -1089, 19128, -1311, 20253, -1314, 22245, -1090, 21849, -1090, 21850, -1943, 22244, -1944)
@@ -111,7 +108,7 @@ polygon = PackedVector2Array(-16, -56, 16, -56, 16, 56, -16, 56)
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_vsolw")]
-position = Vector2(34, -2786)
+position = Vector2(21, -2739)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_yhtpw")
@@ -1469,12 +1466,3 @@ _destination_scene_path = "res://maps/dungeons/dunkel_dungeon/boss_fight/dunkel_
 stream = ExtResource("6_66oeh")
 autoplay = true
 bus = &"music"
-
-[node name="SmgWeaponItem" parent="." instance=ExtResource("31_6knok")]
-position = Vector2(132.808, -2727.75)
-
-[node name="SniperWeaponItem" parent="." instance=ExtResource("30_hq6hm")]
-position = Vector2(106.852, -2750.41)
-
-[node name="ShotgunWeaponItem" parent="." instance=ExtResource("29_lwid2")]
-position = Vector2(62.9617, -2740.49)
