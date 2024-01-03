@@ -1,4 +1,4 @@
-
+## This script is for housing common projectile sprite frame resources on disk. 
 
 const DEFAULT := preload("res://weapons/projectile/sprite_frames/default_projectile_sprite_frames.tres")
 

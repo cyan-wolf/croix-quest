@@ -1,7 +1,10 @@
 extends RigidBody2D
 class_name Projectile
 
+## Constants for common projectile `SpriteFrame`s.
 const SpriteFramesConsts := preload("res://weapons/projectile/sprite_frames/projectile_sprite_frames.gd")
+
+## Constants for common projectile trails (`Gradient`s).
 const TrailConsts := preload("res://weapons/projectile/projectile_trails/projectile_trails.gd")
 
 # These aren't set with `@onready`, because the projectile initialization code is run before it gets 

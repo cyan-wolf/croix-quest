@@ -1,3 +1,4 @@
+## This script is for housing common projectile trails (gradients) on disk.
 
 const DEFAULT := preload("res://weapons/projectile/projectile_trails/default_projectile_trail_gradient.tres")
 
