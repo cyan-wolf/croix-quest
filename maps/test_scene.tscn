@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://41to35a76r2o"]
+[gd_scene load_steps=20 format=3 uid="uid://41to35a76r2o"]
 
 [ext_resource type="TileSet" uid="uid://df3y6ueoyret4" path="res://tilesets/ulmus_dungeon_tileset/ulmus_dungeon.tres" id="1_st4pu"]
 [ext_resource type="PackedScene" uid="uid://yqv4nf6uuc7p" path="res://util/slippery_floor_tile/slippery_tile_map.tscn" id="2_hyhro"]
 [ext_resource type="TileSet" uid="uid://bf0tb2ao5aqyo" path="res://tilesets/dunkel_dungeon_tileset/dunkel_dungeon.tres" id="2_occj7"]
 [ext_resource type="PackedScene" uid="uid://ddqssg6qko7t7" path="res://player/player.tscn" id="2_um1fg"]
+[ext_resource type="TileSet" uid="uid://coljbuw1aeavh" path="res://tilesets/castle_tileset/castle_tileset.tres" id="3_m6y5k"]
 [ext_resource type="PackedScene" uid="uid://c83rqfm7yaph0" path="res://puzzles/floor_x_puzzle/floor_x_puzzle.tscn" id="3_op8jo"]
 [ext_resource type="PackedScene" uid="uid://cdvt5b5ell6gq" path="res://puzzles/floor_x_puzzle/floor_x_puzzle_switch.tscn" id="4_mybw7"]
 [ext_resource type="PackedScene" uid="uid://uoajiug5lqk6" path="res://interactables/stationary_rock/stationary_rock.tscn" id="5_6360v"]
@@ -52,11 +53,24 @@ layer_2/name = "FrontWall"
 layer_2/z_index = -2
 layer_2/tile_data = PackedInt32Array(327720, 0, 0, 393256, 0, 0, 327721, 0, 0, 393257, 0, 0, 327722, 0, 0, 393258, 0, 0, 327723, 0, 0, 393259, 0, 0, 327724, 0, 0, 393260, 0, 0, 327725, 0, 0, 393261, 0, 0, 327726, 0, 0, 393262, 0, 0, 327727, 0, 0, 393263, 0, 0, 327728, 0, 0, 393264, 0, 0, 327729, 0, 0, 393265, 0, 0, 327730, 0, 0, 393266, 0, 0, 327731, 0, 0, 393267, 0, 0, 327732, 0, 0, 393268, 0, 0, 262184, 65536, 1, 262185, 65536, 1, 262186, 65536, 1, 262187, 65536, 1, 262188, 65536, 1, 262189, 65536, 1, 262190, 65536, 1, 262191, 65536, 1, 262192, 65536, 1, 262193, 65536, 1, 262194, 65536, 1, 262195, 65536, 1, 262196, 65536, 1, 262183, 0, 3, 262197, 131072, 3, 327719, 0, 4, 393255, 0, 4, 327733, 131072, 4, 393269, 131072, 4)
 
+[node name="TileMap3" type="TileMap" parent="."]
+tile_set = ExtResource("3_m6y5k")
+format = 2
+layer_0/name = "Floor"
+layer_0/z_index = -2
+layer_0/tile_data = PackedInt32Array(2621440, 0, 1, 2621441, 0, 1, 2621442, 0, 1, 2621443, 0, 1, 2686979, 0, 1, 2686978, 0, 1, 2686977, 0, 1, 2686976, 0, 1, 2752511, 0, 1, 2818047, 0, 1, 2752512, 0, 1, 2752513, 0, 1, 2752514, 0, 1, 2752515, 0, 1, 2686980, 0, 1, 2621444, 0, 1, 2752516, 0, 1, 2686975, 0, 1, 2883583, 0, 1, 2818048, 0, 1, 2818049, 0, 1, 2818050, 0, 1, 2818051, 0, 1, 2818052, 0, 1, 2621439, 0, 1, 2555904, 0, 1, 2555905, 0, 1, 2555906, 0, 1, 2555907, 0, 1, 2555908, 0, 1, 2621438, 0, 1, 2686974, 0, 1, 2752510, 0, 1, 2752509, 0, 1, 2818045, 0, 1, 2883581, 0, 1, 2883582, 0, 1, 2818046, 0, 1, 2686973, 0, 1, 2621437, 0, 1)
+layer_1/name = "BackWall"
+layer_1/z_index = -2
+layer_1/tile_data = PackedInt32Array(2490365, 0, 0, 2555901, 0, 0, 2490366, 262144, 5, 2555902, 262144, 6, 2490367, 327680, 5, 2555903, 327680, 6, 2424832, 0, 0, 2490368, 0, 0, 2424833, 0, 0, 2490369, 0, 0, 2424834, 393216, 5, 2490370, 393216, 6, 2424835, 458752, 5, 2490371, 458752, 6, 2424836, 0, 0, 2490372, 0, 0, 2424829, 262144, 0, 2424830, 262144, 0, 2424831, 262144, 0, 2359296, 262144, 0, 2359297, 262144, 0, 2359298, 262144, 0, 2359299, 262144, 0, 2359300, 262144, 0, 2424828, 196608, 0, 2359301, 327680, 0, 2490364, 196608, 1, 2555900, 196608, 1, 2621436, 196608, 1, 2686972, 196608, 1, 2752508, 196608, 1, 2818044, 196608, 1, 2883580, 196608, 1, 2424837, 327680, 1, 2490373, 327680, 1, 2555909, 327680, 1, 2621445, 327680, 1, 2686981, 327680, 1, 2752517, 327680, 1, 2818053, 327680, 1)
+layer_2/name = "FrontWall"
+layer_2/z_index = -2
+layer_2/tile_data = PackedInt32Array(2949117, 0, 0, 3014653, 0, 0, 2949118, 0, 0, 3014654, 0, 0, 2949119, 0, 0, 3014655, 0, 0, 2883584, 0, 0, 2949120, 0, 0, 2883585, 0, 0, 2949121, 0, 0, 2883586, 0, 0, 2949122, 0, 0, 2883587, 0, 0, 2949123, 0, 0, 2883588, 0, 0, 2949124, 0, 0, 2883581, 262144, 0, 2883582, 262144, 0, 2883583, 262144, 0, 2818048, 262144, 0, 2818049, 262144, 0, 2818050, 262144, 0, 2818051, 262144, 0, 2818052, 262144, 0, 2949116, 196608, 3, 3014652, 196608, 3, 2883589, 327680, 3, 2949125, 327680, 3)
+
 [node name="SlipperyTileMap" parent="." instance=ExtResource("2_hyhro")]
 layer_0/tile_data = PackedInt32Array(-5766843, 0, 0, -5766842, 0, 0, -5766841, 0, 0, -5832378, 0, 0, -5897914, 0, 0, -5897913, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_um1fg")]
-position = Vector2(-56, 77)
+position = Vector2(6, 682)
 
 [node name="FloorXPuzzle" parent="." instance=ExtResource("3_op8jo")]
 z_index = -1
