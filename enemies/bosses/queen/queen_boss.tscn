@@ -16,6 +16,8 @@ height = 20.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gy4p3"]
 
 [node name="QueenBoss" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_0htp1")
 health_component = SubResource("Resource_mycxj")
 
