@@ -1,0 +1,52 @@
+[
+    {
+        "prompt": "Question #5: What has words, but never speaks?",
+        "responses": [
+            "Me when giving an oral report",
+            "A book",
+            "A parrot",
+            "A radio"
+        ],
+        "answer_id": 2
+    },
+    {
+        "prompt": "Question #4: What do you cut on a table, but never eat?",
+        "responses": [
+            "A deck of cards",
+		    "I don't cook",
+		    "You",
+		    "My friend's cooking"
+        ],
+        "answer_id": 1
+    },
+    {
+        "prompt": "Question #3: If walls were sentient, where would they meet?",
+        "responses": [
+            "At a Wall Meet and Greet",
+		    "...what?",
+		    "At a corner",
+		    "The library"
+        ],
+        "answer_id": 3
+    },
+    {
+        "prompt": "Question #2: What comes at the end of everything?",
+        "responses": [
+            "Your mother",
+		    "The end of time",
+		    "Credits Screen",
+		    "G"
+        ],
+        "answer_id": 4
+    },
+    {
+        "prompt": "Question #1: What building has the most stories?",
+        "responses": [
+            "My house",
+		    "The library",
+		    "I don't know...",
+		    "Burj Khalifa"
+        ],
+        "answer_id": 2
+    }
+]
