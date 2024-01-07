@@ -113,7 +113,6 @@ dialog = Array[String](["..."])
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_vsolw")]
-position = Vector2(21, -2739)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_yhtpw")
