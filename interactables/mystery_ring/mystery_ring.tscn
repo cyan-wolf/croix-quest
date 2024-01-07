@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://cuvgcx7yolho0"]
+
+[ext_resource type="Script" path="res://interactables/mystery_ring/mystery_ring.gd" id="1_dpajd"]
+[ext_resource type="Texture2D" uid="uid://bcxnegaprep7k" path="res://interactables/mystery_ring/mystery_ring.png" id="1_jjtjv"]
+[ext_resource type="PackedScene" uid="uid://dh4jm1vuoc5ma" path="res://util/components/interaction/interaction_component.tscn" id="2_ukl7p"]
+[ext_resource type="PackedScene" uid="uid://bw2h2pyqdex1e" path="res://util/hitbox_area/hitbox_area.tscn" id="3_g1mtp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2vg4"]
+atlas = ExtResource("1_jjtjv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oubc8"]
+atlas = ExtResource("1_jjtjv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ponti"]
+atlas = ExtResource("1_jjtjv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_farws"]
+atlas = ExtResource("1_jjtjv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ktv1"]
+atlas = ExtResource("1_jjtjv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wii8s"]
+atlas = ExtResource("1_jjtjv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxrle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2vg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oubc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ponti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_farws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ktv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wii8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdq7e"]
+radius = 9.0
+
+[node name="MysteryRing" type="Node2D"]
+script = ExtResource("1_dpajd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uxrle")
+autoplay = "default"
+frame_progress = 0.799817
+
+[node name="InteractionComponent" parent="." instance=ExtResource("2_ukl7p")]
+
+[node name="HitboxArea" parent="InteractionComponent" instance=ExtResource("3_g1mtp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/HitboxArea"]
+shape = SubResource("CircleShape2D_vdq7e")
