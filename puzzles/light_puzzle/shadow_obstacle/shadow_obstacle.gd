@@ -47,13 +47,13 @@ func _on_light_crystal_deactivated() -> void:
 
 func _check_if_should_disappear() -> void:
 	if _currently_activated_light_crystals == len(_light_crystals_needed_to_activate):
-		_disappear()
+		_async_disappear()
 
 	else:
-		_reappear()
+		_async_reappear()
 
 
-func _reappear() -> void:
+func _async_reappear() -> void:
 	# Don't do anything if the obstacle already has collision.
 	if _has_collision:
 		return
@@ -67,8 +67,10 @@ func _reappear() -> void:
 	self.get_node("CollisionShape2D").set_deferred("disabled", false)
 
 
-func _disappear() -> void:
+func _async_disappear() -> void:
 	_has_collision = false
+
+	await SceneManager.async_delay(0.3)
 
 	# TODO: Add a sound and particle effect.
 	self.modulate = Color("ffffff44")
